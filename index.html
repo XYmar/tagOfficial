@@ -1501,7 +1501,7 @@
         var myUsername = $.cookie("myUsername");
         console.log(myUsername);
 
-        if(myUsername != "null"){
+        if((myUsername != null) && (myUsername != "null")){
             //alert("hh");
             loginName.innerHTML = "";
             loginName.innerHTML += "<a href='#'>" + myUsername + "| <sapn onclick='delCookie()' class='exit'>退出</sapn></a>";
@@ -1513,7 +1513,7 @@
     }
 
     function delCookie() {
-        alert("eeeeee");
+        //alert("eeeeee");
         $.cookie("myUsername", null,{path:'/'});
         var loginName = document.getElementById("loginName");
         loginName.innerHTML = "";
