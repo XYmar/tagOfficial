@@ -30,7 +30,7 @@
 
 <!-- header start -->
 <header class="header fixed clearfix navbar navbar-fixed-top">
-    <div class="container">
+    <div class="container" style="width: 1240px;">
         <div class="row">
             <div class="col-md-4">
 
@@ -85,7 +85,7 @@
                                         <li><a href="#ranking">排行榜</a></li>
                                         <li><a href="#news">新闻中心</a></li>
                                         <li><a href="#contact">联系我们</a></li>
-                                        <li><a href="pages/login.html">登录</a></li>
+                                        <li id="loginName"></li>
                                     </ul>
                                 </div>
 
@@ -753,7 +753,6 @@
     </div>
 </section>
 <!-- section end -->
-
 
 <!-- section start -->
 <section class="section secPadding">
@@ -1432,8 +1431,6 @@
 </section>-->
 <!-- section end -->
 
-
-
 <!-- footer start -->
 <footer id="footer">
 
@@ -1493,6 +1490,38 @@
 
 <!-- Custom Scripts -->
 <script type="text/javascript" src="js/custom.js"></script>
+<script src="js/cookie.js"></script>
+<script src="js/jquery.cookie.js"></script>
+
+<script>
+    window.onload=function(){
+        // 初始化内容
+        var loginName = document.getElementById("loginName");
+        //var myUsername = getCookie("username");
+        var myUsername = $.cookie("myUsername");
+        console.log(myUsername);
+
+        if(myUsername != "null"){
+            //alert("hh");
+            loginName.innerHTML = "";
+            loginName.innerHTML += "<a href='#'>" + myUsername + "| <sapn onclick='delCookie()' class='exit'>退出</sapn></a>";
+        }else {
+            loginName.innerHTML = "";
+            loginName.innerHTML += "<a href='pages/login.html'>登录</a>";
+            // <a href="pages/login.html">登录</a>
+        }
+    }
+
+    function delCookie() {
+        alert("eeeeee");
+        $.cookie("myUsername", null,{path:'/'});
+        var loginName = document.getElementById("loginName");
+        loginName.innerHTML = "";
+        loginName.innerHTML += "<a href='pages/login.html'>登录</a>";
+    }
+
+
+</script>
 
 </body>
 </html>
