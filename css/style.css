@@ -105,6 +105,10 @@ blockquote {
 	margin-top: 0;
 }
 
+.rankTable th{
+	text-align: center;
+}
+
 /* Layout
 ----------------------------------------------------------------------------- */
 .header {

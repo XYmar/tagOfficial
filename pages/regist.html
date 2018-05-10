@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>注册</title>
+    <link href="login.css" rel="stylesheet" type="text/css" />
+    <script src="../js/jquery-3.3.1.js"></script>
+</head>
+
+<body>
+<div class="login_box">
+    <div class="login_l_img"><img src="../images/login-img.png" /></div>
+    <div class="login">
+        <div class="login_logo"><a href="#"><img src="../images/login_logo.png" /></a></div>
+        <div class="login_name">
+            <p>注册</p>
+        </div>
+        <form method="post" id="form1" onsubmit="return false" action="##">
+            <!--<input name="username" type="text"  value="用户名" onfocus="this.value=''" onblur="if(this.value==''){this.value='用户名'}">
+
+            <span id="password_text" onclick="this.style.display='none';document.getElementById('password').style.display='block';document.getElementById('password').focus().select();" >密码</span>
+            <input name="password" type="password" id="password" style="display:none;" onblur="if(this.value==''){document.getElementById('password_text').style.display='block';this.style.display='none'};"/>
+            <span id="pwdConfirm_text" onclick="this.style.display='none';document.getElementById('pwdConfirm').style.display='block';document.getElementById('pwdConfirm').focus().select();" >再次输入密码</span>
+            <input name="password" type="password" id="pwdConfirm" style="display:none;" onblur="if(this.value==''){document.getElementById('pwdConfirm_text').style.display='block';this.style.display='none'};"/> -->
+
+            <input name="username" type="text"  id="username" placeholder="用户名">
+            <div class="formValidate" id="uName"></div>
+            <input name="password" type="password" id="password" placeholder="密码"/>
+            <div class="formValidate" id="pwd"></div>
+            <input name="password" type="password" id="pwdConfirm" placeholder="再次输入密码"/>
+            <div class="formValidate" id="pwdCon"></div>
+            <input value="注册" style="width:100%;" type="submit" onclick="regist()">
+        </form>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    function validate(){
+        var username = $("#username").val();
+        var password = $("#password").val();
+        var pwdConfirm = $("#pwdConfirm").val();
+
+        var uName = document.getElementById("uName");
+        var pwd = document.getElementById("pwd");
+        var pwdCon = document.getElementById("pwdCon");
+
+        uName.innerHTML = "";
+        pwd.innerHTML = "";
+        pwdCon.innerHTML = "";
+
+        var isValidate = false;
+
+        console.log(username.length);
+        if(username.length == 0){
+            uName.innerHTML += "用户名不能为空";
+            isValidate = false;
+        }else if(username.length < 6){
+            uName.innerHTML += "用户名不得小于6位"
+            isValidate = false;
+        }else{
+            isValidate = true;
+        }
+
+        if(password.length == 0){
+            pwd.innerHTML += "密码不能为空";
+            isValidate = false;
+        }else if(password.length < 6){
+            pwd.innerHTML += "密码不得小于6位"
+            isValidate = false;
+        }else{
+            isValidate = true;
+        }
+
+        if(pwdConfirm.length == 0){
+            pwdCon.innerHTML += "请再次输入密码"
+            isValidate = false;
+        }else if(pwdConfirm != password){
+            pwdCon.innerHTML += "两次密码不一致";
+            isValidate = false;
+        }else{
+            isValidate = true;
+        }
+
+        return isValidate;
+
+
+    }
+
+    function regist() {
+        //alert("hhhh");
+        var username = $("#username").val();
+        var password = $("#password").val();
+
+        console.log(validate());
+        if(validate()){
+            $.ajax({
+                //几个参数需要注意一下
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "http://localhost:8080/users" ,//url
+                data: ({username: username,password: password}),
+
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
+                },
+                timeout : 5000,
+                success: function (result) {
+                    window.location.href='login.html';
+                },
+                error : function(xhr) {
+                    alert("注册失败！");
+
+                }
+            });
+        }else{
+            return;
+        }
+
+    }
+</script>
+</body>
+</html>
