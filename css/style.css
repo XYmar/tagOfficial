@@ -534,7 +534,7 @@ textarea {
 	resize: vertical;
 }
 .price-table .panel-heading{
-padding: 44px 0;
+padding: 15px 0;
 /* font-size: 45px; */
 background: #fff;border: 1px solid #fff;}
 /* Modals
@@ -662,7 +662,7 @@ background: #fff;border: 1px solid #fff;}
 }
 
 .item blockquote p:before {
-    content: "\f10d";
+    /* content: "\f10d";*/
     font-family: 'Fontawesome';
     float: left;
     margin-right: 10px;
@@ -971,4 +971,16 @@ margin: 2px 5px 0;}
 	filter: alpha(opacity=100);
 	-webkit-transform: scale(1);
 	transform: scale(1);
+}
+
+.gameBack{
+	text-indent: 2em;
+	text-align: left;
+}
+
+.awardPict{
+	width: 55px;
+	height:40px;
+	margin-top: 3px;
+	margin-left: 3px;
 }
