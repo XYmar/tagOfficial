@@ -523,7 +523,7 @@
         <div class="row">
             <div class="col-sm-3">
                 <div class="panel panel-default text-center">
-                    <img class="awardPict" src="images/yideng.png" style="width: 55px;height:40px;">
+                    <img class="awardPict" src="images/yideng.png">
                     <div class="panel-heading">
 
                         <h3>一等奖</h3>
@@ -535,7 +535,7 @@
             </div>
             <div class="col-sm-3">
                 <div class="panel panel-default text-center">
-                    <img class="awardPict" src="images/erdeng.png" style="width: 55px;height:40px;">
+                    <img class="awardPict" src="images/erdeng.png">
                     <div class="panel-heading">
                         <h3>二等奖</h3>
                     </div>
@@ -546,7 +546,7 @@
             </div>
             <div class="col-sm-3">
                 <div class="panel panel-danger text-center">
-                    <img class="awardPict" src="images/sandeng.png" style="width: 55px;height:40px;">
+                    <img class="awardPict" src="images/sandeng.png">
                     <div class="panel-heading">
                         <h3>三等奖</h3>
                     </div>
@@ -558,7 +558,7 @@
 
             <div class="col-sm-3">
                 <div class="panel panel-danger text-center">
-                    <img class="awardPict" src="images/ruwei.png" style="width: 55px;height:40px;">
+                    <img class="awardPict" src="images/ruwei.png">
                     <div class="panel-heading">
                         <h3>决赛入围奖</h3>
                     </div>
@@ -763,57 +763,134 @@
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <div class="panel panel-default">
-                    <table class="table table-bordered" contenteditable="true">
-                        <thead>
-                        <tr class="rankTable">
-                            <th>Rank</th>
-                            <th>Model</th>
-                            <th>ROUGE-L</th>
-                            <th>BLEU-4</th>
-                            <th>Submit Time</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>TB - Monthly</td>
-                            <td>01/04/2012</td>
-                            <td>Default</td>
-                            <td>Default</td>
-                        </tr>
-                        <tr class="success">
-                            <td>2</td>
-                            <td>TB - Monthly</td>
-                            <td>01/04/2012</td>
-                            <td>Approved</td>
-                            <td>Default</td>
-                        </tr>
-                        <tr class="error">
-                            <td>3</td>
-                            <td>TB - Monthly</td>
-                            <td>02/04/2012</td>
-                            <td>Declined</td>
-                            <td>Default</td>
-                        </tr>
-                        <tr class="warning">
-                            <td>4</td>
-                            <td>TB - Monthly</td>
-                            <td>03/04/2012</td>
-                            <td>Pending</td>
-                            <td>Default</td>
-                        </tr>
-                        <tr class="info">
-                            <td>5</td>
-                            <td>TB - Monthly</td>
-                            <td>04/04/2012</td>
-                            <td>Call in to confirm</td>
-                            <td>Default</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                <!--<div class="panel panel-default">-->
 
-                </div>
+                    <div class="tabbable" id="tabs-777725"><!-- Only required for left/right tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active" style="cursor: pointer;"><a contenteditable="true" data-toggle="tab" href="#panel-709646">最终结果排行榜</a></li>
+                            <li><a contenteditable="true" data-toggle="tab" href="#panel-875540">在线结果排行榜</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" contenteditable="true" id="panel-709646">
+                                <table class="table table-bordered" contenteditable="true">
+                                    <thead>
+                                    <tr class="rankTable">
+                                        <th style="width: 135px;">Rank</th>
+                                        <th>Model</th>
+                                        <th>ROUGE-L</th>
+                                        <th>BLEU-4</th>
+                                        <th>Submit Time</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td style="text-align: center;">
+                                            <img class="finalRank" src="images/first.png">
+                                        </td>
+                                        <td>NI-Reader-3(ensemble)</td>
+                                        <td>63.62</td>
+                                        <td>59.51</td>
+                                        <td>2018/5/17</td>
+                                    </tr>
+                                    <tr class="success">
+                                        <td>
+                                            <img class="finalRank" src="images/second.png">
+                                        </td>
+                                        <td>Z-Reader(ensemble)</td>
+                                        <td>61.23</td>
+                                        <td>56.24</td>
+                                        <td>2018/5/26</td>
+                                    </tr>
+                                    <tr class="error">
+                                        <td>
+                                            <img class="finalRank" src="images/third.png">
+                                        </td>
+                                        <td>BIDAF_S_RETURN</td>
+                                        <td>58.39</td>
+                                        <td>52.62</td>
+                                        <td>2018/5/26</td>
+                                    </tr>
+                                    <tr class="warning">
+                                        <td>4</td>
+                                        <td>s-Reader</td>
+                                        <td>58.15</td>
+                                        <td>52.1</td>
+                                        <td>2018/5/27</td>
+                                    </tr>
+                                    <tr class="info">
+                                        <td>5</td>
+                                        <td>terminator_t800(single)</td>
+                                        <td>58.13</td>
+                                        <td>50.33</td>
+                                        <td>2018/5/27</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="tab-pane" contenteditable="true" id="panel-875540">
+                                <table class="table table-bordered" contenteditable="true">
+                                    <thead>
+                                    <tr class="rankTable">
+                                        <th style="width: 135px;">Rank</th>
+                                        <th>Model</th>
+                                        <th>ROUGE-L</th>
+                                        <th>BLEU-4</th>
+                                        <th>Submit Time</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td style="text-align: center;">
+                                            <img class="finalRank" src="images/first.png">
+                                        </td>
+                                        <td>NI-Reader-3(ensemble)</td>
+                                        <td>63.62</td>
+                                        <td>59.51</td>
+                                        <td>2018/5/17</td>
+                                    </tr>
+                                    <tr class="success">
+                                        <td>
+                                            <img class="finalRank" src="images/second.png">
+                                        </td>
+                                        <td>Z-Reader(ensemble)</td>
+                                        <td>61.23</td>
+                                        <td>56.24</td>
+                                        <td>2018/5/26</td>
+                                    </tr>
+                                    <tr class="error">
+                                        <td>
+                                            <img class="finalRank" src="images/third.png">
+                                        </td>
+                                        <td>BIDAF_S_RETURN</td>
+                                        <td>58.39</td>
+                                        <td>52.62</td>
+                                        <td>2018/5/26</td>
+                                    </tr>
+                                    <tr class="warning">
+                                        <td>4</td>
+                                        <td>s-Reader</td>
+                                        <td>58.15</td>
+                                        <td>52.1</td>
+                                        <td>2018/5/27</td>
+                                    </tr>
+                                    <tr class="info">
+                                        <td>5</td>
+                                        <td>terminator_t800(single)</td>
+                                        <td>58.13</td>
+                                        <td>50.33</td>
+                                        <td>2018/5/27</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                <!--</div>-->
             </div>
             <!--<div class="col-sm-3">
                 <div class="panel panel-default text-center">
