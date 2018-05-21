@@ -8,27 +8,393 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bootstrap2/css/bootstrap.min.css" rel="stylesheet">
 
 
 </head>
 
-<body>
+<body style="background-image: url('../images/login-img.png');">
 <div class="container-fluid">
-    <div class="row-fluid">
-        <div class="span12">
+    <div class="row-fluid" style="min-width: 933px;">
+        <div class="span10" style="margin-left: 100px;">
+            <h3 style="text-align: center;line-height: 80px;">
+                报名
+            </h3>
+            <div class="row-fluid" style="background: #fff;border-radius: 10px;border: 1px solid #41a5dd;padding: 0 10px;min-width: 796px;">
+                <div class="span12" style="margin-top: 10px;">
+                    <div class="row-fluid" style="margin-bottom: 20px;">
+                        <div class="span2">
+                            <h4>
+                                参赛组信息
+                            </h4>
+                        </div>
+                        <div class="span10" style="border:1px solid lightgrey;padding: 17px 0;border-radius: 3px;height: 180px;">
+                            <div class="span6">
+                                <form class="form-horizontal">
+                                    <div class="control-group">
+                                        <label class="control-label" for="inputGNo">账号</label>
+                                        <div class="controls">
+                                            <input id="inputGNo" class="span10" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="inputGPassword">密码</label>
+                                        <div class="controls">
+                                            <input id="inputGPassword" class="span10" type="password" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="inputGName">组名称</label>
+                                        <div class="controls">
+                                            <input id="inputGName" class="span10" type="text" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="span6">
+                                <form class="form-horizontal">
+                                    <div class="control-group">
+                                        <label class="control-label" for="inputGNum">成员数</label>
+                                        <div class="controls">
+                                            <input id="inputGNum" class="span10" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="inputGTeacher">指导老师</label>
+                                        <div class="controls">
+                                            <input id="inputGTeacher" class="span10" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="inputGSlogan">口号</label>
+                                        <div class="controls">
+                                            <input id="inputGSlogan" class="span10" type="text" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <div class="row-fluid"  style="margin-bottom: 40px;">
+                                <div class="span2">
+                                    <h4>
+                                        组长信息
+                                    </h4>
+                                </div>
+                                <div class="span10" style="border:1px solid lightgrey;padding: 17px 0;border-radius: 3px;height: 230px;">
+                                    <div class="span6">
+                                        <form class="form-horizontal">
+                                            <div class="control-group">
+                                                <label class="control-label" for="inputLname">姓名</label>
+                                                <div class="controls">
+                                                    <input id="inputLname" class="span10" type="text" />
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label" for="inputLNo">身份证号</label>
+                                                <div class="controls">
+                                                    <input id="inputLNo" class="span10" type="password" />
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label" for="inputLsch">学校/单位</label>
+                                                <div class="controls">
+                                                    <input id="inputLsch" class="span10" type="text" />
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label" for="inputLmajor">专业</label>
+                                                <div class="controls">
+                                                    <input id="inputLmajor" class="span10" type="text" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="span6">
+                                        <form class="form-horizontal">
+                                            <div class="control-group">
+                                                <label class="control-label" for="inputLTel">电话</label>
+                                                <div class="controls">
+                                                    <input id="inputLTel" class="span10" type="text" />
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label" for="inputLEmail">邮箱</label>
+                                                <div class="controls">
+                                                    <input id="inputLEmail" class="span10" type="text" />
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label" for="inputLcollege">学院</label>
+                                                <div class="controls">
+                                                    <input id="inputLcollege" class="span10" type="text" />
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label" for="inputLAddress">地址</label>
+                                                <div class="controls">
+                                                    <input id="inputLAddress" class="span10" type="text" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span12">
+                                <div class="span2">
+                                    <h4>
+                                        组员信息
+                                    </h4>
+                                </div>
+                                <div class="span10">
+                                    <a id="modal-230598" href="#modal-container-230598" role="button" class="btn" data-toggle="modal" style="float: right;">添加组员</a>
+
+                                    <div id="modal-container-230598" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+                                         style="width: 70%;margin-left: -35%;min-width: 700px;">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                            <h3 id="myModalLabel">
+                                                添加组员
+                                            </h3>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="span5">
+                                                <form class="form-horizontal">
+                                                    <div class="control-group">
+                                                        <label class="control-label" for="inputNname">姓名</label>
+                                                        <div class="controls">
+                                                            <input id="inputNname" type="text" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                        <label class="control-label" for="inputNNo">身份证号</label>
+                                                        <div class="controls">
+                                                            <input id="inputNNo" type="password" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                        <label class="control-label" for="inputNsch">学校/单位</label>
+                                                        <div class="controls">
+                                                            <input id="inputNsch" type="text" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                        <label class="control-label" for="inputNmajor">专业</label>
+                                                        <div class="controls">
+                                                            <input id="inputNmajor" type="text" />
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="span2">
+
+                                            </div>
+                                            <div class="span5">
+                                                <form class="form-horizontal">
+                                                    <div class="control-group">
+                                                        <label class="control-label" for="inputNTel">电话</label>
+                                                        <div class="controls">
+                                                            <input id="inputNTel" type="text" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                        <label class="control-label" for="inputNEmail">邮箱</label>
+                                                        <div class="controls">
+                                                            <input id="inputNEmail" type="text" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                        <label class="control-label" for="inputNcollege">学院</label>
+                                                        <div class="controls">
+                                                            <input id="inputNcollege" type="text" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                        <label class="control-label" for="inputNAddress">地址</label>
+                                                        <div class="controls">
+                                                            <input id="inputNAddress" type="text" />
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button> <button class="btn btn-primary">添加</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        姓名
+                                    </th>
+                                    <th>
+                                        身份证号
+                                    </th>
+                                    <th>
+                                        电话
+                                    </th>
+                                    <th>
+                                        邮箱
+                                    </th>
+                                    <th>
+                                        学校
+                                    </th>
+                                    <th>
+                                        学院
+                                    </th>
+                                    <th>
+                                        专业
+                                    </th>
+                                    <th>
+                                        地址
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        32072219920109xxxx
+                                    </td>
+                                    <td>
+                                        18290433xxx
+                                    </td>
+                                    <td>
+                                        xxx@163.com
+                                    </td>
+                                    <td>
+                                        xxx
+                                    </td>
+                                    <td>
+                                        计算机学院
+                                    </td>
+                                    <td>
+                                        软件工程
+                                    </td>
+                                    <td>
+                                        xx市xx区xx街道
+                                    </td>
+                                </tr>
+                                <tr class="error">
+                                    <td>
+                                        2
+                                    </td>
+                                    <td>
+                                        32072219900415xxxx
+                                    </td>
+                                    <td>
+                                        17790433xxx
+                                    </td>
+                                    <td>
+                                        xxx@163.com
+                                    </td>
+                                    <td>
+                                        xxx
+                                    </td>
+                                    <td>
+                                        计算机学院
+                                    </td>
+                                    <td>
+                                        软件工程
+                                    </td>
+                                    <td>
+                                        xx市xx区xx街道
+                                    </td>
+                                </tr>
+                                <tr class="warning">
+                                    <td>
+                                        3
+                                    </td>
+                                    <td>
+                                        32236219891108xxxx
+                                    </td>
+                                    <td>
+                                        19990863xxx
+                                    </td>
+                                    <td>
+                                        xxx@163.com
+                                    </td>
+                                    <td>
+                                        xxx
+                                    </td>
+                                    <td>
+                                        计算机学院
+                                    </td>
+                                    <td>
+                                        软件工程
+                                    </td>
+                                    <td>
+                                        xx市xx区xx街道
+                                    </td>
+                                </tr>
+                                <tr class="info">
+                                    <td>
+                                        4
+                                    </td>
+                                    <td>
+                                        32365519951014xxxx
+                                    </td>
+                                    <td>
+                                        13078649xxx
+                                    </td>
+                                    <td>
+                                        xxx@163.com
+                                    </td>
+                                    <td>
+                                        xxx
+                                    </td>
+                                    <td>
+                                        计算机学院
+                                    </td>
+                                    <td>
+                                        软件工程
+                                    </td>
+                                    <td>
+                                        xx市xx区xx街道
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div style="text-align: center;">
+                        <button class="btn btn-success" type="button">提交</button>
+                    </div>
+                    <br>
+
+                </div>
+            </div>
+
+            <br>
+            <br>
+        </div>
+    </div>
+</div>
+<!--<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
             <h3>
                 报名
             </h3>
-            <div class="row-fluid">
-                <div class="span12">
-                    <div class="row-fluid">
-                        <div class="span4">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-4">
                             <h3>
                                 参赛组信息
                             </h3>
                         </div>
-                        <div class="span4">
+                        <div class="col-sm-4">
                             <form class="form-horizontal">
                                 <div class="control-group">
                                     <label class="control-label" for="inputGNo">账号</label>
@@ -50,7 +416,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="span4">
+                        <div class="col-sm-4">
                             <form class="form-horizontal">
                                 <div class="control-group">
                                     <label class="control-label" for="inputGNum">成员数</label>
@@ -73,15 +439,15 @@
                             </form>
                         </div>
                     </div>
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <div class="row-fluid">
-                                <div class="span4">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-sm-4">
                                     <h3>
                                         组长信息
                                     </h3>
                                 </div>
-                                <div class="span4">
+                                <div class="col-sm-4">
                                     <form class="form-horizontal">
                                         <div class="control-group">
                                             <label class="control-label" for="inputLname">姓名</label>
@@ -109,7 +475,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="span4">
+                                <div class="col-sm-4">
                                     <form class="form-horizontal">
                                         <div class="control-group">
                                             <label class="control-label" for="inputLTel">电话</label>
@@ -140,15 +506,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <div class="row-fluid">
-                                <div class="span6">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-sm-6">
                                     <h3>
                                         添加组员
                                     </h3>
                                 </div>
-                                <div class="span6">
+                                <div class="col-sm-6">
                                     <a id="modal-230598" href="#modal-container-230598" role="button" class="btn" data-toggle="modal">触发遮罩窗体</a>
 
                                     <div id="modal-container-230598" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -337,9 +703,9 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
 <script src="../js/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../bootstrap2/js/bootstrap.min.js"></script>
 </body>
 </html>
