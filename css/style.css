@@ -379,7 +379,7 @@ color: #FFC400;}
 	color: #fff;
 }
 .banner-caption h1 {
-	font-size: 45px;
+	font-size: 40px;
 	color: #FFC400;
 }
 .footer h1{
@@ -579,6 +579,10 @@ background: #fff;border: 1px solid #fff;}
 	.gameArrangeInner{
 		height: 208px;
 	}
+
+	img {
+		width: 40px;
+	}
 }
 
 /* Media
@@ -697,14 +701,17 @@ background: #fff;border: 1px solid #fff;}
       margin-bottom: 0;
       padding: 0 40px 30px 40px;
     }
-
 }
 
 /* Small devices (tablets, up to 768px) */
 @media (max-width: 768px) { 
     
     /* Make the indicators larger for easier clicking with fingers/thumb on mobile */
-    
+	.navbar-nav {
+		margin: 7.5px -15px;
+		background: #060606;
+	}
+
     #quote-carousel .carousel-indicators {
         bottom: -20px !important;  
     }
@@ -732,7 +739,7 @@ background: #fff;border: 1px solid #fff;}
 		transition: all 0.3s ease-in-out;
 	}
 }
-@media (min-width:768px) and (max-width:991px) {
+/* @media (min-width:768px) and (max-width:991px) {
 	.main-navigation .container-fluid {
 		padding-left: 0;
 		padding-right: 0;
@@ -740,17 +747,8 @@ background: #fff;border: 1px solid #fff;}
 	.navbar-nav {
 		float: left !important;
 	}
-}
+}*/
 
-@media (min-width:768px) and (max-width:1024px) {
-	.main-navigation .container-fluid {
-		padding-left: 0;
-		padding-right: 0;
-	}
-	.navbar-nav {
-		float: left !important;
-	}
-}
 
 @media (max-width:767px) {
 	.header.navbar-fixed-top {
@@ -804,7 +802,7 @@ background: #fff;border: 1px solid #fff;}
 	float: left;
 }
 .brand {
-	font-size: 38px;
+	font-size: 30px;
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
@@ -821,6 +819,25 @@ background: #fff;border: 1px solid #fff;}
 }
 .site-slogan {
 	font-size: 12px;
+}
+
+@media (min-width:769px) {
+	.main-navigation .container-fluid {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.navbar-nav {
+		float: left !important;
+		min-width: 760px;
+	}
+
+	.brand {
+		font-size: 25px;
+	}
+
+	#logo {
+		width: 30px;
+	}
 }
 
 /* block-lists
@@ -929,12 +946,12 @@ margin: 2px 5px 0;}
 .isotope-item .btn-default:hover {
 	color: #ffffff;
 }
-@media (max-width:768px) {
+/* @media (max-width:768px) {
 .navbar-nav {
     margin: 7.5px -15px;
     background: #060606;
 }
-}
+}*/
 @media (max-width:480px) {
 
 	h1 {
@@ -1003,7 +1020,9 @@ margin: 2px 5px 0;}
 		overflow-x: scroll;
 	}
 
-
+	.modal-lg {
+		width: 327px;
+	}
 
 }
 
@@ -1087,3 +1106,14 @@ margin: 2px 5px 0;}
     height: 48px;
 }
 
+@media (min-width: 992px) {
+	.gameArrangeInner {
+		height: 255px;
+	}
+}
+
+@media (min-width: 768px) {
+	.gameArrangeInner {
+		height: 255px;
+	}
+}
