@@ -1,0 +1,64 @@
+@charset "utf-8";
+/* CSS Document */
+
+* { font: 13px/1.5 '微软雅黑'; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -box-sizing: border-box; padding:0; margin:0; list-style:none; box-sizing: border-box; }
+body { background:#93defe;}
+a { color:#27A9E3; cursor:pointer;float: right;
+    margin-top: 10px; }
+img{ border:none;}
+
+.title-main{
+    font-size: 28px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 40px;
+    color:#27A9E3;
+}
+.title {
+    height:30px;
+    line-height: 30px;
+    color:#27A9E3;
+    font-size: 20px;
+    font-weight: bold;
+}
+.group-info{
+    background-color: #fff;
+    border:1px solid #27A9E3;
+    border-radius: 10px;
+    padding: 20px 0 10px 0;
+    margin-bottom: 40px;
+}
+.table{
+    margin-bottom: 0;
+}
+.table thead th{
+    font-weight: 700;
+}
+.table-container{
+    background-color: #ccc;
+}
+.commit_btn_container{
+    padding-top: 20px;
+    text-align: center;
+}
+.modal-content .close span{
+    font-size: 20px;
+}
+@media (max-width:540px) {
+    .main-content{
+        padding:10px;
+    }
+    div.form-group {
+        padding: 0;
+    }
+    .form-group label{
+        font-size: 12px;
+        height:34px;
+        line-height: 34px;
+        padding: 0;
+        text-align: right;
+    }
+    .form-group .controls{
+        padding-left:10px;
+    }
+}
