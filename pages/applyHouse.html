@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>申报信息录入</title>
+    <link rel="stylesheet" type="text/css" href="http://58.213.141.220:10049/housingsubsidy/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="http://58.213.141.220:10049/housingsubsidy/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="http://58.213.141.220:10049/housingsubsidy/css/applyInfo.css">
+    <link rel="stylesheet" href="http://58.213.141.220:10049/housingsubsidy/css/validationEngine.jquery.css">
+    <link rel="stylesheet" href="http://58.213.141.220:10049/housingsubsidy/css/jquery.cxcalendar.css">
+    <link rel="stylesheet" href="http://58.213.141.220:10049/housingsubsidy/css/jquery.fileupload.css">
+    <link rel="stylesheet" href="http://58.213.141.220:10049/housingsubsidy/css/lightbox.css">
+    <script src="http://58.213.141.220:10049/housingsubsidy/js/jquery.js"></script>
+    <script src="http://58.213.141.220:10049/housingsubsidy/js/jquery.validationEngine-zh_CN.js"></script>
+    <script src="http://58.213.141.220:10049/housingsubsidy/js/jquery.validationEngine.js"></script>
+    <script src="http://58.213.141.220:10049/housingsubsidy/js/jquery.cxcalendar.min.js"></script>
+    <script src="http://58.213.141.220:10049/housingsubsidy/js/jquery.cxselect.min.js"></script>
+    <script src="http://58.213.141.220:10049/housingsubsidy/js/layer/layer.js"></script>
+    <script src="http://58.213.141.220:10049/housingsubsidy/js/jquery.ui.widget.js"></script>
+    <script src="http://58.213.141.220:10049/housingsubsidy/js/jquery.fileupload.js"></script>
+    <script src="http://58.213.141.220:10049/housingsubsidy/js/jquery.iframe-transport.js"></script>
+    <script src="http://58.213.141.220:10049/housingsubsidy/js/lightbox.js"></script>
+    <style>
+        .contractArea {
+            width: 10% !important;
+        }
+        .contractId {
+            width: 50% !important;
+        }
+        .contractDiv {
+            width: 24% !important;
+        }
+        .contractIdDiv {
+            margin-left: 0px;
+        }
+    </style>
+</head>
+<body class="clearfix">
+<h1>租房补贴申请信息录入</h1>
+<div class="span2" id="leftNav">
+    <ul class="nav nav-pills nav-stacked">
+        <li role="presentation" class="active"><a href="queryCheck" class="input">申报信息录入</a></li>
+        <li role="presentation"><a href="queryResultInfo" class="result">申报结果查看</a></li>
+    </ul>
+</div>
+
+<div class="span10">
+    <form id="applyInfo" class="form-inline">
+        <h2 class="first-h2">个人基本信息</h2>
+        <div class="row">
+            <div class="span4">
+                <label for="graduateName"><span class="required-flag">*</span>姓名&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+                <input type="text" class="form-control submitData disableAll" id="graduateName" placeholder="请填写真实姓名" disabled value="韩常铭">
+            </div>
+            <div class="span4">
+                <label for="identifierId"><span class="required-flag">*</span>身份证号&nbsp&nbsp</label>
+                <!-- validate[required,custom[chinaIdLoose],maxSize[18]] -->
+                <input type="text" class="form-control submitData disableAll" id="identifierId" placeholder="请填写真实身份证号码" disabled value="210105199211114313">
+            </div>
+        </div>
+        <div class="row line-space">
+            <div class="span4">
+                <label for="graduateSex"><span class="required-flag">*</span>性别&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+                <select id="graduateSex" class="form-control submitData validate[required] disableAll"  disabled  >
+                    <option value="">请选择</option>
+                    <option value="1"  selected  >男</option>
+                    <option value="2"  >女</option>
+                </select>
+            </div>
+            <div class="span4">
+                <label for="graduateMaritalStatus"><span class="required-flag">*</span>婚姻状况&nbsp&nbsp</label>
+                <select id="graduateMaritalStatus" class="form-control submitData validate[required] disableAll">
+                    <option value="">请选择</option>
+                    <option value="1"  >未婚</option>
+                    <option value="2"  >已婚</option>
+                    <option value="3"  >丧偶</option>
+                    <option value="4"  >离异</option>
+                </select>
+            </div>
+        </div>
+        <div class="row line-space">
+            <div class="span4">
+                <label for="sociateCardId"><span class="required-flag">*</span>社保卡号&nbsp</label>
+                <!-- validate[required,custom[onlyNumberSp],maxSize[20]] -->
+                <input type="text" class="form-control submitData disableAll" id="sociateCardId" disabled placeholder="请填写真实社保卡号" value="1882641539">
+            </div>
+            <div class="span4">
+                <label for="graduateMobileNo"><span class="required-flag">*</span>手机号码&nbsp&nbsp</label>
+                <!--  validate[custom[phone],maxSize[11]] -->
+                <input type="text" class="form-control submitData validate[required,custom[phone],maxSize[11]] disableAll" id="graduateMobileNo" placeholder="请填写真实手机号码" value="">
+            </div>
+        </div>
+        <div class="row line-space">
+            <div class="span4">
+                <label for="graduateSchool"><span class="required-flag">*</span>毕业学校&nbsp</label>
+                <input type="text" class="form-control validate[required,maxSize[50]] submitData disableAll" id="graduateSchool" placeholder="请填写真实学校信息" value="" >
+            </div>
+            <div class="span4">
+                <label for="graduateTimeS"><span class="required-flag">*</span>毕业时间&nbsp&nbsp</label>
+                <input id="graduateTimeS" type="text" class="form-control data-select validate[required, custom[date]] submitData disableAll" data-start-date="" value="">
+            </div>
+        </div>
+        <div class="row line-space">
+            <div class="span4">
+                <label for="graduateEducationLevel"><span class="required-flag">*</span>学位与技师(高级工)证书&nbsp&nbsp</label>
+                <select id="graduateEducationLevel" class="form-control span2 submitData validate[required] disableAll">
+                    <option value="">请选择</option>
+                    <option value="1"  >博士</option>
+                    <option value="2"  >硕士</option>
+                    <option value="3"  >学士</option>
+                    <option value="4"  >技师</option>
+                    <option value="5"  >高级工</option>
+                </select>
+            </div>
+            <div class="span4">
+                <label for="permanentStatus"><span class="required-flag">*</span>户籍&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+                <select class="form-control submitData validate[required] disableAll" id="permanentStatus">
+                    <option value="">请选择</option>
+                    <option value="1"  >本市居民户口</option>
+                    <option value="2"  >本市人才中心户口</option>
+                    <option value="3"  >本市就业单位集体户口</option>
+                    <option value="4"  >本市高校集体户口</option>
+                    <option value="5"  >省招就中心集体户口</option>
+                    <option value="6"  >非本市户口</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row line-space">
+            <div class="span10">
+                <label for="Insured_Type"><span class="required-flag">*</span>企业职工养老保险类型&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+                <select class="form-control submitData validate[required] disableAll" id="Insured_Type"  disabled >
+                    <option value="">请选择</option>
+                    <option value="1"  selected  >南京市企业职工养老保险</option>
+                    <option value="0"  >江苏省企业职工养老保险</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row line-space">
+            <div class="span10">
+                <div class="span2" style="margin-left: 0">
+                    <label><span class="required-flag">*</span>户籍地址</label>
+                </div>
+                <div id="permanentShow" class="span6" style="margin-left: -7%;display: none">
+                    <select class="span2" disabled>
+                        <option></option>
+                    </select>
+                    <select class="span2" disabled>
+                        <option></option>
+                    </select>
+                    <select class="span2" disabled>
+                        <option></option>
+                    </select>
+                </div>
+                <div id="permanentSelect" class="span6" style="margin-left: -7%;">
+                    <select id="permanentProvince" class="province span2 submitData disableAll validate[required]">
+                        <option value="" selected></option>
+                    </select>
+                    <select id="permanentCity" class="city span2 submitData disableAll validate[required]">
+                        <option value="" selected></option>
+                    </select>
+                    <select id="permanentArea" class="area span2 submitData disableAll validate[required]">
+                        <option value="" selected></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row line-space" style="margin-left: 11%">
+            <input type="text" class="form-control span6 validate[required,maxSize[50]] submitData disableAll" id="permanentAdress" placeholder="请填写具体地址" value="">
+        </div>
+        <div class="row line-space">
+            <div class="span9">
+                <div class="span2" style="margin-left: 0">
+                    <label><span class="required-flag">*</span>居住地址</label>
+                </div>
+                <div id="residentialShow" class="span4" style="margin-left: -8%;display: none;">
+                    <select class="span2" disabled>
+                        <option></option>
+                    </select>
+                    <select class="span2" disabled>
+                        <option></option>
+                    </select>
+                </div>
+                <div id="residentialSelect" class="span4" style="margin-left: -8%;">
+                    <select id="residentialArea" class="area span2 submitData disableAll updateRent validate[required]">
+                        <option value="" selected></option>
+                    </select>
+                    <select id="residentialStreet" class="road span2 submitData disableAll updateRent validate[required]">
+                        <option value="" selected></option>
+                    </select>
+                </div>
+                <input type="text" class="form-control span3 validate[required,maxSize[50]] submitData disableAll updateRent" id="residentialAdress" size="20" placeholder="请填写具体地址" value="">
+            </div>
+        </div>
+
+        <h2>就创业信息&nbsp&nbsp</h2>
+        <div class="row">
+            <div class="span4">
+                <label for="employType"><span class="required-flag">*</span>就创业类型&nbsp&nbsp</label>
+                <select id="employType" class="form-control span2 submitData validate[required] disableAll">
+                    <option value="">请选择</option>
+                    <option value="1"  >就业</option>
+                    <option value="2"  >创业</option>
+                </select>
+            </div>
+            <div class="span4">
+                <input id="unitType" type="hidden" value="企业" />
+                <label for="companyType"><span class="required-flag">*</span>单位性质&nbsp&nbsp</label>
+                <select class="form-control submitData validate[required] disableAll" id="companyType" disabled>
+                    <option value="">请选择</option>
+                    <option value="1"  >企业</option>
+                    <option value="2"  >民非</option>
+                    <option value="3"  >社团</option>
+                    <option value="4"  >机关</option>
+                    <option value="5"  >事业单位</option>
+                    <option value="6"  >个体工商</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="company" style="display:none">
+            <div class="row line-space">
+                <div class="span9">
+                    <label for="employmentCompany"><span class="required-flag">*</span>就业单位名称&nbsp&nbsp</label>
+                    <input type="text" class="form-control span6 submitData disableAll" id="employmentCompany" disabled placeholder="请填写就业单位名称" value="南京仁谷系统集成有限公司">
+                </div>
+            </div>
+            <div class="row line-space">
+                <div class="span9">
+                    <div class="span2" style="margin-left: 0">
+                        <label><span class="required-flag">*</span>就业单位地址&nbsp&nbsp</label>
+                    </div>
+                    <div id="employmentCompanyShow" class="span4" style="margin-left: -5%;">
+                        <select id="employmentCompanyArea" class="span2 submitData" disabled>
+                            <option>江北新区</option>
+                        </select>
+                        <select id="employmentCompanyStreet" class="span2 submitData" disabled>
+                            <option></option>
+                        </select>
+                    </div>
+                    <!-- 		    			<div id="employmentCompanySelect" class="span4" style="margin-left: -5%;"> -->
+                    <!-- 	  						 <select id="employmentCompanyArea" class="area span2 submitData disableAll validate[required]"> -->
+
+                    <!-- 	  						 </select> -->
+                    <!-- 	 						 <select id="employmentCompanyStreet" class="road span2 submitData disableAll validate[required]"> -->
+
+                    <!-- 	 						 </select> -->
+                    <!-- 						</div> -->
+                    <input type="text" class="form-control span3 validate[required,maxSize[50]] submitData disableAll" id="employmentCompanyAdress" placeholder="请填写就业单位地址" value="南京市浦口区南京软件园孵鹰大厦A座403室" disabled>
+                </div>
+            </div>
+        </div>
+        <div id="startBusiness" style="display:none">
+            <div class="row line-space">
+                <div class="span9">
+                    <label for="businessStartCompany"><span class="required-flag">*</span>创业实体名称&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+                    <input type="text" class="form-control span6 submitData disableAll" id="businessStartCompany" disabled placeholder="请填写创业实体名称" value="南京仁谷系统集成有限公司">
+                </div>
+            </div>
+            <div class="row line-space">
+                <div class="span9">
+                    <label for="businessStartRegicode"><span class="required-flag">*</span>创业实体注册登记号码&nbsp&nbsp&nbsp</label>
+                    <input type="text" class="form-control span6 submitData disableAll" id="businessStartRegicode" placeholder="请填写创业实体注册登记号码" value="">
+                </div>
+            </div>
+            <div class="row line-space">
+                <div class="span9">
+                    <div class="span2" style="margin-left: 0">
+                        <label><span class="required-flag">*</span>创业实体地址&nbsp&nbsp</label>
+                    </div>
+                    <div id="businessCompanyShow" class="span4" style="margin-left: -5%;">
+                        <select id="businessCompanyArea" class="span2 submitData" disabled>
+                            <option>江北新区</option>
+                        </select>
+                        <select id="businessCompanyStreet" class="span2 submitData" disabled>
+                            <option></option>
+                        </select>
+                    </div>
+
+                    <input type="text" class="form-control span3 validate[required,maxSize[50]] submitData disableAll" id="businessCompanyAdress" placeholder="请填写创业实体地址" value="南京市浦口区南京软件园孵鹰大厦A座403室" disabled>
+                </div>
+            </div>
+        </div>
+
+        <h2>家庭成员</h2>
+        <div class="row">
+            <div class="span1"><label><span class="required-flag">*</span>父</label></div>
+            <div class="span4"><label>姓名&nbsp&nbsp</label><input type="text" id="fatherName" class="validate[required,maxSize[10]] disableAll" value=""/></div>
+            <div class="span4"><label>身份证号&nbsp&nbsp</label><input type="text" id="fatherID" class="validate[required,custom[chinaIdLoose],maxSize[18]] disableAll" value="" /></div>
+            <div class="span1"><label class="checkbox">
+                <input type="checkbox" class="isNoFamily disableAll"> 无
+            </label></div>
+        </div>
+        <div class="row line-space">
+            <div class="span1"><label><span class="required-flag">*</span>母</label></div>
+            <div class="span4"><label>姓名&nbsp&nbsp</label><input type="text" id="motherName" class="validate[required,maxSize[10]] disableAll" value=""/></div>
+            <div class="span4"><label>身份证号&nbsp&nbsp</label><input type="text" id="motherID" class="validate[required,custom[chinaIdLoose],maxSize[18]] disableAll" value=""/></div>
+            <div class="span1"><label class="checkbox">
+                <input type="checkbox" class="isNoFamily disableAll"> 无
+            </label></div>
+        </div>
+        <div class="row line-space">
+            <div class="span1"><label><span class="required-flag">*</span>配偶</label></div>
+            <div class="span4"><label>姓名&nbsp&nbsp</label><input type="text" id="mateName" class="validate[required,maxSize[10]] disableAll" value=""/></div>
+            <div class="span4"><label>身份证号&nbsp&nbsp</label><input type="text" id="mateID" class="validate[required,custom[chinaIdLoose],maxSize[18]] disableAll" value=""/></div>
+            <div class="span1"><label class="checkbox">
+                <input type="checkbox" class="isNoFamily disableAll"> 无
+            </label></div>
+        </div>
+
+        <div class="row line-space applyChild">
+            <div class="span1"><label><span class="required-flag">*</span>子女</label></div>
+            <div class="span4"><label>姓名&nbsp&nbsp</label><input type="text" class="childName validate[required,maxSize[10]] disableAll"/></div>
+            <div class="span4"><label>身份证号&nbsp&nbsp</label><input type="text" class="childID validate[required,custom[chinaIdLoose],maxSize[18]] disableAll"/></div>
+            <div class="span1"><label class="checkbox">
+                <input type="checkbox" class="isNoChild disableAll"> 无
+            </label></div>
+        </div>
+
+
+
+        <div class="row line-space">
+            <input type="button" id="addChildInfo" class="btn btn-info offset7 disableAll" value="增加子女"/>
+        </div>
+
+
+        <input type="hidden" id="applyWay" value=""/>
+        <input type="hidden" id="applyWayRecord" value=""/>
+
+        <h2>选择申请方式:</h2>
+        <div class="row">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="employType"><input name="applyWayRadio" type="radio" value="rent" />租房合同、发票申请</label>&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="employType"><input name="applyWayRadio" type="radio" value="filing" />租赁备案号申请</label>
+        </div>
+
+        <h2 class="rentApply">租房情况</h2>
+        <div class="row rentApply">
+            <h4 style="margin-left:30px;margin-bottom:15px;">租房补贴发放月以申报月开始计算，累计不超过36个月。</h4>
+            <div class="span6">
+                <!-- <label for="rentHouseBegin"><span class="required-flag">*</span>租赁合同期限&nbsp&nbsp</label>
+                <input id="rentHouseBeginS" name="rentHouseBeginS" type="text" class="form-control span2 data-select validate[required, custom[date]] submitData disableAll updateRent" value="">&nbsp&nbsp至&nbsp
+                <input id="rentHouseEndS" name="rentHouseEndS" type="text" class="form-control span2 data-select validate[required, custom[date] future[#rentHouseBeginS]] submitData disableAll updateRent" data-start-date="2016-07-01" value=""> -->
+            </div>
+            <div class="span4">
+                <label for="rentMoney"><span class="required-flag">*</span>月租金&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+                <input type="text" class="form-control span2 validate[required,custom[positiveNumber],maxSize[10]] submitData disableAll updateRent" id="rentMoney" placeholder="请填写月租金" value="">&nbsp&nbsp元
+            </div>
+        </div>
+        <div class="row line-space rentApply">
+            <div class="span6">
+                <label for="payedRentHouseBegin"><span class="required-flag">*</span>已付租金期限&nbsp&nbsp</label>
+
+                <!-- 设置填写的时间期限 -->
+                <input id="RentBeginLimit" name="RentBeginLimit" type="hidden" value="" >
+                <input id="RentEndLimit" name="RentEndLimit" type="hidden" value="" >
+
+                <input id="payedRentHouseBeginS" name="payedRentHouseBeginS" type="text" class="form-control span2 data-select validate[required, custom[date] past[#RentEndLimit]] submitData disableAll updateInvoice" data-start-date="2016-07-01" value="">&nbsp&nbsp至&nbsp
+                <input id="payedRentHouseEndS" name="payedRentHouseEndS" type="text" class="form-control span2 data-select validate[required, custom[date] future[#RentBeginLimit] future[#payedRentHouseBeginS]] submitData disableAll updateInvoice" data-start-date="2016-07-01" value="">
+            </div>
+            <div class="span4">
+                <label for="payedRentMoney"><span class="required-flag">*</span>已付金额&nbsp&nbsp</label>
+                <input type="text" class="form-control span2 validate[required,custom[positiveNumber],maxSize[10]] submitData disableAll updateInvoice" id="payedRentMoney" placeholder="请填写已付金额" value="">&nbsp&nbsp元
+            </div>
+        </div>
+        <div class="row line-space rentApply">
+            <div class="span9">
+                <div class="span2" style="margin-left: 0">
+                    <label><span class="required-flag">*</span>租住房地址</label>
+                </div>
+                <div id="rentHouseShow" class="span4" style="margin-left: -5%;display: none;">
+                    <select class="span2" disabled>
+                        <option></option>
+                    </select>
+                    <select class="span2" disabled>
+                        <option></option>
+                    </select>
+                </div>
+                <div id="rentHouseSelect" class="span4" style="margin-left: -5%;">
+                    <select id="rentHouseArea" class="area span2 submitData disableAll updateRent validate[required]">
+                        <option value="" selected></option>
+                    </select>
+                    <select id="rentHouseStreet" class="road span2 submitData disableAll updateRent validate[required]">
+                        <option value="" selected></option>
+                    </select>
+                </div>
+                <input type="text" class="form-control span3 validate[required,maxSize[50]] submitData disableAll updateRent" id="rentHouseAdress" size="20" placeholder="请填写具体地址" value="">
+            </div>
+        </div>
+
+        <h2 class="filingApply">租赁备案信息&nbsp&nbsp</h2>
+        <div class="row filingApply">
+            <div class="span4 contractDiv">
+                <label for="employType"><span class="required-flag">*</span>租赁备案号:&nbsp;&nbsp;宁房租（</label>
+                <input type="text" class="contractArea form-control span6 validate[required,maxSize[1]] submitData disableAll filing"  id="contractArea" value="">
+            </div>
+            <div class="span4 contractIdDiv">
+                <label>）字第</label>
+                <input type="text" class="contractId form-control span6 validate[required,maxSize[9]] submitData disableAll filing" id="contractId" value="">
+                <label for="employType">号</label>
+            </div>
+        </div>
+
+        <h2>上传审核资料</h2>
+        <h4 style="margin-left:10px;">1.为了成功通过审核，请控制好上传照片大小在2M之内，上传照片清晰、全图不遮挡。变更操作时，仅需保留最新附件；</h4>
+        <h4 style="margin-left:10px;">2.上传证书类照片前可先自行前往教育部、人社部等相关证书网站查询证书信息，当年毕业的申请人如因网站更新不及时无记录的，请在审核期间主动携材料原件去审核区（企业纳税区）人社部门复核。（具体内容见申请须知）。</h4>
+
+        <div class="row line-space">
+            <div class="span4 area-frame" id="diplomaAtta">
+                <h3><span class="required-flag">*</span>毕业证书</h3>
+                <h3><span class="required-flag">*</span>学历证书编号(18位以内):</h3>
+                <input id="diplomaCode" type="text" class="span3 validate[required] disableAll" value="" maxlength=18 style="margin-left:7px;">
+                <!-- <input type="text" class="span1 validate[required]" maxlength=4>&nbsp;-&nbsp;
+                <input type="text" class="span1 validate[required]" maxlength=4>&nbsp;-&nbsp;
+                <input type="text" class="span1 validate[required]" maxlength=4>&nbsp;-&nbsp;
+                <input type="text" class="span1 validate[required]" maxlength=6> -->
+
+                <h3><span class="required-flag">*</span>附件文件：</h3>
+                <div class="fileArea" style="padding-top:5px;">
+
+                </div>
+                <span class="btn btn-info btn-small fileinput-button">
+	                    <i class="glyphicon glyphicon-plus"></i>
+	                    <span>上传附件</span>
+	                    <input class="chooseFile disableAll" type="file" name="diploma" data-url="UploadFile" accept="image/jpeg, image/png"/>
+	                </span>
+            </div>
+            <div class="span4 area-frame uploadImageBlock" id="certificationAtta">
+                <h3><span class="required-flag">*</span>学位证书/海外学位学历认证书/技师证书/高级工证书</h3>
+                <label class="checkbox">
+                    <input type="checkbox" id="isAbroad" class="disableAll"> 海外学历勾选
+                </label>
+
+                <!-- 国内学位/技师证书编号 -->
+                <div id="EducationInfo">
+                    <h3><span class="required-flag">*</span>学位/技师/高级工证书编号(17位以内)：</h3>
+                    <input id="certificationCode" type="text" class="span3 validate[required] disableAll" value="" maxlength=17 style="margin-left:7px;">
+                    <!-- <input type="text" class="span1 validate[required]" maxlength=4>&nbsp;-&nbsp;
+                    <input type="text" class="span1 validate[required]" maxlength=4>&nbsp;-&nbsp;
+                    <input type="text" class="span1 validate[required]" maxlength=4>&nbsp;-&nbsp;
+                    <input type="text" class="span1 validate[required]" maxlength=4> -->
+                </div>
+
+                <!-- 海外学历证书编号 -->
+                <div id="overseasEducationInfo" hidden>
+                    <h3><span class="required-flag">*</span>海外学位学历认证书编号：</h3>
+
+                    <span style="font-size:14px;">教留服认</span>&nbsp;
+                    <input type="text" class="span1  validate[required] disableAll" maxlength=6>&nbsp;
+                    <span style="font-size:14px;color:red;">[</span>&nbsp;<input type="text" class="span1 validate[required] disableAll" maxlength=4>&nbsp;<span style="font-size:14px;color:red;">]
+					</span>&nbsp;<input type="text" class="span1 validate[required] disableAll" maxlength=8>&nbsp;<span style="font-size:14px;">号</span>
+                </div>
+
+                <h3><span class="required-flag">*</span>附件文件：</h3>
+                <div class="fileArea" style="padding-top:5px;">
+
+                </div>
+                <span class="btn btn-info btn-small fileinput-button">
+	                    <i class="glyphicon glyphicon-plus"></i>
+	                    <span>上传附件</span>
+	                    <input class="chooseFile disableAll" type="file" name="certification" data-url="" accept="image/jpeg, image/png"/>
+	                </span>
+            </div>
+        </div>
+        <div class="row line-space">
+            <!-- <div class="span4 area-frame rentApply"  id="renthouseContractAtta">
+              <h3><span class="required-flag">*</span>房屋租赁合同</h3>
+              <div class="fileArea">
+
+              </div>
+              <span class="btn btn-info btn-small fileinput-button">
+                  <i class="glyphicon glyphicon-plus"></i>
+                  <span>上传附件</span>
+                  <input class="chooseFile disableAll updateRent" type="file" name="renthouseContract" data-url="UploadFile" accept="image/jpeg, image/png"/>
+              </span>
+          </div> -->
+
+            <div class="span4 area-frame"  id="insuredAtta"  hidden >
+                <h3><span class="required-flag">*</span>省直管企业基本养老保险参保证明:</h3>
+
+                <h3><span class="required-flag">*</span>个人编号(8位)：</h3>
+                <input id="insuranceCode" type="text" class="span3 validate[required] disableAll" value="" maxlength=8 style="margin-left:7px;"  disabled >
+
+                <h3><span class="required-flag">*</span>附件文件：</h3>
+
+                <div class="fileArea" style="padding-top:5px;">
+
+                </div>
+                <span class="btn btn-info btn-small fileinput-button">
+	                    <i class="glyphicon glyphicon-plus"></i>
+	                    <span>上传附件</span>
+	                    <input class="chooseFile disableAll" type="file" name="insuredAtta" data-url="UploadFile" accept="image/jpeg, image/png"/>
+	                </span>
+            </div>
+
+            <div class="span4 area-frame rentApply" id="renthouseInvoiceAtta">
+                <h3><span class="required-flag">*</span>房屋租赁发票</h3>
+                <h3><span class="required-flag">*</span>发票号码(8位)：</h3>
+                <div class="input-prepend" style="margin-left:7px;">
+                    <span class="add-on">NO</span><input id="invoiceNumber" type="text" class="span3 validate[required] disableAll" value="" maxlength=8>
+                </div>
+                <!-- <input type="text" class="span1  validate[required]" maxlength=4>&nbsp;-&nbsp;
+                <input type="text" class="span1  validate[required]" maxlength=4> -->
+                <h3><span class="required-flag">*</span>发票代码(10位)：</h3>
+                <input id="invoiceCode" type="text" class="span3 validate[required] disableAll" value="" maxlength=10 style="margin-left:7px;" placeholder="3200">
+                <!-- <input type="text" class="span1 validate[required]" maxlength=4>&nbsp;-&nbsp;
+                <input type="text" class="span1 validate[required]" maxlength=4>&nbsp;-&nbsp;
+                <input type="text" class="span1 validate[required]" maxlength=4> -->
+
+                <h3><span class="required-flag">*</span>附件文件：</h3>
+                <div class="fileArea" style="padding-top:5px;">
+
+                </div>
+                <span class="btn btn-info btn-small fileinput-button">
+	                    <i class="glyphicon glyphicon-plus"></i>
+	                    <span>上传附件</span>
+	                    <input class="chooseFile disableAll updateInvoice" type="file" name="renthouseInvoice" data-url="UploadFile" accept="image/jpeg, image/png"/>
+	                </span>
+            </div>
+        </div>
+
+        <div class="promise-info row">
+            <h2 style="border:none;padding: 0;margin : 0;">申请人信息真实承诺书</h2>
+            <p>本人承诺所填写的上述情况及提供材料真实有效。如弄虚作假，虚报冒领的，不享受租房补贴。虚假申报行为将记入个人征信系统档案并依据情节严重程度承担相应的法律责任。</p>
+            <div class="">
+                <label class="checkbox">
+                    <input id="readAndPromise" type="checkbox" class="disableAll updateInvoice"> 已阅读并承诺
+                </label>
+            </div>
+        </div>
+        <div class="row" style="text-align: center;">
+
+            <!--获取userStatus状态值-->
+            <input type="hidden" id="userStatus" class="submitData" value="0"/>
+
+            <!--获取申请资格信息-->
+            <input id="respStatus" type="hidden" value="0">
+
+            <button id="submit" class="btn btn-primary disableAll updateInvoice" type="button">提交申请</button>
+        </div>
+    </form>
+</div>
+</body>
+<script src="../js/applyFiling.js"></script>
+</html>

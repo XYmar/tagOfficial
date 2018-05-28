@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>报名</title>
+
+    <!-- Mobile Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="apply.css" rel="stylesheet" type="text/css" />
+
+    <!-- bootstrap 4.x is supported. You can also use the bootstrap css 3.3.x versions -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.9/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+    <!-- if using RTL (Right-To-Left) orientation, load the RTL CSS file after fileinput.css by uncommenting below -->
+    <!-- link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.9/css/fileinput-rtl.min.css" media="all" rel="stylesheet" type="text/css" /-->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!-- piexif.min.js is only needed for restoring exif data in resized images and when you
+        wish to resize images before upload. This must be loaded before fileinput.min.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.9/js/plugins/piexif.min.js" type="text/javascript"></script>
+    <!-- sortable.min.js is only needed if you wish to sort / rearrange files in initial preview.
+        This must be loaded before fileinput.min.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.9/js/plugins/sortable.min.js" type="text/javascript"></script>
+    <!-- purify.min.js is only needed if you wish to purify HTML content in your preview for
+        HTML files. This must be loaded before fileinput.min.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.9/js/plugins/purify.min.js" type="text/javascript"></script>
+    <!-- popper.min.js below is needed if you use bootstrap 4.x. You can also use the bootstrap js
+       3.3.x versions without popper.min.js. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <!-- bootstrap.min.js below is needed if you wish to zoom and preview file content in a detail modal
+        dialog. bootstrap 4.x is supported. You can also use the bootstrap js 3.3.x versions. -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- the main fileinput plugin file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.9/js/fileinput.min.js"></script>
+    <!-- optionally if you need a theme like font awesome theme you can include it as mentioned below -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.9/themes/fa/theme.js"></script>
+    <!-- optionally if you need translation for your language then include  locale file as mentioned below -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.9/js/locales/(lang).js"></script>
+
+
+</head>
+
+<body style="background-image: url('../images/2.png');">
+<div class="container">
+    <div class="row main-content">
+        <div class="col-md-12">
+            <h3 class="title-main">
+                报名
+            </h3>
+            <!--border-radius: 10px;border: 1px solid #27A9E3;-->
+            <div class="row">
+                <div class="span12" style="margin-top: 10px;">
+                    <div class="row-fluid col-md-12">
+                        <div class="col-md-2" style="padding: 0">
+                            <h4 class="title">
+                                参赛组信息
+                            </h4>
+                        </div>
+                        <div class="col-md-10 group-info">
+                            <div class="col-md-6">
+                                <form class="form-horizontal col-md-12">
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-3 col-xs-2" for="inputGNo">账号</label>
+                                        <div class="controls col-md-9 col-xs-10">
+                                            <input id="inputGNo" class="form-control" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-3 col-xs-2" for="inputGPassword">密码</label>
+                                        <div class="controls col-md-9 col-xs-10">
+                                            <input id="inputGPassword" class="form-control" type="password" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-3 col-xs-2" for="inputGName">组名称</label>
+                                        <div class="controls col-md-9 col-xs-10">
+                                            <input id="inputGName" class="form-control" type="text" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-6">
+                                <form class="form-horizontal col-md-12">
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label  col-md-3 col-xs-2" for="inputGNum">成员数</label>
+                                        <div class="controls col-md-9 col-xs-10">
+                                            <input id="inputGNum" class="form-control" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label  col-md-3 col-xs-2" for="inputGTeacher">老师</label>
+                                        <div class="controls col-md-9 col-xs-10">
+                                            <input id="inputGTeacher" class="form-control" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-3 col-xs-2" for="inputGSlogan">口号</label>
+                                        <div class="controls col-md-9 col-xs-10">
+                                            <input id="inputGSlogan" class="form-control" type="text" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row-fluid col-md-12">
+                        <div class="col-md-2" style="padding: 0">
+                            <h4 class="title">
+                                组长信息
+                            </h4>
+                        </div>
+                        <div class="col-md-10 group-info">
+                            <div class="col-md-6">
+                                <form class="form-horizontal col-md-12">
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-3 col-xs-2" for="inputLname">姓名</label>
+                                        <div class="controls col-md-9 col-xs-10">
+                                            <input id="inputLname" class="form-control" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-3 col-xs-2" for="inputLNo">身份证</label>
+                                        <div class="controls col-md-9 col-xs-10">
+                                            <input id="inputLNo" class="form-control" type="password" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-3 col-xs-2" for="inputLsch">单位</label>
+                                        <div class="controls col-md-9 col-xs-10">
+                                            <input id="inputLsch" class="form-control" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-3 col-xs-2" for="inputLmajor">专业</label>
+                                        <div class="controls col-md-9 col-xs-10">
+                                            <input id="inputLmajor" class="form-control" type="text" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-6">
+                                <form class="form-horizontal col-md-12">
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-3 col-xs-2" for="inputLTel">电话</label>
+                                        <div class="controls col-md-9 col-xs-10">
+                                            <input id="inputLTel" class="form-control" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-3 col-xs-2" for="inputLEmail">邮箱</label>
+                                        <div class="controls col-md-9 col-xs-10">
+                                            <input id="inputLEmail" class="form-control" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-3 col-xs-2" for="inputLcollege">学院</label>
+                                        <div class="controls col-md-9 col-xs-10">
+                                            <input id="inputLcollege" class="form-control" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-3 col-xs-2" for="inputLAddress">地址</label>
+                                        <div class="controls col-md-9 col-xs-10">
+                                            <input id="inputLAddress" class="form-control" type="text" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-fluid col-md-12">
+                        <div class="col-md-2" style="padding: 0">
+                            <h4 class="title">
+                                身份证件照
+                            </h4>
+                        </div>
+                        <div class="col-md-10 group-info">
+                            <div class="col-md-6">
+                                <div class="col-md-12" style="padding: 0">
+                                    <h4 class="title" style="font-size: 16px;">
+                                        证件正面
+                                    </h4>
+                                </div>
+
+                                <div class="col-md-12" style="padding: 0">
+                                    <label class="control-label">Select File</label>
+                                    <input id="input-b5" name="input-b5[]" type="file" multiple>
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="col-md-12" style="padding: 0">
+                                    <h4 class="title" style="font-size: 16px;">
+                                        证件反面
+                                    </h4>
+                                </div>
+
+                                <div class="col-md-12" style="padding: 0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                </div>
+            </div>
+            <div class="col-md-12 commit_btn_container">
+                <button class="btn btn-success" type="button">提交</button>
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
+</div>
+
+<script src="../js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).on('ready', function() {
+        $("#input-b5").fileinput({showCaption: false, dropZoneEnabled: false});
+    });
+</script>
+
+<!--<script type="text/javascript">
+
+    window.onload=function(){
+        let f = document.getElementById("file");
+
+        //this.files即获取input中上传的file对象 是个数组
+        f.onchange = function(){
+            let file = this.files[0];
+
+            //获取文件名称
+            let fileName = file.name;
+            console.log("文件名-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;");
+            console.log(file);
+            console.log(fileName);
+
+            let path = file.webkitRelativePath;
+            console.log(path);
+
+            //添加到文件列表
+            let html = '<div>' +
+                '<p class="fileName">' + fileName + '</p>' +
+                '<span class="delFile btn btn-danger btn-mini disableAll newAddFile" style="cursor:pointer;margin-left:5%;margin-bottom: 2px;">删除</span>' +
+                '</div>';
+
+            //let $fileArea = $(e.target).parent().parent().find(".fileArea");
+            let $fileArea = document.getElementById("idZhengmian");
+            console.log($fileArea);
+            let uploaded = false;
+            /*$fileArea.find('.fileName').each(function () {
+                if ($(this).text() == fileName) {
+                    uploaded = true;
+                }
+            });*/
+            if (!uploaded) {
+                $(html).appendTo($fileArea);
+            }
+        }
+
+    }
+</script>-->
+</body>
+</html>
