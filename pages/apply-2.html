@@ -150,6 +150,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- 身份证 -->
                     <div class="row-fluid col-md-12">
                         <div class="col-md-2" style="padding: 0">
                             <h4 class="title">
@@ -198,10 +200,44 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- 工牌 -->
+                    <div class="row-fluid col-md-12">
+                        <div class="col-md-2" style="padding: 0">
+                            <h4 class="title">
+                                工牌图片
+                            </h4>
+                        </div>
+                        <div class="col-md-10 group-info">
+                            <div class="col-md-6">
+                                <!--<div class="col-md-12" style="padding: 0">
+                                    <h4 class="title" style="font-size: 16px;">
+                                        证件正面
+                                    </h4>
+                                </div>-->
+
+                                <div class="col-md-12" style="padding: 0">
+                                    <h3><span class="required-flag title">*</span>附件文件：</h3>
+                                    <div class="fileArea" id="idGongPai" style="padding-top:5px;">
+
+                                    </div>
+                                    <span class="btn btn-info btn-small fileinput-button">
+                                        <i class="glyphicon glyphicon-plus"></i>
+                                        <span>上传附件</span>
+                                        <input class="chooseFile disableAll" type="file" name="diploma" id="fileGongPai" accept="image/jpeg, image/png"/>
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
                     <br>
 
                 </div>
             </div>
+
+
             <div class="col-md-12 commit_btn_container">
                 <button class="btn btn-success" type="button">提交</button>
             </div>
@@ -547,6 +583,8 @@
 
         let fFan = document.getElementById("fileFan");
 
+        let fGongPai = document.getElementById("fileGongPai");
+
         //this.files即获取input中上传的file对象 是个数组
         fZheng.onchange = function(){
             let file = this.files[0];
@@ -561,6 +599,15 @@
             let file = this.files[0];
 
             divId = "idFanmian";
+
+            handleImg(file, divId);
+
+        }
+
+        fGongPai.onchange = function(){
+            let file = this.files[0];
+
+            divId = "idGongPai";
 
             handleImg(file, divId);
 
