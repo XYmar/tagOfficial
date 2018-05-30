@@ -85,6 +85,7 @@
                         </div>
 
                     </div>
+                    <!-- 组长信息 -->
                     <div class="row-fluid col-md-12">
                         <div class="col-md-2" style="padding: 0">
                             <h4 class="title">
@@ -166,7 +167,9 @@
                                     </h4>
                                 </div>
 
-                                <div class="col-md-12" style="padding: 0">
+
+                                <form class="form-horizontal col-md-12" enctype="multipart/form-data">
+                                    <div class="col-md-12" style="padding: 0">
                                     <h3><span class="required-flag">*</span>附件文件：</h3>
                                     <div class="fileArea" id="idZhengmian" style="padding-top:5px;">
 
@@ -177,6 +180,7 @@
                                         <input class="chooseFile disableAll" type="file" name="diploma" id="fileZheng" accept="image/jpeg, image/png"/>
                                     </span>
                                 </div>
+                                </form>
 
                             </div>
                             <div class="col-md-6">
@@ -239,7 +243,7 @@
 
 
             <div class="col-md-12 commit_btn_container">
-                <button class="btn btn-success" type="button">提交</button>
+                <button class="btn btn-success" type="button" onclick="doSubmit()">提交</button>
             </div>
             <br>
             <br>
@@ -663,6 +667,108 @@
         console.log($fileArea);
 
         $fileArea.removeChild(delDiv);
+    }
+
+    function validate(){
+        let username = $("#inputGNo").val();
+        let password = $("#inputGPassword").val();
+        let IDNumber = $("#inputLNo").val();
+
+        let badge = document.getElementById("fileZheng").files[0];  //获取文件
+
+        let isValidate = false;
+
+        console.log(username.length);
+        if(username.length === 0){
+            alert("账号不能为空");
+            isValidate = false;
+            return;
+        }else{
+            isValidate = true;
+        }
+
+        if(password.length === 0){
+            alert("密码不能为空");
+
+            isValidate = false;
+            return;
+        }else{
+            isValidate = true;
+        }
+
+        if(IDNumber.length === 0){
+            alert("身份证号不能为空");
+            isValidate = false;
+            return;
+        }else{
+            isValidate = true;
+        }
+
+        if (typeof(badge) === "undefined" || badge.size <= 0) {
+            alert("请选择图片");
+            isValidate = false;
+
+        }else{
+            isValidate = true;
+        }
+
+        return isValidate;
+
+    }
+
+    function doSubmit() {
+        alert("hhhh");
+        let username = $("#inputGNo").val();
+        let password = $("#inputGPassword").val();
+        let IDNumber = $("#inputLNo").val();
+
+        let badge = document.getElementById("fileZheng").files[0];  //获取文件
+
+        /*if (typeof(badge) === "undefined" || badge.size <= 0) {
+            alert("请选择图片");
+            return;
+        }
+*/
+        let formData = new FormData();
+        formData.append("username", username);
+        formData.append("password", password);
+        formData.append("IDNumber", IDNumber);
+        formData.append("badge", badge); //加入文件对象
+
+
+        console.log(validate());
+        if(validate()){
+            $.ajax({
+                //几个参数需要注意一下
+
+                url: "http://192.168.0.117:9090/users" ,//url
+                // data: ({username: username,password: password,IDNumber: IDNumber}),
+                data: formData,
+                type: "POST",//方法类型
+                async:false,
+                dataType: "json",//预期服务器返回的数据类型
+                cache: false,//上传文件无需缓存
+                processData: false,//用于对data参数进行序列化处理 这里必须false
+                contentType: false, //必须
+                enctype: 'multipart/form-data',
+                //crossDomain:true,
+
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
+                },
+                timeout : 5000,
+                success: function (result) {
+                    window.location.href='login.html';
+                },
+                error : function(xhr) {
+                    alert("注册失败！");
+
+                }
+            });
+        }else{
+            return;
+        }
+
     }
 
 </script>
