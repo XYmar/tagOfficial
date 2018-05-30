@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>组员信息</title>
+
+    <!-- Mobile Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="apply.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="../css/member.css">
+
+
+</head>
+
+<body style="background-image: url('../images/2.png');">
+<div class="container">
+    <div class="row main-content">
+        <div class="col-md-12">
+            <h3 class="title-main">
+                组员信息
+            </h3>
+            <!--border-radius: 10px;border: 1px solid #27A9E3;-->
+            <div class="row">
+                <div class="span12" style="margin-top: 10px;">
+                    <div class="row-fluid">
+                        <div class="col-md-12 col-xs-12">
+                            <div class="col-md-2 col-xs-4" style="padding: 0">
+                                <h4 class="title">
+                                    组员信息
+                                </h4>
+                            </div>
+                            <div class="col-md-10 col-xs-8" style="padding-right: 0;">
+                                <button  style="float: right;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#mydialog">添加组员</button>
+                            </div>
+
+                            <div class="modal fade" id="mydialog" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title title" id="gridSystemModalLabel">添加组员</h4>
+                                        </div>
+                                        <div class="modal-body" style="padding-bottom: 0">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <form class="form-horizontal col-md-12">
+                                                        <div class="form-group col-md-12">
+                                                            <label class="control-label col-md-4 col-xs-2" for="inputMemeberName">姓名</label>
+                                                            <div class="controls col-md-8 col-xs-10">
+                                                                <input id="inputMemeberName" class="form-control" type="text" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                            <label class="control-label col-md-4 col-xs-2">性别</label>
+                                                            <div class="controls col-md-8 col-xs-10 sexDiv">
+                                                                <label class="col-md-5 sexLabel">
+                                                                    <input class="sexInput" type="radio" name="sex" value="男">
+                                                                    男 </label>
+                                                                <label class="col-md-5 sexLabel">
+                                                                    <input class="sexInput" type="radio" name="sex" value="女">
+                                                                    女 </label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group col-md-12">
+                                                            <label class="control-label col-md-4 col-xs-2" for="inputMemeberSch">单位/学校</label>
+                                                            <div class="controls col-md-8 col-xs-10">
+                                                                <input id="inputMemeberSch" class="form-control" type="text" />
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <form class="form-horizontal col-md-12">
+                                                        <div class="form-group col-md-12">
+                                                            <label class="control-label col-md-4 col-xs-2" for="inputMemeberOld">年龄</label>
+                                                            <div class="controls col-md-8 col-xs-10">
+                                                                <input id="inputMemeberOld" class="form-control" type="text" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                            <label class="control-label col-md-4 col-xs-2" for="inputMemeberPhone">手机号</label>
+                                                            <div class="controls col-md-8 col-xs-10">
+                                                                <input id="inputMemeberPhone" class="form-control" type="text" />
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                            <button type="button" class="btn btn-primary">添加</button>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-xs-12 row-fluid">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            姓名
+                                        </th>
+                                        <th>
+                                            年龄
+                                        </th>
+                                        <th>
+                                            性别
+                                        </th>
+                                        <th>
+                                            手机号
+                                        </th>
+                                        <th>
+                                            单位/学校
+                                        </th>
+
+                                        <th>
+                                            操作
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            1
+                                        </td>
+                                        <td>
+                                            32072219920109xxxx
+                                        </td>
+                                        <td>
+                                            18290433xxx
+                                        </td>
+                                        <td>
+                                            xxx@163.com
+                                        </td>
+                                        <td>
+                                            软件工程
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-success btn-small editMember" type="button">编辑</button>
+                                            <button class="btn btn-danger btn-small editMember" type="button">删除</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="error">
+                                        <td>
+                                            2
+                                        </td>
+                                        <td>
+                                            32072219920109xxxx
+                                        </td>
+                                        <td>
+                                            18290433xxx
+                                        </td>
+                                        <td>
+                                            xxx@163.com
+                                        </td>
+                                        <td>
+                                            软件工程
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-success btn-success editMember" type="button">编辑</button>
+                                            <button class="btn btn-danger btn-small editMember" type="button">删除</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="warning">
+                                        <td>
+                                            3
+                                        </td>
+                                        <td>
+                                            32072219920109xxxx
+                                        </td>
+                                        <td>
+                                            18290433xxx
+                                        </td>
+                                        <td>
+                                            xxx@163.com
+                                        </td>
+                                        <td>
+                                            软件工程
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-success btn-success editMember" type="button">编辑</button>
+                                            <button class="btn btn-danger btn-small editMember" type="button">删除</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="info">
+                                        <td>
+                                            4
+                                        </td>
+                                        <td>
+                                            32072219920109xxxx
+                                        </td>
+                                        <td>
+                                            18290433xxx
+                                        </td>
+                                        <td>
+                                            xxx@163.com
+                                        </td>
+                                        <td>
+                                            软件工程
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-success btn-success editMember" type="button">编辑</button>
+                                            <button class="btn btn-danger btn-small editMember" type="button">删除</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
+</div>
+
+<script src="../js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

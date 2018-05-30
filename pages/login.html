@@ -42,7 +42,7 @@
                             <div class="formValidate" id="pwd"></div>
                             <input value="登录" style="width:100%;" type="submit" onclick="login()">
                             <br>
-                            <a href="apply-2.html">注册</a>
+                            <a href="apply-3.html">注册</a>
                         </form>
                     </div>
 
@@ -123,7 +123,7 @@
                 //几个参数需要注意一下
                 type: "GET",//方法类型
                 dataType: "json",//预期服务器返回的数据类型
-                url: "http://localhost:8080/users/login" ,//url
+                url: "http://localhost:8081/users/login" ,//url
                 data: $('#form1').serialize(),
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
