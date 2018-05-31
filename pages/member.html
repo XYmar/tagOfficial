@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>组员信息</title>
+    <title>我的团队信息</title>
 
     <!-- Mobile Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +13,15 @@
 
     <link href="apply.css" rel="stylesheet" type="text/css" />
 
+    <link rel="stylesheet" href="../css/apply.css">
+
     <link rel="stylesheet" href="../css/member.css">
 
+    <style>
+        .sexInput {
+            height: 12px;
+        }
+    </style>
 
 </head>
 
@@ -23,22 +30,145 @@
     <div class="row main-content">
         <div class="col-md-12">
             <h3 class="title-main">
-                组员信息
+                我的团队信息
             </h3>
             <!--border-radius: 10px;border: 1px solid #27A9E3;-->
             <div class="row">
                 <div class="span12" style="margin-top: 10px;">
+                    <div class="row-fluid col-md-12">
+                        <div class="col-md-1" style="padding: 0">
+                        </div>
+                        <div class="col-md-2" style="padding: 0">
+                            <h4 class="title">
+                                参赛组信息
+                            </h4>
+                        </div>
+                        <div class="col-md-8 group-info">
+                            <div class="col-md-6">
+                                <form class="form-horizontal col-md-12">
+                                    <div class="col-md-12">
+                                        <label class="control-label col-md-5 col-xs-2">账号 ： </label>
+                                        <div class="controls col-md-7 col-xs-10">
+                                            <div class="auditDetailDiv" id="username">
+                                                xx
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                            <div class="col-md-6">
+                                <form class="form-horizontal col-md-12">
+                                    <div class="col-md-12">
+                                        <label class="control-label col-md-5 col-xs-2">组名 ： </label>
+                                        <div class="controls col-md-7 col-xs-10">
+                                            <div class="auditDetailDiv" id="teamName">
+                                                xx
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- 组长信息 -->
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <div class="row-fluid col-md-12">
+                                <div class="col-md-1" style="padding: 0">
+                                </div>
+                                <div class="col-md-2" style="padding: 0">
+                                    <h4 class="title">
+                                        组长信息
+                                    </h4>
+                                </div>
+                                <div class="col-md-8 group-info">
+                                    <div class="col-md-6">
+                                        <form class="form-horizontal col-md-12">
+                                            <div class="col-md-12">
+                                                <label class="control-label col-md-5 col-xs-2">姓名： </label>
+                                                <div class="controls col-md-7 col-xs-10">
+                                                    <div class="auditDetailDiv" id="name">
+                                                        xx
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label class="control-label col-md-5 col-xs-2">性别： </label>
+                                                <div class="controls col-md-7 col-xs-10 sexDiv" id="Lsex">
+                                                    <div class="auditDetailDiv" id="sex">
+                                                        xx
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label class="control-label col-md-5 col-xs-2">单位/学校： </label>
+                                                <div class="controls col-md-7 col-xs-10">
+                                                    <div class="auditDetailDiv" id="organization">
+                                                        xx
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label class="control-label col-md-5 col-xs-2">邮箱： </label>
+                                                <div class="controls col-md-7 col-xs-10">
+                                                    <div class="auditDetailDiv" id="email">
+                                                        xx
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <form class="form-horizontal col-md-12">
+                                            <div class="col-md-12">
+                                                <label class="control-label col-md-5 col-xs-2">年龄： </label>
+                                                <div class="controls col-md-7 col-xs-10">
+                                                    <div class="auditDetailDiv" id="age">
+                                                        xx
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label class="control-label col-md-5 col-xs-2">电话： </label>
+                                                <div class="controls col-md-7 col-xs-10">
+                                                    <div class="auditDetailDiv" id="telephoneNumber">
+                                                        xx
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label class="control-label col-md-5 col-xs-2">职位： </label>
+                                                <div class="controls col-md-7 col-xs-10">
+                                                    <div class="auditDetailDiv" id="job">
+                                                        xx
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 组员信息 -->
                     <div class="row-fluid">
                         <div class="col-md-12 col-xs-12">
+                            <div class="col-md-1" style="padding: 0">
+                            </div>
                             <div class="col-md-2 col-xs-4" style="padding: 0">
                                 <h4 class="title">
                                     组员信息
                                 </h4>
                             </div>
-                            <div class="col-md-10 col-xs-8" style="padding-right: 0;">
-                                <button  style="float: right;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#mydialog">添加组员</button>
+                            <div class="col-md-8 col-xs-8" style="padding-right: 0;">
+                                <button  type="button" class="btn btn-primary addMemBtn" data-toggle="modal" data-target="#mydialog">添加组员</button>
                             </div>
 
+                            <!-- 组员弹框 -->
                             <div class="modal fade" id="mydialog" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
                                 <div class="modal-dialog modal-lg" role="document">
                                     <div class="modal-content">
@@ -58,7 +188,7 @@
                                                         </div>
                                                         <div class="form-group col-md-12">
                                                             <label class="control-label col-md-4 col-xs-2">性别</label>
-                                                            <div class="controls col-md-8 col-xs-10 sexDiv">
+                                                            <div class="controls col-md-8 col-xs-10 sexDiv" style="padding-top: 5px;">
                                                                 <label class="col-md-5 sexLabel">
                                                                     <input class="sexInput" type="radio" name="sex" value="男">
                                                                     男 </label>
@@ -102,8 +232,12 @@
                                 </div><!-- /.modal-dialog -->
                             </div>
                         </div>
+
+                        <!-- 组员表格 -->
                         <div class="col-md-12 col-xs-12 row-fluid">
-                            <div class="table-responsive">
+                            <div class="col-md-1" style="padding: 0">
+                            </div>
+                            <div class="col-md-10 table-responsive" style="padding: 0">
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
@@ -147,8 +281,7 @@
                                         </td>
                                         <td>
                                             <button class="btn btn-success btn-small editMember" type="button">编辑</button>
-                                            <!--<button class="btn btn-danger btn-small editMember" type="button">删除</button>-->
-                                            <span style="color: #27A9E3;">已审核</span>
+                                            <button class="btn btn-danger btn-small editMember" type="button">删除</button>
                                         </td>
                                     </tr>
                                     <tr class="error">
