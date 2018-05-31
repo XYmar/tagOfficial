@@ -290,24 +290,26 @@
                 let str = "";
                 let data = result.data;
 
-                console.log(result.data);//打印服务端返回的数据(调试用)
+                if(data.length !== 0){
+                    console.log(result.data);//打印服务端返回的数据(调试用)
 
-                let noAuditTbody = document.getElementById("noAudit");
-                for (let i=0;i<data.length;i++) {
-                    str += "<tr>" +
-                        "<td style='display:none'>" + data[i].id + "</td>" +
-                        "<td>" + data[i].teamName + "</td>" +
-                        "<td>" + data[i].name + "</td>" +
-                        "<td>" + data[i].age + "</td>" +
-                        "<td>" + (data[i].sex === 0 ? '男' : '女') + "</td>" +
-                        "<td>" + data[i].telephoneNumber + "</td>" +
-                        "<td>" + data[i].organization + "</td>" +
-                        "<td><a href='auditDetail.html?id=" + data[i].id + "' style='float: none;'>" +
+                    let noAuditTbody = document.getElementById("noAudit");
+                    for (let i=0;i<data.length;i++) {
+                        str += "<tr>" +
+                            "<td style='display:none'>" + data[i].id + "</td>" +
+                            "<td>" + data[i].teamName + "</td>" +
+                            "<td>" + data[i].name + "</td>" +
+                            "<td>" + data[i].age + "</td>" +
+                            "<td>" + (data[i].sex === 0 ? '男' : '女') + "</td>" +
+                            "<td>" + data[i].telephoneNumber + "</td>" +
+                            "<td>" + data[i].organization + "</td>" +
+                            "<td><a href='auditDetail.html?id=" + data[i].id + "' style='float: none;'>" +
                             "<button class='btn btn-success btn-success editMember' type='button' >审核</button> " +
                             "</a></td>" +
-                        "</tr>";
+                            "</tr>";
+                    }
+                    noAuditTbody.innerHTML = str;
                 }
-                noAuditTbody.innerHTML = str;
 
             },
             error : function() {
@@ -328,21 +330,23 @@
                 let str = "";
                 let data = result.data;
 
-                console.log(result.data);//打印服务端返回的数据(调试用)
+                if(data.length !== 0){
+                    console.log(result.data);//打印服务端返回的数据(调试用)
 
-                let alreadyAuditTbody = document.getElementById("alreadyAudit");
-                for (let i=0;i<data.length;i++) {
-                    str += "<tr>" +
-                        "<td>" + data[i].teamName + "</td>" +
-                        "<td>" + data[i].name + "</td>" +
-                        "<td>" + data[i].age + "</td>" +
-                        "<td>" + (data[i].sex === 0 ? '男' : '女') + "</td>" +
-                        "<td>" + data[i].telephoneNumber + "</td>" +
-                        "<td>" + data[i].organization + "</td>" +
-                        "<td><span style=\"color: #27A9E3;\">已审核</span></td>" +
-                        "</tr>";
+                    let alreadyAuditTbody = document.getElementById("alreadyAudit");
+                    for (let i=0;i<data.length;i++) {
+                        str += "<tr>" +
+                            "<td>" + data[i].teamName + "</td>" +
+                            "<td>" + data[i].name + "</td>" +
+                            "<td>" + data[i].age + "</td>" +
+                            "<td>" + (data[i].sex === 0 ? '男' : '女') + "</td>" +
+                            "<td>" + data[i].telephoneNumber + "</td>" +
+                            "<td>" + data[i].organization + "</td>" +
+                            "<td><span style=\"color: #27A9E3;\">已审核</span></td>" +
+                            "</tr>";
+                    }
+                    alreadyAuditTbody.innerHTML = str;
                 }
-                alreadyAuditTbody.innerHTML = str;
 
             },
             error : function() {

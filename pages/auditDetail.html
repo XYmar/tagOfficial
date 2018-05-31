@@ -48,28 +48,21 @@
                                     <div class="form-group col-md-12">
                                         <label class="control-label col-md-5 col-xs-2">账号： </label>
                                         <div class="controls col-md-7 col-xs-10">
-                                            <div class="auditDetailDiv">
+                                            <div class="auditDetailDiv" id="username">
                                                 xx
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="form-group col-md-12">
-                                        <label class="control-label col-md-5 col-xs-2">组名称： </label>
-                                        <div class="controls col-md-7 col-xs-10">
-                                            <div class="auditDetailDiv">
-                                                xx
-                                            </div>
-                                        </div>
-                                    </div>
+
                                 </form>
                             </div>
                             <div class="col-md-6">
                                 <form class="form-horizontal col-md-12">
                                     <div class="form-group col-md-12">
-                                        <label class="control-label col-md-5 col-xs-2">密码： </label>
+                                        <label class="control-label col-md-5 col-xs-2">组名称： </label>
                                         <div class="controls col-md-7 col-xs-10">
-                                            <div class="auditDetailDiv">
+                                            <div class="auditDetailDiv" id="teamName">
                                                 xx
                                             </div>
                                         </div>
@@ -94,7 +87,7 @@
                                     <div class="form-group col-md-12">
                                         <label class="control-label col-md-5 col-xs-2">姓名： </label>
                                         <div class="controls col-md-7 col-xs-10">
-                                            <div class="auditDetailDiv">
+                                            <div class="auditDetailDiv" id="name">
                                                 xx
                                             </div>
                                         </div>
@@ -102,7 +95,7 @@
                                     <div class="form-group col-md-12">
                                         <label class="control-label col-md-5 col-xs-2">性别： </label>
                                         <div class="controls col-md-7 col-xs-10 sexDiv" id="Lsex">
-                                            <div class="auditDetailDiv">
+                                            <div class="auditDetailDiv" id="sex">
                                                 xx
                                             </div>
                                         </div>
@@ -110,7 +103,7 @@
                                     <div class="form-group col-md-12">
                                         <label class="control-label col-md-5 col-xs-2">单位/学校： </label>
                                         <div class="controls col-md-7 col-xs-10">
-                                            <div class="auditDetailDiv">
+                                            <div class="auditDetailDiv" id="organization">
                                                 xx
                                             </div>
                                         </div>
@@ -118,7 +111,7 @@
                                     <div class="form-group col-md-12">
                                         <label class="control-label col-md-5 col-xs-2">邮箱： </label>
                                         <div class="controls col-md-7 col-xs-10">
-                                            <div class="auditDetailDiv">
+                                            <div class="auditDetailDiv" id="email">
                                                 xx
                                             </div>
                                         </div>
@@ -131,7 +124,7 @@
                                     <div class="form-group col-md-12">
                                         <label class="control-label col-md-5 col-xs-2">年龄： </label>
                                         <div class="controls col-md-7 col-xs-10">
-                                            <div class="auditDetailDiv">
+                                            <div class="auditDetailDiv" id="age">
                                                 xx
                                             </div>
                                         </div>
@@ -139,7 +132,7 @@
                                     <div class="form-group col-md-12">
                                         <label class="control-label col-md-5 col-xs-2">电话： </label>
                                         <div class="controls col-md-7 col-xs-10">
-                                            <div class="auditDetailDiv">
+                                            <div class="auditDetailDiv" id="telephoneNumber">
                                                 xx
                                             </div>
                                         </div>
@@ -147,7 +140,7 @@
                                     <div class="form-group col-md-12">
                                         <label class="control-label col-md-5 col-xs-2">职位： </label>
                                         <div class="controls col-md-7 col-xs-10">
-                                            <div class="auditDetailDiv">
+                                            <div class="auditDetailDiv" id="job">
                                                 xx
                                             </div>
                                         </div>
@@ -168,7 +161,7 @@
                             </h4>
                         </div>
                         <div class="col-md-8 group-info">
-                            <div class="col-md-6">
+                            <div class="col-md-6" id="badge">
 
                                 <img src="../images/applyBg4.jpg" class="idCard"/>
 
@@ -181,7 +174,10 @@
 
 
             <div class="col-md-12 commit_btn_container">
-                <button class="btn btn-danger" type="button" onclick="doSubmit()">未通过</button>
+                <a href="audit.html">
+                    <button class="btn btn-danger" type="button">未通过</button>
+                </a>
+
                 <button class="btn btn-success" type="button" onclick="doSubmit()" style="margin-left: 30px;width: 70px;">通过</button>
             </div>
         </div>
@@ -520,21 +516,62 @@
 
 <script type="text/javascript">
     window.onload=function(){
-        let fZheng = document.getElementById("fileZheng");
+        let id = getUrlParam('id');
 
-        //this.files即获取input中上传的file对象 是个数组
-        fZheng.onchange = function(){
-            let file = this.files[0];
+        $.ajax({
+            //几个参数需要注意一下
+            type: "GET",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "http://localhost:8081/users/" + id ,//url
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
+            },
+            success: function (result) {
+                let data = result.data;
 
-            divId = "idZhengmian";
+                console.log(result.data);//打印服务端返回的数据(调试用)
 
-            handleImg(file, divId);
+                document.getElementById("username").innerHTML = data.username;
+                document.getElementById("teamName").innerHTML = data.teamName;
+                document.getElementById("name").innerHTML = data.name;
+                document.getElementById("age").innerHTML = data.age;
+                document.getElementById("sex").innerHTML = data.sex;
+                document.getElementById("telephoneNumber").innerHTML = data.telephoneNumber;
+                document.getElementById("organization").innerHTML = data.organization;
+                document.getElementById("job").innerHTML = data.job;
+                document.getElementById("email").innerHTML = data.email;
 
-        }
+            },
+            error : function() {
+                alert("请求错误！");
+            }
+        });
+
+        /*$.ajax({
+            //几个参数需要注意一下
+            type: "GET",//方法类型
+            dataType: "blob",//预期服务器返回的数据类型
+            url: "http://localhost:8081/users/" + id + "/badge" ,//url
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
+            },
+            success: function (result) {
+                //let data = result.data;
+
+                //console.log(result.data);//打印服务端返回的数据(调试用)
+                alert("成功");
+
+                //document.getElementById("email").innerHTML = data.email;
+
+            },
+            error : function() {
+                alert("请求错误！");
+            }
+        });*/
 
     }
 
-    function handleImg(file, divId){
+    /*function handleImg(file, divId){
         //获取文件名称
         let fileName = file.name;
         console.log("文件名---------");
@@ -556,11 +593,11 @@
         let $fileArea = document.getElementById(divId);
         console.log($fileArea);
         //let uploaded = false;
-        /*$fileArea.find('.fileName').each(function () {
+        /!*$fileArea.find('.fileName').each(function () {
             if ($(this).text() == fileName) {
                 uploaded = true;
             }
-        });*/
+        });*!/
 
         $(html).appendTo($fileArea);
     }
@@ -582,7 +619,40 @@
         console.log($fileArea);
 
         $fileArea.removeChild(delDiv);
+    }*/
+
+    /**
+     * 取得url参数
+     */
+    function getUrlParam(name) {
+        let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); // 构造一个含有目标参数的正则表达式对象
+        let r = window.location.search.substr(1).match(reg);  // 匹配目标参数
+        if (r != null) return unescape(r[2]); return null; // 返回参数值
     }
+
+    function doSubmit() {
+        let id = getUrlParam('id');
+
+        $.ajax({
+            //几个参数需要注意一下
+            type: "PATCH",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "http://localhost:8081/users/" + id + "/enable",//url
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
+            },
+            success: function (result) {
+                window.location.href='audit.html';
+            },
+            error : function() {
+                alert("请求错误！");
+            }
+        });
+
+    }
+
+
+
 
 </script>
 </body>
