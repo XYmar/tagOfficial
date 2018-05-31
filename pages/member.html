@@ -97,7 +97,7 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <label class="control-label col-md-5 col-xs-2">性别： </label>
-                                                <div class="controls col-md-7 col-xs-10 sexDiv" id="Lsex">
+                                                <div class="controls col-md-7 col-xs-10 sexDiv">
                                                     <div class="auditDetailDiv" id="sex">
                                                         xx
                                                     </div>
@@ -173,7 +173,7 @@
                                 <div class="modal-dialog modal-lg" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="reset()"><span aria-hidden="true">&times;</span></button>
                                             <h4 class="modal-title title" id="gridSystemModalLabel">添加组员</h4>
                                         </div>
                                         <div class="modal-body" style="padding-bottom: 0">
@@ -181,27 +181,27 @@
                                                 <div class="col-md-6">
                                                     <form class="form-horizontal col-md-12">
                                                         <div class="form-group col-md-12">
-                                                            <label class="control-label col-md-4 col-xs-2" for="inputMemeberName">姓名</label>
+                                                            <label class="control-label col-md-4 col-xs-2" for="inputLname">姓名</label>
                                                             <div class="controls col-md-8 col-xs-10">
-                                                                <input id="inputMemeberName" class="form-control" type="text" />
+                                                                <input id="inputLname" class="form-control" type="text" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group col-md-12">
                                                             <label class="control-label col-md-4 col-xs-2">性别</label>
-                                                            <div class="controls col-md-8 col-xs-10 sexDiv" style="padding-top: 5px;">
+                                                            <div class="controls col-md-8 col-xs-10 sexDiv" id="Lsex" style="padding-top: 5px;">
                                                                 <label class="col-md-5 sexLabel">
-                                                                    <input class="sexInput" type="radio" name="sex" value="男">
+                                                                    <input class="sexInput" type="radio" name="sex" value="0" checked id="boy">
                                                                     男 </label>
                                                                 <label class="col-md-5 sexLabel">
-                                                                    <input class="sexInput" type="radio" name="sex" value="女">
+                                                                    <input class="sexInput" type="radio" name="sex" value="1">
                                                                     女 </label>
                                                             </div>
                                                         </div>
 
                                                         <div class="form-group col-md-12">
-                                                            <label class="control-label col-md-4 col-xs-2" for="inputMemeberSch">单位/学校</label>
+                                                            <label class="control-label col-md-4 col-xs-2" for="inputLsch">单位/学校</label>
                                                             <div class="controls col-md-8 col-xs-10">
-                                                                <input id="inputMemeberSch" class="form-control" type="text" />
+                                                                <input id="inputLsch" class="form-control" type="text" />
                                                             </div>
                                                         </div>
                                                     </form>
@@ -209,15 +209,15 @@
                                                 <div class="col-md-6">
                                                     <form class="form-horizontal col-md-12">
                                                         <div class="form-group col-md-12">
-                                                            <label class="control-label col-md-4 col-xs-2" for="inputMemeberOld">年龄</label>
+                                                            <label class="control-label col-md-4 col-xs-2" for="inputLOld">年龄</label>
                                                             <div class="controls col-md-8 col-xs-10">
-                                                                <input id="inputMemeberOld" class="form-control" type="text" />
+                                                                <input id="inputLOld" class="form-control" type="text" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group col-md-12">
-                                                            <label class="control-label col-md-4 col-xs-2" for="inputMemeberPhone">手机号</label>
+                                                            <label class="control-label col-md-4 col-xs-2" for="inputLTel">手机号</label>
                                                             <div class="controls col-md-8 col-xs-10">
-                                                                <input id="inputMemeberPhone" class="form-control" type="text" />
+                                                                <input id="inputLTel" class="form-control" type="text" />
                                                             </div>
                                                         </div>
                                                     </form>
@@ -225,8 +225,8 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                            <button type="button" class="btn btn-primary">添加</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset()">取消</button>
+                                            <button type="button" class="btn btn-primary" onclick="addMember()">添加</button>
                                         </div>
                                     </div><!-- /.modal-content -->
                                 </div><!-- /.modal-dialog -->
@@ -262,91 +262,7 @@
                                         </th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>
-                                            1
-                                        </td>
-                                        <td>
-                                            32072219920109xxxx
-                                        </td>
-                                        <td>
-                                            18290433xxx
-                                        </td>
-                                        <td>
-                                            xxx@163.com
-                                        </td>
-                                        <td>
-                                            软件工程
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-success btn-small editMember" type="button">编辑</button>
-                                            <button class="btn btn-danger btn-small editMember" type="button">删除</button>
-                                        </td>
-                                    </tr>
-                                    <tr class="error">
-                                        <td>
-                                            2
-                                        </td>
-                                        <td>
-                                            32072219920109xxxx
-                                        </td>
-                                        <td>
-                                            18290433xxx
-                                        </td>
-                                        <td>
-                                            xxx@163.com
-                                        </td>
-                                        <td>
-                                            软件工程
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-success btn-success editMember" type="button">编辑</button>
-                                            <button class="btn btn-danger btn-small editMember" type="button">删除</button>
-                                        </td>
-                                    </tr>
-                                    <tr class="warning">
-                                        <td>
-                                            3
-                                        </td>
-                                        <td>
-                                            32072219920109xxxx
-                                        </td>
-                                        <td>
-                                            18290433xxx
-                                        </td>
-                                        <td>
-                                            xxx@163.com
-                                        </td>
-                                        <td>
-                                            软件工程
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-success btn-success editMember" type="button">编辑</button>
-                                            <button class="btn btn-danger btn-small editMember" type="button">删除</button>
-                                        </td>
-                                    </tr>
-                                    <tr class="info">
-                                        <td>
-                                            4
-                                        </td>
-                                        <td>
-                                            32072219920109xxxx
-                                        </td>
-                                        <td>
-                                            18290433xxx
-                                        </td>
-                                        <td>
-                                            xxx@163.com
-                                        </td>
-                                        <td>
-                                            软件工程
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-success btn-success editMember" type="button">编辑</button>
-                                            <button class="btn btn-danger btn-small editMember" type="button">删除</button>
-                                        </td>
-                                    </tr>
+                                    <tbody id="TeamMember">
                                     </tbody>
                                 </table>
                             </div>
@@ -403,6 +319,205 @@
                 alert("请求错误！");
             }
         });
+
+        getAll();
+    }
+
+    function getAll(){
+        let myTeamId = $.cookie("myTeamId");
+
+        $.ajax({
+            //几个参数需要注意一下
+            type: "GET",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "http://localhost:8081/users/" + myTeamId + "/crew" ,//url
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
+            },
+            success: function (result) {
+                let str = "";
+                let data = result.data;
+
+                if(data.length !== 0){
+                    console.log(result.data);//打印服务端返回的数据(调试用)
+
+                    let memberTbody = document.getElementById("TeamMember");
+                    for (let i=0;i<data.length;i++) {
+                        str += "<tr>" +
+                            "<td>" + data[i].name + "</td>" +
+                            "<td>" + data[i].age + "</td>" +
+                            "<td>" + (data[i].sex === 0 ? '男' : '女') + "</td>" +
+                            "<td>" + data[i].telephoneNumber + "</td>" +
+                            "<td>" + data[i].organization + "</td>" +
+                            "<td><button class='btn btn-success btn-small editMember' type='button'>编辑</button>\n" +
+                            "<button class='btn btn-danger btn-small editMember' type='button'>删除</button></td>" +
+                            "</tr>";
+                    }
+                    memberTbody.innerHTML = str;
+                }
+
+            },
+            error : function() {
+                alert("请求错误！");
+            }
+        });
+    }
+
+    function reset(){
+        $("#inputLname").val('');
+        $("#inputLOld").val('');
+        $("#inputLTel").val('');
+        $("#inputLsch").val('');
+    }
+
+    function CheckTel(sMobile){
+        if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(sMobile))){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    function validate(){
+        let name = $("#inputLname").val();                       //姓名
+        let age = $("#inputLOld").val();                         //年龄
+        let telephoneNumber = $("#inputLTel").val();             //电话
+        let organization = $("#inputLsch").val();                //组织
+
+        let sexAll = document.getElementsByName("sex");
+        let sex = '';                                            //性别
+        for(let i=0; i<sexAll.length; i ++){
+            if(sexAll[i].checked){
+                sex = sexAll[i].value;
+                //alert(sex);
+            }
+        }
+
+        let isValidate = false;
+
+
+        if(name.length === 0){
+            //alert("密码不能为空");
+            document.getElementById("inputLname").parentElement.style.border = "1px solid red";
+            isValidate = false;
+            return;
+        }else{
+            document.getElementById("inputLname").parentElement.style.border = "0";
+            isValidate = true;
+        }
+
+        if(age.length === 0){
+            document.getElementById("inputLOld").parentElement.style.border = "1px solid red";
+            isValidate = false;
+            return;
+        }else{
+            document.getElementById("inputLOld").parentElement.style.border = "0";
+            isValidate = true;
+        }
+
+
+        if(telephoneNumber.length === 0){
+            //alert("密码不能为空");
+            document.getElementById("inputLTel").parentElement.style.border = "1px solid red";
+            isValidate = false;
+            return;
+        }else{
+            if(CheckTel(telephoneNumber)){
+                document.getElementById("inputLTel").parentElement.style.border = "0";
+                isValidate = true;
+            }else{
+                alert("不是完整的11位手机号或者正确的手机号前七位");
+                isValidate = false;
+                return;
+            }
+
+        }
+
+        if(organization.length === 0){
+            document.getElementById("inputLsch").parentElement.style.border = "1px solid red";
+            isValidate = false;
+            return;
+        }else{
+            document.getElementById("inputLsch").parentElement.style.border = "0";
+            isValidate = true;
+        }
+
+        if(sex !== ''){//获取name为sex的input的对象并判断是否被选中
+            document.getElementById("Lsex").style.border = "0";
+            isValidate = true;
+            //alert(sex);
+        }else{
+            // alert("请选择性别");//如果性别的单选按钮没有被选择则弹出提示
+            document.getElementById("Lsex").style.border = "1px solid red";
+            isValidate = false;
+
+            return;
+        }
+
+        alert(isValidate);
+        return isValidate;
+
+    }
+
+    function addMember() {
+        alert(validate());
+        if(validate()){
+
+            /*let myTeamId = $.cookie("myTeamId");
+
+            let name = $("#inputLname").val();                       //姓名
+            let age = $("#inputLOld").val();                         //年龄
+            let telephoneNumber = $("#inputLTel").val();             //电话
+            let organization = $("#inputLsch").val();                //组织
+
+            let sexAll = document.getElementsByName("sex");
+            let sex = '';                                            //性别
+            for(let i=0; i<sexAll.length; i ++){
+                if(sexAll[i].checked){
+                    sex = sexAll[i].value;
+                }
+            }
+
+            let formData = new FormData();
+            formData.append("name", name);
+            formData.append("age", age);
+            formData.append("telephoneNumber", telephoneNumber);
+            formData.append("organization", organization);
+            formData.append("sex", sex);
+
+            //alert("成功");
+            $.ajax({
+                //几个参数需要注意一下
+
+                url: "http://localhost:8081/users/" + myTeamId + "/crew",//url
+                // data: ({username: username,password: password,IDNumber: IDNumber}),
+                data: formData,
+                type: "POST",//方法类型
+                async:false,
+                dataType: "json",//预期服务器返回的数据类型
+                cache: false,//上传文件无需缓存
+                processData: false,//用于对data参数进行序列化处理 这里必须false
+                contentType: false, //必须
+                enctype: 'multipart/form-data',
+
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
+                },
+                timeout : 5000,
+                success: function (result) {
+                    //window.location.href='login.html';
+
+                    getAll();
+                },
+                error : function(xhr) {
+                    alert("注册失败！");
+
+                }
+            });*/
+        }else{
+            return;
+        }
+
     }
 </script>
 
