@@ -21,3 +21,16 @@
 }
 
 btn.btn-small{*padding-top:3px;*padding-bottom:3px;}
+
+
+/* 审核详情 */
+.idCard {
+    width: 380px;
+    height: 240px;
+    border-radius: 5px;
+}
+
+.auditDetailDiv {
+    height: 34px;
+    font-size: 18px;
+}
