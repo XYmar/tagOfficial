@@ -32,5 +32,6 @@ btn.btn-small{*padding-top:3px;*padding-bottom:3px;}
 
 .auditDetailDiv {
     height: 34px;
-    font-size: 18px;
+    font-size: 15px;
+    padding-top: 5px;
 }
