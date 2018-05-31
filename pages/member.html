@@ -364,5 +364,47 @@
 
 <script src="../js/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+<script src="../js/cookie.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+
+<script type="text/javascript">
+    window.onload=function() {
+        let myTeamId = $.cookie("myTeamId");
+
+        let username = $.cookie("myUsername");
+        let password = $.cookie("myPassword");
+        let token = username + ':' + password;
+
+        $.ajax({
+            //几个参数需要注意一下
+            type: "GET",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "http://localhost:8081/users/" + myTeamId,//url
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+
+                console.log(result.data);//打印服务端返回的数据(调试用)
+
+                document.getElementById("username").innerHTML = data.username;
+                document.getElementById("teamName").innerHTML = data.teamName;
+                document.getElementById("name").innerHTML = data.name;
+                document.getElementById("age").innerHTML = data.age;
+                document.getElementById("sex").innerHTML = data.sex;
+                document.getElementById("telephoneNumber").innerHTML = data.telephoneNumber;
+                document.getElementById("organization").innerHTML = data.organization;
+                document.getElementById("job").innerHTML = data.job;
+                document.getElementById("email").innerHTML = data.email;
+
+            },
+            error: function () {
+                alert("请求错误！");
+            }
+        });
+    }
+</script>
+
 </body>
 </html>

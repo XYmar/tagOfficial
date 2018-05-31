@@ -132,6 +132,9 @@
                     console.log(result.data.username);//打印服务端返回的数据(调试用)
                     //setCookie("myUsername",result.data.username,null);
                     $.cookie("myUsername",result.data.username,{path:'/'});
+                    $.cookie("myPassword",password,{path:'/'});
+                    $.cookie("myTeamId",result.data.id,{path:'/'});
+
 
                     window.location.href='../index.html';
                 },

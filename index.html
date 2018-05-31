@@ -1718,7 +1718,8 @@
         if ((myUsername != null) && (myUsername != "null")) {
             //alert("hh");
             loginName.innerHTML = "";
-            loginName.innerHTML += "<a href='#'>" + myUsername + "| <sapn onclick='delCookie()' class='exit'>退出</sapn></a>";
+            //loginName.innerHTML += "<a href='#'>" + myUsername + "| <sapn onclick='delCookie()' class='exit'>退出</sapn></a>";
+            loginName.innerHTML += "<a href='pages/member.html'>" + myUsername + "</a>";
         } else {
             loginName.innerHTML = "";
             loginName.innerHTML += "<a href='pages/login.html'>登录/注册</a>";
