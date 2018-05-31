@@ -790,28 +790,51 @@
 
     function doSubmit() {
         //alert("hhhh");
-        let username = $("#inputGNo").val();
-        let password = $("#inputGPassword").val();
-        let IDNumber = $("#inputLNo").val();
-
-        let badge = document.getElementById("fileZheng").files[0];  //获取文件
-
-        /*if (typeof(badge) === "undefined" || badge.size <= 0) {
-            alert("请选择图片");
-            return;
-        }
-*/
-        let formData = new FormData();
-        formData.append("username", username);
-        formData.append("password", password);
-        formData.append("IDNumber", IDNumber);
-        formData.append("badge", badge); //加入文件对象
-
 
         //console.log(validate());
         if(validate()){
-            alert("成功");
-            /*$.ajax({
+
+            let username = $("#inputGNo").val();                     //账号
+            let password = $("#inputGPassword").val();               //密码
+            let teamName = $("#inputGName").val();                   //组名
+
+            let name = $("#inputLname").val();                       //姓名
+            let age = $("#inputLOld").val();                         //年龄
+            let telephoneNumber = $("#inputLTel").val();             //电话
+            let organization = $("#inputLsch").val();                //组织
+            let job = $("#inputLmajor").val();                       //职位
+            let email = $("#inputLEmail").val();                     //邮箱
+
+            let sexAll = document.getElementsByName("sex");
+            let sex = '';                                            //性别
+            for(let i=0; i<sexAll.length; i ++){
+                if(sexAll[i].checked){
+                    sex = sexAll[i].value;
+                }
+            }
+
+            let badge = document.getElementById("fileZheng").files[0];  //获取文件
+
+            /*if (typeof(badge) === "undefined" || badge.size <= 0) {
+                alert("请选择图片");
+                return;
+            }
+    */
+            let formData = new FormData();
+            formData.append("username", username);
+            formData.append("password", password);
+            formData.append("teamName", teamName);
+            formData.append("name", name);
+            formData.append("age", age);
+            formData.append("telephoneNumber", telephoneNumber);
+            formData.append("organization", organization);
+            formData.append("job", job);
+            formData.append("email", email);
+            formData.append("sex", sex);
+            formData.append("badge", badge); //加入文件对象
+
+            //alert("成功");
+            $.ajax({
                 //几个参数需要注意一下
 
                 url: "http://localhost:8081/users" ,//url
@@ -830,13 +853,14 @@
                 },
                 timeout : 5000,
                 success: function (result) {
-                    window.location.href='login.html';
+                    //window.location.href='login.html';
+                    alert("成功");
                 },
                 error : function(xhr) {
                     alert("注册失败！");
 
                 }
-            });*/
+            });
         }else{
             return;
         }
