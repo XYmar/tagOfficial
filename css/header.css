@@ -1,0 +1,62 @@
+
+body {
+    font-size: 15px;
+    line-height: 1.50;
+    color: #333333;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.header {
+    background-color: rgb(47, 47, 47);
+    padding: 5px 0;
+}
+
+.fixed-header-on .logo {
+    transform: scale(0.8);
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.logo, .logo-section {
+    float: left;
+}
+.logo {
+    transition: all 0.3s ease-in-out;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.logo, .logo-section {
+    float: left;
+}
+
+.fixed-header-on .brand {
+    font-size: 24px;
+}
+.brand {
+    font-size: 25px;
+}
+.brand {
+    transition: all 0.3s ease-in-out;
+    padding: 10px 0;
+}
+.brand {
+    font-family: 'Raleway', sans-serif;
+}
+
+.brand a {
+    color: #FFC400;
+    font-weight: bold;
+    font-size: 25px;
+    margin-top: 5px;
+
+}
+
+#logo {
+    width: 30px;
+}

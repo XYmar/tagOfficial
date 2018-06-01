@@ -3,7 +3,7 @@
 
 * { font: 13px/1.5 '微软雅黑'; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -box-sizing: border-box; padding:0; margin:0; list-style:none; box-sizing: border-box; }
 body, html { height:100%;}
-body { background:#93defe; background-size: cover; }
+/*body { background:#93defe; background-size: cover; }*/
 a { color:#27A9E3; cursor:pointer;float: right;
     margin-top: 20px; }
 img{ border:none;}
@@ -13,7 +13,18 @@ img{ border:none;}
 .login_box .login_l_img{ float:left; width:432px; height:440px; margin-left:50px;}
 .login_box .login_l_img img{width:500px; height:440px; }
 .login {height:410px; width:400px; padding:50px; background-color: #ffffff;border-radius:6px;box-sizing: border-box; float:right; margin-right:50px; position:relative; margin-top:50px;}
-.login_logo{ width:120px; height:120px; border:5px solid #93defe;border-radius:100px; background:#fff; text-align:center; line-height:110px; position:absolute; top:-60px; right:140px;}
+.login_logo {
+    width: 115px;
+    height: 115px;
+    border: 1px solid gray;
+    border-radius: 100px;
+    background: #fff;
+    text-align: center;
+    line-height: 110px;
+    position: absolute;
+    top: -60px;
+    right: 165px;
+}
 .login_name{ width:100%; float:left; text-align:center; margin-top:20px;}
 .login_name p{ width:100%; text-align:center; font-size:18px; color:#444; padding:10px 0 20px;}
 .login_logo img{ width:60px; height:60px;display: inline-block; vertical-align: middle;}
@@ -53,6 +64,7 @@ input[type=submit], input[type=button] { display: inline-block; vertical-align: 
     margin-top: 50px;
     margin-left: 10%;
     margin-bottom: 50px;
+    border: 1px solid gray;
 }
 
 @media (min-width:769px) {

@@ -43,3 +43,11 @@ btn.btn-small{*padding-top:3px;*padding-bottom:3px;}
     font-size: 12px;
     margin-top: 10px;
 }
+
+.brand {
+    font-family: 'Raleway', sans-serif;
+}
+
+.header .navbar {
+    margin-bottom: 0;
+}
