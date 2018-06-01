@@ -676,8 +676,11 @@
                 document.getElementById("inputGPassword").parentElement.style.border = "0";
                 isValidate = true;
             }else{
-                isValidate = false;
+
                 alert("密码必须为字母与数字混合，且不小于6位");
+                document.getElementById("inputGPassword").parentElement.style.border = "1px solid red";
+                isValidate = false;
+                return;
             }
 
         }
@@ -692,7 +695,6 @@
         }
 
         if(name.length === 0){
-            //alert("密码不能为空");
             document.getElementById("inputLname").parentElement.style.border = "1px solid red";
             isValidate = false;
             return;
@@ -712,7 +714,6 @@
 
 
         if(telephoneNumber.length === 0){
-            //alert("密码不能为空");
             document.getElementById("inputLTel").parentElement.style.border = "1px solid red";
             isValidate = false;
             return;
@@ -722,7 +723,9 @@
                 isValidate = true;
             }else{
                 alert("不是完整的11位手机号或者正确的手机号前七位");
+                document.getElementById("inputLTel").parentElement.style.border = "0";
                 isValidate = false;
+                return;
             }
 
         }
@@ -737,7 +740,6 @@
         }
 
         if(job.length === 0){
-            //alert("密码不能为空");
             document.getElementById("inputLmajor").parentElement.style.border = "1px solid red";
             isValidate = false;
             return;
@@ -756,7 +758,9 @@
                 isValidate = true;
             }else{
                 alert("邮箱格式不正确");
+                document.getElementById("inputLEmail").parentElement.style.border = "1px solid red";
                 isValidate = false;
+                return;
             }
 
         }
@@ -855,6 +859,7 @@
                 success: function (result) {
                     //window.location.href='login.html';
                     alert("审核中...");
+                    window.location.href='index.html';
                 },
                 error : function(xhr) {
                     alert("注册失败！");
