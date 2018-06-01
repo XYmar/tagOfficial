@@ -503,6 +503,10 @@ text-align:center;
 	color: grey;
 }
 
+.gameTime {
+    float: right;
+}
+
 /* Pills
 ---------------------------------- */
 .nav-pills > li.active > a,
