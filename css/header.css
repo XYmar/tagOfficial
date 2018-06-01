@@ -38,7 +38,9 @@ img {
 .fixed-header-on .brand {
     font-size: 24px;
 }
-
+.brand {
+    font-size: 25px;
+}
 .brand {
     transition: all 0.3s ease-in-out;
     padding: 10px 0;
@@ -50,4 +52,11 @@ img {
 .brand a {
     color: #FFC400;
     font-weight: bold;
+    font-size: 25px;
+    margin-top: 5px;
+
+}
+
+#logo {
+    width: 30px;
 }
