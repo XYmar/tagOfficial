@@ -183,7 +183,9 @@
                                                         <div class="form-group col-md-12">
                                                             <label class="control-label col-md-4 col-xs-2" for="inputLname">姓名</label>
                                                             <div class="controls col-md-8 col-xs-10">
-                                                                <input id="inputLname" class="form-control" type="text" />
+                                                                <div style="border-radius: 4px;">
+                                                                    <input id="inputLname" class="form-control" type="text" />
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group col-md-12">
@@ -201,7 +203,9 @@
                                                         <div class="form-group col-md-12">
                                                             <label class="control-label col-md-4 col-xs-2" for="inputLsch">单位/学校</label>
                                                             <div class="controls col-md-8 col-xs-10">
-                                                                <input id="inputLsch" class="form-control" type="text" />
+                                                                <div style="border-radius: 4px;">
+                                                                    <input id="inputLsch" class="form-control" type="text" />
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -211,13 +215,17 @@
                                                         <div class="form-group col-md-12">
                                                             <label class="control-label col-md-4 col-xs-2" for="inputLOld">年龄</label>
                                                             <div class="controls col-md-8 col-xs-10">
-                                                                <input id="inputLOld" class="form-control" type="text" />
+                                                                <div style="border-radius: 4px;">
+                                                                    <input id="inputLOld" class="form-control" type="text" />
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group col-md-12">
                                                             <label class="control-label col-md-4 col-xs-2" for="inputLTel">手机号</label>
                                                             <div class="controls col-md-8 col-xs-10">
-                                                                <input id="inputLTel" class="form-control" type="text" />
+                                                                <div style="border-radius: 4px;">
+                                                                    <input id="inputLTel" class="form-control" type="text" />
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -454,16 +462,14 @@
             return;
         }
 
-        alert(isValidate);
         return isValidate;
 
     }
 
     function addMember() {
-        alert(validate());
         if(validate()){
 
-            /*let myTeamId = $.cookie("myTeamId");
+            let myTeamId = $.cookie("myTeamId");
 
             let name = $("#inputLname").val();                       //姓名
             let age = $("#inputLOld").val();                         //年龄
@@ -506,14 +512,15 @@
                 timeout : 5000,
                 success: function (result) {
                     //window.location.href='login.html';
-
+                    $("#mydialog").modal('hide');
                     getAll();
+                    reset();
                 },
                 error : function(xhr) {
                     alert("注册失败！");
 
                 }
-            });*/
+            });
         }else{
             return;
         }
