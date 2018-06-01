@@ -163,7 +163,7 @@
                         <div class="col-md-8 group-info">
                             <div class="col-md-6" id="badge">
 
-                                <img src="../images/applyBg4.jpg" class="idCard"/>
+                                <img src="" class="idCard"/>
 
                             </div>
                         </div>
@@ -550,24 +550,56 @@
         /*$.ajax({
             //几个参数需要注意一下
             type: "GET",//方法类型
-            dataType: "blob",//预期服务器返回的数据类型
             url: "http://localhost:8081/users/" + id + "/badge" ,//url
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
+                xhr.setRequestHeader("client_type", "DESKTOP_WEB");
+                xhr.setRequestHeader("Access-Control-Allow-Origin","*");
             },
             success: function (result) {
-                //let data = result.data;
 
-                //console.log(result.data);//打印服务端返回的数据(调试用)
                 alert("成功");
+                console.log(result);
+                alert(typeof(result));
 
-                //document.getElementById("email").innerHTML = data.email;
+                //let data = Base64.encodeBase64(result)
+                $("#images").attr("src","data:image/gif;base64,"+result);
+                /!*let blob = result;
+                //let blob = new Blob(result);
+                let img = document.createElement("img");
+                img.onload = function() {
+                    window.URL.revokeObjectURL(img.src);
+                };
+                img.src = window.URL.createObjectURL(blob);
+                $("#imgcontainer").html(img);*!/
 
             },
             error : function() {
                 alert("请求错误！");
             }
         });*/
+
+        let url = "http://localhost:8081/users/" + id + "/badge" ;
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.responseType = "blob";
+        xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
+        xhr.setRequestHeader("client_type", "DESKTOP_WEB");
+        xhr.onload = function() {
+            if (this.status === 200) {
+                let blob = this.response;
+                let img = document.createElement("img");
+                img.onload = function(e) {
+                    window.URL.revokeObjectURL(img.src);
+                };
+                img.src = window.URL.createObjectURL(blob);
+                $("#badge").html(img);
+
+                console.log($("#badge")[0].childNodes[0]);
+                $("#badge")[0].childNodes[0].setAttribute("class","idCard");
+            }
+        }
+        xhr.send();
 
     }
 
@@ -636,7 +668,7 @@
         $.ajax({
             //几个参数需要注意一下
             type: "PATCH",//方法类型
-            dataType: "json",//预期服务器返回的数据类型
+            dataType: "blob",//预期服务器返回的数据类型
             url: "http://localhost:8081/users/" + id + "/enable",//url
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
