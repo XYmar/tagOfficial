@@ -250,7 +250,7 @@ padding: 17px 34px;}
 .caption-data {position: absolute; top: 50%; left: 50%; z-index: 20; text-align: center; -webkit-transform: translate(-50%,-50%); -moz-transform: translate(-50%,-50%); transform: translate(-50%,-50%);}
 .caption-data h1 {text-transform: uppercase;}
 .caption-data h1 span {font-size: inherit; line-height: inherit; font-weight: inherit;}
-.caption-data h3{line-height: 39px;font-size: 22px;}
+.caption-data h3{line-height: 39px;font-size: 18px;}
 button.cta-button.btn-light, button.cta-button.btn-dark, .contact-form button.cta-button, button.cta-button.btn-default {
 background: transparent;
 }
@@ -379,7 +379,7 @@ color: #FFC400;}
 	color: #fff;
 }
 .banner-caption h1 {
-	font-size: 40px;
+	font-size: 38px;
 	color: #FFC400;
 }
 .footer h1{
@@ -494,6 +494,13 @@ text-align:center;
 .panel-title a i {
 	padding-right: 10px;
 	font-size: 20px;
+}
+
+.awardNum {
+	margin-top: 0;
+	margin-bottom: 0;
+	font-size: 25px;
+	color: grey;
 }
 
 /* Pills
