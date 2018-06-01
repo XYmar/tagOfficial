@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>审核</title>
+
+    <!-- Mobile Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="apply.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" type="text/css" href="../css/applyInfo.css">
+
+    <link rel="stylesheet" href="../css/member.css">
+
+    <style>
+        .returnIndex {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            float: right;
+        }
+    </style>
+
+</head>
+
+<body style="background-image: url('../images/2.png');">
+<div class="container">
+    <div class="row main-content">
+        <div class="col-md-12">
+            <h3 class="title-main">
+                审核
+            </h3>
+            <!--border-radius: 10px;border: 1px solid #27A9E3;-->
+            <div class="row">
+                <hr>
+                <div class="span12">
+                    <div class="row-fluid col-md-12">
+                        <div class="col-md-1 col-xs-12 row-fluid">
+                        </div>
+                        <div class="col-md-9 col-xs-12 row-fluid">
+                            <h3><span class="required-flag">*</span>团队信息如下，可进行审核操作</h3>
+                        </div>
+                        <div class="col-md-1 col-xs-12 row-fluid">
+                            <div>
+                                <a href="../index.html" class="returnIndex">返回首页</a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="row-fluid" style="margin-top: 20px;">
+                        <div class="col-md-1 col-xs-12 row-fluid">
+                        </div>
+                        <div class="col-md-10 col-xs-12 row-fluid">
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingOne">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" class="shenhea" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                未审核
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                        <div class="panel-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered" style="border: 2px solid #ddd;">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>
+                                                            组名
+                                                        </th>
+                                                        <th>
+                                                            姓名
+                                                        </th>
+                                                        <th>
+                                                            年龄
+                                                        </th>
+                                                        <th>
+                                                            性别
+                                                        </th>
+                                                        <th>
+                                                            手机号
+                                                        </th>
+                                                        <th>
+                                                            单位/学校
+                                                        </th>
+
+                                                        <th>
+                                                            操作
+                                                        </th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody id="noAudit">
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingTwo">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed shenhea" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                已审核
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                        <div class="panel-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered" style="border: 2px solid #ddd;">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>
+                                                            组名
+                                                        </th>
+                                                        <th>
+                                                            姓名
+                                                        </th>
+                                                        <th>
+                                                            年龄
+                                                        </th>
+                                                        <th>
+                                                            性别
+                                                        </th>
+                                                        <th>
+                                                            手机号
+                                                        </th>
+                                                        <th>
+                                                            单位/学校
+                                                        </th>
+
+                                                        <th>
+                                                            状态
+                                                        </th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody id="alreadyAudit">
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!--<div class="col-md-10 col-xs-12 row-fluid">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" style="border: 2px solid #ddd;">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            姓名
+                                        </th>
+                                        <th>
+                                            年龄
+                                        </th>
+                                        <th>
+                                            性别
+                                        </th>
+                                        <th>
+                                            手机号
+                                        </th>
+                                        <th>
+                                            单位/学校
+                                        </th>
+
+                                        <th>
+                                            操作
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr >
+                                        <td>
+                                            1
+                                        </td>
+                                        <td>
+                                            32072219920109xxxx
+                                        </td>
+                                        <td>
+                                            18290433xxx
+                                        </td>
+                                        <td>
+                                            xxx@163.com
+                                        </td>
+                                        <td>
+                                            软件工程
+                                        </td>
+                                        <td>
+                                            <a href="auditDetail.html" style="float: none;">
+                                                <button class="btn btn-success btn-success editMember" type="button">审核</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    &lt;!&ndash;<tr class="error">
+                                        <td>
+                                            2
+                                        </td>
+                                        <td>
+                                            32072219920109xxxx
+                                        </td>
+                                        <td>
+                                            18290433xxx
+                                        </td>
+                                        <td>
+                                            xxx@163.com
+                                        </td>
+                                        <td>
+                                            软件工程
+                                        </td>
+                                        <td>
+                                            <a href="auditDetail.html" style="float: none;">
+                                                <button class="btn btn-success btn-success editMember" type="button">审核</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr class="warning">
+                                        <td>
+                                            3
+                                        </td>
+                                        <td>
+                                            32072219920109xxxx
+                                        </td>
+                                        <td>
+                                            18290433xxx
+                                        </td>
+                                        <td>
+                                            xxx@163.com
+                                        </td>
+                                        <td>
+                                            软件工程
+                                        </td>
+                                        <td>
+                                            <a href="auditDetail.html" style="float: none;">
+                                                <button class="btn btn-success btn-success editMember" type="button">审核</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr class="info">
+                                        <td>
+                                            4
+                                        </td>
+                                        <td>
+                                            32072219920109xxxx
+                                        </td>
+                                        <td>
+                                            18290433xxx
+                                        </td>
+                                        <td>
+                                            xxx@163.com
+                                        </td>
+                                        <td>
+                                            软件工程
+                                        </td>
+                                        <td>
+                                            <a href="auditDetail.html" style="float: none;">
+                                                <button class="btn btn-success btn-success editMember" type="button">审核</button>
+                                            </a>
+                                        </td>
+                                    </tr>&ndash;&gt;
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>-->
+                    </div>
+                    <br>
+
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
+</div>
+
+<script src="../js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    window.onload=function(){
+        //alert("hhhh");
+
+        $.ajax({
+            //几个参数需要注意一下
+            type: "GET",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "http://localhost:8081/users/byenabled" ,//url
+            data: {enabled: false},
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
+            },
+            success: function (result) {
+                let str = "";
+                let data = result.data;
+
+                if(data.length !== 0){
+                    console.log(result.data);//打印服务端返回的数据(调试用)
+
+                    let noAuditTbody = document.getElementById("noAudit");
+                    for (let i=0;i<data.length;i++) {
+                        str += "<tr>" +
+                            "<td style='display:none'>" + data[i].id + "</td>" +
+                            "<td>" + data[i].teamName + "</td>" +
+                            "<td>" + data[i].name + "</td>" +
+                            "<td>" + data[i].age + "</td>" +
+                            "<td>" + (data[i].sex === 0 ? '男' : '女') + "</td>" +
+                            "<td>" + data[i].telephoneNumber + "</td>" +
+                            "<td>" + data[i].organization + "</td>" +
+                            "<td><a href='auditDetail.html?id=" + data[i].id + "' style='float: none;'>" +
+                            "<button class='btn btn-success btn-success editMember' type='button' >审核</button> " +
+                            "</a></td>" +
+                            "</tr>";
+                    }
+                    noAuditTbody.innerHTML = str;
+                }
+
+            },
+            error : function() {
+                alert("请求错误！");
+            }
+        });
+
+        $.ajax({
+            //几个参数需要注意一下
+            type: "GET",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "http://localhost:8081/users/byenabled" ,//url
+            data: {enabled: true},
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
+            },
+            success: function (result) {
+                let str = "";
+                let data = result.data;
+
+                if(data.length !== 0){
+                    console.log(result.data);//打印服务端返回的数据(调试用)
+
+                    let alreadyAuditTbody = document.getElementById("alreadyAudit");
+                    for (let i=0;i<data.length;i++) {
+                        str += "<tr>" +
+                            "<td>" + data[i].teamName + "</td>" +
+                            "<td>" + data[i].name + "</td>" +
+                            "<td>" + data[i].age + "</td>" +
+                            "<td>" + (data[i].sex === 0 ? '男' : '女') + "</td>" +
+                            "<td>" + data[i].telephoneNumber + "</td>" +
+                            "<td>" + data[i].organization + "</td>" +
+                            "<td><span style=\"color: #27A9E3;\">已审核</span></td>" +
+                            "</tr>";
+                    }
+                    alreadyAuditTbody.innerHTML = str;
+                }
+
+            },
+            error : function() {
+                alert("请求错误！");
+            }
+        });
+
+    }
+</script>
+</body>
+</html>

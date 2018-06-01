@@ -2,14 +2,14 @@
 /* CSS Document */
 
 * { font: 13px/1.5 '微软雅黑'; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -box-sizing: border-box; padding:0; margin:0; list-style:none; box-sizing: border-box; }
-body, html { height:100%; overflow:hidden; }
+body, html { height:100%;}
 body { background:#93defe; background-size: cover; }
 a { color:#27A9E3; cursor:pointer;float: right;
-    margin-top: 10px; }
+    margin-top: 20px; }
 img{ border:none;}
 
 
-.login_box{ width:1100px; margin:120px auto 0;}
+.login_box{ margin:120px auto 0;}
 .login_box .login_l_img{ float:left; width:432px; height:440px; margin-left:50px;}
 .login_box .login_l_img img{width:500px; height:440px; }
 .login {height:410px; width:400px; padding:50px; background-color: #ffffff;border-radius:6px;box-sizing: border-box; float:right; margin-right:50px; position:relative; margin-top:50px;}
@@ -35,3 +35,104 @@ input[type=submit], input[type=button] { display: inline-block; vertical-align: 
 }
 
 #password_text{border: 1px solid #DCDEE0; vertical-align: middle; border-radius: 3px; height: 50px; padding: 0px 16px; font-size: 14px; color: #888; outline:none; width:100%;margin-bottom: 15px;display: block; line-height:50px;}
+
+.container {
+    z-index: 3;
+    position: relative;
+    color: #797979;
+}
+
+.col-md-12 {
+    text-align: center;
+}
+
+.login {
+    width: 80%;
+    float: right;
+    position: relative;
+    margin-top: 50px;
+    margin-left: 10%;
+    margin-bottom: 50px;
+}
+
+@media (min-width:769px) {
+    .container {
+        z-index: 3;
+        position: relative;
+        color: #797979;
+    }
+}
+
+@media(min-width:769px) and (max-width:1024px) {
+    img {
+        display: block;
+        width: 96%;
+        height: 120px;
+        margin-left: 2%;
+    }
+}
+
+@media (max-width:480px) {
+    .col-md-6 {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .login_box {
+        margin: 40px auto 0;
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        height: 120px;
+        margin-left: 0;
+    }
+
+    .login {
+        height: 310px;
+        width: 100%;
+        padding: 15px 15px;
+        background-color: #ffffff;
+        border-radius: 6px;
+        box-sizing: border-box;
+        float: right;
+        margin-right: 0px;
+        position: relative;
+        margin-top: 70px;
+    }
+
+    .login_logo {
+        width: 60px;
+        height: 60px;
+        border: 1px solid #93defe;
+        border-radius: 100px;
+        background: #fff;
+        text-align: center;
+        line-height: 90px;
+        position: absolute;
+        top: -30px;
+        right: 180px;
+    }
+
+    .login_logo img {
+        width: 45px;
+        height: 45px;
+    }
+
+    .login_name p {
+        font-size: 15px;
+        padding: 10px 0 10px;
+    }
+
+    input[type="text"], input[type="file"], input[type="password"], input[type="email"], select {
+        height: 35px;
+        font-size: 12px;
+    }
+
+    input[type="submit"], input[type="button"] {
+        font-size: 12px;
+        line-height: 10px;
+    }
+}
+

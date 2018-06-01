@@ -3,16 +3,22 @@
 
 * { font: 13px/1.5 '微软雅黑'; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -box-sizing: border-box; padding:0; margin:0; list-style:none; box-sizing: border-box; }
 body { background:#93defe;}
-a { color:#27A9E3; cursor:pointer;float: right;
-    margin-top: 10px; }
+/*a { color:#27A9E3; cursor:pointer;float: right;
+    margin-top: 10px; }*/
 img{ border:none;}
-
+.shenhea {
+    color: #27A9E3;
+    text-decoration: none;
+    float: none;
+}
 .title-main{
     font-size: 28px;
     text-align: center;
     font-weight: bold;
     line-height: 40px;
     color:#27A9E3;
+    margin-top: 30px;
+    margin-bottom: 10px;
 }
 .title {
     height:30px;
@@ -38,12 +44,14 @@ img{ border:none;}
     background-color: #ccc;
 }
 .commit_btn_container{
-    padding-top: 20px;
+    /*padding-top: 20px;*/
     text-align: center;
 }
 .modal-content .close span{
     font-size: 20px;
 }
+
+
 @media (max-width:540px) {
     .main-content{
         padding:10px;
