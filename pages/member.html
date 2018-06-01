@@ -358,7 +358,7 @@
                             "<td>" + data[i].telephoneNumber + "</td>" +
                             "<td>" + data[i].organization + "</td>" +
                             "<td><button class='btn btn-success btn-small editMember' type='button'>编辑</button>\n" +
-                            "<button class='btn btn-danger btn-small editMember' type='button'>删除</button></td>" +
+                            "<button class='btn btn-danger btn-small editMember' type='button' id='" + data[i].id + "' onclick='delMember(event)'>删除</button></td>" +
                             "</tr>";
                     }
                     memberTbody.innerHTML = str;
@@ -470,6 +470,9 @@
         if(validate()){
 
             let myTeamId = $.cookie("myTeamId");
+            let username = $.cookie("myUsername");
+            let password = $.cookie("myPassword");
+            let token = username + ':' + password;
 
             let name = $("#inputLname").val();                       //姓名
             let age = $("#inputLOld").val();                         //年龄
@@ -507,7 +510,7 @@
                 enctype: 'multipart/form-data',
 
                 beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
+                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
                 },
                 timeout : 5000,
                 success: function (result) {
@@ -523,6 +526,37 @@
             });
         }else{
             return;
+        }
+
+    }
+
+    function delMember(event) {
+        let r=confirm("确认删除吗");
+        if (r === true)
+        {
+            let delId = event.target.id;
+
+            let myTeamId = $.cookie("myTeamId");
+
+            let username = $.cookie("myUsername");
+            let password = $.cookie("myPassword");
+            let token = username + ':' + password;
+
+            $.ajax({
+                //几个参数需要注意一下
+                type: "DELETE",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "http://localhost:8081/users/" + myTeamId + "/crew/" + delId,//url
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+                },
+                success: function (result) {
+                    getAll();
+                },
+                error: function () {
+                    alert("删除失败！");
+                }
+            });
         }
 
     }
