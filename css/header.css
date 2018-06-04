@@ -12,6 +12,7 @@ body {
     background-color: rgb(47, 47, 47);
     padding: 10px 0;
     transition: all 0.2s ease-in-out;
+    height: 81px;
 }
 
 .fixed-header-on .logo {
@@ -70,4 +71,8 @@ img {
 .applyBox {
     border-bottom: 1px solid #ccc;
     padding: 40px 0;
+}
+
+.toTop {
+    margin-top: 80px;
 }
