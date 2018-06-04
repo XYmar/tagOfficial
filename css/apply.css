@@ -51,3 +51,11 @@ btn.btn-small{*padding-top:3px;*padding-bottom:3px;}
 .header .navbar {
     margin-bottom: 0;
 }
+
+@media (max-width:480px) {
+    .idCard {
+        width: 260px;
+        height: 160px;
+        margin-left: -5px;
+    }
+}
