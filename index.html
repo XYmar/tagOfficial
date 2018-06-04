@@ -805,8 +805,9 @@
                 <div class="tabbable" id="tabs-777725"><!-- Only required for left/right tabs -->
                     <ul class="nav nav-tabs">
                         <li class="active" style="cursor: pointer;"><a contenteditable="false" data-toggle="tab"
-                                                                       href="#panel-709646">最终结果排行榜</a></li>
-                        <li><a contenteditable="false" data-toggle="tab" href="#panel-875540">在线结果排行榜</a></li>
+                                                                       href="#panel-709646">测试结果排行榜</a></li>
+                        <li><a contenteditable="false" data-toggle="tab" href="#panel-875540">最终结果排行榜</a></li>
+                        <li><a contenteditable="false" data-toggle="tab" href="#panel-875566">在线结果排行榜</a></li>
                     </ul>
 
                     <div class="tab-content">
@@ -868,6 +869,63 @@
                         </div>
 
                         <div class="tab-pane" contenteditable="true" id="panel-875540">
+                            <table class="table table-bordered" contenteditable="true">
+                                <thead>
+                                <tr class="rankTable">
+                                    <th style="width: 135px;">Rank</th>
+                                    <th>Model</th>
+                                    <th>ROUGE-L</th>
+                                    <th>BLEU-4</th>
+                                    <th>Submit Time</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td style="text-align: center;">
+                                        <img class="finalRank" src="images/first.png">
+                                    </td>
+                                    <td>NI-Reader-3(ensemble)</td>
+                                    <td>63.62</td>
+                                    <td>59.51</td>
+                                    <td>2018/5/17</td>
+                                </tr>
+                                <tr class="success">
+                                    <td>
+                                        <img class="finalRank" src="images/second.png">
+                                    </td>
+                                    <td>Z-Reader(ensemble)</td>
+                                    <td>61.23</td>
+                                    <td>56.24</td>
+                                    <td>2018/5/26</td>
+                                </tr>
+                                <tr class="error">
+                                    <td>
+                                        <img class="finalRank" src="images/third.png">
+                                    </td>
+                                    <td>BIDAF_S_RETURN</td>
+                                    <td>58.39</td>
+                                    <td>52.62</td>
+                                    <td>2018/5/26</td>
+                                </tr>
+                                <tr class="warning">
+                                    <td>4</td>
+                                    <td>s-Reader</td>
+                                    <td>58.15</td>
+                                    <td>52.1</td>
+                                    <td>2018/5/27</td>
+                                </tr>
+                                <tr class="info">
+                                    <td>5</td>
+                                    <td>terminator_t800(single)</td>
+                                    <td>58.13</td>
+                                    <td>50.33</td>
+                                    <td>2018/5/27</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="tab-pane" contenteditable="true" id="panel-875566">
                             <table class="table table-bordered" contenteditable="true">
                                 <thead>
                                 <tr class="rankTable">
