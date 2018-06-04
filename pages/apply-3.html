@@ -13,6 +13,7 @@
     <link href="apply.css" rel="stylesheet" type="text/css" />
 
     <link rel="stylesheet" href="../css/apply.css">
+    <link rel="stylesheet" href="../css/header.css">
 
     <link rel="stylesheet" href="../css/fileUpload.css">
     <link rel="stylesheet" type="text/css" href="../css/reset.css">
@@ -28,23 +29,26 @@
 <header class="header fixed clearfix navbar navbar-fixed-top">
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-12">
 
                 <!-- header-left start -->
                 <div class="header-left">
 
                     <!-- logo -->
-                    <div class="logo smooth-scroll" style="margin-top: 10px;">
-                        <a href="#banner"><img id="logo" src="../images/logo.png" alt="Worthy"></a>
-                    </div>
+                    <!--<div class="logo smooth-scroll">
+                        <a href="../index.html"><img id="logo" src="../images/logo.png" alt="Worthy"></a>
+                    </div>-->
 
                     <!-- name-and-slogan -->
                     <div class="logo-section smooth-scroll">
-                        <div class="brand"><a href="#banner">中国电科·莱斯杯</a></div>
+                        <div class="brand"><a href="../index.html">军事智能·机器阅读</a></div>
                     </div>
 
                 </div>
                 <!-- header-left end -->
+
+            </div>
+            <div class="col-md-9">
 
             </div>
         </div>
@@ -53,52 +57,51 @@
 <!-- header end -->
 <div class="container"  id="banner" style="margin-top: 55px;">
     <div class="row main-content">
-        <div class="col-md-12">
+        <div class="col-md-12 col-sm-12 col-xs-12 toTop">
             <h3 class="title-main">
                 注册
             </h3>
             <!--border-radius: 10px;border: 1px solid #27A9E3;-->
             <div class="row">
-                <div class="col-md-12 col-sm-12" style="margin-top: 10px;">
-                    <div class="col-md-1 col-sm-1">
-
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-md-1 col-sm-1 col-xs-1">
                     </div>
-                    <div class="col-md-10 col-sm-10">
-                        <div class="row-fluid col-md-12 applyBox">
-                            <div class="col-md-2" style="padding: 0">
+                    <div class="col-md-12 col-sm-12 col-xs-12" id="informationContainer">
+                        <div class="row-fluid col-md-12 col-sm-12 col-xs-12 applyBox">
+                            <div class="col-md-2 col-sm-12 col-xs-12 titleInfo">
                                 <h4 class="title">
                                     参赛组信息
                                 </h4>
                             </div>
-                            <div class="col-md-10">
-                                <div class="col-md-6">
-                                    <form class="form-horizontal col-md-12">
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label col-md-3 col-xs-2" for="inputGNo">账号</label>
-                                            <div class="controls col-md-9 col-xs-10">
+                            <div class="col-md-10 col-sm-12 col-xs-12">
+                                <div class="col-md-6 formContainer">
+                                    <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-2 col-xs-2" for="inputGNo">账号</label>
+                                            <div class="controls col-md-9 col-sm-10 col-xs-10">
                                                 <div style="border-radius: 4px;">
                                                     <input id="inputGNo" class="form-control" type="text" />
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label col-md-3 col-xs-2" for="inputGName">组名称</label>
-                                            <div class="controls col-md-9 col-xs-10">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-2 col-xs-2" for="inputGPassword">密码</label>
+                                            <div class="controls col-md-9 col-sm-10 col-xs-10">
                                                 <div style="border-radius: 4px;">
-                                                    <input id="inputGName" class="form-control" type="text" />
+                                                    <input id="inputGPassword" class="form-control" type="password" />
                                                 </div>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
-                                <div class="col-md-6">
-                                    <form class="form-horizontal col-md-12">
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label col-md-3 col-xs-2" for="inputGPassword">密码</label>
-                                            <div class="controls col-md-9 col-xs-10">
+                                <div class="col-md-6 formContainer">
+                                    <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-2 col-xs-2" for="inputGName">组名称</label>
+                                            <div class="controls col-md-9 col-sm-10 col-xs-10">
                                                 <div style="border-radius: 4px;">
-                                                    <input id="inputGPassword" class="form-control" type="password" />
+                                                    <input id="inputGName" class="form-control" type="text" />
                                                 </div>
                                             </div>
                                         </div>
@@ -110,79 +113,81 @@
 
 
                         <!-- 组长信息 -->
-                        <div class="row-fluid col-md-12 applyBox">
-                            <div class="col-md-2" style="padding: 0">
+                        <div class="row-fluid col-md-12 col-sm-12 col-xs-12 applyBox">
+                            <div class="col-md-2 col-sm-12 col-xs-12 titleInfo">
                                 <h4 class="title">
                                     组长信息
                                 </h4>
                             </div>
-                            <div class="col-md-10">
-                                <div class="col-md-6">
-                                    <form class="form-horizontal col-md-12">
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label col-md-3 col-xs-2" for="inputLname">姓名</label>
-                                            <div class="controls col-md-9 col-xs-10">
+                            <div class="col-md-10 col-sm-12 col-xs-12">
+                                <div class="col-md-6 formContainer">
+                                    <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-2 col-xs-2" for="inputLname">姓名</label>
+                                            <div class="controls col-md-9 col-sm-10 col-xs-10">
                                                 <div style="border-radius: 4px;">
                                                     <input id="inputLname" class="form-control" type="text" />
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label col-md-3 col-xs-2">性别</label>
-                                            <div class="controls col-md-9 col-xs-10 sexDiv" id="Lsex">
-                                                <label class="col-md-5 sexLabel">
+                                        <div class="form-group formContainer">
+                                            <label class="control-label col-md-3 col-sm-2 col-xs-2">性别</label>
+                                            <div class="controls col-md-9 col-sm-10 col-xs-10 sexDiv" id="Lsex">
+                                                <label class="col-md-5 col-sm-5 col-xs-5 sexLabel">
                                                     <input class="sexInput" type="radio" name="sex" value="0" checked>
                                                     男 </label>
-                                                <label class="col-md-5 sexLabel">
+                                                <label class="col-md-5 col-sm-5 col-xs-5 sexLabel">
                                                     <input class="sexInput" type="radio" name="sex" value="1">
                                                     女 </label>
                                             </div>
                                         </div>
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label col-md-3 col-xs-2" for="inputLsch">单位/学校</label>
-                                            <div class="controls col-md-9 col-xs-10">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-2 col-xs-2" for="inputLsch">单位/学校</label>
+                                            <div class="controls col-md-9 col-sm-10 col-xs-10">
                                                 <div style="border-radius: 4px;">
                                                     <input id="inputLsch" class="form-control" type="text" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label col-md-3 col-xs-2" for="inputLEmail">邮箱</label>
-                                            <div class="controls col-md-9 col-xs-10">
-                                                <div style="border-radius: 4px;">
-                                                    <input id="inputLEmail" class="form-control" type="text" />
                                                 </div>
                                             </div>
                                         </div>
 
                                     </form>
                                 </div>
-                                <div class="col-md-6">
-                                    <form class="form-horizontal col-md-12">
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label col-md-3 col-xs-2" for="inputLOld">年龄</label>
-                                            <div class="controls col-md-9 col-xs-10">
+                                <div class="col-md-6 formContainer">
+                                    <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-2 col-xs-2" for="inputLOld">年龄</label>
+                                            <div class="controls col-md-9 col-xs-10 col-sm-10">
                                                 <div style="border-radius: 4px;">
                                                     <input id="inputLOld" class="form-control" type="text" />
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label col-md-3 col-xs-2" for="inputLTel">电话</label>
-                                            <div class="controls col-md-9 col-xs-10">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-2 col-xs-2" for="inputLTel">电话</label>
+                                            <div class="controls col-md-9 col-sm-10 col-xs-10">
                                                 <div style="border-radius: 4px;">
                                                     <input id="inputLTel" class="form-control" type="text" />
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-2 col-xs-2" for="inputLEmail">邮箱</label>
+                                            <div class="controls col-md-9 col-sm-10 col-xs-10">
+                                                <div style="border-radius: 4px;">
+                                                    <input id="inputLEmail" class="form-control" type="text" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--职位去除-->
+                                        <!--<div class="form-group col-md-12">
                                             <label class="control-label col-md-3 col-xs-2" for="inputLmajor">职位</label>
                                             <div class="controls col-md-9 col-xs-10">
                                                 <div style="border-radius: 4px;">
                                                     <input id="inputLmajor" class="form-control" type="text" />
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>-->
 
                                     </form>
                                 </div>
@@ -190,32 +195,31 @@
                         </div>
 
                         <!-- 身份证 -->
-                        <div class="row-fluid col-md-12 applyBox" style="border-bottom: 0;">
-                            <div class="col-md-2" style="padding: 0">
+                        <div class="row-fluid col-md-12 col-sm-12 col-xs-12 applyBox" style="border-bottom: 0;">
+                            <div class="col-md-2 col-sm-12 col-xs-12 titleInfo">
                                 <h4 class="title">
                                     身份审核
                                 </h4>
                             </div>
-                            <div class="col-md-10">
-                                <div class="col-md-8">
-                                    <div class="col-md-12" style="padding: 0">
+                            <div class="col-md-10 col-sm-12 col-xs-12">
+                                <div class="identifyContainer">
+                                    <div class="row">
                                         <h4 class="sign">
                                             请提供学生证或工作证，若为自由从业者提供身份证
                                         </h4>
                                     </div>
 
 
-                                    <form class="form-horizontal col-md-12" enctype="multipart/form-data">
-                                        <div class="col-md-12" style="padding: 0" id="Lpicture">
+                                    <form class="row form-horizontal" enctype="multipart/form-data">
+                                        <div style="padding: 0" id="Lpicture">
                                             <h3><span class="required-flag">*</span>附件文件：</h3>
                                             <div class="fileArea" id="idZhengmian" style="padding-top:5px;">
-
                                             </div>
                                             <span class="btn btn-info btn-small fileinput-button">
-                                        <i class="glyphicon glyphicon-plus"></i>
-                                        <span>上传附件</span>
-                                        <input class="chooseFile disableAll" type="file" name="diploma" id="fileZheng" accept="image/jpeg, image/png"/>
-                                    </span>
+                                                <i class="glyphicon glyphicon-plus"></i>
+                                                <span>上传附件</span>
+                                                <input class="chooseFile disableAll" type="file" name="diploma" id="fileZheng" accept="image/jpeg, image/png"/>
+                                            </span>
                                         </div>
                                     </form>
 
@@ -229,7 +233,7 @@
             </div>
 
 
-            <div class="col-md-12 commit_btn_container">
+            <div class="col-md-12 col-sm-12 col-xs-12 commit_btn_container">
                 <button class="btn btn-success" type="button" onclick="doSubmit()">提交</button>
             </div>
         </div>

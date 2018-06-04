@@ -17,7 +17,7 @@ img{ border:none;}
     font-weight: bold;
     line-height: 40px;
     color:#000;
-    margin-top: 30px;
+    /*margin-top: 30px;*/
     margin-bottom: 10px;
 }
 .title {
@@ -51,8 +51,12 @@ img{ border:none;}
 .modal-content .close span{
     font-size: 20px;
 }
-
-
+.form-group label{
+    padding-left: 0;
+}
+.identifyContainer{
+    padding-left: 40px;
+}
 @media (max-width:540px) {
     .main-content{
         padding:10px;
@@ -69,11 +73,28 @@ img{ border:none;}
     .form-group .controls{
         padding-left:10px;
     }
-
+    .form-horizontal{
+        padding: 0;
+    }
+    h4.sign{
+        display: inline-block;
+    }
+    #informationContainer{
+        padding: 0;
+    }
+    div.formContainer{
+        padding: 0;
+    }
+    .identifyContainer{
+        padding-left: 0;
+    }
     .title-main{
         font-size: 25px;
     }
     .title {
         font-size: 18px;
+    }
+    .titleInfo{
+        padding: 0;
     }
 }
