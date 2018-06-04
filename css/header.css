@@ -10,7 +10,8 @@ body {
 
 .header {
     background-color: rgb(47, 47, 47);
-    padding: 5px 0;
+    padding: 10px 0;
+    transition: all 0.2s ease-in-out;
 }
 
 .fixed-header-on .logo {
@@ -23,6 +24,8 @@ body {
 }
 .logo {
     transition: all 0.3s ease-in-out;
+    height: 30px;
+    margin: 10px 0 10px 0;
 }
 
 img {
@@ -53,8 +56,11 @@ img {
     color: #FFC400;
     font-weight: bold;
     font-size: 25px;
-    margin-top: 5px;
+    font-family: Microsoft YaHei, sans-serif;
+}
 
+.brand a:hover {
+    text-decoration: none;
 }
 
 #logo {
