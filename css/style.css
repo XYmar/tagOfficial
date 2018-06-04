@@ -824,6 +824,7 @@ background: #fff;border: 1px solid #fff;}
 .brand a {
 	color: #FFC400;
 	font-weight: bold;
+	font-family: Microsoft YaHei, sans-serif;
 }
 .brand a:hover {
 	text-decoration: none;
