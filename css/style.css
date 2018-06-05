@@ -505,6 +505,8 @@ text-align:center;
 
 .gameTime {
     float: right;
+	font-weight: bold;
+	font-size: 18px;
 }
 
 /* Pills
