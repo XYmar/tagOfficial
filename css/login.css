@@ -117,7 +117,7 @@ input[type=submit], input[type=button] { display: inline-block; vertical-align: 
         float: right;
         margin-right: 0;
         position: relative;
-        margin-top: 100px;
+        /*margin-top: 60px;*/
     }
 
     .login_logo {
@@ -142,6 +142,7 @@ input[type=submit], input[type=button] { display: inline-block; vertical-align: 
     input[type="text"], input[type="file"], input[type="password"], input[type="email"], select {
         height: 35px;
         font-size: 12px;
+        line-height: 35px;
     }
 
     input[type="submit"], input[type="button"] {

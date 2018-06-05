@@ -161,4 +161,8 @@ img {
         overflow-x: scroll;
     }
 
+    .childToTop {
+        padding-top: 0;
+    }
+
 }
