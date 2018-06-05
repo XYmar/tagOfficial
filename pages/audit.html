@@ -469,8 +469,8 @@
                         visible: false
                     },{
                         field: 'id',
-                        title: '操作',
-                        formatter: actionFormatter
+                        title: '状态',
+                        formatter: statusFormatter
                     }
                     ],
                     data: data
@@ -499,6 +499,11 @@
             return "<a href='auditDetail.html?id=" + value + "' style='float: none;'>" +
                 "<button class='btn btn-success btn-success editMember' type='button' >审核</button> " +
                 "</a>"
+        }
+
+        //生成状态
+        function statusFormatter(value) {
+            return "<span style=\"color: #27A9E3;\">已审核</span>"
         }
 
         /*$(function(){
