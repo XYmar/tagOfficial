@@ -205,13 +205,46 @@
 
 
             <div class="col-md-12 commit_btn_container">
-                <a href="audit.html">
+                <!--<a href="audit.html">
                     <button class="btn btn-danger" type="button">未通过</button>
-                </a>
+                </a>-->
+                <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#auditdialog">未通过</button>
 
                 <button class="btn btn-success" type="button" onclick="doSubmit()" style="margin-left: 30px;width: 70px;">通过</button>
             </div>
         </div>
+    </div>
+    <div class="modal fade" id="auditdialog" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="reset()"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title title" id="gridSystemModalLabel">审核</h4>
+                </div>
+                <div class="modal-body" style="padding-bottom: 0">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <form class="form-horizontal col-md-12">
+                                <div class="form-group col-md-12">
+                                    <label class="control-label col-md-4 col-xs-2" for="inputReason">未通过理由</label>
+                                    <div class="controls col-md-8 col-xs-10">
+                                        <div style="border-radius: 4px;">
+                                            <input id="inputReason" class="form-control" type="text" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset()">取消</button>
+                    <a href="audit.html">
+                        <button class="btn btn-primary" type="button">确认</button>
+                    </a>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
     </div>
 </div>
 <!--<div class="container-fluid">
@@ -712,6 +745,10 @@
             }
         });
 
+    }
+
+    function reset() {
+        $("#inputReason").val('');
     }
 
 

@@ -10,9 +10,11 @@
 
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="../bootstrap-table/bootstrap-table.min.css">
+
     <link href="apply.css" rel="stylesheet" type="text/css" />
 
-    <link rel="stylesheet" type="text/css" href="../css/applyInfo.css">
+    <!--<link rel="stylesheet" type="text/css" href="../css/applyInfo.css">-->
 
     <link rel="stylesheet" href="../css/member.css">
     <link href="../css/header.css" rel="stylesheet" type="text/css" />
@@ -69,12 +71,12 @@
             <!--border-radius: 10px;border: 1px solid #27A9E3;-->
             <div class="row">
                 <hr>
-                <div class="span12">
+                <div class="col-md-12 childToTop">
                     <div class="row-fluid col-md-12">
                         <div class="col-md-1 row-fluid">
                         </div>
                         <div class="col-md-11 col-xs-11 row-fluid">
-                            <h3><span class="required-flag">*</span>团队信息如下，可进行审核操作</h3>
+                            <h3 class="message"><span class="required-flag">*</span>团队信息如下，可进行审核操作</h3>
                         </div>
                     </div>
 
@@ -90,12 +92,13 @@
                                             <a role="button" data-toggle="collapse" class="shenhea" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                                 未审核
                                             </a>
+                                            <span id="notAuditNum" style="margin-left:6px;"></span>
                                         </h4>
                                     </div>
                                     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                        <div class="panel-body">
+                                        <div class="panel-body" style="padding-top: 0">
                                             <div class="table-responsive">
-                                                <table class="table table-bordered" style="border: 2px solid #ddd;">
+                                                <!--<table class="table table-bordered" style="border: 2px solid #ddd;">
                                                     <thead>
                                                     <tr>
                                                         <th>
@@ -124,6 +127,8 @@
                                                     </thead>
                                                     <tbody id="noAudit">
                                                     </tbody>
+                                                </table>-->
+                                                <table id="memberInfoTableNotready">
                                                 </table>
                                             </div>
                                         </div>
@@ -135,12 +140,13 @@
                                             <a class="collapsed shenhea" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                                 已审核
                                             </a>
+                                            <span id="hasAuditNum" style="margin-left:6px;"></span>
                                         </h4>
                                     </div>
                                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                        <div class="panel-body">
+                                        <div class="panel-body" style="padding-top: 0">
                                             <div class="table-responsive">
-                                                <table class="table table-bordered" style="border: 2px solid #ddd;">
+                                                <!--<table class="table table-bordered" style="border: 2px solid #ddd;">
                                                     <thead>
                                                     <tr>
                                                         <th>
@@ -169,6 +175,8 @@
                                                     </thead>
                                                     <tbody id="alreadyAudit">
                                                     </tbody>
+                                                </table>-->
+                                                <table id="memberInfoTableAlready">
                                                 </table>
                                             </div>
                                         </div>
@@ -310,6 +318,8 @@
 
 <script src="../js/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+<script src="../bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
 
 <script type="text/javascript">
     window.onload=function(){
@@ -327,12 +337,14 @@
             success: function (result) {
                 let str = "";
                 let data = result.data;
+                let dataLength = data.length
 
                 if(data.length !== 0){
                     console.log(result.data);//打印服务端返回的数据(调试用)
-
+                    let notAudit = document.getElementById('notAuditNum')
+                    notAudit.innerHTML = '[' + dataLength + '条]'
                     let noAuditTbody = document.getElementById("noAudit");
-                    for (let i=0;i<data.length;i++) {
+                    /*for (let i=0;i<data.length;i++) {
                         str += "<tr>" +
                             "<td style='display:none'>" + data[i].id + "</td>" +
                             "<td>" + data[i].teamName + "</td>" +
@@ -346,8 +358,46 @@
                             "</a></td>" +
                             "</tr>";
                     }
-                    noAuditTbody.innerHTML = str;
+                    noAuditTbody.innerHTML = str;*/
                 }
+                $('#memberInfoTableNotready').bootstrapTable({
+                    sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination : true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 4,                       //每页的记录行数（*）
+                    pageList: [2,4,6],        //可供选择的每页的行数（*）
+                    search:true,
+                    columns: [{
+                        field: 'teamName',
+                        title: '组名'
+                    }, {
+                        field: 'name',
+                        title: '姓名'
+                    }, {
+                        field: 'age',
+                        title: '年龄'
+                    },{
+                        field: 'sex',
+                        title: '性别',
+                        formatter: sexFormatter
+                    },{
+                        field: 'telephoneNumber',
+                        title: '手机号'
+                    },{
+                        field: 'organization',
+                        title: '单位/学校'
+                    },{
+                        field: 'id',
+                        title: 'id',
+                        visible: false
+                    },{
+                        field: 'id',
+                        title: '操作',
+                        formatter: actionFormatter
+                    }
+                    ],
+                    data: data
+                });
 
             },
             error : function() {
@@ -367,11 +417,13 @@
             success: function (result) {
                 let str = "";
                 let data = result.data;
+                let dataLength = data.length
 
                 if(data.length !== 0){
                     console.log(result.data);//打印服务端返回的数据(调试用)
-
-                    let alreadyAuditTbody = document.getElementById("alreadyAudit");
+                    let hasAudit = document.getElementById('hasAuditNum')
+                    hasAudit.innerHTML = '['+ dataLength + '条]'
+                    /*let alreadyAuditTbody = document.getElementById("alreadyAudit");
                     for (let i=0;i<data.length;i++) {
                         str += "<tr>" +
                             "<td>" + data[i].teamName + "</td>" +
@@ -383,14 +435,129 @@
                             "<td><span style=\"color: #27A9E3;\">已审核</span></td>" +
                             "</tr>";
                     }
-                    alreadyAuditTbody.innerHTML = str;
+                    alreadyAuditTbody.innerHTML = str;*/
                 }
+                $('#memberInfoTableAlready').bootstrapTable({
+                    sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination : true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 4,                       //每页的记录行数（*）
+                    pageList: [2,4,6],        //可供选择的每页的行数（*）
+                    search:true,
+                    columns: [{
+                        field: 'teamName',
+                        title: '组名'
+                    }, {
+                        field: 'name',
+                        title: '姓名'
+                    }, {
+                        field: 'age',
+                        title: '年龄'
+                    },{
+                        field: 'sex',
+                        title: '性别',
+                        formatter: sexFormatter
+                    },{
+                        field: 'telephoneNumber',
+                        title: '手机号'
+                    },{
+                        field: 'organization',
+                        title: '单位/学校'
+                    },{
+                        field: 'id',
+                        title: 'id',
+                        visible: false
+                    },{
+                        field: 'id',
+                        title: '状态',
+                        formatter: statusFormatter
+                    }
+                    ],
+                    data: data
+                });
 
             },
             error : function() {
                 alert("请求错误！");
             }
         });
+
+        //生成性别
+        function sexFormatter(value) {
+            let sexValue
+            if (value == 0 ) {
+                sexValue = '男'
+            }
+            else if (value == 1) {
+                sexValue = '女'
+            }
+            return sexValue
+        }
+
+        //生成操作
+        function actionFormatter(value) {
+            return "<a href='auditDetail.html?id=" + value + "' style='float: none;'>" +
+                "<button class='btn btn-success btn-success editMember' type='button' >审核</button> " +
+                "</a>"
+        }
+
+        //生成状态
+        function statusFormatter(value) {
+            return "<span style=\"color: #27A9E3;\">已审核</span>"
+        }
+
+        /*$(function(){
+            $('#memberInfoTable').bootstrapTable({
+                /!*url : 'http://localhost:8081/users/byenabled?enabled=true',*!/ // 请求后台的URL（*）
+                method : 'get', // 请求方式（*）
+                /!*toolbar : '#toolbar',*!/ // 工具按钮用哪个容器
+
+                striped : true, // 是否显示行间隔色
+                cache : false, // 是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+                //  sortable : true, //用 是否启排序
+                //  sortOrder : "asc", // 排序方式
+                sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
+                pagination : true, // 是否显示分页（*）
+                pageNumber: 1,    //如果设置了分页，首页页码
+                pageSize: 2,                       //每页的记录行数（*）
+                pageList: [2,4,6],        //可供选择的每页的行数（*）
+                //  onlyInfoPagination:false, //设置为 true 只显示总数据数，而不显示分页
+                showRefresh : true, // 是否显示刷新按钮
+//      queryParamsType:'',
+                clickToSelect : true, // 是否启用点击选中行
+                //  uniqueId : "fileid", // 每一行的唯一标识，一般为主键列
+                showToggle : false, // 是否显示详细视图和列表视图的切换按钮
+                //  cardView : false, // 是否显示详细视图
+                //  detailView : false, // 是否显示父子表
+                search:true,   //是否启用搜索框
+
+                columns : [ {
+                    field : 'tUsername',
+                    title : '教师号',
+                    align: 'center',
+                    valign: 'middle'
+                },{
+                    field : 'tName',
+                    title : '姓名',
+                    align: 'center',
+                    valign: 'middle'
+
+                }, {
+                    field : 'tAge',
+                    title : '年龄',
+                    align: 'center',
+                    valign: 'middle'
+
+                }, {
+                    field : 'tDepartment',
+                    title : '所属学院',
+                    align: 'center',
+                    valign: 'middle'
+                } ],
+                silent : true, // 刷新事件必须设置
+
+            });
+        })*/
 
     }
 </script>
