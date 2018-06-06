@@ -97,4 +97,8 @@ img{ border:none;}
     .titleInfo{
         padding: 0;
     }
+
+    .form-horizontal .form-group {
+        margin: 0 0;
+    }
 }
