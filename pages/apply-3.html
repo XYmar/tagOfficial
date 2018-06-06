@@ -371,89 +371,90 @@
         let badge = document.getElementById("fileZheng").files[0];  //获取文件
 
         let isValidate = false;
+        let isValidateUsername = false;
+        let isValidatePwd = false;
+        let isValidateTeamname = false;
+        let isValidateName = false;
+        let isValidateAge = false;
+        let isValidateTel = false;
+        let isValidateOrg = false;
+        let isValidateEmail = false;
+        let isValidateBadge = false;
+
 
         console.log(username.length);
         if(username.length === 0){
             //alert("账号不能为空");
             document.getElementById("inputGNo").parentElement.style.border = "1px solid red";
-            isValidate = false;
-            return;
+            isValidateUsername = false;
         }else{
             document.getElementById("inputGNo").parentElement.style.border = "0";
-            isValidate = true;
+            isValidateUsername = true;
         }
 
         if(password.length === 0){
             //alert("密码不能为空");
             document.getElementById("inputGPassword").parentElement.style.border = "1px solid red";
-            isValidate = false;
-            return;
+            isValidatePwd = false;
         }else{
             if(CheckPassWord(password)){
                 document.getElementById("inputGPassword").parentElement.style.border = "0";
-                isValidate = true;
+                isValidatePwd = true;
             }else{
 
                 alert("密码必须为字母与数字混合，且不小于6位");
                 document.getElementById("inputGPassword").parentElement.style.border = "1px solid red";
-                isValidate = false;
-                return;
+                isValidatePwd = false;
             }
 
         }
 
         if(teamName.length === 0){
             document.getElementById("inputGName").parentElement.style.border = "1px solid red";
-            isValidate = false;
-            return;
+            isValidateTeamname = false;
         }else{
             document.getElementById("inputGName").parentElement.style.border = "0";
-            isValidate = true;
+            isValidateTeamname = true;
         }
 
         if(name.length === 0){
             document.getElementById("inputLname").parentElement.style.border = "1px solid red";
-            isValidate = false;
-            return;
+            isValidateName = false;
         }else{
             document.getElementById("inputLname").parentElement.style.border = "0";
-            isValidate = true;
+            isValidateName = true;
         }
 
         if(age.length === 0){
             document.getElementById("inputLOld").parentElement.style.border = "1px solid red";
-            isValidate = false;
-            return;
+            isValidateAge = false;
         }else{
             document.getElementById("inputLOld").parentElement.style.border = "0";
-            isValidate = true;
+            isValidateAge = true;
         }
 
 
         if(telephoneNumber.length === 0){
             document.getElementById("inputLTel").parentElement.style.border = "1px solid red";
-            isValidate = false;
-            return;
+            isValidateTel = false;
         }else{
             if(CheckTel(telephoneNumber)){
                 document.getElementById("inputLTel").parentElement.style.border = "0";
-                isValidate = true;
+                isValidateTel = true;
             }else{
                 alert("不是完整的11位手机号或者正确的手机号前七位");
                 document.getElementById("inputLTel").parentElement.style.border = "1px solid red";
-                isValidate = false;
-                return;
+                isValidateTel = false;
             }
 
         }
 
         if(organization.length === 0){
-            document.getElementById("inputLsch").parentElement.style.border = "red";
-            isValidate = false;
-            return;
+            document.getElementById("inputLsch").parentElement.style.border = "1px solid red";
+            isValidateOrg = false;
         }else{
             document.getElementById("inputLsch").parentElement.style.border = "0";
-            isValidate = true;
+            isValidateOrg = true;
         }
 
         /*if(job.length === 0){
@@ -467,22 +468,20 @@
 
         if(email.length === 0){
             document.getElementById("inputLEmail").parentElement.style.border = "1px solid red";
-            isValidate = false;
-            return;
+            isValidateEmail = false;
         }else{
             if(checkEmail(email)){
                 document.getElementById("inputLEmail").parentElement.style.border = "0";
-                isValidate = true;
+                isValidateEmail = true;
             }else{
                 alert("邮箱格式不正确");
                 document.getElementById("inputLEmail").parentElement.style.border = "1px solid red";
-                isValidate = false;
-                return;
+                isValidateEmail = false;
             }
 
         }
 
-        if(sex !== ''){//获取name为sex的input的对象并判断是否被选中
+        /*if(sex !== ''){//获取name为sex的input的对象并判断是否被选中
             document.getElementById("Lsex").style.border = "0";
             isValidate = true;
             //alert(sex);
@@ -492,17 +491,23 @@
             isValidate = false;
 
             return;
-        }
+        }*/
 
         if (typeof(badge) === "undefined" || badge.size <= 0) {
             //alert("请选择图片");
-            document.getElementById("Lpicture").style.border = "1px solid red";
-            isValidate = false;
-            return;
+            document.getElementById("Lpicture").parentElement.style.border = "1px solid red";
+            isValidateBadge = false;
 
         }else{
-            document.getElementById("Lpicture").style.border = "0";
-            isValidate = true;
+            document.getElementById("Lpicture").parentElement.style.border = "0";
+            isValidateBadge = true;
+        }
+
+        if(isValidateUsername && isValidatePwd && isValidatePwd && isValidateTeamname && isValidateName && isValidateAge
+            && isValidateTel && isValidateOrg && isValidateEmail && isValidateBadge ){
+            isValidate = true
+        }else {
+            isValidate = false
         }
 
         return isValidate;
