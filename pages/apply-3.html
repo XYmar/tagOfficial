@@ -215,11 +215,14 @@
                                             <h3><span class="required-flag">*</span>附件文件：</h3>
                                             <div class="fileArea" id="idZhengmian" style="padding-top:5px;">
                                             </div>
-                                            <span class="btn btn-info btn-small fileinput-button">
+                                            <div class="col-xs-12 idPic">
+                                                <span class="btn btn-info btn-small fileinput-button">
                                                 <i class="glyphicon glyphicon-plus"></i>
                                                 <span>上传附件</span>
                                                 <input class="chooseFile disableAll" type="file" name="diploma" id="fileZheng" accept="image/jpeg, image/png"/>
                                             </span>
+                                            </div>
+
                                         </div>
                                     </form>
 
@@ -277,11 +280,11 @@
 
         //添加到文件列表
         let html = '<div class="col-md-12 idPic">' +
-            '<p class="fileName col-md-5 idPic">' + fileName + '</p>' +
-            '<div class="col-md-1"><span class="delFile btn btn-danger btn-mini disableAll newAddFile" onclick="delFile(event)"' +
-            ' style="cursor:pointer;margin-left:5%;margin-bottom: 7px;padding: 3px 8px;font-size: 11px;border-radius: 3px;">删除</span></div>' +
-            '<div class="col-md-1"><a class="btn btn-success btn-mini" href="' + url + '" data-lightbox="1111" data-title="附件上传预览" ' +
-            'style="cursor:pointer;margin-left:5%;margin-bottom: 7px;padding: 3px 8px;font-size: 11px;border-radius: 3px;float: unset;margin-top: 0;">预览</a></div>' +
+            '<p class="fileName col-md-5 col-xs-12 idPic">' + fileName + '</p>' +
+            '<div class="col-md-1 col-xs-3 idPic"><span class="delFile btn btn-danger btn-mini disableAll newAddFile" onclick="delFile(event)"' +
+            ' style="cursor:pointer;padding: 3px 8px;font-size: 11px;border-radius: 3px;">删除</span></div>' +
+            '<div class="col-md-1 col-xs-3 idPic"><a class="btn btn-success btn-mini" href="' + url + '" data-lightbox="1111" data-title="附件上传预览" ' +
+            'style="cursor:pointer;padding: 3px 8px;font-size: 11px;border-radius: 3px;float: unset;margin-top: 0;">预览</a></div>' +
             '</div>';
 
         let $fileArea = document.getElementById(divId);
