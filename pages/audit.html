@@ -62,7 +62,7 @@
 <!-- header end -->
 
 
-<div class="container">
+<div class="container auditContainer">
     <div class="row main-content">
         <div class="col-md-12 toTop">
             <h3 class="title-main">
@@ -96,8 +96,9 @@
                                         </h4>
                                     </div>
                                     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                        <div class="panel-body" style="padding-top: 0">
-                                            <div class="table-responsive">
+                                        <div class="panel-body">
+                                            <div id="NoAuditInfo" style="text-align: center">暂无数据</div>
+                                            <div class="table-responsive" style="margin-top: -10px">
                                                 <!--<table class="table table-bordered" style="border: 2px solid #ddd;">
                                                     <thead>
                                                     <tr>
@@ -144,8 +145,9 @@
                                         </h4>
                                     </div>
                                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                        <div class="panel-body" style="padding-top: 0">
-                                            <div class="table-responsive">
+                                        <div class="panel-body">
+                                            <div id="hasAuditInfo" style="text-align: center">暂无数据</div>
+                                            <div class="table-responsive" style="margin-top: -10px">
                                                 <!--<table class="table table-bordered" style="border: 2px solid #ddd;">
                                                     <thead>
                                                     <tr>
@@ -343,6 +345,7 @@
                     console.log(result.data);//打印服务端返回的数据(调试用)
                     let notAudit = document.getElementById('notAuditNum')
                     notAudit.innerHTML = '[' + dataLength + '条]'
+                    document.getElementById('NoAuditInfo').innerHTML = ''
                     let noAuditTbody = document.getElementById("noAudit");
                     /*for (let i=0;i<data.length;i++) {
                         str += "<tr>" +
@@ -423,6 +426,7 @@
                     console.log(result.data);//打印服务端返回的数据(调试用)
                     let hasAudit = document.getElementById('hasAuditNum')
                     hasAudit.innerHTML = '['+ dataLength + '条]'
+                    document.getElementById('hasAuditInfo').innerHTML = ''
                     /*let alreadyAuditTbody = document.getElementById("alreadyAudit");
                     for (let i=0;i<data.length;i++) {
                         str += "<tr>" +

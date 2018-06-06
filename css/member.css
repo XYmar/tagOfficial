@@ -3,3 +3,22 @@
     margin-right: 10px;
     font-size: 12px;
 }
+
+@media (max-width:480px) {
+    .auditContainer h3.message{
+        font-size: 16px;
+    }
+}
+@media (max-width:768px) {
+    .auditContainer div.panel-body{
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    .auditContainer div.table-responsive{
+        /*padding: 4px;*/
+        border: none;
+    }
+    .auditContainer div.pull-left.pagination-detail{
+        font-size: 12px;
+    }
+}
