@@ -1038,6 +1038,9 @@ margin: 2px 5px 0;}
 		width: 327px;
 	}
 
+	.nav > li > a {
+		padding: 10px 4px;
+	}
 }
 
 /* Images Overlay
