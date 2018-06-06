@@ -357,7 +357,7 @@
         let age = $("#inputLOld").val();                         //年龄
         let telephoneNumber = $("#inputLTel").val();             //电话
         let organization = $("#inputLsch").val();                //组织
-        let job = $("#inputLmajor").val();                       //职位
+        //let job = $("#inputLmajor").val();                       //职位
         let email = $("#inputLEmail").val();                     //邮箱
 
         let sexAll = document.getElementsByName("sex");
@@ -440,7 +440,7 @@
                 isValidate = true;
             }else{
                 alert("不是完整的11位手机号或者正确的手机号前七位");
-                document.getElementById("inputLTel").parentElement.style.border = "0";
+                document.getElementById("inputLTel").parentElement.style.border = "1px solid red";
                 isValidate = false;
                 return;
             }
@@ -448,7 +448,7 @@
         }
 
         if(organization.length === 0){
-            document.getElementById("inputLsch").parentElement.style.border = "1px solid red";
+            document.getElementById("inputLsch").parentElement.style.border = "red";
             isValidate = false;
             return;
         }else{
@@ -456,14 +456,14 @@
             isValidate = true;
         }
 
-        if(job.length === 0){
+        /*if(job.length === 0){
             document.getElementById("inputLmajor").parentElement.style.border = "1px solid red";
             isValidate = false;
             return;
         }else{
             document.getElementById("inputLmajor").parentElement.style.border = "0";
             isValidate = true;
-        }
+        }*/
 
         if(email.length === 0){
             document.getElementById("inputLEmail").parentElement.style.border = "1px solid red";
@@ -511,10 +511,12 @@
 
     function doSubmit() {
         //alert("hhhh");
-        let r=confirm("提交后将无法修改，确认提交吗？");
+
 
         //console.log(validate());
         if(validate()){
+            let r=confirm("提交后将无法修改，确认提交吗？");
+
             if (r === true) {
                 let username = $("#inputGNo").val();                     //账号
                 let password = $("#inputGPassword").val();               //密码
@@ -524,7 +526,7 @@
                 let age = $("#inputLOld").val();                         //年龄
                 let telephoneNumber = $("#inputLTel").val();             //电话
                 let organization = $("#inputLsch").val();                //组织
-                let job = $("#inputLmajor").val();                       //职位
+                //let job = $("#inputLmajor").val();                       //职位
                 let email = $("#inputLEmail").val();                     //邮箱
 
                 let sexAll = document.getElementsByName("sex");
@@ -550,7 +552,7 @@
                 formData.append("age", age);
                 formData.append("telephoneNumber", telephoneNumber);
                 formData.append("organization", organization);
-                formData.append("job", job);
+                //formData.append("job", job);
                 formData.append("email", email);
                 formData.append("sex", sex);
                 formData.append("badge", badge); //加入文件对象
