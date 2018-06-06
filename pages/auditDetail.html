@@ -699,7 +699,7 @@
         $.ajax({
             //几个参数需要注意一下
             type: "PATCH",//方法类型
-            dataType: "blob",//预期服务器返回的数据类型
+            dataType: "json",//预期服务器返回的数据类型
             url: "http://localhost:8081/users/" + id + "/enable",//url
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));

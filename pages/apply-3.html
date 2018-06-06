@@ -243,8 +243,7 @@
 <script src="../js/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="../plugins/jquery.min.js"></script>
 <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
-
-<script src="http://58.213.141.220:10049/housingsubsidy/js/lightbox.js"></script>
+<script src="../js/lightbox.js"></script>
 
 <script type="text/javascript">
     window.onload=function(){
@@ -277,12 +276,12 @@
         fileArea.innerHTML = '';
 
         //添加到文件列表
-        let html = '<div>' +
-            '<p class="fileName">' + fileName + '</p>' +
-            '<span class="delFile btn btn-danger btn-mini disableAll newAddFile" onclick="delFile(event)"' +
-            ' style="cursor:pointer;margin-left:5%;margin-bottom: 7px;padding: 3px 8px;font-size: 11px;border-radius: 3px;">删除</span>' +
-            '<a class="btn btn-success btn-mini" href="' + url + '" data-lightbox="1111" data-title="附件上传预览" ' +
-            'style="cursor:pointer;margin-left:5%;margin-bottom: 7px;padding: 3px 8px;font-size: 11px;border-radius: 3px;float: unset;margin-top: 0;">预览</a>' +
+        let html = '<div class="col-md-12 idPic">' +
+            '<p class="fileName col-md-5 idPic">' + fileName + '</p>' +
+            '<div class="col-md-1"><span class="delFile btn btn-danger btn-mini disableAll newAddFile" onclick="delFile(event)"' +
+            ' style="cursor:pointer;margin-left:5%;margin-bottom: 7px;padding: 3px 8px;font-size: 11px;border-radius: 3px;">删除</span></div>' +
+            '<div class="col-md-1"><a class="btn btn-success btn-mini" href="' + url + '" data-lightbox="1111" data-title="附件上传预览" ' +
+            'style="cursor:pointer;margin-left:5%;margin-bottom: 7px;padding: 3px 8px;font-size: 11px;border-radius: 3px;float: unset;margin-top: 0;">预览</a></div>' +
             '</div>';
 
         let $fileArea = document.getElementById(divId);
@@ -295,7 +294,7 @@
         let e = event || window.event;
         let target = e.target || e.srcElement;
 
-        let delDiv = target.parentNode;
+        let delDiv = target.parentNode.parentNode;
         /*let id = delDiv.parentNode.id;
 
         console.log("删除的div----");
