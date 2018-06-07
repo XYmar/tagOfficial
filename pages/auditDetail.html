@@ -214,19 +214,19 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="auditdialog" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
-        <div class="modal-dialog modal-lg" role="document">
+    <div class="modal fade" id="auditdialog" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" style="top:25%;">
+        <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="reset()"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title title" id="gridSystemModalLabel">审核</h4>
+                    <h4 class="modal-title title" id="gridSystemModalLabel">审核未通过</h4>
                 </div>
-                <div class="modal-body" style="padding-bottom: 0">
+                <div class="modal-body" style="padding: 30px 25px 20px 25px">
                     <div class="row">
                         <div class="col-md-10">
                             <form class="form-horizontal col-md-12">
                                 <div class="form-group col-md-12">
-                                    <label class="control-label col-md-4 col-xs-2" for="inputReason">未通过理由</label>
+                                    <label class="control-label col-md-4 col-xs-2" for="inputReason">理由</label>
                                     <div class="controls col-md-8 col-xs-10">
                                         <div style="border-radius: 4px;">
                                             <input id="inputReason" class="form-control" type="text" />
