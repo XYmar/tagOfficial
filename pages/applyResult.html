@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>审核结果</title>
+
+    <!-- Mobile Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="apply.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="../css/apply.css">
+
+    <link rel="stylesheet" href="../css/fileUpload.css">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../css/applyInfo.css">
+    <link href="../css/header.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../css/lightbox.css">
+
+
+</head>
+
+<body style="background-image: url('../images/2.png');">
+<!-- header start -->
+<header class="header fixed clearfix navbar navbar-fixed-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <!-- header-left start -->
+                <div class="header-left">
+
+                    <!-- logo -->
+                    <!--<div class="logo smooth-scroll">
+                        <a href="../index.html"><img id="logo" src="../images/logo.png" alt="Worthy"></a>
+                    </div>-->
+
+                    <!-- name-and-slogan -->
+                    <div class="logo-section smooth-scroll">
+                        <div class="brand"><a href="../index.html">军事智能·机器阅读</a></div>
+                    </div>
+
+                </div>
+                <!-- header-left end -->
+
+            </div>
+            <div class="col-md-9">
+
+            </div>
+        </div>
+    </div>
+</header>
+<!-- header end -->
+<div class="container"  id="banner">
+    <div class="row main-content">
+        <div class="col-md-12 col-sm-12 col-xs-12 toTop">
+            <h3 class="title-main">
+                审核结果查询
+            </h3>
+            <!--border-radius: 10px;border: 1px solid #27A9E3;-->
+            <div class="row">
+                <hr>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-md-1 col-sm-1 col-xs-1">
+                    </div>
+                    <div class="col-md-10 col-sm-12 col-xs-12" id="informationContainer">
+                        <!-- 结果表格 -->
+                        <!--<div class="col-md-12 col-xs-12">-->
+                            <div class="row-fluid col-md-12 col-xs-12 paddingDiv">
+                                <div class="col-md-12 table-responsive paddingDiv">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>
+                                                组名
+                                            </th>
+                                            <th>
+                                                姓名
+                                            </th>
+                                            <th>
+                                                手机号
+                                            </th>
+                                            <th>
+                                                单位/学校
+                                            </th>
+                                            <th>
+                                                未通过理由
+                                            </th>
+                                            <th>
+                                                状态
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="TeamMember">
+                                        <tr>
+                                            <td>
+                                                xy
+                                            </td>
+                                            <td>
+                                                xxxx
+                                            </td>
+                                            <td>
+                                                18260137287
+                                            </td>
+                                            <td>
+                                                南京大学
+                                            </td>
+                                            <td>
+                                                --
+                                            </td>
+                                            <td>
+                                                <span style="color: #27A9E3;">
+                                                    审核中
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        <!--</div>-->
+
+                        <!-- 提示信息 -->
+                        <div class="row-fluid col-md-12 paddingDivMess">
+                            <div class="col-md-12 col-xs-12 row-fluid paddingDiv">
+                                <h3 class="message"><span class="required-flag">*</span>如未通过，可修改后再次提交</h3>
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="col-md-12 col-xs-12 editDiv">
+                            <!-- 组信息 -->
+                            <div class="row-fluid col-md-12 col-sm-12 col-xs-12 applyBoxResult">
+                                <div class="col-md-2 col-sm-12 col-xs-12 titleInfo">
+                                    <h4 class="title">
+                                        参赛组信息
+                                    </h4>
+                                </div>
+                                <div class="col-md-10 col-sm-12 col-xs-12">
+                                    <div class="col-md-6 formContainer">
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-2 col-xs-2" for="inputGNo">账号</label>
+                                                <div class="controls col-md-9 col-sm-10 col-xs-10">
+                                                    <div style="border-radius: 4px;">
+                                                        <input id="inputGNo" class="form-control" type="text" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-2 col-xs-2" for="inputGPassword">密码</label>
+                                                <div class="controls col-md-9 col-sm-10 col-xs-10">
+                                                    <div style="border-radius: 4px;">
+                                                        <input id="inputGPassword" class="form-control" type="password" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-6 formContainer">
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-2 col-xs-2" for="inputGName">组名称</label>
+                                                <div class="controls col-md-9 col-sm-10 col-xs-10">
+                                                    <div style="border-radius: 4px;">
+                                                        <input id="inputGName" class="form-control" type="text" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <!-- 组长信息 -->
+                            <div class="row-fluid col-md-12 col-sm-12 col-xs-12 applyBoxResult">
+                                <div class="col-md-2 col-sm-12 col-xs-12 titleInfo">
+                                    <h4 class="title">
+                                        组长信息
+                                    </h4>
+                                </div>
+                                <div class="col-md-10 col-sm-12 col-xs-12">
+                                    <div class="col-md-6 formContainer">
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-2 col-xs-2" for="inputLname">姓名</label>
+                                                <div class="controls col-md-9 col-sm-10 col-xs-10">
+                                                    <div style="border-radius: 4px;">
+                                                        <input id="inputLname" class="form-control" type="text" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group formContainer">
+                                                <label class="control-label col-md-3 col-sm-2 col-xs-2">性别</label>
+                                                <div class="controls col-md-9 col-sm-10 col-xs-10 sexDiv" id="Lsex">
+                                                    <label class="col-md-5 col-sm-5 col-xs-5 sexLabel">
+                                                        <input class="sexInput" type="radio" name="sex" value="0" checked>
+                                                        男 </label>
+                                                    <label class="col-md-5 col-sm-5 col-xs-5 sexLabel">
+                                                        <input class="sexInput" type="radio" name="sex" value="1">
+                                                        女 </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-2 col-xs-2" for="inputLsch">单位/学校</label>
+                                                <div class="controls col-md-9 col-sm-10 col-xs-10">
+                                                    <div style="border-radius: 4px;">
+                                                        <input id="inputLsch" class="form-control" type="text" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                    <div class="col-md-6 formContainer">
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-2 col-xs-2" for="inputLOld">年龄</label>
+                                                <div class="controls col-md-9 col-xs-10 col-sm-10">
+                                                    <div style="border-radius: 4px;">
+                                                        <input id="inputLOld" class="form-control" type="text" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-2 col-xs-2" for="inputLTel">电话</label>
+                                                <div class="controls col-md-9 col-sm-10 col-xs-10">
+                                                    <div style="border-radius: 4px;">
+                                                        <input id="inputLTel" class="form-control" type="text" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-2 col-xs-2" for="inputLEmail">邮箱</label>
+                                                <div class="controls col-md-9 col-sm-10 col-xs-10">
+                                                    <div style="border-radius: 4px;">
+                                                        <input id="inputLEmail" class="form-control" type="text" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!--职位去除-->
+                                            <!--<div class="form-group col-md-12">
+                                                <label class="control-label col-md-3 col-xs-2" for="inputLmajor">职位</label>
+                                                <div class="controls col-md-9 col-xs-10">
+                                                    <div style="border-radius: 4px;">
+                                                        <input id="inputLmajor" class="form-control" type="text" />
+                                                    </div>
+                                                </div>
+                                            </div>-->
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 身份证 -->
+                            <div class="row-fluid col-md-12 col-sm-12 col-xs-12 applyBoxResult" style="border-bottom: 0;">
+                                <div class="col-md-2 col-sm-12 col-xs-12 titleInfo">
+                                    <h4 class="title">
+                                        身份审核
+                                    </h4>
+                                </div>
+                                <div class="col-md-10 col-sm-12 col-xs-12">
+                                    <div class="identifyContainer">
+                                        <div class="row">
+                                            <h4 class="sign">
+                                                请提供学生证或工作证，若为自由从业者提供身份证
+                                            </h4>
+                                        </div>
+
+
+                                        <form class="row form-horizontal" enctype="multipart/form-data">
+                                            <div style="padding: 0" id="Lpicture">
+                                                <h3><span class="required-flag">*</span>附件文件：</h3>
+                                                <div class="fileArea" id="idZhengmian" style="padding-top:5px;">
+                                                </div>
+                                                <span class="btn btn-info btn-small fileinput-button">
+                                                <i class="glyphicon glyphicon-plus"></i>
+                                                <span>上传附件</span>
+                                                <input class="chooseFile disableAll" type="file" name="diploma" id="fileZheng" accept="image/jpeg, image/png"/>
+                                            </span>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <div class="col-md-12 col-sm-12 col-xs-12 editCommitBtn">
+                <button class="btn btn-success" type="button" onclick="doSubmit()">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="../plugins/jquery.min.js"></script>
+<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+<script src="../js/lightbox.js"></script>
+
+<script type="text/javascript">
+    window.onload=function(){
+        let fZheng = document.getElementById("fileZheng");
+
+        //this.files即获取input中上传的file对象 是个数组
+        fZheng.onchange = function(){
+            if(fZheng.value.length !== 0){
+                let file = this.files[0];
+
+                divId = "idZhengmian";
+
+                handleImg(file, divId);
+            }
+        }
+
+    }
+
+    function handleImg(file, divId){
+        //获取文件名称
+        let fileName = file.name;
+        console.log("文件名---------");
+        console.log(file);
+        console.log(fileName);
+
+        url=window.URL.createObjectURL(file);  // 得到bolb对象路径，可当成普通的文件路径一样使用，赋值给src;
+
+        //清空文件列表
+        let fileArea = document.getElementById("idZhengmian");
+        fileArea.innerHTML = '';
+
+        //添加到文件列表
+        let html = '<div class="col-md-12 idPic">' +
+            '<p class="fileName col-md-5 idPic">' + fileName + '</p>' +
+            '<div class="col-md-1"><span class="delFile btn btn-danger btn-mini disableAll newAddFile" onclick="delFile(event)"' +
+            ' style="cursor:pointer;margin-left:5%;margin-bottom: 7px;padding: 3px 8px;font-size: 11px;border-radius: 3px;">删除</span></div>' +
+            '<div class="col-md-1"><a class="btn btn-success btn-mini" href="' + url + '" data-lightbox="1111" data-title="附件上传预览" ' +
+            'style="cursor:pointer;margin-left:5%;margin-bottom: 7px;padding: 3px 8px;font-size: 11px;border-radius: 3px;float: unset;margin-top: 0;">预览</a></div>' +
+            '</div>';
+
+        let $fileArea = document.getElementById(divId);
+        console.log($fileArea);
+
+        $(html).appendTo($fileArea);
+    }
+
+    function delFile(event){
+        let e = event || window.event;
+        let target = e.target || e.srcElement;
+
+        let delDiv = target.parentNode.parentNode;
+        /*let id = delDiv.parentNode.id;
+
+        console.log("删除的div----");
+        console.log(delDiv);
+        console.log(id);*/
+        //alert(delDiv);
+
+        let $fileArea = document.getElementById("idZhengmian");
+
+        console.log($fileArea);
+
+        $fileArea.removeChild(delDiv);
+        let fZheng = document.getElementById("fileZheng");
+        fZheng.value = '';
+    }
+
+    function CheckPassWord(password) {//必须为字母加数字且长度不小于8位
+        let str = password;
+        if (str == null || str.length <6) {
+            return false;
+        }
+        let reg1 = new RegExp(/^[0-9A-Za-z]+$/);
+        if (!reg1.test(str)) {
+            return false;
+        }
+        let reg = new RegExp(/[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/);
+        if (reg.test(str)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function CheckTel(sMobile){
+        if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(sMobile))){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    function checkEmail(obj){
+        let reg = new RegExp(/^([a-zA-Z0-9._-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/); //正则表达式
+        if(!reg.test(obj)){ //正则验证不通过，格式不对
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    function validate(){
+        let username = $("#inputGNo").val();                     //账号
+        let password = $("#inputGPassword").val();               //密码
+        let teamName = $("#inputGName").val();                   //组名
+
+        let name = $("#inputLname").val();                       //姓名
+        let age = $("#inputLOld").val();                         //年龄
+        let telephoneNumber = $("#inputLTel").val();             //电话
+        let organization = $("#inputLsch").val();                //组织
+        let job = $("#inputLmajor").val();                       //职位
+        let email = $("#inputLEmail").val();                     //邮箱
+
+        let sexAll = document.getElementsByName("sex");
+        let sex = '';                                            //性别
+        for(let i=0; i<sexAll.length; i ++){
+            if(sexAll[i].checked){
+                sex = sexAll[i].value;
+            }
+        }
+
+        let badge = document.getElementById("fileZheng").files[0];  //获取文件
+
+        let isValidate = false;
+
+        console.log(username.length);
+        if(username.length === 0){
+            //alert("账号不能为空");
+            document.getElementById("inputGNo").parentElement.style.border = "1px solid red";
+            isValidate = false;
+            return;
+        }else{
+            document.getElementById("inputGNo").parentElement.style.border = "0";
+            isValidate = true;
+        }
+
+        if(password.length === 0){
+            //alert("密码不能为空");
+            document.getElementById("inputGPassword").parentElement.style.border = "1px solid red";
+            isValidate = false;
+            return;
+        }else{
+            if(CheckPassWord(password)){
+                document.getElementById("inputGPassword").parentElement.style.border = "0";
+                isValidate = true;
+            }else{
+
+                alert("密码必须为字母与数字混合，且不小于6位");
+                document.getElementById("inputGPassword").parentElement.style.border = "1px solid red";
+                isValidate = false;
+                return;
+            }
+
+        }
+
+        if(teamName.length === 0){
+            document.getElementById("inputGName").parentElement.style.border = "1px solid red";
+            isValidate = false;
+            return;
+        }else{
+            document.getElementById("inputGName").parentElement.style.border = "0";
+            isValidate = true;
+        }
+
+        if(name.length === 0){
+            document.getElementById("inputLname").parentElement.style.border = "1px solid red";
+            isValidate = false;
+            return;
+        }else{
+            document.getElementById("inputLname").parentElement.style.border = "0";
+            isValidate = true;
+        }
+
+        if(age.length === 0){
+            document.getElementById("inputLOld").parentElement.style.border = "1px solid red";
+            isValidate = false;
+            return;
+        }else{
+            document.getElementById("inputLOld").parentElement.style.border = "0";
+            isValidate = true;
+        }
+
+
+        if(telephoneNumber.length === 0){
+            document.getElementById("inputLTel").parentElement.style.border = "1px solid red";
+            isValidate = false;
+            return;
+        }else{
+            if(CheckTel(telephoneNumber)){
+                document.getElementById("inputLTel").parentElement.style.border = "0";
+                isValidate = true;
+            }else{
+                alert("不是完整的11位手机号或者正确的手机号前七位");
+                document.getElementById("inputLTel").parentElement.style.border = "0";
+                isValidate = false;
+                return;
+            }
+
+        }
+
+        if(organization.length === 0){
+            document.getElementById("inputLsch").parentElement.style.border = "1px solid red";
+            isValidate = false;
+            return;
+        }else{
+            document.getElementById("inputLsch").parentElement.style.border = "0";
+            isValidate = true;
+        }
+
+        if(job.length === 0){
+            document.getElementById("inputLmajor").parentElement.style.border = "1px solid red";
+            isValidate = false;
+            return;
+        }else{
+            document.getElementById("inputLmajor").parentElement.style.border = "0";
+            isValidate = true;
+        }
+
+        if(email.length === 0){
+            document.getElementById("inputLEmail").parentElement.style.border = "1px solid red";
+            isValidate = false;
+            return;
+        }else{
+            if(checkEmail(email)){
+                document.getElementById("inputLEmail").parentElement.style.border = "0";
+                isValidate = true;
+            }else{
+                alert("邮箱格式不正确");
+                document.getElementById("inputLEmail").parentElement.style.border = "1px solid red";
+                isValidate = false;
+                return;
+            }
+
+        }
+
+        if(sex !== ''){//获取name为sex的input的对象并判断是否被选中
+            document.getElementById("Lsex").style.border = "0";
+            isValidate = true;
+            //alert(sex);
+        }else{
+            // alert("请选择性别");//如果性别的单选按钮没有被选择则弹出提示
+            document.getElementById("Lsex").style.border = "1px solid red";
+            isValidate = false;
+
+            return;
+        }
+
+        if (typeof(badge) === "undefined" || badge.size <= 0) {
+            //alert("请选择图片");
+            document.getElementById("Lpicture").style.border = "1px solid red";
+            isValidate = false;
+            return;
+
+        }else{
+            document.getElementById("Lpicture").style.border = "0";
+            isValidate = true;
+        }
+
+        return isValidate;
+
+    }
+
+    function doSubmit() {
+        //alert("hhhh");
+        let r=confirm("提交后将无法修改，确认提交吗？");
+
+        //console.log(validate());
+        if(validate()){
+            if (r === true) {
+                let username = $("#inputGNo").val();                     //账号
+                let password = $("#inputGPassword").val();               //密码
+                let teamName = $("#inputGName").val();                   //组名
+
+                let name = $("#inputLname").val();                       //姓名
+                let age = $("#inputLOld").val();                         //年龄
+                let telephoneNumber = $("#inputLTel").val();             //电话
+                let organization = $("#inputLsch").val();                //组织
+                let job = $("#inputLmajor").val();                       //职位
+                let email = $("#inputLEmail").val();                     //邮箱
+
+                let sexAll = document.getElementsByName("sex");
+                let sex = '';                                            //性别
+                for(let i=0; i<sexAll.length; i ++){
+                    if(sexAll[i].checked){
+                        sex = sexAll[i].value;
+                    }
+                }
+
+                let badge = document.getElementById("fileZheng").files[0];  //获取文件
+
+                /*if (typeof(badge) === "undefined" || badge.size <= 0) {
+                    alert("请选择图片");
+                    return;
+                }
+        */
+                let formData = new FormData();
+                formData.append("username", username);
+                formData.append("password", password);
+                formData.append("teamName", teamName);
+                formData.append("name", name);
+                formData.append("age", age);
+                formData.append("telephoneNumber", telephoneNumber);
+                formData.append("organization", organization);
+                formData.append("job", job);
+                formData.append("email", email);
+                formData.append("sex", sex);
+                formData.append("badge", badge); //加入文件对象
+
+                //alert("成功");
+                $.ajax({
+                    //几个参数需要注意一下
+
+                    url: "http://localhost:8081/users" ,//url
+                    // data: ({username: username,password: password,IDNumber: IDNumber}),
+                    data: formData,
+                    type: "POST",//方法类型
+                    async:false,
+                    dataType: "json",//预期服务器返回的数据类型
+                    cache: false,//上传文件无需缓存
+                    processData: false,//用于对data参数进行序列化处理 这里必须false
+                    contentType: false, //必须
+                    enctype: 'multipart/form-data',
+
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
+                    },
+                    timeout : 5000,
+                    success: function (result) {
+                        //window.location.href='login.html';
+                        alert("审核中...");
+                        window.location.href='../index.html';
+                    },
+                    error : function(xhr) {
+                        alert("注册失败！");
+
+                    }
+                });
+            }
+
+        }else{
+            return;
+        }
+
+    }
+
+</script>
+</body>
+</html>

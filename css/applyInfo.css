@@ -13,8 +13,15 @@ h3 {font-size: 14px;font-weight: bold;}
 .promise-info p {font-size: 16px;text-align:left;}
 .area-frame {border:1px solid #33cccc;padding: 5px;}
 .deleteX {color: red; font-size: 16px; padding: 0 10px; cursor: pointer;}
-.fileName {display:inline-block;overflow:hidden;max-width:80%;white-space:nowrap;text-overflow:ellipsis}
-
+.fileName {display:inline-block;overflow:hidden;max-width:80%;white-space:nowrap;text-overflow:ellipsis;padding: 0;}
+#idZhengmian {
+    padding: 0;
+    margin-bottom: 5px;
+}
+.idPic {
+    padding: 0;
+    margin-bottom: 10px;
+}
 /*llb change*/
 /*.nav-lb{background: blue;height: 80px;margin-bottom: 0;line-height: 80px;}*/
 .left-nav-lb{height: 100%;background-color: #3c3f53; margin-left: 0; width: 160px; }

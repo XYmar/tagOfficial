@@ -17,7 +17,7 @@ img{ border:none;}
     font-weight: bold;
     line-height: 40px;
     color:#000;
-    /*margin-top: 30px;*/
+    margin-top: 0;
     margin-bottom: 10px;
 }
 .title {
@@ -96,5 +96,9 @@ img{ border:none;}
     }
     .titleInfo{
         padding: 0;
+    }
+
+    .form-horizontal .form-group {
+        margin: 0 0;
     }
 }
