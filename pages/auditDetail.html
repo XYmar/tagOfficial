@@ -139,14 +139,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="control-label col-md-5 col-xs-3">邮箱： </label>
-                                        <div class="controls col-md-7 col-xs-9">
-                                            <div class="auditDetailDiv" id="email">
-                                                xx
-                                            </div>
-                                        </div>
-                                    </div>
 
                                 </form>
                             </div>
@@ -169,13 +161,21 @@
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
+                                        <label class="control-label col-md-5 col-xs-3">邮箱： </label>
+                                        <div class="controls col-md-7 col-xs-9">
+                                            <div class="auditDetailDiv" id="email">
+                                                xx
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--<div class="form-group col-md-12">
                                         <label class="control-label col-md-5 col-xs-3">职位： </label>
                                         <div class="controls col-md-7 col-xs-9">
                                             <div class="auditDetailDiv" id="job">
                                                 xx
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>-->
 
                                 </form>
                             </div>
@@ -240,7 +240,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset()">取消</button>
                     <a href="audit.html">
-                        <button class="btn btn-primary" type="button">确认</button>
+                        <button class="btn btn-primary" type="button" onclick="denyApply()">确认</button>
                     </a>
                 </div>
             </div><!-- /.modal-content -->
@@ -602,7 +602,7 @@
                 document.getElementById("sex").innerHTML = data.sex;
                 document.getElementById("telephoneNumber").innerHTML = data.telephoneNumber;
                 document.getElementById("organization").innerHTML = data.organization;
-                document.getElementById("job").innerHTML = data.job;
+                /*document.getElementById("job").innerHTML = data.job;*/
                 document.getElementById("email").innerHTML = data.email;
 
             },
@@ -733,7 +733,7 @@
             //几个参数需要注意一下
             type: "PATCH",//方法类型
             dataType: "json",//预期服务器返回的数据类型
-            url: "http://localhost:8081/users/" + id + "/enable",//url
+            url: "http://localhost:8081/users/" + id + "/accept",//url
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
             },
@@ -745,6 +745,27 @@
             }
         });
 
+    }
+
+    function denyApply() {
+        let id = getUrlParam('id');
+        let denyReason = $("#inputReason").val()
+        $.ajax({
+            //几个参数需要注意一下
+            type: "PATCH",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "http://localhost:8081/users/" + id + "/denied",//url
+            data: {message: denyReason},
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
+            },
+            success: function (result) {
+                window.location.href='audit.html';
+            },
+            error : function() {
+                alert("请求错误！");
+            }
+        });
     }
 
     function reset() {
