@@ -1799,17 +1799,20 @@
         let loginName = document.getElementById("loginName");
         //var myUsername = getCookie("username");
         let myUsername = $.cookie("myUsername");
-        let myRole = $.cookie("myUsername");
+        let myRole = $.cookie("myRole");
         console.log(myUsername);
+        console.log(myRole);
 
-        if ((myUsername != null) && (myUsername != "null")) {
+        if ((myUsername != null) && (myUsername !== "null")) {
             //alert("hh");
             loginName.innerHTML = "";
             //loginName.innerHTML += "<a href='#'>" + myUsername + "| <sapn onclick='delCookie()' class='exit'>退出</sapn></a>";
             if(myRole === "admin"){
                 loginName.innerHTML += "<a href='pages/audit.html'>审核</a>";
-            }else{
+            }else if(myRole === "accept"){
                 loginName.innerHTML += "<a href='pages/member.html'>" + myUsername + "</a>";
+            }else if(myRole === "user" || myRole === "denied"){
+                loginName.innerHTML += "<a href='pages/applyResult.html'>" + myUsername + "</a>";
             }
 
         } else {
