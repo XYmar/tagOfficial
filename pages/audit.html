@@ -326,13 +326,16 @@
 <script type="text/javascript">
     window.onload=function(){
         //alert("hhhh");
+        let datalistA = []
+        let datalistB = []
+        let dataAll = []
 
         $.ajax({
             //几个参数需要注意一下
             type: "GET",//方法类型
             dataType: "json",//预期服务器返回的数据类型
-            url: "http://localhost:8081/users/byenabled" ,//url
-            data: {enabled: false},
+            url: "http://localhost:8081/users/byRoleName" ,//url
+            data: {enabled: false, rolename: 'user'},
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
             },
@@ -394,6 +397,11 @@
                         title: 'id',
                         visible: false
                     },{
+                        field: 'createTime',
+                        title: '注册时间',
+                        sortable: true,
+                        visible: false
+                    },{
                         field: 'id',
                         title: '操作',
                         formatter: actionFormatter
@@ -408,40 +416,104 @@
             }
         });
 
+
         $.ajax({
             //几个参数需要注意一下
             type: "GET",//方法类型
             dataType: "json",//预期服务器返回的数据类型
-            url: "http://localhost:8081/users/byenabled" ,//url
-            data: {enabled: true},
+            url: "http://localhost:8081/users/byRoleName" ,//url
+            data: {enabled: true, rolename: 'accept'},
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
             },
             success: function (result) {
                 let str = "";
-                let data = result.data;
-                let dataLength = data.length
+                datalistA = result.data;
+                let dataLength = datalistA.length
 
-                if(data.length !== 0){
-                    console.log(result.data);//打印服务端返回的数据(调试用)
-                    let hasAudit = document.getElementById('hasAuditNum')
-                    hasAudit.innerHTML = '['+ dataLength + '条]'
-                    document.getElementById('hasAuditInfo').innerHTML = ''
-                    /*let alreadyAuditTbody = document.getElementById("alreadyAudit");
-                    for (let i=0;i<data.length;i++) {
-                        str += "<tr>" +
-                            "<td>" + data[i].teamName + "</td>" +
-                            "<td>" + data[i].name + "</td>" +
-                            "<td>" + data[i].age + "</td>" +
-                            "<td>" + (data[i].sex === 0 ? '男' : '女') + "</td>" +
-                            "<td>" + data[i].telephoneNumber + "</td>" +
-                            "<td>" + data[i].organization + "</td>" +
-                            "<td><span style=\"color: #27A9E3;\">已审核</span></td>" +
-                            "</tr>";
+                // 获取审核未通过的信息
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "GET",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "http://localhost:8081/users/byRoleName" ,//url
+                    data: {enabled: true, rolename: 'denied'},
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
+                    },
+                    success: function (result) {
+                        let str = "";
+                        datalistB = result.data
+
+                        // 拼接审核通过和未通过的数据
+                        let dataAll = datalistA.concat(datalistB)
+                        let dataLength = dataAll.length
+                        if(datalistA.length !== 0){
+                            console.log(result.data);//打印服务端返回的数据(调试用)
+                            let hasAudit = document.getElementById('hasAuditNum')
+                            hasAudit.innerHTML = '['+ dataLength + '条]'
+                            document.getElementById('hasAuditInfo').innerHTML = ''
+                            /*let alreadyAuditTbody = document.getElementById("alreadyAudit");
+                            for (let i=0;i<data.length;i++) {
+                                str += "<tr>" +
+                                    "<td>" + data[i].teamName + "</td>" +
+                                    "<td>" + data[i].name + "</td>" +
+                                    "<td>" + data[i].age + "</td>" +
+                                    "<td>" + (data[i].sex === 0 ? '男' : '女') + "</td>" +
+                                    "<td>" + data[i].telephoneNumber + "</td>" +
+                                    "<td>" + data[i].organization + "</td>" +
+                                    "<td><span style=\"color: #27A9E3;\">已审核</span></td>" +
+                                    "</tr>";
+                            }
+                            alreadyAuditTbody.innerHTML = str;*/
+                        }
+
+                        // 生成表格
+                        $('#memberInfoTableAlready').bootstrapTable({
+                            sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
+                            pagination : true, // 是否显示分页（*）
+                            pageNumber: 1,    //如果设置了分页，首页页码
+                            pageSize: 4,                       //每页的记录行数（*）
+                            pageList: [2,4,6],        //可供选择的每页的行数（*）
+                            search:true,
+                            columns: [{
+                                field: 'teamName',
+                                title: '组名'
+                            }, {
+                                field: 'name',
+                                title: '姓名'
+                            }, {
+                                field: 'age',
+                                title: '年龄'
+                            },{
+                                field: 'sex',
+                                title: '性别',
+                                formatter: sexFormatter
+                            },{
+                                field: 'telephoneNumber',
+                                title: '手机号'
+                            },{
+                                field: 'organization',
+                                title: '单位/学校'
+                            },{
+                                field: 'id',
+                                title: 'id',
+                                visible: false
+                            },{
+                                field: 'id',
+                                title: '状态',
+                                formatter: statusFormatter
+                            }
+                            ],
+                            data: dataAll
+                        });
+
+                    },
+                    error : function() {
+                        alert("请求错误！");
                     }
-                    alreadyAuditTbody.innerHTML = str;*/
-                }
-                $('#memberInfoTableAlready').bootstrapTable({
+                });
+               /* $('#memberInfoTableAlready').bootstrapTable({
                     sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
                     pagination : true, // 是否显示分页（*）
                     pageNumber: 1,    //如果设置了分页，首页页码
@@ -477,14 +549,17 @@
                         formatter: statusFormatter
                     }
                     ],
-                    data: data
-                });
+                    data: dataAll
+                });*/
 
             },
             error : function() {
                 alert("请求错误！");
             }
         });
+
+
+
 
         //生成性别
         function sexFormatter(value) {
