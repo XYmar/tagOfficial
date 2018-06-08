@@ -23,7 +23,7 @@
 
 </head>
 
-<body style="background-image: url('../images/2.png');">
+<body style="background-image: url('../images/2.png');" id="showBody">
 <!-- header start -->
 <header class="header fixed clearfix navbar navbar-fixed-top">
     <div class="container">
@@ -304,72 +304,72 @@
 <script type="text/javascript">
     let oldPwd = '';
     let myTeamId = '';
+
+    let username = $.cookie("myUsername");
+    let password = $.cookie("myPassword");
+    let token = username + ':' + password;
+
+
     window.onload=function(){
-        let fZheng = document.getElementById("fileZheng");
 
-        //this.files即获取input中上传的file对象 是个数组
-        fZheng.onchange = function(){
-            if(fZheng.value.length !== 0){
-                let file = this.files[0];
+        if ((username != null) && (username !== "null")) {
+            let fZheng = document.getElementById("fileZheng");
 
-                divId = "idZhengmian";
+            //this.files即获取input中上传的file对象 是个数组
+            fZheng.onchange = function(){
+                if(fZheng.value.length !== 0){
+                    let file = this.files[0];
 
-                handleImg(file, divId);
+                    divId = "idZhengmian";
+
+                    handleImg(file, divId);
+                }
+            };
+
+            myTeamId = $.cookie("myTeamId");
+
+            //加载图片
+            let url = "http://localhost:8081/users/" + myTeamId + "/badge" ;
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+            xhr.responseType = "blob";
+            xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            xhr.setRequestHeader("client_type", "DESKTOP_WEB");
+            xhr.onload = function() {
+                if (this.status === 200) {
+                    let blob = this.response;
+                    let img = document.createElement("img");
+                    img.onload = function(e) {
+                        window.URL.revokeObjectURL(img.src);
+                    };
+                    img.src = window.URL.createObjectURL(blob);
+                    $("#badge").html(img);
+
+                    console.log($("#badge")[0].childNodes[0]);
+                    $("#badge")[0].childNodes[0].setAttribute("class","idCard");
+                }
             }
-        };
+            xhr.send();
 
 
-        myTeamId = $.cookie("myTeamId");
+            //查询审核结果
+            $.ajax({
+                //几个参数需要注意一下
+                type: "GET",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "http://localhost:8081/users/" + myTeamId,//url
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+                },
+                success: function (result) {
+                    let str = "";
+                    let data = result.data;
 
-        let username = $.cookie("myUsername");
-        let password = $.cookie("myPassword");
-        let token = username + ':' + password;
+                    if(data.length !== 0){
 
-
-
-
-        //加载图片
-        let url = "http://192.168.0.138:8081/users/" + myTeamId + "/badge" ;
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', url, true);
-        xhr.responseType = "blob";
-        xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
-        xhr.setRequestHeader("client_type", "DESKTOP_WEB");
-        xhr.onload = function() {
-            if (this.status === 200) {
-                let blob = this.response;
-                let img = document.createElement("img");
-                img.onload = function(e) {
-                    window.URL.revokeObjectURL(img.src);
-                };
-                img.src = window.URL.createObjectURL(blob);
-                $("#badge").html(img);
-
-                console.log($("#badge")[0].childNodes[0]);
-                $("#badge")[0].childNodes[0].setAttribute("class","idCard");
-            }
-        }
-        xhr.send();
-
-
-        //查询审核结果
-        $.ajax({
-            //几个参数需要注意一下
-            type: "GET",//方法类型
-            dataType: "json",//预期服务器返回的数据类型
-            url: "http://192.168.0.138:8081/users/" + myTeamId,//url
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-            },
-            success: function (result) {
-                let str = "";
-                let data = result.data;
-
-                if(data.length !== 0){
-
-                    //审查结果
-                    let applyResultTbody = document.getElementById('applyResultTbody');
-                    console.log(data);
+                        //审查结果
+                        let applyResultTbody = document.getElementById('applyResultTbody');
+                        console.log(data);
                         str += "<tr>" +
                             "<td style='display:none'>" + data.id + "</td>" +
                             "<td>" + data.teamName + "</td>" +
@@ -379,44 +379,48 @@
                             "<td>" + (data.message === null ? '--' : data.message) + "</td>" +
                             "<td>" + (data.roleEntities[0].name === 'user' ?  "<span style=\"color: #27A9E3;\">审核中</span>"  :  "<span style=\"color: red;\">未通过</span>" ) + "</td>" +
                             "</tr>";
-                    applyResultTbody.innerHTML = str;
+                        applyResultTbody.innerHTML = str;
 
-                    //注册信息
-                    document.getElementById("inputGNo").value = data.username;
-                    document.getElementById("inputGPassword").value = data.password;
-                    document.getElementById("inputGName").value = data.teamName;
-                    document.getElementById("inputLname").value = data.name;
-                    document.getElementById("inputLOld").value = data.age;
-                    if(data.sex === 0){
-                        document.getElementById("man").checked = "checked";
-                    }else if(data.sex === 1){
-                        document.getElementById("woman").checked = "checked";
+                        //注册信息
+                        document.getElementById("inputGNo").value = data.username;
+                        document.getElementById("inputGPassword").value = data.password;
+                        document.getElementById("inputGName").value = data.teamName;
+                        document.getElementById("inputLname").value = data.name;
+                        document.getElementById("inputLOld").value = data.age;
+                        if(data.sex === 0){
+                            document.getElementById("man").checked = "checked";
+                        }else if(data.sex === 1){
+                            document.getElementById("woman").checked = "checked";
+                        }
+
+                        document.getElementById("inputLTel").value = data.telephoneNumber;
+                        document.getElementById("inputLsch").value = data.organization;
+                        document.getElementById("inputLEmail").value = data.email;
+                        // document.getElementById('inputLsch').value = data.organization;
+
+                        oldPwd = data.password;
+
+
+
+                        //审核中，所有注册信息都不可修改
+
+                        if(data.roleEntities[0].name === 'user'){
+                            $(".doEdit").attr("disabled", "disabled");
+                            document.getElementById("upSpan").style.background = "lightgrey";
+                            document.getElementById("upSpan").style.borderColor = "lightgrey";
+                        }
                     }
 
-                    document.getElementById("inputLTel").value = data.telephoneNumber;
-                    document.getElementById("inputLsch").value = data.organization;
-                    document.getElementById("inputLEmail").value = data.email;
-                   // document.getElementById('inputLsch').value = data.organization;
-
-                    oldPwd = data.password;
-
-
-
-                    //审核中，所有注册信息都不可修改
-
-                    if(data.roleEntities[0].name === 'user'){
-                        $(".doEdit").attr("disabled", "disabled");
-                        document.getElementById("upSpan").style.background = "lightgrey";
-                        document.getElementById("upSpan").style.borderColor = "lightgrey";
-                    }
+                },
+                error : function() {
+                    alert("请求错误！");
                 }
+            });
+        }else{
+            document.getElementById("showBody").style.display = "none";
+            window.location.href="login.html";
 
-            },
-            error : function() {
-                alert("请求错误！");
-            }
-        });
-
+        }
     }
 
     function handleImg(file, divId){
@@ -703,7 +707,7 @@
                $.ajax({
                     //几个参数需要注意一下
 
-                    url: "http://192.168.0.138:8081/users/" + myTeamId + "/recommit",//url
+                    url: "http://localhost:8081/users/" + myTeamId + "/recommit",//url
                     data: formData,
                     type: "POST",//方法类型
                     async:false,
@@ -714,7 +718,7 @@
                     enctype: 'multipart/form-data',
 
                     beforeSend: function (xhr) {
-                        xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
+                        xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
                     },
                     timeout : 5000,
                     success: function (result) {

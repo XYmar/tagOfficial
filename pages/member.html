@@ -26,7 +26,7 @@
 
 </head>
 
-<body style="background-image: url('../images/2.png');">
+<body style="background-image: url('../images/2.png');" id="showBody">
 <!-- header start -->
 <header class="header fixed clearfix navbar navbar-fixed-top">
     <div class="container">
@@ -370,49 +370,57 @@
 <script src="../js/jquery.cookie.js"></script>
 
 <script type="text/javascript">
-    let passOld
+    let passOld;
+
+    let myTeamId = $.cookie("myTeamId");
+    let username = $.cookie("myUsername");
+    let password = $.cookie("myPassword");
+    let token = username + ':' + password;
+
     window.onload=function() {
-        let myTeamId = $.cookie("myTeamId");
 
-        let username = $.cookie("myUsername");
-        let password = $.cookie("myPassword");
-        let token = username + ':' + password;
+        if ((username != null) && (username !== "null")) {
+            $.ajax({
+                //几个参数需要注意一下
+                type: "GET",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "http://localhost/users/" + myTeamId,//url
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+                },
+                success: function (result) {
+                    let data = result.data;
+                    passOld = data.password
 
-        $.ajax({
-            //几个参数需要注意一下
-            type: "GET",//方法类型
-            dataType: "json",//预期服务器返回的数据类型
-            /*url: "http://192.168.0.138:8081/users/" + myTeamId,*///url
-            url: "http://localhost/users/" + myTeamId,//url
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-            },
-            success: function (result) {
-                let data = result.data;
-                passOld = data.password
+                    console.log(result.data);//打印服务端返回的数据(调试用)
 
-                console.log(result.data);//打印服务端返回的数据(调试用)
+                    document.getElementById("username").innerHTML = data.username;
+                    document.getElementById("teamName").innerHTML = data.teamName;
+                    document.getElementById("name").value = data.name;
+                    document.getElementById("age").value = data.age;
+                    document.getElementById("sex").value = data.sex == 1 ? '女' : '男'
+                    document.getElementById("telephoneNumber").value = data.telephoneNumber;
+                    document.getElementById("organization").value = data.organization;
+                    document.getElementById('password').value = data.password;
+                    /*document.getElementById("job").innerHTML = data.job;*/
+                    document.getElementById("email").value = data.email;
+                    document.getElementById('inputLsch').value = data.organization;
 
-                document.getElementById("username").innerHTML = data.username;
-                document.getElementById("teamName").innerHTML = data.teamName;
-                document.getElementById("name").value = data.name;
-                document.getElementById("age").value = data.age;
-                document.getElementById("sex").value = data.sex == 1 ? '女' : '男'
-                document.getElementById("telephoneNumber").value = data.telephoneNumber;
-                document.getElementById("organization").value = data.organization;
-                document.getElementById('password').value = data.password;
-                /*document.getElementById("job").innerHTML = data.job;*/
-                document.getElementById("email").value = data.email;
-                document.getElementById('inputLsch').value = data.organization;
+                },
+                error: function () {
+                    alert("请求错误！");
+                }
+            });
 
-            },
-            error: function () {
-                alert("请求错误！");
-            }
-        });
+            getAll();
+        }else{
+            document.getElementById("showBody").style.display = "none";
+            window.location.href="login.html";
 
-        getAll();
-    }
+        }
+
+
+    };
 
     function getAll(){
         let myTeamId = $.cookie("myTeamId");
@@ -422,9 +430,8 @@
             type: "GET",//方法类型
             dataType: "json",//预期服务器返回的数据类型
             url: "http://localhost:8081/users/" + myTeamId + "/crew" ,//url
-            /*url: "http://192.168.0.138:8081/users/" + myTeamId + "/crew" ,*/
             beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
             },
             success: function (result) {
                 let str = "";
@@ -729,9 +736,6 @@
                 //几个参数需要注意一下
 
                 url: "http://localhost:8081/users/" + myTeamId,//url
-               /* url: "http://192.168.0.138:8081/users/" + myTeamId,*/
-                /*data: ({username: username,password: password,IDNumber: IDNumber}),*/
-                /*data: info,*/
                 type: "post",//方法类型
                 data: formData,
                 async:false,
@@ -770,9 +774,6 @@
                 //几个参数需要注意一下
 
                 url: "http://localhost:8081/users/" + myTeamId + "/password", //url
-               /* url: "http://192.168.0.138:8081/users/" + myTeamId + "/password",*/
-                /*data: ({username: username,password: password,IDNumber: IDNumber}),*/
-                /*data: info,*/
                 type: "post",//方法类型
                 data: formData,
                 async:false,
