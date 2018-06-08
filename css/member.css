@@ -3,6 +3,9 @@
     margin-right: 10px;
     font-size: 12px;
 }
+.modifyPasBtnCon {
+    padding-left: 64px;
+}
 
 @media (max-width:480px) {
     .auditContainer h3.message{
@@ -17,8 +20,12 @@
     .auditContainer div.table-responsive{
         /*padding: 4px;*/
         border: none;
+        font-size: 14px;
     }
     .auditContainer div.pull-left.pagination-detail{
         font-size: 12px;
+    }
+    .modifyPasBtnCon{
+        text-align: center;
     }
 }
