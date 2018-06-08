@@ -325,11 +325,12 @@
 <script src="../bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
 <script src="../js/cookie.js"></script>
 <script src="../js/jquery.cookie.js"></script>
-
+<script type="text/javascript" src="../js/jquery.base64.js"></script>
 <script type="text/javascript">
     window.onload=function(){
         let username = $.cookie("myUsername");
-        let password = $.cookie("myPassword");
+        let password0 = $.cookie("myWPa");
+        let password = $.base64.decode(password0);
         let token = username + ':' + password;
 
         if ((username != null) && (username !== "null")) {

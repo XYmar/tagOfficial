@@ -368,13 +368,14 @@
 <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
 <script src="../js/cookie.js"></script>
 <script src="../js/jquery.cookie.js"></script>
-
+<script type="text/javascript" src="../js/jquery.base64.js"></script>
 <script type="text/javascript">
     let passOld;
 
     let myTeamId = $.cookie("myTeamId");
     let username = $.cookie("myUsername");
-    let password = $.cookie("myPassword");
+    let password0 = $.cookie("myWPa");
+    let password = $.base64.decode(password0);
     let token = username + ':' + password;
 
     window.onload=function() {
@@ -614,11 +615,6 @@
     function addMember() {
         if(validate()){
 
-            let myTeamId = $.cookie("myTeamId");
-            let username = $.cookie("myUsername");
-            let password = $.cookie("myPassword");
-            let token = username + ':' + password;
-
             let name = $("#inputLname").val();                       //姓名
             let age = $("#inputLOld").val();                         //年龄
             let telephoneNumber = $("#inputLTel").val();             //电话
@@ -681,12 +677,6 @@
         {
             let delId = event.target.id;
 
-            let myTeamId = $.cookie("myTeamId");
-
-            let username = $.cookie("myUsername");
-            let password = $.cookie("myPassword");
-            let token = username + ':' + password;
-
             $.ajax({
                 //几个参数需要注意一下
                 type: "DELETE",//方法类型
@@ -707,11 +697,6 @@
     }
     
     function modifyInfo() {
-            let myTeamId = $.cookie("myTeamId");
-            let username = $.cookie("myUsername");
-            let password = $.cookie("myPassword");
-            let token = username + ':' + password;
-
             let name = $("#name").val();                       //姓名
             let age = $("#age").val();  //年龄
             console.log(age)
@@ -769,10 +754,6 @@
 
     function modifyPassword () {
         if(validatePass()) {
-            let myTeamId = $.cookie("myTeamId");
-            let username = $.cookie("myUsername");
-            let password = $.cookie("myPassword");
-            let token = username + ':' + password;
             let passwordNew = $("#passWordNew").val();
             let formData = new FormData();
             formData.append("password", passwordNew);//姓名

@@ -116,6 +116,8 @@
 <script src="../js/jquery.cookie.js"></script>
 <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
 
+<script type="text/javascript" src="../js/jquery.base64.js"></script>
+
 <script type="text/javascript">
     function validate(){
         var username = $("#username").val();
@@ -169,7 +171,7 @@
                     console.log(result.data.username);//打印服务端返回的数据(调试用)
                     //setCookie("myUsername",result.data.username,null);
                     $.cookie("myUsername",result.data.username,{path:'/'});
-                    $.cookie("myPassword",password,{path:'/'});
+                    $.cookie("myWPa",$.base64.encode(password),{path:'/'});
                     $.cookie("myTeamId",result.data.id,{path:'/'});
                     $.cookie("myRole",result.data.roleEntities[0].name,{path:'/'});
 

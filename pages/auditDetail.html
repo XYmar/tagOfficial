@@ -580,10 +580,11 @@
 
 <script src="../js/cookie.js"></script>
 <script src="../js/jquery.cookie.js"></script>
-
+<script type="text/javascript" src="../js/jquery.base64.js"></script>
 <script type="text/javascript">
     let username = $.cookie("myUsername");
-    let password = $.cookie("myPassword");
+    let password0 = $.cookie("myWPa");
+    let password = $.base64.decode(password0);
     let token = username + ':' + password;
 
     window.onload=function(){
