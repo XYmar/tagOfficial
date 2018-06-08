@@ -384,7 +384,7 @@
                 //几个参数需要注意一下
                 type: "GET",//方法类型
                 dataType: "json",//预期服务器返回的数据类型
-                url: "http://localhost/users/" + myTeamId,//url
+                url: "http://localhost:8081/users/" + myTeamId,//url
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
                 },
@@ -438,7 +438,7 @@
                 let data = result.data;
 
                 if(data.length !== 0){
-                    console.log(result.data);//打印服务端返回的数据(调试用)
+                    //console.log(result.data);//打印服务端返回的数据(调试用)
 
                     let memberTbody = document.getElementById("TeamMember");
                     for (let i=0;i<data.length;i++) {
@@ -451,6 +451,12 @@
                             "<td><button class='btn btn-success btn-small editMember' disabled='disabled' type='button'>编辑</button>\n" +
                             "<button class='btn btn-danger btn-small editMember' type='button' id='" + data[i].id + "' onclick='delMember(event)'>删除</button></td>" +
                             "</tr>";
+                    }
+                    memberTbody.innerHTML = str;
+                }else {
+                    let memberTbody = document.getElementById("TeamMember");
+                    for (let i=0;i<data.length;i++) {
+                        str = "";
                     }
                     memberTbody.innerHTML = str;
                 }
