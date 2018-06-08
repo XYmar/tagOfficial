@@ -86,7 +86,15 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                </form>
+                                <form class="form-horizontal col-md-12">
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-5 col-xs-3">密码 ： </label>
+                                        <div class="controls col-md-7 col-xs-9">
+                                            <input class="auditDetailDiv form-control" disabled="disabled" type="password" id="password">
+                                            </input>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                             <div class="col-md-6">
@@ -100,6 +108,9 @@
                                         </div>
                                     </div>
                                 </form>
+                                <div class="col-md-12 modifyPasBtnCon">
+                                    <button type="button" class="btn btn-primary btn-primary" data-toggle="modal" data-target="#pasdialog">修改密码</button>
+                                </div>
                             </div>
                         </div>
 
@@ -122,33 +133,22 @@
                                             <div class="form-group col-md-12">
                                                 <label class="control-label col-md-5 col-xs-3">姓名： </label>
                                                 <div class="controls col-md-7 col-xs-9">
-                                                    <div class="auditDetailDiv" id="name">
-                                                        xx
-                                                    </div>
+                                                    <input class="auditDetailDiv form-control" id="name" disabled="disabled">
+                                                    </input>
                                                 </div>
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label class="control-label col-md-5 col-xs-3">性别： </label>
                                                 <div class="controls col-md-7 col-xs-9 sexDiv">
-                                                    <div class="auditDetailDiv" id="sex">
-                                                        xx
-                                                    </div>
+                                                    <input class="auditDetailDiv form-control" id="sex" disabled="disabled">
+                                                    </input>
                                                 </div>
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label class="control-label col-md-5 col-xs-3">单位/学校： </label>
                                                 <div class="controls col-md-7 col-xs-9">
-                                                    <div class="auditDetailDiv" id="organization">
-                                                        xx
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group col-md-12">
-                                                <label class="control-label col-md-5 col-xs-3">邮箱： </label>
-                                                <div class="controls col-md-7 col-xs-9">
-                                                    <div class="auditDetailDiv" id="email">
-                                                        xx
-                                                    </div>
+                                                    <input class="auditDetailDiv form-control" id="organization" disabled="disabled">
+                                                    </input>
                                                 </div>
                                             </div>
                                         </form>
@@ -158,28 +158,36 @@
                                             <div class="form-group col-md-12">
                                                 <label class="control-label col-md-5 col-xs-3">年龄： </label>
                                                 <div class="controls col-md-7 col-xs-9">
-                                                    <div class="auditDetailDiv" id="age">
-                                                        xx
-                                                    </div>
+                                                    <input class="auditDetailDiv form-control" id="age" disabled="disabled">
+                                                    </input>
                                                 </div>
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label class="control-label col-md-5 col-xs-3">电话： </label>
                                                 <div class="controls col-md-7 col-xs-9">
-                                                    <div class="auditDetailDiv" id="telephoneNumber">
-                                                        xx
-                                                    </div>
+                                                    <input class="auditDetailDiv form-control" id="telephoneNumber">
+                                                    </input>
                                                 </div>
                                             </div>
                                             <div class="form-group col-md-12">
+                                                <label class="control-label col-md-5 col-xs-3">邮箱： </label>
+                                                <div class="controls col-md-7 col-xs-9">
+                                                    <input class="auditDetailDiv form-control" id="email">
+                                                    </input>
+                                                </div>
+                                            </div>
+                                            <!--<div class="form-group col-md-12">
                                                 <label class="control-label col-md-5 col-xs-3">职位： </label>
                                                 <div class="controls col-md-7 col-xs-9">
                                                     <div class="auditDetailDiv" id="job">
                                                         xx
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div>-->
                                         </form>
+                                    </div>
+                                    <div class="col-md-12" style="padding: 0;text-align: center">
+                                        <button type="button" class="btn btn-primary btn-primary" onclick="modifyInfo()">修改信息</button>
                                     </div>
                                 </div>
                             </div>
@@ -316,6 +324,44 @@
             <br>
         </div>
     </div>
+    <div class="modal fade" id="pasdialog" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" style="top: 25%;">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="reset()"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title title">修改密码</h4>
+                </div>
+                <div class="modal-body" style="padding-bottom: 0">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="form-horizontal col-md-12">
+                                <div class="form-group col-md-12">
+                                    <label class="control-label col-md-4 col-xs-3" for="passWordNew">新密码</label>
+                                    <div class="controls col-md-8 col-xs-9">
+                                        <div style="border-radius: 4px;">
+                                            <input id="passWordNew" class="form-control" type="password" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label class="control-label col-md-4 col-xs-3" for="passWordAgain">再次输入</label>
+                                    <div class="controls col-md-8 col-xs-9 sexDiv" style="padding-top: 5px;">
+                                        <div style="border-radius: 4px;">
+                                            <input id="passWordAgain" class="form-control" type="password" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset()">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="modifyPassword()">确认</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
 </div>
 
 <script src="../js/jquery-3.3.1.js"></script>
@@ -324,6 +370,7 @@
 <script src="../js/jquery.cookie.js"></script>
 
 <script type="text/javascript">
+    let passOld
     window.onload=function() {
         let myTeamId = $.cookie("myTeamId");
 
@@ -335,24 +382,27 @@
             //几个参数需要注意一下
             type: "GET",//方法类型
             dataType: "json",//预期服务器返回的数据类型
-            url: "http://localhost:8081/users/" + myTeamId,//url
+            /*url: "http://192.168.0.138:8081/users/" + myTeamId,*///url
+            url: "http://localhost/users/" + myTeamId,//url
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
             },
             success: function (result) {
                 let data = result.data;
+                passOld = data.password
 
                 console.log(result.data);//打印服务端返回的数据(调试用)
 
                 document.getElementById("username").innerHTML = data.username;
                 document.getElementById("teamName").innerHTML = data.teamName;
-                document.getElementById("name").innerHTML = data.name;
-                document.getElementById("age").innerHTML = data.age;
-                document.getElementById("sex").innerHTML = data.sex;
-                document.getElementById("telephoneNumber").innerHTML = data.telephoneNumber;
-                document.getElementById("organization").innerHTML = data.organization;
-                document.getElementById("job").innerHTML = data.job;
-                document.getElementById("email").innerHTML = data.email;
+                document.getElementById("name").value = data.name;
+                document.getElementById("age").value = data.age;
+                document.getElementById("sex").value = data.sex == 1 ? '女' : '男'
+                document.getElementById("telephoneNumber").value = data.telephoneNumber;
+                document.getElementById("organization").value = data.organization;
+                document.getElementById('password').value = data.password;
+                /*document.getElementById("job").innerHTML = data.job;*/
+                document.getElementById("email").value = data.email;
                 document.getElementById('inputLsch').value = data.organization;
 
             },
@@ -372,6 +422,7 @@
             type: "GET",//方法类型
             dataType: "json",//预期服务器返回的数据类型
             url: "http://localhost:8081/users/" + myTeamId + "/crew" ,//url
+            /*url: "http://192.168.0.138:8081/users/" + myTeamId + "/crew" ,*/
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
             },
@@ -390,7 +441,7 @@
                             "<td>" + (data[i].sex === 0 ? '男' : '女') + "</td>" +
                             "<td>" + data[i].telephoneNumber + "</td>" +
                             "<td>" + data[i].organization + "</td>" +
-                            "<td><button class='btn btn-success btn-small editMember' type='button'>编辑</button>\n" +
+                            "<td><button class='btn btn-success btn-small editMember' disabled='disabled' type='button'>编辑</button>\n" +
                             "<button class='btn btn-danger btn-small editMember' type='button' id='" + data[i].id + "' onclick='delMember(event)'>删除</button></td>" +
                             "</tr>";
                     }
@@ -408,11 +459,39 @@
         $("#inputLname").val('');
         $("#inputLOld").val('');
         $("#inputLTel").val('');
-        $("#inputLsch").val('');
+        /*$("#inputLsch").val('');*/
+        $("#passWordNew").val('');
+        $("#passWordAgain").val('');
     }
 
     function CheckTel(sMobile){
         if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(sMobile))){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    function CheckPassWord(password) {//必须为字母加数字且长度不小于8位
+        let str = password;
+        if (str == null || str.length <6) {
+            return false;
+        }
+        let reg1 = new RegExp(/^[0-9A-Za-z]+$/);
+        if (!reg1.test(str)) {
+            return false;
+        }
+        let reg = new RegExp(/[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/);
+        if (reg.test(str)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function checkEmail(obj){
+        let reg = new RegExp(/^([a-zA-Z0-9._-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/); //正则表达式
+        if(!reg.test(obj)){ //正则验证不通过，格式不对
             return false;
         }else{
             return true;
@@ -497,6 +576,26 @@
 
         return isValidate;
 
+    }
+
+    function validatePass() {
+        let isValidate = false;
+        let passNew = $("#password").val()
+        let passwordNew = $("#passWordNew").val();
+        let passwordAgain = $("#passWordAgain").val();
+        console.log(passwordNew,passwordAgain)
+        if (passwordNew.length == 0) {
+            alert('密码不能为空')
+        } else if (passwordAgain.length == 0){
+            alert('请再次输入密码')
+        } else if (passwordNew != passwordAgain) {
+            alert('两次输入密码不一致')
+        } else if (!CheckPassWord(passwordNew) || !CheckPassWord(passwordAgain)){
+            alert('密码格式不正确')
+        } else {
+            isValidate = true
+        }
+        return isValidate
     }
 
     function addMember() {
@@ -592,6 +691,111 @@
             });
         }
 
+    }
+    
+    function modifyInfo() {
+            let myTeamId = $.cookie("myTeamId");
+            let username = $.cookie("myUsername");
+            let password = $.cookie("myPassword");
+            let token = username + ':' + password;
+
+            let name = $("#name").val();                       //姓名
+            let age = $("#age").val();  //年龄
+            console.log(age)
+            let telephoneNumber = $("#telephoneNumber").val(); //电话
+            console.log(telephoneNumber)
+            let email = $("#email").val(); // 邮箱
+            let organization = $("#organization").val();                //组织
+
+            let sexAll = document.getElementsByName("sex");
+            let sex = '';                                            //性别
+            for(let i=0; i<sexAll.length; i ++){
+                if(sexAll[i].checked){
+                    sex = sexAll[i].value;
+                }
+            }
+
+            let formData = new FormData();
+            formData.append("name", name);
+            formData.append("age", age);
+            formData.append("telephoneNumber", telephoneNumber);
+            formData.append("email", email);
+            formData.append("organization", organization);
+            formData.append("sex", sex);
+            /*let info = JSON.stringify({telephoneNumber: telephoneNumber,email: email})*/
+
+            //alert("成功");
+            $.ajax({
+                //几个参数需要注意一下
+
+                url: "http://localhost:8081/users/" + myTeamId,//url
+               /* url: "http://192.168.0.138:8081/users/" + myTeamId,*/
+                /*data: ({username: username,password: password,IDNumber: IDNumber}),*/
+                /*data: info,*/
+                type: "post",//方法类型
+                data: formData,
+                async:false,
+                dataType: "json",//预期服务器返回的数据类型
+                cache: false,//上传文件无需缓存
+                processData: false,//用于对data参数进行序列化处理 这里必须false
+                contentType: false, //必须
+                enctype: 'multipart/form-data',
+
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+                },
+                timeout : 5000,
+                success: function (result) {
+                    //window.location.href='login.html';
+                    //$("#mydialog").modal('hide');
+                    alert('修改成功！')
+                },
+                error : function(xhr) {
+                    alert("修改失败！");
+
+                }
+            });
+    }
+
+    function modifyPassword () {
+        if(validatePass()) {
+            let myTeamId = $.cookie("myTeamId");
+            let username = $.cookie("myUsername");
+            let password = $.cookie("myPassword");
+            let token = username + ':' + password;
+            let passwordNew = $("#passWordNew").val();
+            let formData = new FormData();
+            formData.append("password", passwordNew);//姓名
+            $.ajax({
+                //几个参数需要注意一下
+
+                url: "http://localhost:8081/users/" + myTeamId + "/password", //url
+               /* url: "http://192.168.0.138:8081/users/" + myTeamId + "/password",*/
+                /*data: ({username: username,password: password,IDNumber: IDNumber}),*/
+                /*data: info,*/
+                type: "post",//方法类型
+                data: formData,
+                async:false,
+                dataType: "json",//预期服务器返回的数据类型
+                cache: false,//上传文件无需缓存
+                processData: false,//用于对data参数进行序列化处理 这里必须false
+                contentType: false, //必须
+                enctype: 'multipart/form-data',
+
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+                },
+                timeout : 5000,
+                success: function (result) {
+                    $("#pasdialog").modal('hide');
+                    alert('修改成功！')
+                    window.location.href='login.html';
+                },
+                error : function(xhr) {
+                    alert("修改失败！");
+                }
+            });
+        }
     }
 </script>
 
