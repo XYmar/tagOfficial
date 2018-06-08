@@ -29,7 +29,7 @@
 
 </head>
 
-<body style="background-image: url('../images/2.png');">
+<body style="background-image: url('../images/2.png');" id="showBody">
 <!-- header start -->
 <header class="header fixed clearfix navbar navbar-fixed-top">
     <div class="container">
@@ -329,6 +329,9 @@
 <script type="text/javascript">
     window.onload=function(){
         let username = $.cookie("myUsername");
+        let password = $.cookie("myPassword");
+        let token = username + ':' + password;
+
         if ((username != null) && (username !== "null")) {
             //alert("hhhh");
             let datalistA = []
@@ -343,7 +346,7 @@
                 url: "http://localhost:8081/users/byRoleName" ,//url
                 data: {rolename: 'user'},
                 beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
+                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
                 },
                 success: function (result) {
                     let str = "";
@@ -430,7 +433,7 @@
                 url: "http://localhost:8081/users/byRoleName" ,//url
                 data: {rolename: 'accept'},
                 beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
+                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
                 },
                 success: function (result) {
                     let str = "";
@@ -445,7 +448,7 @@
                         url: "http://localhost:8081/users/byRoleName" ,//url
                         data: {rolename: 'denied'},
                         beforeSend: function (xhr) {
-                            xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
+                            xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
                         },
                         success: function (result) {
                             let str = "";
@@ -649,6 +652,7 @@
                 });
             })*/
         }else{
+            document.getElementById("showBody").style.display = "none";
             window.location.href="login.html";
 
         }

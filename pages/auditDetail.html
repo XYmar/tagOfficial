@@ -21,24 +21,9 @@
     <link rel="stylesheet" href="http://58.213.141.220:10049/housingsubsidy/css/lightbox.css">
     <link href="../css/header.css" rel="stylesheet" type="text/css" />
 
-    <style>
-        .lb-outerContainer {
-            width: 510px;
-            height: 310px;
-        }
-
-        .lightbox .lb-image {
-            display: block;
-            max-width: inherit;
-            border-radius: 3px;
-            width: 500px;
-            height: 300px;
-        }
-    </style>
-
 </head>
 
-<body style="background-image: url('../images/2.png');">
+<body style="background-image: url('../images/2.png');" id="showBody">
 <!-- header start -->
 <header class="header fixed clearfix navbar navbar-fixed-top">
     <div class="container">
@@ -593,160 +578,91 @@
 
 <script src="../js/lightbox.js"></script>
 
+<script src="../js/cookie.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+
 <script type="text/javascript">
+    let username = $.cookie("myUsername");
+    let password = $.cookie("myPassword");
+    let token = username + ':' + password;
+
     window.onload=function(){
-        let id = getUrlParam('id');
 
-        $.ajax({
-            //几个参数需要注意一下
-            type: "GET",//方法类型
-            dataType: "json",//预期服务器返回的数据类型
-            url: "http://192.168.0.138:8081/users/" + id ,//url
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
-            },
-            success: function (result) {
-                let data = result.data;
+        if ((username != null) && (username !== "null")) {
+            let id = getUrlParam('id');
 
-                console.log(result.data);//打印服务端返回的数据(调试用)
+            $.ajax({
+                //几个参数需要注意一下
+                type: "GET",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "http://localhost:8081/users/" + id ,//url
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+                },
+                success: function (result) {
+                    let data = result.data;
 
-                document.getElementById("username").innerHTML = data.username;
-                document.getElementById("teamName").innerHTML = data.teamName;
-                document.getElementById("name").innerHTML = data.name;
-                document.getElementById("age").innerHTML = data.age;
-                document.getElementById("sex").innerHTML = data.sex;
-                document.getElementById("telephoneNumber").innerHTML = data.telephoneNumber;
-                document.getElementById("organization").innerHTML = data.organization;
-                /*document.getElementById("job").innerHTML = data.job;*/
-                document.getElementById("email").innerHTML = data.email;
+                    console.log(result.data);//打印服务端返回的数据(调试用)
 
-            },
-            error : function() {
-                alert("请求错误！");
+                    document.getElementById("username").innerHTML = data.username;
+                    document.getElementById("teamName").innerHTML = data.teamName;
+                    document.getElementById("name").innerHTML = data.name;
+                    document.getElementById("age").innerHTML = data.age;
+                    document.getElementById("sex").innerHTML = data.sex;
+                    document.getElementById("telephoneNumber").innerHTML = data.telephoneNumber;
+                    document.getElementById("organization").innerHTML = data.organization;
+                    /*document.getElementById("job").innerHTML = data.job;*/
+                    document.getElementById("email").innerHTML = data.email;
+
+                },
+                error : function() {
+                    alert("请求错误！");
+                }
+            });
+
+            let url = "http://localhost:8081/users/" + id + "/badge" ;
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+            xhr.responseType = "blob";
+            xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            xhr.setRequestHeader("client_type", "DESKTOP_WEB");
+            xhr.onload = function() {
+                if (this.status === 200) {
+                    let blob = this.response;
+                    let img = document.createElement("img");
+                    img.onload = function(e) {
+                        window.URL.revokeObjectURL(img.src);
+                    };
+                    img.src = window.URL.createObjectURL(blob);
+                    $("#badge").html(img);
+
+                    console.log($("#badge")[0].childNodes[0]);
+                    $("#badge")[0].childNodes[0].setAttribute("class","idCard");
+
+
+                    url= window.URL.createObjectURL(blob);  // 得到bolb对象路径，可当成普通的文件路径一样使用，赋值给src;
+
+                    //添加到文件列表
+                    let html = '<div class="col-md-12 idPic">' +
+                        '<div class="col-md-1 col-xs-3 idPic bigPic"><a class="btn btn-success btn-mini" href="' + url + '" data-lightbox="1111" data-title="查看原图" ' +
+                        'style="cursor:pointer;padding: 3px 8px;font-size: 11px;border-radius: 3px;float: unset;margin-top: 0;">查看原图</a></div>' +
+                        '</div>';
+
+                    let bigPicture = document.getElementById("bigPic");
+
+                    $(html).appendTo(bigPicture);
+
+                }
             }
-        });
+            xhr.send();
+        }else{
+            document.getElementById("showBody").style.display = "none";
+            window.location.href="login.html";
 
-        /*$.ajax({
-            //几个参数需要注意一下
-            type: "GET",//方法类型
-            url: "http://localhost:8081/users/" + id + "/badge" ,//url
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
-                xhr.setRequestHeader("client_type", "DESKTOP_WEB");
-                xhr.setRequestHeader("Access-Control-Allow-Origin","*");
-            },
-            success: function (result) {
-
-                alert("成功");
-                console.log(result);
-                alert(typeof(result));
-
-                //let data = Base64.encodeBase64(result)
-                $("#images").attr("src","data:image/gif;base64,"+result);
-                /!*let blob = result;
-                //let blob = new Blob(result);
-                let img = document.createElement("img");
-                img.onload = function() {
-                    window.URL.revokeObjectURL(img.src);
-                };
-                img.src = window.URL.createObjectURL(blob);
-                $("#imgcontainer").html(img);*!/
-
-            },
-            error : function() {
-                alert("请求错误！");
-            }
-        });*/
-
-        let url = "http://192.168.0.138:8081/users/" + id + "/badge" ;
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', url, true);
-        xhr.responseType = "blob";
-        xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
-        xhr.setRequestHeader("client_type", "DESKTOP_WEB");
-        xhr.onload = function() {
-            if (this.status === 200) {
-                let blob = this.response;
-                let img = document.createElement("img");
-                img.onload = function(e) {
-                    window.URL.revokeObjectURL(img.src);
-                };
-                img.src = window.URL.createObjectURL(blob);
-                $("#badge").html(img);
-
-                console.log($("#badge")[0].childNodes[0]);
-                $("#badge")[0].childNodes[0].setAttribute("class","idCard");
-
-
-                url= window.URL.createObjectURL(blob);  // 得到bolb对象路径，可当成普通的文件路径一样使用，赋值给src;
-
-                //添加到文件列表
-                let html = '<div class="col-md-12 idPic">' +
-                    '<div class="col-md-1 col-xs-3 idPic bigPic"><a class="btn btn-success btn-mini" href="' + url + '" data-lightbox="1111" data-title="查看原图" ' +
-                    'style="cursor:pointer;padding: 3px 8px;font-size: 11px;border-radius: 3px;float: unset;margin-top: 0;">查看原图</a></div>' +
-                    '</div>';
-
-                let bigPicture = document.getElementById("bigPic");
-
-                $(html).appendTo(bigPicture);
-
-                $(".lb-image").style.width = "500px";
-                $(".lb-image").style.height = "300px";
-            }
         }
-        xhr.send();
+
 
     }
-
-    /*function handleImg(file, divId){
-        //获取文件名称
-        let fileName = file.name;
-        console.log("文件名---------");
-        console.log(file);
-        console.log(fileName);
-
-        url=window.URL.createObjectURL(file);  // 得到bolb对象路径，可当成普通的文件路径一样使用，赋值给src;
-
-        //添加到文件列表
-        let html = '<div>' +
-            '<p class="fileName">' + fileName + '</p>' +
-            '<span class="delFile btn btn-danger btn-mini disableAll newAddFile" onclick="delFile(event)"' +
-            ' style="cursor:pointer;margin-left:5%;margin-bottom: 7px;padding: 3px 8px;font-size: 11px;border-radius: 3px;">删除</span>' +
-            '<a class="btn btn-success btn-mini" href="' + url + '" data-lightbox="1111" data-title="附件上传预览" ' +
-            'style="cursor:pointer;margin-left:5%;margin-bottom: 7px;padding: 3px 8px;font-size: 11px;border-radius: 3px;float: unset;margin-top: 0;">预览</a>' +
-            '</div>';
-
-        //let $fileArea = $(e.target).parent().parent().find(".fileArea");
-        let $fileArea = document.getElementById(divId);
-        console.log($fileArea);
-        //let uploaded = false;
-        /!*$fileArea.find('.fileName').each(function () {
-            if ($(this).text() == fileName) {
-                uploaded = true;
-            }
-        });*!/
-
-        $(html).appendTo($fileArea);
-    }
-
-    function delFile(event){
-        let e = event || window.event;
-        let target = e.target || e.srcElement;
-
-        let delDiv = target.parentNode;
-        let id = delDiv.parentNode.id;
-
-        console.log("删除的div----");
-        console.log(delDiv);
-        console.log(id);
-        //alert(delDiv);
-
-        let $fileArea = document.getElementById(id);
-
-        console.log($fileArea);
-
-        $fileArea.removeChild(delDiv);
-    }*/
 
     /**
      * 取得url参数
@@ -764,9 +680,9 @@
             //几个参数需要注意一下
             type: "PATCH",//方法类型
             dataType: "json",//预期服务器返回的数据类型
-            url: "http://192.168.0.138:8081/users/" + id + "/accept",//url
+            url: "http://localhost:8081/users/" + id + "/accept",//url
             beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
             },
             success: function (result) {
                 window.location.href='audit.html';
@@ -785,10 +701,10 @@
             //几个参数需要注意一下
             type: "PATCH",//方法类型
             dataType: "json",//预期服务器返回的数据类型
-            url: "http://192.168.0.138:8081/users/" + id + "/denied",//url
+            url: "http://localhost:8081/users/" + id + "/denied",//url
             data: {message: denyReason},
             beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
             },
             success: function (result) {
                 window.location.href='audit.html';
