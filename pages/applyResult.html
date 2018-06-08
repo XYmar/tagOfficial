@@ -346,7 +346,7 @@
                     img.src = window.URL.createObjectURL(blob);
                     $("#badge").html(img);
 
-                    console.log($("#badge")[0].childNodes[0]);
+                    //console.log($("#badge")[0].childNodes[0]);
                     $("#badge")[0].childNodes[0].setAttribute("class","idCard");
                 }
             }
@@ -370,7 +370,6 @@
 
                         //审查结果
                         let applyResultTbody = document.getElementById('applyResultTbody');
-                        console.log(data);
                         str += "<tr>" +
                             "<td style='display:none'>" + data.id + "</td>" +
                             "<td>" + data.teamName + "</td>" +
@@ -464,7 +463,7 @@
 
         let $fileArea = document.getElementById("idZhengmian");
 
-        console.log($fileArea);
+        //console.log($fileArea);
 
         $fileArea.removeChild(delDiv);
         let fZheng = document.getElementById("fileZheng");

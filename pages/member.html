@@ -393,7 +393,7 @@
                     let data = result.data;
                     passOld = data.password
 
-                    console.log(result.data);//打印服务端返回的数据(调试用)
+                    //console.log(result.data);//打印服务端返回的数据(调试用)
 
                     document.getElementById("username").innerHTML = data.username;
                     document.getElementById("teamName").innerHTML = data.teamName;
@@ -597,7 +597,7 @@
         let passNew = $("#password").val()
         let passwordNew = $("#passWordNew").val();
         let passwordAgain = $("#passWordAgain").val();
-        console.log(passwordNew,passwordAgain)
+        //console.log(passwordNew,passwordAgain)
         if (passwordNew.length == 0) {
             alert('密码不能为空')
         } else if (passwordAgain.length == 0){
@@ -699,9 +699,7 @@
     function modifyInfo() {
             let name = $("#name").val();                       //姓名
             let age = $("#age").val();  //年龄
-            console.log(age)
             let telephoneNumber = $("#telephoneNumber").val(); //电话
-            console.log(telephoneNumber)
             let email = $("#email").val(); // 邮箱
             let organization = $("#organization").val();                //组织
 

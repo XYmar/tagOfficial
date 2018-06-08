@@ -603,7 +603,7 @@
                 success: function (result) {
                     let data = result.data;
 
-                    console.log(result.data);//打印服务端返回的数据(调试用)
+                    //console.log(result.data);//打印服务端返回的数据(调试用)
 
                     document.getElementById("username").innerHTML = data.username;
                     document.getElementById("teamName").innerHTML = data.teamName;
@@ -637,7 +637,7 @@
                     img.src = window.URL.createObjectURL(blob);
                     $("#badge").html(img);
 
-                    console.log($("#badge")[0].childNodes[0]);
+                    //console.log($("#badge")[0].childNodes[0]);
                     $("#badge")[0].childNodes[0].setAttribute("class","idCard");
 
 

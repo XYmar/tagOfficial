@@ -268,9 +268,9 @@
     function handleImg(file, divId){
         //获取文件名称
         let fileName = file.name;
-        console.log("文件名---------");
+        /*console.log("文件名---------");
         console.log(file);
-        console.log(fileName);
+        console.log(fileName);*/
 
         url=window.URL.createObjectURL(file);  // 得到bolb对象路径，可当成普通的文件路径一样使用，赋值给src;
 
@@ -288,7 +288,7 @@
             '</div>';
 
         let $fileArea = document.getElementById(divId);
-        console.log($fileArea);
+        //console.log($fileArea);
 
         $(html).appendTo($fileArea);
     }
@@ -307,7 +307,7 @@
 
         let $fileArea = document.getElementById("idZhengmian");
 
-        console.log($fileArea);
+        //console.log($fileArea);
 
         $fileArea.removeChild(delDiv);
         let fZheng = document.getElementById("fileZheng");
@@ -382,7 +382,7 @@
         let isValidateBadge = false;
 
 
-        console.log(username.length);
+        //console.log(username.length);
         if(username.length === 0){
             //alert("账号不能为空");
             document.getElementById("inputGNo").parentElement.style.border = "1px solid red";

@@ -131,7 +131,7 @@
 
         var isValidate = false;
 
-        console.log(username.length);
+        //console.log(username.length);
         if(username.length == 0){
             uName.innerHTML += "用户名不能为空";
             isValidate = false;
@@ -156,7 +156,7 @@
         var password = $("#password").val();
         var token = username + ':' + password;
 
-        console.log(validate());
+        //console.log(validate());
         if(validate()){
             $.ajax({
                 //几个参数需要注意一下
@@ -168,7 +168,7 @@
                     xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
                 },
                 success: function (result) {
-                    console.log(result.data.username);//打印服务端返回的数据(调试用)
+                    //console.log(result.data.username);//打印服务端返回的数据(调试用)
                     //setCookie("myUsername",result.data.username,null);
                     $.cookie("myUsername",result.data.username,{path:'/'});
                     $.cookie("myWPa",$.base64.encode(password),{path:'/'});
