@@ -330,12 +330,13 @@
         let datalistB = []
         let dataAll = []
 
+        // 获取未审核
         $.ajax({
             //几个参数需要注意一下
             type: "GET",//方法类型
             dataType: "json",//预期服务器返回的数据类型
             url: "http://localhost:8081/users/byRoleName" ,//url
-            data: {enabled: false, rolename: 'user'},
+            data: {rolename: 'user'},
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
             },
@@ -416,13 +417,13 @@
             }
         });
 
-
+        // 获取通过和未通过
         $.ajax({
             //几个参数需要注意一下
             type: "GET",//方法类型
             dataType: "json",//预期服务器返回的数据类型
             url: "http://localhost:8081/users/byRoleName" ,//url
-            data: {enabled: true, rolename: 'accept'},
+            data: {rolename: 'accept'},
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
             },
@@ -437,7 +438,7 @@
                     type: "GET",//方法类型
                     dataType: "json",//预期服务器返回的数据类型
                     url: "http://localhost:8081/users/byRoleName" ,//url
-                    data: {enabled: true, rolename: 'denied'},
+                    data: {rolename: 'denied'},
                     beforeSend: function (xhr) {
                         xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
                     },
@@ -500,7 +501,7 @@
                                 title: 'id',
                                 visible: false
                             },{
-                                field: 'id',
+                                field: 'authorities',
                                 title: '状态',
                                 formatter: statusFormatter
                             }
@@ -582,7 +583,12 @@
 
         //生成状态
         function statusFormatter(value) {
-            return "<span style=\"color: #27A9E3;\">已审核</span>"
+            /*return "<span style=\"color: #27A9E3;\">已审核</span>"*/
+            if(value[0].authority.indexOf('accept') > 0) {
+                return "<span style=\"color: #27A9E3;\">已审核</span>"
+            } else if(value[0].authority.indexOf('denied') > 0){
+                return "<span style=\"color: #ff0000;\">未通过</span>"
+            }
         }
 
         /*$(function(){
