@@ -21,6 +21,20 @@
     <link rel="stylesheet" href="http://58.213.141.220:10049/housingsubsidy/css/lightbox.css">
     <link href="../css/header.css" rel="stylesheet" type="text/css" />
 
+    <style>
+        .lb-outerContainer {
+            width: 510px;
+            height: 310px;
+        }
+
+        .lightbox .lb-image {
+            display: block;
+            max-width: inherit;
+            border-radius: 3px;
+            width: 500px;
+            height: 300px;
+        }
+    </style>
 
 </head>
 
@@ -191,10 +205,13 @@
                                 身份审核
                             </h4>
                         </div>
-                        <div class="col-md-8 group-info">
+                        <div class="col-md-8 group-info smallBigPic">
                             <div class="col-md-6" id="badge">
 
                                 <img src="" class="idCard"/>
+
+                            </div>
+                            <div class="col-md-6" id="bigPic">
 
                             </div>
                         </div>
@@ -239,9 +256,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset()">取消</button>
-                    <a href="audit.html">
                         <button class="btn btn-primary" type="button" onclick="denyApply()">确认</button>
-                    </a>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -576,7 +591,7 @@
 <script type="text/javascript" src="../plugins/jquery.min.js"></script>
 <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
 
-<script src="http://58.213.141.220:10049/housingsubsidy/js/lightbox.js"></script>
+<script src="../js/lightbox.js"></script>
 
 <script type="text/javascript">
     window.onload=function(){
@@ -586,7 +601,7 @@
             //几个参数需要注意一下
             type: "GET",//方法类型
             dataType: "json",//预期服务器返回的数据类型
-            url: "http://localhost:8081/users/" + id ,//url
+            url: "http://192.168.0.138:8081/users/" + id ,//url
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
             },
@@ -643,7 +658,7 @@
             }
         });*/
 
-        let url = "http://localhost:8081/users/" + id + "/badge" ;
+        let url = "http://192.168.0.138:8081/users/" + id + "/badge" ;
         let xhr = new XMLHttpRequest();
         xhr.open('GET', url, true);
         xhr.responseType = "blob";
@@ -661,6 +676,22 @@
 
                 console.log($("#badge")[0].childNodes[0]);
                 $("#badge")[0].childNodes[0].setAttribute("class","idCard");
+
+
+                url= window.URL.createObjectURL(blob);  // 得到bolb对象路径，可当成普通的文件路径一样使用，赋值给src;
+
+                //添加到文件列表
+                let html = '<div class="col-md-12 idPic">' +
+                    '<div class="col-md-1 col-xs-3 idPic bigPic"><a class="btn btn-success btn-mini" href="' + url + '" data-lightbox="1111" data-title="查看原图" ' +
+                    'style="cursor:pointer;padding: 3px 8px;font-size: 11px;border-radius: 3px;float: unset;margin-top: 0;">查看原图</a></div>' +
+                    '</div>';
+
+                let bigPicture = document.getElementById("bigPic");
+
+                $(html).appendTo(bigPicture);
+
+                $(".lb-image").style.width = "500px";
+                $(".lb-image").style.height = "300px";
             }
         }
         xhr.send();
@@ -733,7 +764,7 @@
             //几个参数需要注意一下
             type: "PATCH",//方法类型
             dataType: "json",//预期服务器返回的数据类型
-            url: "http://localhost:8081/users/" + id + "/accept",//url
+            url: "http://192.168.0.138:8081/users/" + id + "/accept",//url
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
             },
@@ -754,7 +785,7 @@
             //几个参数需要注意一下
             type: "PATCH",//方法类型
             dataType: "json",//预期服务器返回的数据类型
-            url: "http://localhost:8081/users/" + id + "/denied",//url
+            url: "http://192.168.0.138:8081/users/" + id + "/denied",//url
             data: {message: denyReason},
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
