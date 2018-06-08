@@ -302,6 +302,8 @@
 <script src="../js/jquery.cookie.js"></script>
 
 <script type="text/javascript">
+    let oldPwd = '';
+    let myTeamId = '';
     window.onload=function(){
         let fZheng = document.getElementById("fileZheng");
 
@@ -317,15 +319,17 @@
         };
 
 
-        let myTeamId = $.cookie("myTeamId");
+        myTeamId = $.cookie("myTeamId");
 
         let username = $.cookie("myUsername");
         let password = $.cookie("myPassword");
         let token = username + ':' + password;
 
 
+
+
         //加载图片
-        let url = "http://localhost:8081/users/" + myTeamId + "/badge" ;
+        let url = "http://192.168.0.138:8081/users/" + myTeamId + "/badge" ;
         let xhr = new XMLHttpRequest();
         xhr.open('GET', url, true);
         xhr.responseType = "blob";
@@ -353,7 +357,7 @@
             //几个参数需要注意一下
             type: "GET",//方法类型
             dataType: "json",//预期服务器返回的数据类型
-            url: "http://localhost:8081/users/" + myTeamId,//url
+            url: "http://192.168.0.138:8081/users/" + myTeamId,//url
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
             },
@@ -394,6 +398,8 @@
                     document.getElementById("inputLEmail").value = data.email;
                    // document.getElementById('inputLsch').value = data.organization;
 
+                    oldPwd = data.password;
+
 
 
                     //审核中，所有注册信息都不可修改
@@ -411,17 +417,11 @@
             }
         });
 
-
-
-
     }
 
     function handleImg(file, divId){
         //获取文件名称
         let fileName = file.name;
-        console.log("文件名---------");
-        console.log(file);
-        console.log(fileName);
 
         url=window.URL.createObjectURL(file);  // 得到bolb对象路径，可当成普通的文件路径一样使用，赋值给src;
 
@@ -439,9 +439,10 @@
             '</div>';
 
         let $fileArea = document.getElementById(divId);
-        console.log($fileArea);
 
         $(html).appendTo($fileArea);
+
+        document.getElementById("badge").innerHTML = "";
     }
 
     function delFile(event){
@@ -508,7 +509,6 @@
         let age = $("#inputLOld").val();                         //年龄
         let telephoneNumber = $("#inputLTel").val();             //电话
         let organization = $("#inputLsch").val();                //组织
-        //let job = $("#inputLmajor").val();                       //职位
         let email = $("#inputLEmail").val();                     //邮箱
 
         let sexAll = document.getElementsByName("sex");
@@ -533,7 +533,7 @@
         let isValidateBadge = false;
 
 
-        console.log(username.length);
+        //console.log(username.length);
         if(username.length === 0){
             //alert("账号不能为空");
             document.getElementById("inputGNo").parentElement.style.border = "1px solid red";
@@ -543,22 +543,28 @@
             isValidateUsername = true;
         }
 
-        if(password.length === 0){
-            //alert("密码不能为空");
-            document.getElementById("inputGPassword").parentElement.style.border = "1px solid red";
-            isValidatePwd = false;
-        }else{
-            if(CheckPassWord(password)){
-                document.getElementById("inputGPassword").parentElement.style.border = "0";
-                isValidatePwd = true;
-            }else{
 
-                alert("密码必须为字母与数字混合，且不小于6位");
+        if(oldPwd !== password){
+            if(password.length === 0){
+                //alert("密码不能为空");
                 document.getElementById("inputGPassword").parentElement.style.border = "1px solid red";
                 isValidatePwd = false;
-            }
+            }else{
+                if(CheckPassWord(password)){
+                    document.getElementById("inputGPassword").parentElement.style.border = "0";
+                    isValidatePwd = true;
+                }else{
 
+                    alert("密码必须为字母与数字混合，且不小于6位");
+                    document.getElementById("inputGPassword").parentElement.style.border = "1px solid red";
+                    isValidatePwd = false;
+                }
+
+            }
+        }else {
+            isValidatePwd = true;
         }
+
 
         if(teamName.length === 0){
             document.getElementById("inputGName").parentElement.style.border = "1px solid red";
@@ -608,15 +614,6 @@
             isValidateOrg = true;
         }
 
-        /*if(job.length === 0){
-            document.getElementById("inputLmajor").parentElement.style.border = "1px solid red";
-            isValidate = false;
-            return;
-        }else{
-            document.getElementById("inputLmajor").parentElement.style.border = "0";
-            isValidate = true;
-        }*/
-
         if(email.length === 0){
             document.getElementById("inputLEmail").parentElement.style.border = "1px solid red";
             isValidateEmail = false;
@@ -632,19 +629,7 @@
 
         }
 
-        /*if(sex !== ''){//获取name为sex的input的对象并判断是否被选中
-            document.getElementById("Lsex").style.border = "0";
-            isValidate = true;
-            //alert(sex);
-        }else{
-            // alert("请选择性别");//如果性别的单选按钮没有被选择则弹出提示
-            document.getElementById("Lsex").style.border = "1px solid red";
-            isValidate = false;
-
-            return;
-        }*/
-
-        if (typeof(badge) === "undefined" || badge.size <= 0) {
+        /*if (typeof(badge) === "undefined" || badge.size <= 0) {
             //alert("请选择图片");
             document.getElementById("Lpicture").parentElement.style.border = "1px solid red";
             isValidateBadge = false;
@@ -652,10 +637,10 @@
         }else{
             document.getElementById("Lpicture").parentElement.style.border = "0";
             isValidateBadge = true;
-        }
-
-        if(isValidateUsername && isValidatePwd && isValidatePwd && isValidateTeamname && isValidateName && isValidateAge
-            && isValidateTel && isValidateOrg && isValidateEmail && isValidateBadge ){
+        }*/
+        //console.log(isValidateUsername)
+        if(isValidateUsername && isValidatePwd && isValidateTeamname && isValidateName && isValidateAge
+            && isValidateTel && isValidateOrg && isValidateEmail){
             isValidate = true
         }else {
             isValidate = false
@@ -665,10 +650,8 @@
 
     }
 
+    //修改注册信息后再次提交
     function doSubmit() {
-        //alert("hhhh");
-
-
         //console.log(validate());
         if(validate()){
             let r=confirm("提交后将无法修改，确认提交吗？");
@@ -682,7 +665,6 @@
                 let age = $("#inputLOld").val();                         //年龄
                 let telephoneNumber = $("#inputLTel").val();             //电话
                 let organization = $("#inputLsch").val();                //组织
-                //let job = $("#inputLmajor").val();                       //职位
                 let email = $("#inputLEmail").val();                     //邮箱
 
                 let sexAll = document.getElementsByName("sex");
@@ -694,31 +676,34 @@
                 }
 
                 let badge = document.getElementById("fileZheng").files[0];  //获取文件
+                //console.log(badge===undefined);
 
-                /*if (typeof(badge) === "undefined" || badge.size <= 0) {
-                    alert("请选择图片");
-                    return;
-                }
-        */
                 let formData = new FormData();
                 formData.append("username", username);
-                formData.append("password", password);
+                if(oldPwd === password){
+                    formData.append("password", "");
+                }else{
+                    formData.append("password", password);
+                }
+
                 formData.append("teamName", teamName);
                 formData.append("name", name);
                 formData.append("age", age);
                 formData.append("telephoneNumber", telephoneNumber);
                 formData.append("organization", organization);
-                //formData.append("job", job);
                 formData.append("email", email);
                 formData.append("sex", sex);
-                formData.append("badge", badge); //加入文件对象
+                if(badge===undefined){
+                    formData.append("badge", ""); //加入文件对象
+                }else {
+                    formData.append("badge", badge); //加入文件对象
+                }
 
-                //alert("成功");
-                $.ajax({
+
+               $.ajax({
                     //几个参数需要注意一下
 
-                    url: "http://localhost:8081/users" ,//url
-                    // data: ({username: username,password: password,IDNumber: IDNumber}),
+                    url: "http://192.168.0.138:8081/users/" + myTeamId + "/recommit",//url
                     data: formData,
                     type: "POST",//方法类型
                     async:false,
