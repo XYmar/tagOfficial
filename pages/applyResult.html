@@ -104,7 +104,7 @@
                         <!-- 提示信息 -->
                         <div class="row-fluid col-md-12 paddingDivMess">
                             <div class="col-md-12 col-xs-12 row-fluid paddingDiv">
-                                <h3 class="message"><span class="required-flag">*</span>如未通过，可修改后再次提交</h3>
+                                <h3 class="message" id="message"><span class="required-flag">*</span>如未通过，可修改后再次提交</h3>
                             </div>
                         </div>
 
@@ -305,6 +305,8 @@
     let oldPwd = '';
     let myTeamId = '';
 
+    let role = $.cookie("myRole");
+
     let username = $.cookie("myUsername");
     let password0 = $.cookie("myWPa");
     let password = $.base64.decode(password0);
@@ -314,108 +316,121 @@
     window.onload=function(){
 
         if ((username != null) && (username !== "null")) {
-            let fZheng = document.getElementById("fileZheng");
+            if(role !== 'admin'){                                      //非管理员登录才显示基本信息
+                let fZheng = document.getElementById("fileZheng");
 
-            //this.files即获取input中上传的file对象 是个数组
-            fZheng.onchange = function(){
-                if(fZheng.value.length !== 0){
-                    let file = this.files[0];
+                //this.files即获取input中上传的file对象 是个数组
+                fZheng.onchange = function(){
+                    if(fZheng.value.length !== 0){
+                        let file = this.files[0];
 
-                    divId = "idZhengmian";
+                        divId = "idZhengmian";
 
-                    handleImg(file, divId);
-                }
-            };
-
-            myTeamId = $.cookie("myTeamId");
-
-            //加载图片
-            let url = "http://localhost:8081/users/" + myTeamId + "/badge" ;
-            let xhr = new XMLHttpRequest();
-            xhr.open('GET', url, true);
-            xhr.responseType = "blob";
-            xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-            xhr.setRequestHeader("client_type", "DESKTOP_WEB");
-            xhr.onload = function() {
-                if (this.status === 200) {
-                    let blob = this.response;
-                    let img = document.createElement("img");
-                    img.onload = function(e) {
-                        window.URL.revokeObjectURL(img.src);
-                    };
-                    img.src = window.URL.createObjectURL(blob);
-                    $("#badge").html(img);
-
-                    //console.log($("#badge")[0].childNodes[0]);
-                    $("#badge")[0].childNodes[0].setAttribute("class","idCard");
-                }
-            }
-            xhr.send();
-
-
-            //查询审核结果
-            $.ajax({
-                //几个参数需要注意一下
-                type: "GET",//方法类型
-                dataType: "json",//预期服务器返回的数据类型
-                url: "http://localhost:8081/users/" + myTeamId,//url
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-                },
-                success: function (result) {
-                    let str = "";
-                    let data = result.data;
-
-                    if(data.length !== 0){
-
-                        //审查结果
-                        let applyResultTbody = document.getElementById('applyResultTbody');
-                        str += "<tr>" +
-                            "<td style='display:none'>" + data.id + "</td>" +
-                            "<td>" + data.teamName + "</td>" +
-                            "<td>" + data.name + "</td>" +
-                            "<td>" + data.telephoneNumber + "</td>" +
-                            "<td>" + data.organization + "</td>" +
-                            "<td>" + (data.message === null ? '--' : data.message) + "</td>" +
-                            "<td>" + (data.roleEntities[0].name === 'user' ?  "<span style=\"color: #27A9E3;\">审核中</span>"  :  "<span style=\"color: red;\">未通过</span>" ) + "</td>" +
-                            "</tr>";
-                        applyResultTbody.innerHTML = str;
-
-                        //注册信息
-                        document.getElementById("inputGNo").value = data.username;
-                        document.getElementById("inputGPassword").value = data.password;
-                        document.getElementById("inputGName").value = data.teamName;
-                        document.getElementById("inputLname").value = data.name;
-                        document.getElementById("inputLOld").value = data.age;
-                        if(data.sex === 0){
-                            document.getElementById("man").checked = "checked";
-                        }else if(data.sex === 1){
-                            document.getElementById("woman").checked = "checked";
-                        }
-
-                        document.getElementById("inputLTel").value = data.telephoneNumber;
-                        document.getElementById("inputLsch").value = data.organization;
-                        document.getElementById("inputLEmail").value = data.email;
-                        // document.getElementById('inputLsch').value = data.organization;
-
-                        oldPwd = data.password;
-
-
-
-                        //审核中，所有注册信息都不可修改
-
-                        if(data.roleEntities[0].name === 'user'){
-                            $(".doEdit").attr("disabled", "disabled");
-                            document.getElementById("upSpan").style.background = "lightgrey";
-                            document.getElementById("upSpan").style.borderColor = "lightgrey";
-                        }
+                        handleImg(file, divId);
                     }
+                };
 
-                },
-                error : function() {
-                    alert("请求错误！");
+                myTeamId = $.cookie("myTeamId");
+
+                //加载图片
+                let url = "http://localhost:8081/users/" + myTeamId + "/badge" ;
+                let xhr = new XMLHttpRequest();
+                xhr.open('GET', url, true);
+                xhr.responseType = "blob";
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+                xhr.setRequestHeader("client_type", "DESKTOP_WEB");
+                xhr.onload = function() {
+                    if (this.status === 200) {
+                        let blob = this.response;
+                        let img = document.createElement("img");
+                        img.onload = function(e) {
+                            window.URL.revokeObjectURL(img.src);
+                        };
+                        img.src = window.URL.createObjectURL(blob);
+                        $("#badge").html(img);
+
+                        //console.log($("#badge")[0].childNodes[0]);
+                        $("#badge")[0].childNodes[0].setAttribute("class","idCard");
+                    }
                 }
-            });
+                xhr.send();
+
+
+                //查询审核结果
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "GET",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "http://localhost:8081/users/" + myTeamId,//url
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+                    },
+                    success: function (result) {
+                        let str = "";
+                        let data = result.data;
+
+                        if(data.length !== 0){
+
+                            //审查结果
+                            let applyResultTbody = document.getElementById('applyResultTbody');
+                            str += "<tr>" +
+                                "<td style='display:none'>" + data.id + "</td>" +
+                                "<td>" + data.teamName + "</td>" +
+                                "<td>" + data.name + "</td>" +
+                                "<td>" + data.telephoneNumber + "</td>" +
+                                "<td>" + data.organization + "</td>" +
+                                "<td>" + (data.message === null ? '--' : data.message) + "</td>" +
+                                "<td>" + (data.roleEntities[0].name === 'user' ?  "<span style=\"color: #27A9E3;\">审核中</span>"  :  "<span style=\"color: red;\">未通过</span>" ) + "</td>" +
+                                "</tr>";
+                            applyResultTbody.innerHTML = str;
+alert("管理员");
+                            //注册信息
+                            document.getElementById("inputGNo").value = data.username;
+                            document.getElementById("inputGPassword").value = data.password;
+                            document.getElementById("inputGName").value = data.teamName;
+                            document.getElementById("inputLname").value = data.name;
+                            document.getElementById("inputLOld").value = data.age;
+                            if(data.sex === 0){
+                                document.getElementById("man").checked = "checked";
+                            }else if(data.sex === 1){
+                                document.getElementById("woman").checked = "checked";
+                            }
+
+                            document.getElementById("inputLTel").value = data.telephoneNumber;
+                            document.getElementById("inputLsch").value = data.organization;
+                            document.getElementById("inputLEmail").value = data.email;
+                            // document.getElementById('inputLsch').value = data.organization;
+
+                            oldPwd = data.password;
+
+
+
+                            //审核中，所有注册信息都不可修改
+
+                            if(data.roleEntities[0].name === 'user'){
+                                $(".doEdit").attr("disabled", "disabled");
+                                document.getElementById("upSpan").style.background = "lightgrey";
+                                document.getElementById("upSpan").style.borderColor = "lightgrey";
+                            }
+                        }
+
+                    },
+                    error : function() {
+                        alert("请求错误！");
+                    }
+                });
+            }else{
+                $(".doEdit").attr("disabled", "disabled");
+                document.getElementById("badge").innerHTML = "";                 //管理员登录时不显示身份图片
+                document.getElementById("upSpan").style.background = "lightgrey";
+                document.getElementById("upSpan").style.borderColor = "lightgrey";
+
+                document.getElementById("inputGNo").value = "";               //去掉账号密码的显示
+                document.getElementById("inputGPassword").value = "";
+
+                document.getElementById("message").innerHTML = "<span class=\"required-flag\">*</span>管理员不得进行操作";
+            }
+
         }else{
             document.getElementById("showBody").style.display = "none";
             window.location.href="login.html";
