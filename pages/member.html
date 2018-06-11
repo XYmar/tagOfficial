@@ -232,10 +232,10 @@
                                                             <label class="control-label col-md-4 col-xs-3">性别</label>
                                                             <div class="controls col-md-8 col-xs-9 sexDiv" id="Lsex" style="padding-top: 5px;">
                                                                 <label class="col-md-5 sexLabel">
-                                                                    <input class="sexInput" type="radio" name="sex" value="0" checked id="boy">
+                                                                    <input class="sexInput" type="radio" name="sex0" value="0" checked id="boy">
                                                                     男 </label>
                                                                 <label class="col-md-5 sexLabel">
-                                                                    <input class="sexInput" type="radio" name="sex" value="1">
+                                                                    <input class="sexInput" type="radio" name="sex0" value="1">
                                                                     女 </label>
                                                             </div>
                                                         </div>
@@ -256,7 +256,7 @@
                                                             <label class="control-label col-md-4 col-xs-3" for="inputLOld">年龄</label>
                                                             <div class="controls col-md-8 col-xs-9">
                                                                 <div style="border-radius: 4px;">
-                                                                    <input id="inputLOld" class="form-control" type="text" />
+                                                                    <input id="inputLOld" class="form-control" type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -265,6 +265,76 @@
                                                             <div class="controls col-md-8 col-xs-9">
                                                                 <div style="border-radius: 4px;">
                                                                     <input id="inputLTel" class="form-control" type="text" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset()">取消</button>
+                                            <button type="button" class="btn btn-primary" onclick="addMember()">添加</button>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div>
+                            <div class="modal fade" id="memberdialog" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" style="top: 25%;">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="reset()"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title title">编辑组员</h4>
+                                        </div>
+                                        <div class="modal-body" style="padding-bottom: 0">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <form class="form-horizontal col-md-12">
+                                                        <div class="form-group col-md-12">
+                                                            <label class="control-label col-md-4 col-xs-3">姓名</label>
+                                                            <div class="controls col-md-8 col-xs-9">
+                                                                <div style="border-radius: 4px;">
+                                                                    <input class="form-control" id="editName" type="text" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                            <label class="control-label col-md-4 col-xs-3">性别</label>
+                                                            <div class="controls col-md-8 col-xs-9 sexDiv"  id="editSex" style="padding-top: 5px;">
+                                                                <label class="col-md-5 sexLabel">
+                                                                    <input class="sexInput" type="radio" name="sex" id="man" value="0" checked>
+                                                                    男 </label>
+                                                                <label class="col-md-5 sexLabel">
+                                                                    <input class="sexInput" type="radio" name="sex" id="woman" value="1">
+                                                                    女 </label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group col-md-12">
+                                                            <label class="control-label col-md-4 col-xs-3" for="inputLsch">单位/学校</label>
+                                                            <div class="controls col-md-8 col-xs-9">
+                                                                <div style="border-radius: 4px;">
+                                                                    <input class="form-control" id="editOrg" type="text" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <form class="form-horizontal col-md-12">
+                                                        <div class="form-group col-md-12">
+                                                            <label class="control-label col-md-4 col-xs-3" for="inputLOld">年龄</label>
+                                                            <div class="controls col-md-8 col-xs-9">
+                                                                <div style="border-radius: 4px;">
+                                                                    <input  id="editOld" class="form-control" type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                            <label class="control-label col-md-4 col-xs-3" for="inputLTel">手机号</label>
+                                                            <div class="controls col-md-8 col-xs-9">
+                                                                <div style="border-radius: 4px;">
+                                                                    <input  id="editTel" class="form-control" type="text" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -449,7 +519,7 @@
                             "<td>" + (data[i].sex === 0 ? '男' : '女') + "</td>" +
                             "<td>" + data[i].telephoneNumber + "</td>" +
                             "<td>" + data[i].organization + "</td>" +
-                            "<td><button class='btn btn-success btn-small editMember' disabled='disabled' type='button'>编辑</button>\n" +
+                            "<td><button class='btn btn-success btn-small editMember' type='button' id='" + data[i].id + "' data-toggle='modal' onclick='beforeEdit(event)'>编辑</button>\n" +
                             "<button class='btn btn-danger btn-small editMember' type='button' id='" + data[i].id + "' onclick='delMember(event)'>删除</button></td>" +
                             "</tr>";
                     }
@@ -544,7 +614,12 @@
             document.getElementById("inputLOld").parentElement.style.border = "1px solid red";
             isValidate = false;
             return;
-        }else{
+        }else if(age > 120){
+            alert("年龄不得超过120岁")
+            document.getElementById("inputLOld").parentElement.style.border = "1px solid red";
+            isValidate = false;
+            return;
+        } else {
             document.getElementById("inputLOld").parentElement.style.border = "0";
             isValidate = true;
         }
@@ -620,7 +695,7 @@
             let telephoneNumber = $("#inputLTel").val();             //电话
             let organization = $("#inputLsch").val();                //组织
 
-            let sexAll = document.getElementsByName("sex");
+            let sexAll = document.getElementsByName("sex0");
             let sex = '';                                            //性别
             for(let i=0; i<sexAll.length; i ++){
                 if(sexAll[i].checked){
@@ -670,6 +745,69 @@
         }
 
     }
+
+    function beforeEdit(event){
+        $("#memberdialog").modal('show');
+
+        console.log(event);
+        let editId = event.target.id;
+        console.log(editId);
+
+        $.ajax({
+            //几个参数需要注意一下
+            type: "GET",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "http://localhost:8081/users/" + myTeamId + "/crew/" + editId ,//url
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+
+                //console.log(result.data);//打印服务端返回的数据(调试用)
+                document.getElementById("editName").value = data.name;
+                if(data.sex === 0){
+                    document.getElementById("man").checked = "checked";
+                }else if(data.sex === 1){
+                    document.getElementById("woman").checked = "checked";
+                }
+                document.getElementById("editOld").value = data.age;
+                document.getElementById("editTel").value = data.telephoneNumber;
+                document.getElementById("editOrg").value = data.organization;
+
+            },
+            error : function() {
+                alert("请求错误！");
+            }
+        });
+
+    }
+
+    function editMember(event) {
+        let r=confirm("确认删除吗");
+        if (r === true)
+        {
+            let delId = event.target.id;
+
+            $.ajax({
+                //几个参数需要注意一下
+                type: "DELETE",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "http://localhost:8081/users/" + myTeamId + "/crew/" + delId,//url
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+                },
+                success: function (result) {
+                    getAll();
+                },
+                error: function () {
+                    alert("删除失败！");
+                }
+            });
+        }
+
+    }
+
 
     function delMember(event) {
         let r=confirm("确认删除吗");
