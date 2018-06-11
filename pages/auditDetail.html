@@ -686,6 +686,7 @@
                 xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
             },
             success: function (result) {
+                let myRole = $.cookie("myRole");
                 window.location.href='audit.html';
             },
             error : function() {
