@@ -170,4 +170,12 @@ img {
         padding-top: 0;
     }
 
+    .smallBigPic {
+        padding-bottom: 40px;
+    }
+
+    .bigPic {
+        margin-top: 15px;
+    }
+
 }

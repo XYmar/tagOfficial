@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>我的团队信息</title>
+    <title>军事智能·机器阅读</title>
 
     <!-- Mobile Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +26,7 @@
 
 </head>
 
-<body style="background-image: url('../images/2.png');">
+<body style="background-image: url('../images/2.png');" id="showBody">
 <!-- header start -->
 <header class="header fixed clearfix navbar navbar-fixed-top">
     <div class="container">
@@ -368,51 +368,60 @@
 <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
 <script src="../js/cookie.js"></script>
 <script src="../js/jquery.cookie.js"></script>
-
+<script type="text/javascript" src="../js/jquery.base64.js"></script>
 <script type="text/javascript">
-    let passOld
+    let passOld;
+
+    let myTeamId = $.cookie("myTeamId");
+    let username = $.cookie("myUsername");
+    let password0 = $.cookie("myWPa");
+    let password = $.base64.decode(password0);
+    let token = username + ':' + password;
+
     window.onload=function() {
-        let myTeamId = $.cookie("myTeamId");
 
-        let username = $.cookie("myUsername");
-        let password = $.cookie("myPassword");
-        let token = username + ':' + password;
+        if ((username != null) && (username !== "null")) {
+            $.ajax({
+                //几个参数需要注意一下
+                type: "GET",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "http://localhost:8081/users/" + myTeamId,//url
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+                },
+                success: function (result) {
+                    let data = result.data;
+                    passOld = data.password
 
-        $.ajax({
-            //几个参数需要注意一下
-            type: "GET",//方法类型
-            dataType: "json",//预期服务器返回的数据类型
-            /*url: "http://192.168.0.138:8081/users/" + myTeamId,*///url
-            url: "http://localhost/users/" + myTeamId,//url
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-            },
-            success: function (result) {
-                let data = result.data;
-                passOld = data.password
+                    //console.log(result.data);//打印服务端返回的数据(调试用)
 
-                console.log(result.data);//打印服务端返回的数据(调试用)
+                    document.getElementById("username").innerHTML = data.username;
+                    document.getElementById("teamName").innerHTML = data.teamName;
+                    document.getElementById("name").value = data.name;
+                    document.getElementById("age").value = data.age;
+                    document.getElementById("sex").value = data.sex == 1 ? '女' : '男'
+                    document.getElementById("telephoneNumber").value = data.telephoneNumber;
+                    document.getElementById("organization").value = data.organization;
+                    document.getElementById('password').value = data.password;
+                    /*document.getElementById("job").innerHTML = data.job;*/
+                    document.getElementById("email").value = data.email;
+                    document.getElementById('inputLsch').value = data.organization;
 
-                document.getElementById("username").innerHTML = data.username;
-                document.getElementById("teamName").innerHTML = data.teamName;
-                document.getElementById("name").value = data.name;
-                document.getElementById("age").value = data.age;
-                document.getElementById("sex").value = data.sex == 1 ? '女' : '男'
-                document.getElementById("telephoneNumber").value = data.telephoneNumber;
-                document.getElementById("organization").value = data.organization;
-                document.getElementById('password').value = data.password;
-                /*document.getElementById("job").innerHTML = data.job;*/
-                document.getElementById("email").value = data.email;
-                document.getElementById('inputLsch').value = data.organization;
+                },
+                error: function () {
+                    alert("请求错误！");
+                }
+            });
 
-            },
-            error: function () {
-                alert("请求错误！");
-            }
-        });
+            getAll();
+        }else{
+            document.getElementById("showBody").style.display = "none";
+            window.location.href="login.html";
 
-        getAll();
-    }
+        }
+
+
+    };
 
     function getAll(){
         let myTeamId = $.cookie("myTeamId");
@@ -422,16 +431,15 @@
             type: "GET",//方法类型
             dataType: "json",//预期服务器返回的数据类型
             url: "http://localhost:8081/users/" + myTeamId + "/crew" ,//url
-            /*url: "http://192.168.0.138:8081/users/" + myTeamId + "/crew" ,*/
             beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
             },
             success: function (result) {
                 let str = "";
                 let data = result.data;
 
                 if(data.length !== 0){
-                    console.log(result.data);//打印服务端返回的数据(调试用)
+                    //console.log(result.data);//打印服务端返回的数据(调试用)
 
                     let memberTbody = document.getElementById("TeamMember");
                     for (let i=0;i<data.length;i++) {
@@ -444,6 +452,12 @@
                             "<td><button class='btn btn-success btn-small editMember' disabled='disabled' type='button'>编辑</button>\n" +
                             "<button class='btn btn-danger btn-small editMember' type='button' id='" + data[i].id + "' onclick='delMember(event)'>删除</button></td>" +
                             "</tr>";
+                    }
+                    memberTbody.innerHTML = str;
+                }else {
+                    let memberTbody = document.getElementById("TeamMember");
+                    for (let i=0;i<data.length;i++) {
+                        str = "";
                     }
                     memberTbody.innerHTML = str;
                 }
@@ -583,7 +597,7 @@
         let passNew = $("#password").val()
         let passwordNew = $("#passWordNew").val();
         let passwordAgain = $("#passWordAgain").val();
-        console.log(passwordNew,passwordAgain)
+        //console.log(passwordNew,passwordAgain)
         if (passwordNew.length == 0) {
             alert('密码不能为空')
         } else if (passwordAgain.length == 0){
@@ -600,11 +614,6 @@
 
     function addMember() {
         if(validate()){
-
-            let myTeamId = $.cookie("myTeamId");
-            let username = $.cookie("myUsername");
-            let password = $.cookie("myPassword");
-            let token = username + ':' + password;
 
             let name = $("#inputLname").val();                       //姓名
             let age = $("#inputLOld").val();                         //年龄
@@ -668,12 +677,6 @@
         {
             let delId = event.target.id;
 
-            let myTeamId = $.cookie("myTeamId");
-
-            let username = $.cookie("myUsername");
-            let password = $.cookie("myPassword");
-            let token = username + ':' + password;
-
             $.ajax({
                 //几个参数需要注意一下
                 type: "DELETE",//方法类型
@@ -694,16 +697,9 @@
     }
     
     function modifyInfo() {
-            let myTeamId = $.cookie("myTeamId");
-            let username = $.cookie("myUsername");
-            let password = $.cookie("myPassword");
-            let token = username + ':' + password;
-
             let name = $("#name").val();                       //姓名
             let age = $("#age").val();  //年龄
-            console.log(age)
             let telephoneNumber = $("#telephoneNumber").val(); //电话
-            console.log(telephoneNumber)
             let email = $("#email").val(); // 邮箱
             let organization = $("#organization").val();                //组织
 
@@ -729,9 +725,6 @@
                 //几个参数需要注意一下
 
                 url: "http://localhost:8081/users/" + myTeamId,//url
-               /* url: "http://192.168.0.138:8081/users/" + myTeamId,*/
-                /*data: ({username: username,password: password,IDNumber: IDNumber}),*/
-                /*data: info,*/
                 type: "post",//方法类型
                 data: formData,
                 async:false,
@@ -759,10 +752,6 @@
 
     function modifyPassword () {
         if(validatePass()) {
-            let myTeamId = $.cookie("myTeamId");
-            let username = $.cookie("myUsername");
-            let password = $.cookie("myPassword");
-            let token = username + ':' + password;
             let passwordNew = $("#passWordNew").val();
             let formData = new FormData();
             formData.append("password", passwordNew);//姓名
@@ -770,9 +759,6 @@
                 //几个参数需要注意一下
 
                 url: "http://localhost:8081/users/" + myTeamId + "/password", //url
-               /* url: "http://192.168.0.138:8081/users/" + myTeamId + "/password",*/
-                /*data: ({username: username,password: password,IDNumber: IDNumber}),*/
-                /*data: info,*/
                 type: "post",//方法类型
                 data: formData,
                 async:false,

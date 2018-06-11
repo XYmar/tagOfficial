@@ -10,7 +10,7 @@
     <!-- Mobile Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>登录</title>
+    <title>军事智能·机器阅读</title>
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="../css/login.css" rel="stylesheet" type="text/css" />
     <link href="../css/header.css" rel="stylesheet" type="text/css" />
@@ -116,6 +116,8 @@
 <script src="../js/jquery.cookie.js"></script>
 <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
 
+<script type="text/javascript" src="../js/jquery.base64.js"></script>
+
 <script type="text/javascript">
     function validate(){
         var username = $("#username").val();
@@ -129,7 +131,7 @@
 
         var isValidate = false;
 
-        console.log(username.length);
+        //console.log(username.length);
         if(username.length == 0){
             uName.innerHTML += "用户名不能为空";
             isValidate = false;
@@ -154,7 +156,7 @@
         var password = $("#password").val();
         var token = username + ':' + password;
 
-        console.log(validate());
+        //console.log(validate());
         if(validate()){
             $.ajax({
                 //几个参数需要注意一下
@@ -166,10 +168,10 @@
                     xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
                 },
                 success: function (result) {
-                    console.log(result.data.username);//打印服务端返回的数据(调试用)
+                    //console.log(result.data.username);//打印服务端返回的数据(调试用)
                     //setCookie("myUsername",result.data.username,null);
                     $.cookie("myUsername",result.data.username,{path:'/'});
-                    $.cookie("myPassword",password,{path:'/'});
+                    $.cookie("myWPa",$.base64.encode(password),{path:'/'});
                     $.cookie("myTeamId",result.data.id,{path:'/'});
                     $.cookie("myRole",result.data.roleEntities[0].name,{path:'/'});
 
