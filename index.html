@@ -82,6 +82,7 @@
                                         <!--<li><a href="#news">新闻中心</a></li>-->
                                         <li><a href="#contact">联系我们</a></li>
                                         <li id="loginName"></li>
+                                        <li id="loginOut"></li>
                                     </ul>
                                 </div>
 
@@ -1800,6 +1801,7 @@
     window.onload = function () {
         // 初始化内容
         let loginName = document.getElementById("loginName");
+        let loginOut = document.getElementById("loginOut");
         //var myUsername = getCookie("username");
         let myUsername = $.cookie("myUsername");
         let myRole = $.cookie("myRole");
@@ -1809,6 +1811,7 @@
         if ((myUsername != null) && (myUsername !== "null")) {
             //alert("hh");
             loginName.innerHTML = "";
+            loginOut.innerHTML = "";
             //loginName.innerHTML += "<a href='#'>" + myUsername + "| <sapn onclick='delCookie()' class='exit'>退出</sapn></a>";
             if(myRole === "admin"){
                 loginName.innerHTML += "<a href='pages/audit.html'>审核</a>";
@@ -1818,19 +1821,26 @@
                 loginName.innerHTML += "<a href='pages/applyResult.html'>" + myUsername + "</a>";
             }
 
+            loginOut.innerHTML += "<a href='#'><sapn onclick='delCookie()' class='exit'>退出</sapn></a>";
+
         } else {
             loginName.innerHTML = "";
             loginName.innerHTML += "<a href='pages/login.html'>登录/注册</a>";
             // <a href="pages/login.html">登录</a>
+
+            loginOut.innerHTML = "";
         }
     }
 
     function delCookie() {
         //alert("eeeeee");
         $.cookie("myUsername", null, {path: '/'});
-        var loginName = document.getElementById("loginName");
+        let loginName = document.getElementById("loginName");
+        let loginOut = document.getElementById("loginOut");
         loginName.innerHTML = "";
         loginName.innerHTML += "<a href='pages/login.html'>登录/注册</a>";
+
+        loginOut.innerHTML = "";
     }
 
 
