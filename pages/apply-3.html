@@ -380,8 +380,8 @@
         let isValidateOrg = false;
         let isValidateEmail = false;
         let isValidateBadge = false;
-        /*let usernamePattern  = /^[a-zA-Z0-9]{6,15}$/*/
-        let usernamePattern  = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,15}$/
+        let usernamePattern  = /^[a-zA-Z0-9]{6,15}$/
+        //let usernamePattern  = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,15}$/
 
 
         //console.log(username.length);
@@ -390,7 +390,7 @@
             document.getElementById("inputGNo").parentElement.style.border = "1px solid red";
             isValidateUsername = false;
         } else if(!usernamePattern.test(username)) {
-            alert("帐户名必须是6-15位的英文字母和数字的组合！")
+            alert("帐户名必须是6-15位的英文字母或数字！")
             document.getElementById("inputGNo").parentElement.style.border = "1px solid red";
             isValidateUsername = false;
         }else{
@@ -419,7 +419,7 @@
             document.getElementById("inputGName").parentElement.style.border = "1px solid red";
             isValidateTeamname = false;
         } else if(teamName.length > 15) {
-            alert("组名长度不能超过15位")
+            alert("组名长度不能超过15位");
             document.getElementById("inputGName").parentElement.style.border = "1px solid red";
             isValidateTeamname = false;
         } else{
@@ -580,7 +580,7 @@
                 $.ajax({
                     //几个参数需要注意一下
 
-                    url: "http://192.168.0.138:8081/users" ,//url
+                    url: "http://localhost:8081/users" ,//url
                     // data: ({username: username,password: password,IDNumber: IDNumber}),
                     data: formData,
                     type: "POST",//方法类型
