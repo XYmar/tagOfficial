@@ -80,7 +80,7 @@
                                             <label class="control-label col-md-3 col-sm-3 col-xs-3" for="inputGNo">账号</label>
                                             <div class="controls col-md-9 col-sm-9 col-xs-9">
                                                 <div style="border-radius: 4px;">
-                                                    <input id="inputGNo" class="form-control" type="text" />
+                                                    <input id="inputGNo" class="form-control" type="text"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -101,7 +101,7 @@
                                             <label class="control-label col-md-3 col-sm-3 col-xs-3" for="inputGName">组名称</label>
                                             <div class="controls col-md-9 col-sm-9 col-xs-9">
                                                 <div style="border-radius: 4px;">
-                                                    <input id="inputGName" class="form-control" type="text" />
+                                                    <input id="inputGName" class="form-control" type="text"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -158,7 +158,7 @@
                                             <label class="control-label col-md-3 col-sm-3 col-xs-3" for="inputLOld">年龄</label>
                                             <div class="controls col-md-9 col-xs-9 col-sm-9">
                                                 <div style="border-radius: 4px;">
-                                                    <input id="inputLOld" class="form-control" type="text" />
+                                                    <input id="inputLOld" class="form-control" type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -380,11 +380,17 @@
         let isValidateOrg = false;
         let isValidateEmail = false;
         let isValidateBadge = false;
+        /*let usernamePattern  = /^[a-zA-Z0-9]{6,15}$/*/
+        let usernamePattern  = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,15}$/
 
 
         //console.log(username.length);
         if(username.length === 0){
             //alert("账号不能为空");
+            document.getElementById("inputGNo").parentElement.style.border = "1px solid red";
+            isValidateUsername = false;
+        } else if(!usernamePattern.test(username)) {
+            alert("帐户名必须是6-15位的英文字母和数字的组合！")
             document.getElementById("inputGNo").parentElement.style.border = "1px solid red";
             isValidateUsername = false;
         }else{
@@ -412,7 +418,11 @@
         if(teamName.length === 0){
             document.getElementById("inputGName").parentElement.style.border = "1px solid red";
             isValidateTeamname = false;
-        }else{
+        } else if(teamName.length > 15) {
+            alert("组名长度不能超过15位")
+            document.getElementById("inputGName").parentElement.style.border = "1px solid red";
+            isValidateTeamname = false;
+        } else{
             document.getElementById("inputGName").parentElement.style.border = "0";
             isValidateTeamname = true;
         }
@@ -428,7 +438,11 @@
         if(age.length === 0){
             document.getElementById("inputLOld").parentElement.style.border = "1px solid red";
             isValidateAge = false;
-        }else{
+        }else if(age > 120){
+            alert("年龄不得超过120岁")
+            document.getElementById("inputLOld").parentElement.style.border = "1px solid red";
+            isValidateAge = false;
+        } else {
             document.getElementById("inputLOld").parentElement.style.border = "0";
             isValidateAge = true;
         }
@@ -566,7 +580,7 @@
                 $.ajax({
                     //几个参数需要注意一下
 
-                    url: "http://localhost:8081/users" ,//url
+                    url: "http://192.168.0.138:8081/users" ,//url
                     // data: ({username: username,password: password,IDNumber: IDNumber}),
                     data: formData,
                     type: "POST",//方法类型
