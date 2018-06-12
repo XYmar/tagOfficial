@@ -630,10 +630,8 @@
 
                         <h3 class="media-heading">数据下载</h3>
 
-                        <blockquote>
-                            <a href="files/附件1.txt" download="训练数据集.txt">
-                                <p style="color: #339BEB;">点击下载，训练数据集</p>
-                            </a>
+                        <blockquote id="ifDown">
+
                         </blockquote>
 
                     </div>
@@ -1803,38 +1801,6 @@
 <script type="text/javascript" src="js/jquery.base64.js"></script>
 <script>
     window.onload = function () {
-        // 初始化内容
-        let loginName = document.getElementById("loginName");
-        let loginOut = document.getElementById("loginOut");
-        //var myUsername = getCookie("username");
-        let myUsername = $.cookie("myUsername");
-        let myRole = $.cookie("myRole");
-        /*console.log(myUsername);
-        console.log(myRole);*/
-
-        if ((myUsername != null) && (myUsername !== "null")) {
-            //alert("hh");
-            loginName.innerHTML = "";
-            loginOut.innerHTML = "";
-            //loginName.innerHTML += "<a href='#'>" + myUsername + "| <sapn onclick='delCookie()' class='exit'>退出</sapn></a>";
-            if(myRole === "admin"){
-                loginName.innerHTML += "<a href='pages/audit.html'>审核</a>";
-            }else if(myRole === "accept"){
-                loginName.innerHTML += "<a href='pages/member.html'>" + myUsername + "</a>";
-            }else if(myRole === "user" || myRole === "denied"){
-                loginName.innerHTML += "<a href='pages/applyResult.html'>" + myUsername + "</a>";
-            }
-
-            loginOut.innerHTML += "<a href='#'><sapn onclick='delCookie()' class='exit'>退出</sapn></a>";
-
-        } else {
-            loginName.innerHTML = "";
-            loginName.innerHTML += "<a href='pages/login.html'>登录/注册</a>";
-            // <a href="pages/login.html">登录</a>
-
-            loginOut.innerHTML = "";
-        }
-
 
         let myTeamId = $.cookie("myTeamId");
         let username = $.cookie("myUsername");
@@ -1858,6 +1824,42 @@
                 //alert("请求错误！");
             }
         });
+
+
+        // 初始化内容
+        let loginName = document.getElementById("loginName");
+        let loginOut = document.getElementById("loginOut");
+        let ifDown = document.getElementById("ifDown");
+        let myUsername = $.cookie("myUsername");
+        let myRole = $.cookie("myRole");
+
+        if ((myUsername != null) && (myUsername !== "null")) {
+            //alert("hh");
+            loginName.innerHTML = "";
+            loginOut.innerHTML = "";
+            //loginName.innerHTML += "<a href='#'>" + myUsername + "| <sapn onclick='delCookie()' class='exit'>退出</sapn></a>";
+            if(myRole === "admin"){
+                loginName.innerHTML += "<a href='pages/audit.html'>审核</a>";
+                ifDown.innerHTML = "<a href=\"files/附件1.txt\" download=\"训练数据集.txt\"><p style=\"color: #339BEB;\">点击下载，训练数据集</p> </a>"
+            }else if(myRole === "accept"){
+                loginName.innerHTML += "<a href='pages/member.html'>" + myUsername + "</a>";
+                ifDown.innerHTML = "<a href=\"files/附件1.txt\" download=\"训练数据集.txt\"><p style=\"color: #339BEB;\">点击下载，训练数据集</p> </a>"
+            }else if(myRole === "user" || myRole === "denied"){
+                loginName.innerHTML += "<a href='pages/applyResult.html'>" + myUsername + "</a>";
+                ifDown.innerHTML = "<p>审核通过才能进行下载操作</p>"
+            }
+
+            loginOut.innerHTML += "<a href='#'><sapn onclick='delCookie()' class='exit'>退出</sapn></a>";
+
+
+        } else {
+            loginName.innerHTML = "";
+            loginName.innerHTML += "<a href='pages/login.html'>登录/注册</a>";
+
+            loginOut.innerHTML = "";
+
+            ifDown.innerHTML = "<p>请先登录</p>"
+        }
     }
 
     function delCookie() {
@@ -1869,6 +1871,10 @@
         loginName.innerHTML += "<a href='pages/login.html'>登录/注册</a>";
 
         loginOut.innerHTML = "";
+
+        //登录后才可下载
+        let ifDown = document.getElementById("ifDown");
+        ifDown.innerHTML = "<p>请先登录</p>"
     }
 
 
