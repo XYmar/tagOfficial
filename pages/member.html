@@ -279,6 +279,8 @@
                                     </div><!-- /.modal-content -->
                                 </div><!-- /.modal-dialog -->
                             </div>
+
+                            <!-- 组员修改弹框 -->
                             <div class="modal fade" id="memberdialog" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" style="top: 25%;">
                                 <div class="modal-dialog modal-lg" role="document">
                                     <div class="modal-content">
@@ -344,7 +346,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset()">取消</button>
-                                            <button type="button" class="btn btn-primary" onclick="addMember()">添加</button>
+                                            <button type="button" class="btn btn-primary" onclick="editMember()">修改</button>
                                         </div>
                                     </div><!-- /.modal-content -->
                                 </div><!-- /.modal-dialog -->
@@ -447,6 +449,8 @@
     let password0 = $.cookie("myWPa");
     let password = $.base64.decode(password0);
     let token = username + ':' + password;
+
+    let editId = '';
 
     window.onload=function() {
 
@@ -750,7 +754,7 @@
         $("#memberdialog").modal('show');
 
         console.log(event);
-        let editId = event.target.id;
+        editId = event.target.id;
         console.log(editId);
 
         $.ajax({
@@ -783,25 +787,41 @@
 
     }
 
-    function editMember(event) {
-        let r=confirm("确认删除吗");
+    function editMember() {
+        let r=confirm("确认修改吗");
         if (r === true)
         {
-            let delId = event.target.id;
+            let name = $("#editName").val();                       //姓名
+            let age = $("#editOld").val();  //年龄
+            let telephoneNumber = $("#editTel").val(); //电话
+            let organization = $("#editOrg").val();                //组织
+
+            let sexAll = document.getElementsByName("sex");
+            let sex = '';                                            //性别
+            for(let i=0; i<sexAll.length; i ++){
+                if(sexAll[i].checked){
+                    sex = sexAll[i].value;
+                }
+            }
 
             $.ajax({
                 //几个参数需要注意一下
-                type: "DELETE",//方法类型
-                dataType: "json",//预期服务器返回的数据类型
-                url: "http://localhost:8081/users/" + myTeamId + "/crew/" + delId,//url
+                type: "PATCH",//方法类型
+                //dataType: "json",//预期服务器返回的数据类型
+                data: ({name:name, age: age, telephoneNumber:telephoneNumber,organization:organization,sex:sex}),
+                contentType: 'application/x-www-form-urlencoded',
+                url: "http://localhost:8081/users/" + myTeamId + "/crew/" + editId,//url
+                async: true,
+                crossDomain: true,
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
                 },
                 success: function (result) {
+                    $("#memberdialog").modal('hide');
                     getAll();
                 },
                 error: function () {
-                    alert("删除失败！");
+                    alert("修改失败！");
                 }
             });
         }
