@@ -171,15 +171,17 @@
                                             <div class="form-group col-md-12">
                                                 <label class="control-label col-md-5 col-xs-3">电话： </label>
                                                 <div class="controls col-md-7 col-xs-9">
-                                                    <input class="auditDetailDiv form-control" id="telephoneNumber">
-                                                    </input>
+                                                    <div style="border-radius: 4px;">
+                                                        <input class="auditDetailDiv form-control" id="telephoneNumber" />
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label class="control-label col-md-5 col-xs-3">邮箱： </label>
                                                 <div class="controls col-md-7 col-xs-9">
-                                                    <input class="auditDetailDiv form-control" id="email">
-                                                    </input>
+                                                    <div style="border-radius: 4px;">
+                                                        <input class="auditDetailDiv form-control" id="email" />
+                                                    </div>
                                                 </div>
                                             </div>
                                             <!--<div class="form-group col-md-12">
@@ -858,8 +860,57 @@
         }
 
     }
-    
+
+    function validateTelEmail(){
+        let telephoneNumber = $("#telephoneNumber").val(); //电话
+        let email = $("#email").val(); // 邮箱
+
+        let isValidate = false;
+        let isValidateTel = false;
+        let isValidateEmail = false;
+
+        if(telephoneNumber.length === 0){
+            document.getElementById("telephoneNumber").parentElement.style.border = "1px solid red";
+            isValidateTel = false;
+        }else{
+            if(CheckTel(telephoneNumber)){
+                document.getElementById("telephoneNumber").parentElement.style.border = "0";
+                isValidateTel = true;
+            }else{
+                alert("不是完整的11位手机号或者正确的手机号前七位");
+                document.getElementById("telephoneNumber").parentElement.style.border = "1px solid red";
+                isValidateTel = false;
+            }
+
+        }
+
+        if(email.length === 0){
+            document.getElementById("email").parentElement.style.border = "1px solid red";
+            isValidateEmail = false;
+        }else{
+            if(checkEmail(email)){
+                document.getElementById("email").parentElement.style.border = "0";
+                isValidateEmail = true;
+            }else{
+                alert("邮箱格式不正确");
+                document.getElementById("email").parentElement.style.border = "1px solid red";
+                isValidateEmail = false;
+            }
+
+        }
+
+        if(isValidateTel && isValidateEmail ){
+            isValidate = true
+        }else {
+            isValidate = false
+        }
+
+        return isValidate;
+
+    }
+
     function modifyInfo() {
+        if(validateTelEmail()){
             let name = $("#name").val();                       //姓名
             let age = $("#age").val();  //年龄
             let telephoneNumber = $("#telephoneNumber").val(); //电话
@@ -881,9 +932,7 @@
             formData.append("email", email);
             formData.append("organization", organization);
             formData.append("sex", sex);
-            /*let info = JSON.stringify({telephoneNumber: telephoneNumber,email: email})*/
 
-            //alert("成功");
             $.ajax({
                 //几个参数需要注意一下
 
@@ -909,6 +958,8 @@
 
                 }
             });
+        }
+
     }
 
     function modifyPassword () {
