@@ -679,18 +679,17 @@
 
     function validatePass() {
         let isValidate = false;
-        let passNew = $("#password").val()
         let passwordNew = $("#passWordNew").val();
         let passwordAgain = $("#passWordAgain").val();
         //console.log(passwordNew,passwordAgain)
-        if (passwordNew.length == 0) {
+        if (passwordNew.length === 0) {
             alert('密码不能为空')
-        } else if (passwordAgain.length == 0){
+        } else if (!CheckPassWord(passwordNew)){
+            alert('密码必须为字母与数字混合，且不小于6位')
+        } else if (passwordAgain.length === 0){
             alert('请再次输入密码')
-        } else if (passwordNew != passwordAgain) {
+        }   else if (passwordNew !== passwordAgain) {
             alert('两次输入密码不一致')
-        } else if (!CheckPassWord(passwordNew) || !CheckPassWord(passwordAgain)){
-            alert('密码格式不正确')
         } else {
             isValidate = true
         }
@@ -893,10 +892,8 @@
                 data: formData,
                 async:false,
                 dataType: "json",//预期服务器返回的数据类型
-                cache: false,//上传文件无需缓存
                 processData: false,//用于对data参数进行序列化处理 这里必须false
                 contentType: false, //必须
-                enctype: 'multipart/form-data',
 
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
@@ -927,10 +924,8 @@
                 data: formData,
                 async:false,
                 dataType: "json",//预期服务器返回的数据类型
-                cache: false,//上传文件无需缓存
                 processData: false,//用于对data参数进行序列化处理 这里必须false
                 contentType: false, //必须
-                enctype: 'multipart/form-data',
 
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
