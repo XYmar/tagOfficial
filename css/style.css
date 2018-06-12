@@ -720,6 +720,10 @@ background: #fff;border: 1px solid #fff;}
       margin-bottom: 0;
       padding: 0 40px 30px 40px;
     }
+
+	.mainImg {
+		width: 100%;
+	}
 }
 
 /* Small devices (tablets, up to 768px) */
@@ -745,6 +749,10 @@ background: #fff;border: 1px solid #fff;}
         width: 20px;
         height: 20px;
     }
+
+	.mainImg {
+		width: 100%;
+	}
 }
 
 @media (min-width:768px) {
