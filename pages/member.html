@@ -757,6 +757,80 @@
 
     }
 
+    function validateEdit(){
+        let name = $("#editName").val();                       //姓名
+        let age = $("#editOld").val();  //年龄
+        let telephoneNumber = $("#editTel").val(); //电话
+        let organization = $("#editOrg").val();                //组织
+
+        let sexAll = document.getElementsByName("sex");
+        let sex = '';                                            //性别
+        for(let i=0; i<sexAll.length; i ++){
+            if(sexAll[i].checked){
+                sex = sexAll[i].value;
+            }
+        }
+
+
+        let isValidate = false;
+        let isValidateName = false;
+        let isValidateAge = false;
+        let isValidateTel = false;
+        let isValidateOrg = false;
+
+        if(name.length === 0){
+            document.getElementById("editName").parentElement.style.border = "1px solid red";
+            isValidateName = false;
+        }else{
+            document.getElementById("editName").parentElement.style.border = "0";
+            isValidateName = true;
+        }
+
+        if(age.length === 0){
+            document.getElementById("editOld").parentElement.style.border = "1px solid red";
+            isValidateAge = false;
+        }else if(age > 120){
+            alert("年龄不得超过120岁");
+            document.getElementById("editOld").parentElement.style.border = "1px solid red";
+            isValidateAge = false;
+        } else {
+            document.getElementById("editOld").parentElement.style.border = "0";
+            isValidateAge = true;
+        }
+
+        if(telephoneNumber.length === 0){
+            document.getElementById("editTel").parentElement.style.border = "1px solid red";
+            isValidateTel = false;
+        }else{
+            if(CheckTel(telephoneNumber)){
+                document.getElementById("editTel").parentElement.style.border = "0";
+                isValidateTel = true;
+            }else{
+                alert("不是完整的11位手机号或者正确的手机号前七位");
+                document.getElementById("editTel").parentElement.style.border = "1px solid red";
+                isValidateTel = false;
+            }
+
+        }
+
+        if(organization.length === 0){
+            document.getElementById("editOrg").parentElement.style.border = "1px solid red";
+            isValidateOrg = false;
+        }else{
+            document.getElementById("editOrg").parentElement.style.border = "0";
+            isValidateOrg = true;
+        }
+
+        if(isValidateName && isValidateAge && isValidateTel && isValidateOrg){
+            isValidate = true
+        }else {
+            isValidate = false
+        }
+
+        return isValidate;
+
+    }
+
     function beforeEdit(event){
         $("#memberdialog").modal('show');
 
@@ -795,42 +869,43 @@
     }
 
     function editMember() {
-        let r=confirm("确认修改吗");
-        if (r === true)
-        {
-            let name = $("#editName").val();                       //姓名
-            let age = $("#editOld").val();  //年龄
-            let telephoneNumber = $("#editTel").val(); //电话
-            let organization = $("#editOrg").val();                //组织
+        if(validateEdit()){
+            let r=confirm("确认修改吗");
+            if (r === true) {
+                let name = $("#editName").val();                       //姓名
+                let age = $("#editOld").val();  //年龄
+                let telephoneNumber = $("#editTel").val(); //电话
+                let organization = $("#editOrg").val();                //组织
 
-            let sexAll = document.getElementsByName("sex");
-            let sex = '';                                            //性别
-            for(let i=0; i<sexAll.length; i ++){
-                if(sexAll[i].checked){
-                    sex = sexAll[i].value;
+                let sexAll = document.getElementsByName("sex");
+                let sex = '';                                            //性别
+                for(let i=0; i<sexAll.length; i ++){
+                    if(sexAll[i].checked){
+                        sex = sexAll[i].value;
+                    }
                 }
+
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "PATCH",//方法类型
+                    //dataType: "json",//预期服务器返回的数据类型
+                    data: ({name:name, age: age, telephoneNumber:telephoneNumber,organization:organization,sex:sex}),
+                    contentType: 'application/x-www-form-urlencoded',
+                    url: "http://localhost:8081/users/" + myTeamId + "/crew/" + editId,//url
+                    async: true,
+                    crossDomain: true,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+                    },
+                    success: function (result) {
+                        $("#memberdialog").modal('hide');
+                        getAll();
+                    },
+                    error: function () {
+                        alert("修改失败！");
+                    }
+                });
             }
-
-            $.ajax({
-                //几个参数需要注意一下
-                type: "PATCH",//方法类型
-                //dataType: "json",//预期服务器返回的数据类型
-                data: ({name:name, age: age, telephoneNumber:telephoneNumber,organization:organization,sex:sex}),
-                contentType: 'application/x-www-form-urlencoded',
-                url: "http://localhost:8081/users/" + myTeamId + "/crew/" + editId,//url
-                async: true,
-                crossDomain: true,
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-                },
-                success: function (result) {
-                    $("#memberdialog").modal('hide');
-                    getAll();
-                },
-                error: function () {
-                    alert("修改失败！");
-                }
-            });
         }
 
     }
