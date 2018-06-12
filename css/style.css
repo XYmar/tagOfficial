@@ -1010,16 +1010,16 @@ margin: 2px 5px 0;}
 	}
 
 	.brand{
-		font-size: 25px;
+		font-size: 23px;
 	}
 
 	.banner-caption h1 {
-		font-size: 20px;
+		font-size: 18px;
 	}
 
 	.caption-data h3 {
 		line-height: 39px;
-		font-size: 14px;
+		font-size: 13px;
 	}
 
 	.gameArrange{
@@ -1061,6 +1061,19 @@ margin: 2px 5px 0;}
         height: 250px;
         margin-top: 0;
     }
+
+	/*.titleToTop {
+		margin-top: 85px;
+	}*/
+
+	.caption-data {
+		position: absolute;
+		top: 50%;
+		left: 10%;
+		z-index: 20;
+		text-align: center;
+		transform: translate(-3%,-46%);
+	}
 }
 
 /* Images Overlay
