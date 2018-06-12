@@ -210,9 +210,9 @@
                 <!--<a href="audit.html">
                     <button class="btn btn-danger" type="button">未通过</button>
                 </a>-->
-                <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#auditdialog">未通过</button>
+                <button class="btn btn-danger doAct" type="button" data-toggle="modal" data-target="#auditdialog">未通过</button>
 
-                <button class="btn btn-success" type="button" onclick="doSubmit()" style="margin-left: 30px;width: 70px;">通过</button>
+                <button class="btn btn-success doAct" type="button" onclick="doSubmit()" style="margin-left: 30px;width: 70px;">通过</button>
             </div>
         </div>
     </div>
@@ -602,8 +602,11 @@
                 },
                 success: function (result) {
                     let data = result.data;
+                    let thisRole = data.roleEntities[0].name;
 
-                    //console.log(result.data);//打印服务端返回的数据(调试用)
+                    if(thisRole === "accept" || thisRole === "denied" ){
+                        $(".doAct").attr("disabled", "disabled");
+                    }
 
                     document.getElementById("username").innerHTML = data.username;
                     document.getElementById("teamName").innerHTML = data.teamName;
