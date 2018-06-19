@@ -105,6 +105,15 @@ img {
     margin-right: 2px;
 }
 
+.memInput {
+    padding-right: 0;
+}
+
+.memLabel {
+    font-size: 14px;
+    padding-right: 0;
+}
+
 @media (max-width:767px) {
     .header.navbar-fixed-top {
         position: absolute;
@@ -177,5 +186,7 @@ img {
     .bigPic {
         margin-top: 15px;
     }
+
+
 
 }

@@ -79,8 +79,8 @@
                             <div class="col-md-6">
                                 <form class="form-horizontal col-md-12">
                                     <div class="form-group col-md-12">
-                                        <label class="control-label col-md-5 col-xs-3">账号 ： </label>
-                                        <div class="controls col-md-7 col-xs-9">
+                                        <label class="control-label col-md-4 col-xs-3 memLabel">账号 ： </label>
+                                        <div class="controls col-md-8 col-xs-9 memInput">
                                             <div class="auditDetailDiv" id="username">
                                                 xx
                                             </div>
@@ -89,8 +89,8 @@
                                 </form>
                                 <form class="form-horizontal col-md-12">
                                     <div class="form-group col-md-12">
-                                        <label class="control-label col-md-5 col-xs-3">密码 ： </label>
-                                        <div class="controls col-md-7 col-xs-9">
+                                        <label class="control-label col-md-4 col-xs-3 memLabel">密码 ： </label>
+                                        <div class="controls col-md-8 col-xs-9 memInput">
                                             <input class="auditDetailDiv form-control" disabled="disabled" type="password" id="password">
                                             </input>
                                         </div>
@@ -100,8 +100,8 @@
                             <div class="col-md-6">
                                 <form class="form-horizontal col-md-12">
                                     <div class="form-group col-md-12">
-                                        <label class="control-label col-md-5 col-xs-3">组名 ： </label>
-                                        <div class="controls col-md-7 col-xs-9">
+                                        <label class="control-label col-md-4 col-xs-3 memLabel">组名 ： </label>
+                                        <div class="controls col-md-8 col-xs-9 memInput">
                                             <div class="auditDetailDiv" id="teamName">
                                                 xx
                                             </div>
@@ -137,22 +137,22 @@
                                     <div class="col-md-6">
                                         <form class="form-horizontal col-md-12">
                                             <div class="form-group col-md-12">
-                                                <label class="control-label col-md-5 col-xs-3">姓名： </label>
-                                                <div class="controls col-md-7 col-xs-9">
+                                                <label class="control-label col-md-4 col-xs-3 memLabel">姓名： </label>
+                                                <div class="controls col-md-8 col-xs-9 memInput">
                                                     <input class="auditDetailDiv form-control" id="name" disabled="disabled">
                                                     </input>
                                                 </div>
                                             </div>
                                             <div class="form-group col-md-12">
-                                                <label class="control-label col-md-5 col-xs-3">性别： </label>
-                                                <div class="controls col-md-7 col-xs-9 sexDiv">
+                                                <label class="control-label col-md-4 col-xs-3 memLabel">性别： </label>
+                                                <div class="controls col-md-8 col-xs-9 sexDiv memInput">
                                                     <input class="auditDetailDiv form-control" id="sex" disabled="disabled">
                                                     </input>
                                                 </div>
                                             </div>
                                             <div class="form-group col-md-12">
-                                                <label class="control-label col-md-5 col-xs-3">单位/学校： </label>
-                                                <div class="controls col-md-7 col-xs-9">
+                                                <label class="control-label col-md-4 col-xs-3 memLabel">单位/学校： </label>
+                                                <div class="controls col-md-8 col-xs-9 memInput">
                                                     <input class="auditDetailDiv form-control" id="organization" disabled="disabled">
                                                     </input>
                                                 </div>
@@ -162,23 +162,23 @@
                                     <div class="col-md-6">
                                         <form class="form-horizontal col-md-12">
                                             <div class="form-group col-md-12">
-                                                <label class="control-label col-md-5 col-xs-3">年龄： </label>
-                                                <div class="controls col-md-7 col-xs-9">
+                                                <label class="control-label col-md-4 col-xs-3 memLabel">年龄： </label>
+                                                <div class="controls col-md-8 col-xs-9 memInput">
                                                     <input class="auditDetailDiv form-control" id="age" disabled="disabled">
                                                     </input>
                                                 </div>
                                             </div>
                                             <div class="form-group col-md-12">
-                                                <label class="control-label col-md-5 col-xs-3">电话： </label>
-                                                <div class="controls col-md-7 col-xs-9">
+                                                <label class="control-label col-md-4 col-xs-3 memLabel">电话： </label>
+                                                <div class="controls col-md-8 col-xs-9 memInput">
                                                     <div style="border-radius: 4px;">
                                                         <input class="auditDetailDiv form-control" id="telephoneNumber" />
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group col-md-12">
-                                                <label class="control-label col-md-5 col-xs-3">邮箱： </label>
-                                                <div class="controls col-md-7 col-xs-9">
+                                                <label class="control-label col-md-4 col-xs-3 memLabel">邮箱： </label>
+                                                <div class="controls col-md-8 col-xs-9 memInput">
                                                     <div style="border-radius: 4px;">
                                                         <input class="auditDetailDiv form-control" id="email" />
                                                     </div>
@@ -481,7 +481,7 @@
                     document.getElementById("teamName").innerHTML = data.teamName;
                     document.getElementById("name").value = data.name;
                     document.getElementById("age").value = data.age;
-                    document.getElementById("sex").value = data.sex == 1 ? '女' : '男'
+                    document.getElementById("sex").value = data.sex === 1 ? '女' : '男';
                     document.getElementById("telephoneNumber").value = data.telephoneNumber;
                     document.getElementById("organization").value = data.organization;
                     document.getElementById('password').value = data.password;
