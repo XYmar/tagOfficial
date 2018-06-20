@@ -114,6 +114,20 @@ img {
     padding-right: 0;
 }
 
+.vEnter {
+    width: 80px;
+    height: 80px;
+    position: fixed;
+    top: 50%;
+    right: 10px;
+}
+
+.vMessage {
+    position: fixed;
+    top: 45%;
+    right: 15px;
+}
+
 @media (max-width:767px) {
     .header.navbar-fixed-top {
         position: absolute;
@@ -187,6 +201,24 @@ img {
         margin-top: 15px;
     }
 
+    .vDiv {
+        padding: 0;
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+    }
 
+    .vEnter {
+        width: 80px;
+        height: 80px;
+        position: unset;
+        margin: 0 auto;
+    }
+
+    .vMessage {
+        position: unset;
+        top: 45%;
+        right: 0;
+    }
 
 }
