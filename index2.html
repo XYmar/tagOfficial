@@ -1624,7 +1624,7 @@
         // 初始化内容
         let loginName = document.getElementById("loginName");
         let loginOut = document.getElementById("loginOut");
-        let ifDown = document.getElementById("ifDown");
+        //let ifDown = document.getElementById("ifDown");
         let myUsername = $.cookie("myUsername");
         let myRole = $.cookie("myRole");
 
@@ -1635,13 +1635,13 @@
             //loginName.innerHTML += "<a href='#'>" + myUsername + "| <sapn onclick='delCookie()' class='exit'>退出</sapn></a>";
             if(myRole === "admin"){
                 loginName.innerHTML += "<a href='pages/audit.html'>审核</a>";
-                ifDown.innerHTML = "<a href=\"files/附件1.txt\" download=\"训练数据集.txt\"><p style=\"color: #339BEB;\">点击下载，训练数据集</p> </a>"
+                //ifDown.innerHTML = "<a href=\"files/附件1.txt\" download=\"训练数据集.txt\"><p style=\"color: #339BEB;\">点击下载，训练数据集</p> </a>"
             }else if(myRole === "accept"){
                 loginName.innerHTML += "<a href='pages/member.html'>" + myUsername + "</a>";
-                ifDown.innerHTML = "<a href=\"files/附件1.txt\" download=\"训练数据集.txt\"><p style=\"color: #339BEB;\">点击下载，训练数据集</p> </a>"
+                //ifDown.innerHTML = "<a href=\"files/附件1.txt\" download=\"训练数据集.txt\"><p style=\"color: #339BEB;\">点击下载，训练数据集</p> </a>"
             }else if(myRole === "user" || myRole === "denied"){
                 loginName.innerHTML += "<a href='pages/applyResult.html'>" + myUsername + "</a>";
-                ifDown.innerHTML = "<p>审核通过才能进行下载操作</p>"
+                //ifDown.innerHTML = "<p>审核通过才能进行下载操作</p>"
             }
 
             loginOut.innerHTML += "<a href='#'><sapn onclick='delCookie()' class='exit'>退出</sapn></a>";
@@ -1653,7 +1653,7 @@
 
             loginOut.innerHTML = "";
 
-            ifDown.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"
+            //ifDown.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"
         }
     }
 
@@ -1668,8 +1668,8 @@
         loginOut.innerHTML = "";
 
         //登录后才可下载
-        let ifDown = document.getElementById("ifDown");
-        ifDown.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"
+        /*let ifDown = document.getElementById("ifDown");
+        ifDown.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"*/
     }
 
 
