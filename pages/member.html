@@ -457,6 +457,8 @@
 <script src="../js/cookie.js"></script>
 <script src="../js/jquery.cookie.js"></script>
 <script type="text/javascript" src="../js/jquery.base64.js"></script>
+
+<script src="../js/globalIP.js"></script>
 <script type="text/javascript">
     let passOld;
 
@@ -475,7 +477,7 @@
                 //几个参数需要注意一下
                 type: "GET",//方法类型
                 dataType: "json",//预期服务器返回的数据类型
-                url: "http://localhost:8081/users/" + myTeamId,//url
+                url: IpAll() + "users/" + myTeamId,//url
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
                 },
@@ -520,7 +522,7 @@
             //几个参数需要注意一下
             type: "GET",//方法类型
             dataType: "json",//预期服务器返回的数据类型
-            url: "http://localhost:8081/users/" + myTeamId + "/crew" ,//url
+            url: IpAll() + "users/" + myTeamId + "/crew" ,//url
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
             },
@@ -733,7 +735,7 @@
             $.ajax({
                 //几个参数需要注意一下
 
-                url: "http://localhost:8081/users/" + myTeamId + "/crew",//url
+                url: IpAll() + "users/" + myTeamId + "/crew",//url
                 // data: ({username: username,password: password,IDNumber: IDNumber}),
                 data: formData,
                 type: "POST",//方法类型
@@ -850,7 +852,7 @@
             //几个参数需要注意一下
             type: "GET",//方法类型
             dataType: "json",//预期服务器返回的数据类型
-            url: "http://localhost:8081/users/" + myTeamId + "/crew/" + editId ,//url
+            url: IpAll() + "users/" + myTeamId + "/crew/" + editId ,//url
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
             },
@@ -899,7 +901,7 @@
                     //dataType: "json",//预期服务器返回的数据类型
                     data: ({name:name, age: age, telephoneNumber:telephoneNumber,organization:organization,sex:sex}),
                     contentType: 'application/x-www-form-urlencoded',
-                    url: "http://localhost:8081/users/" + myTeamId + "/crew/" + editId,//url
+                    url: IpAll() + "users/" + myTeamId + "/crew/" + editId,//url
                     async: true,
                     crossDomain: true,
                     beforeSend: function (xhr) {
@@ -929,7 +931,7 @@
                 //几个参数需要注意一下
                 type: "DELETE",//方法类型
                 dataType: "json",//预期服务器返回的数据类型
-                url: "http://localhost:8081/users/" + myTeamId + "/crew/" + delId,//url
+                url: IpAll() + "users/" + myTeamId + "/crew/" + delId,//url
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
                 },
@@ -1019,7 +1021,7 @@
             $.ajax({
                 //几个参数需要注意一下
 
-                url: "http://localhost:8081/users/" + myTeamId,//url
+                url: IpAll() + "users/" + myTeamId,//url
                 type: "post",//方法类型
                 data: formData,
                 async:false,
@@ -1053,7 +1055,7 @@
             $.ajax({
                 //几个参数需要注意一下
 
-                url: "http://localhost:8081/users/" + myTeamId + "/password", //url
+                url: IpAll() + "users/" + myTeamId + "/password", //url
                 type: "post",//方法类型
                 data: formData,
                 async:false,

@@ -326,6 +326,8 @@
 <script src="../js/cookie.js"></script>
 <script src="../js/jquery.cookie.js"></script>
 <script type="text/javascript" src="../js/jquery.base64.js"></script>
+
+<script src="../js/globalIP.js"></script>
 <script type="text/javascript">
     window.onload=function(){
         let username = $.cookie("myUsername");
@@ -344,7 +346,7 @@
                 //几个参数需要注意一下
                 type: "GET",//方法类型
                 dataType: "json",//预期服务器返回的数据类型
-                url: "http://localhost:8081/users/byRoleName" ,//url
+                url: IpAll() + "users/byRoleName" ,//url
                 data: {rolename: 'user'},
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
@@ -380,8 +382,8 @@
                         sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
                         pagination : true, // 是否显示分页（*）
                         pageNumber: 1,    //如果设置了分页，首页页码
-                        pageSize: 4,                       //每页的记录行数（*）
-                        pageList: [2,4,6],        //可供选择的每页的行数（*）
+                        pageSize: 10,                       //每页的记录行数（*）
+                        pageList: [10,20,30],        //可供选择的每页的行数（*）
                         search:true,
                         columns: [{
                             field: 'teamName',
@@ -434,7 +436,7 @@
                 //几个参数需要注意一下
                 type: "GET",//方法类型
                 dataType: "json",//预期服务器返回的数据类型
-                url: "http://localhost:8081/users/byRoleName" ,//url
+                url: IpAll() + "users/byRoleName" ,//url
                 data: {rolename: 'accept'},
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
@@ -449,7 +451,7 @@
                         //几个参数需要注意一下
                         type: "GET",//方法类型
                         dataType: "json",//预期服务器返回的数据类型
-                        url: "http://localhost:8081/users/byRoleName" ,//url
+                        url: IpAll() + "users/byRoleName" ,//url
                         data: {rolename: 'denied'},
                         beforeSend: function (xhr) {
                             xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
@@ -486,8 +488,8 @@
                                 sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
                                 pagination : true, // 是否显示分页（*）
                                 pageNumber: 1,    //如果设置了分页，首页页码
-                                pageSize: 4,                       //每页的记录行数（*）
-                                pageList: [2,4,6],        //可供选择的每页的行数（*）
+                                pageSize: 10,                       //每页的记录行数（*）
+                                pageList: [10,20,30],        //可供选择的每页的行数（*）
                                 search:true,
                                 columns: [{
                                     field: 'teamName',

@@ -1540,6 +1540,7 @@
 <script src="js/jquery.cookie.js"></script>
 <script type="text/javascript" src="js/jquery.base64.js"></script>
 
+<script src="js/globalIP.js"></script>
 <script>
     window.onload = function () {
         let myTeamId = $.cookie("myTeamId");
@@ -1552,7 +1553,7 @@
             //几个参数需要注意一下
             type: "GET",//方法类型
             dataType: "json",//预期服务器返回的数据类型
-            url: "http://localhost:8081/users/" + myTeamId,//url
+            url: IpAll() + "users/" + myTeamId,//url
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
             },

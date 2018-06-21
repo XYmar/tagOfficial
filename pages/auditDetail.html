@@ -581,6 +581,8 @@
 <script src="../js/cookie.js"></script>
 <script src="../js/jquery.cookie.js"></script>
 <script type="text/javascript" src="../js/jquery.base64.js"></script>
+
+<script src="../js/globalIP.js"></script>
 <script type="text/javascript">
     let username = $.cookie("myUsername");
     let password0 = $.cookie("myWPa");
@@ -596,7 +598,7 @@
                 //几个参数需要注意一下
                 type: "GET",//方法类型
                 dataType: "json",//预期服务器返回的数据类型
-                url: "http://localhost:8081/users/" + id ,//url
+                url: IpAll() + "users/" + id ,//url
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
                 },
@@ -624,7 +626,7 @@
                 }
             });
 
-            let url = "http://localhost:8081/users/" + id + "/badge" ;
+            let url = IpAll() + "users/" + id + "/badge" ;
             let xhr = new XMLHttpRequest();
             xhr.open('GET', url, true);
             xhr.responseType = "blob";
@@ -684,7 +686,7 @@
             //几个参数需要注意一下
             type: "PATCH",//方法类型
             dataType: "json",//预期服务器返回的数据类型
-            url: "http://localhost:8081/users/" + id + "/accept",//url
+            url: IpAll() + "users/" + id + "/accept",//url
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
             },
@@ -706,7 +708,7 @@
             //几个参数需要注意一下
             type: "PATCH",//方法类型
             dataType: "json",//预期服务器返回的数据类型
-            url: "http://localhost:8081/users/" + id + "/denied",//url
+            url: IpAll() + "users/" + id + "/denied",//url
             data: {message: denyReason},
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
