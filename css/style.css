@@ -133,6 +133,7 @@ blockquote {
 	min-height: 100%;
 	position: relative;
 	color: #fff;
+	background-color: #16171c;
 }
 .banner-image {
 	vertical-align: middle;
@@ -366,7 +367,8 @@ color:#000;
 	padding-bottom: 0;
 }
 .secPadding{
-padding: 70px 0;
+	padding: 70px 0;
+	/*padding: 15px 0;*/
 }
 .price-table .panel-heading h3{
 font-size: 43px;
@@ -771,7 +773,7 @@ background: #fff;border: 1px solid #fff;}
 		transition: all 0.3s ease-in-out;
 	}
 }
-/* @media (min-width:768px) and (max-width:991px) {
+ @media (min-width:768px) and (max-width:991px) {
 	.main-navigation .container-fluid {
 		padding-left: 0;
 		padding-right: 0;
@@ -779,7 +781,29 @@ background: #fff;border: 1px solid #fff;}
 	.navbar-nav {
 		float: left !important;
 	}
-}*/
+
+	 .caption-data h3 {
+		 line-height: 40px;
+		 font-size: 18px;
+	 }
+
+	 .caption-data {
+		 transform: translate(-50%,-42%);
+	 }
+
+	 .banner-caption h1 {
+		 font-size: 30px;
+	 }
+
+	 .fixed-header-on .header {
+		 background-color: rgb(47, 47, 47);
+		 padding: 10px 0;
+	 }
+
+	 .fixed-header-on .logo, .fixed-header-on .brand, .fixed-header-on .site-slogan {
+		 display: none;
+	 }
+}
 
 
 @media (max-width:767px) {
