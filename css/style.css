@@ -515,6 +515,7 @@ text-align:center;
 	font-size: 18px;
 }
 
+
 /* Pills
 ---------------------------------- */
 .nav-pills > li.active > a,
@@ -535,6 +536,10 @@ text-align:center;
 	font-weight: 300;
 }
 
+.mainErWei {
+	width: 80px;
+	height: 80px;
+}
 /* Forms
 ---------------------------------- */
 .form-control {
@@ -1073,6 +1078,13 @@ margin: 2px 5px 0;}
 		z-index: 20;
 		text-align: center;
 		transform: translate(-3%,-46%);
+	}
+
+	.mainErWei {
+		width: 80px;
+		height: 80px;
+		position: unset;
+		margin: 0 auto;
 	}
 }
 
