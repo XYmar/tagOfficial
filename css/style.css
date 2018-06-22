@@ -254,7 +254,7 @@ padding: 17px 34px;}
 }
 .bg-image-2 {
 }
-.caption-data {position: absolute; top: 50%; left: 50%; z-index: 20; text-align: center; -webkit-transform: translate(-50%,-46%); -moz-transform: translate(-50%,-50%); transform: translate(-50%,-50%);}
+.caption-data {position: absolute; top: 50%; left: 50%; z-index: 20; text-align: center; -webkit-transform: translate(-50%,-46%); -moz-transform: translate(-50%,-50%); transform: translate(-50%,-46%);}
 .caption-data h1 {text-transform: uppercase;}
 .caption-data h1 span {font-size: inherit; line-height: inherit; font-weight: inherit;}
 .caption-data h3{line-height: 37px;font-size: 20px;}
@@ -593,6 +593,17 @@ background: #fff;border: 1px solid #fff;}
 	height: 208px;
 }
 
+.banner-caption .yinyongTitle {
+	font-size: 23px;
+}
+
+.caption-data .orgTitle {
+	font-size: 16px;
+	line-height: 34px;
+	margin-top: 50px;
+	color: #ccc;
+}
+
 @media (min-width:1200px) {
 	.modal-lg {
 		width: 1140px;
@@ -803,6 +814,21 @@ background: #fff;border: 1px solid #fff;}
 	 .fixed-header-on .logo, .fixed-header-on .brand, .fixed-header-on .site-slogan {
 		 display: none;
 	 }
+
+	 .caption-data .orgTitle {
+		 font-size: 10px;
+		 line-height: 34px;
+		 margin-top: 18px;
+		 color: #ccc;
+	 }
+
+	 .brand a {
+		 font-size: 26px;
+	 }
+
+	 .banner-caption .yinyongTitle {
+		 font-size: 15px;
+	 }
 }
 
 /*@media (min-width: 816px) {
@@ -837,7 +863,7 @@ background: #fff;border: 1px solid #fff;}
         margin-top: 10px;
     }
 
-    .brand {
+    .brand a {
         font-size: 26px;
     }
 
@@ -845,27 +871,16 @@ background: #fff;border: 1px solid #fff;}
         padding: 8px 10px;
     }
 
-    /*.navbar-nav .open .dropdown-menu {
-        position: static;
-        float: none;
-        width: auto;
-        margin-top: 0;
-        background-color: transparent;
-        border: 0;
-        -webkit-box-shadow: none;
-        box-shadow: none;
-    }
-    .navbar-nav .open .dropdown-menu > li > a,
-    .navbar-nav .open .dropdown-menu .dropdown-header {
-        padding: 5px 15px 5px 25px;
-    }
-    .navbar-nav .open .dropdown-menu > li > a {
-        line-height: 20px;
-    }
-    .navbar-nav .open .dropdown-menu > li > a:hover,
-    .navbar-nav .open .dropdown-menu > li > a:focus {
-        background-image: none;
-    }*/
+	.banner-caption .yinyongTitle {
+		font-size: 15px;
+	}
+
+	.caption-data .orgTitle {
+		font-size: 10px;
+		line-height: 22px;
+		margin-top: 10px;
+		color: #ccc;
+	}
 }
 
 /* Fixed Header
@@ -1099,7 +1114,18 @@ margin: 2px 5px 0;}
 	}
 
 	.banner-caption h1 {
-		font-size: 18px;
+		font-size: 20px;
+	}
+
+	.banner-caption .yinyongTitle {
+		font-size: 16px;
+	}
+
+	.caption-data .orgTitle {
+		font-size: 12px;
+		line-height: 30px;
+		margin-top: 44px;
+		color: #ccc;
 	}
 
 	.caption-data h3 {
