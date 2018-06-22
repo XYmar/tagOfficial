@@ -28,7 +28,7 @@ h6 {
 h1 {
 	font-size: 38px;
 	font-weight: 700;
-	margin-bottom: 20px;
+	margin-bottom: 40px;
 }
 h2 {
 	font-size: 28px;
@@ -254,10 +254,10 @@ padding: 17px 34px;}
 }
 .bg-image-2 {
 }
-.caption-data {position: absolute; top: 50%; left: 50%; z-index: 20; text-align: center; -webkit-transform: translate(-50%,-50%); -moz-transform: translate(-50%,-50%); transform: translate(-50%,-50%);}
+.caption-data {position: absolute; top: 50%; left: 50%; z-index: 20; text-align: center; -webkit-transform: translate(-50%,-46%); -moz-transform: translate(-50%,-50%); transform: translate(-50%,-50%);}
 .caption-data h1 {text-transform: uppercase;}
 .caption-data h1 span {font-size: inherit; line-height: inherit; font-weight: inherit;}
-.caption-data h3{line-height: 39px;font-size: 22px;}
+.caption-data h3{line-height: 37px;font-size: 20px;}
 button.cta-button.btn-light, button.cta-button.btn-dark, .contact-form button.cta-button, button.cta-button.btn-default {
 background: transparent;
 }
@@ -387,7 +387,7 @@ color: #FFC400;}
 	color: #fff;
 }
 .banner-caption h1 {
-	font-size: 32px;
+	font-size: 30px;
 	color: #FFC400;
 }
 .footer h1{
