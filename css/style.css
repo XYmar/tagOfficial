@@ -1059,12 +1059,12 @@ margin: 2px 5px 0;}
 .isotope-item .btn-default:hover {
 	color: #ffffff;
 }
-/* @media (max-width:768px) {
+ @media (max-width:768px) {
 .navbar-nav {
-    margin: 7.5px -15px;
+    /*margin: 7.5px -15px;*/
     background: #060606;
 }
-}*/
+}
 @media (max-width:480px) {
 
 	h1 {
