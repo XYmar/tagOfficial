@@ -1,3 +1,3 @@
 function IpAll() {
-    return "http://localhost:8081/";
+    return "http://47.96.153.138:8081/";
 }

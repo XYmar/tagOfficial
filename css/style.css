@@ -254,7 +254,7 @@ padding: 17px 34px;}
 }
 .bg-image-2 {
 }
-.caption-data {position: absolute; top: 50%; left: 50%; z-index: 20; text-align: center; -webkit-transform: translate(-50%,-46%); -moz-transform: translate(-50%,-50%); transform: translate(-50%,-46%);}
+.caption-data {position: absolute; top: 50%; left: 50%; z-index: 20; text-align: center; -webkit-transform: translate(-50%,-46%); -moz-transform: translate(-50%,-50%); transform: translate(-50%,-36%);}
 .caption-data h1 {text-transform: uppercase;}
 .caption-data h1 span {font-size: inherit; line-height: inherit; font-weight: inherit;}
 .caption-data h3{line-height: 37px;font-size: 20px;}
@@ -600,7 +600,7 @@ background: #fff;border: 1px solid #fff;}
 .caption-data .orgTitle {
 	font-size: 16px;
 	line-height: 34px;
-	margin-top: 50px;
+	margin-top: 90px;
 	color: #ccc;
 }
 
@@ -1124,7 +1124,7 @@ margin: 2px 5px 0;}
 	.caption-data .orgTitle {
 		font-size: 12px;
 		line-height: 30px;
-		margin-top: 44px;
+		margin-top: 90px;
 		color: #ccc;
 	}
 
@@ -1183,7 +1183,7 @@ margin: 2px 5px 0;}
 		left: 10%;
 		z-index: 20;
 		text-align: center;
-		transform: translate(-3%,-46%);
+		transform: translate(-3%,-40%);
 	}
 
 	.mainErWei {
