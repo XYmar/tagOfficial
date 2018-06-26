@@ -851,7 +851,7 @@ background: #fff;border: 1px solid #fff;}
 	}
 
     .caption-data {
-        transform: translate(-50%,-40%);
+        transform: translate(-50%,-46%);
     }
 
     h1 {
@@ -859,7 +859,7 @@ background: #fff;border: 1px solid #fff;}
     }
 
     .banner-caption h1 {
-        font-size: 21px;
+        font-size: 18px;
         margin-bottom: 10px;
     }
 
@@ -887,6 +887,10 @@ background: #fff;border: 1px solid #fff;}
 		margin-top: 10px;
 		color: #FFC400;
 		z-index: 2;
+	}
+
+	#logo {
+		width: 155px;
 	}
 }
 
@@ -934,6 +938,7 @@ background: #fff;border: 1px solid #fff;}
 .logo,
 .logo-section {
 	float: left;
+	margin-left: -10px;
 }
 .brand {
 	font-size: 30px;
@@ -972,7 +977,7 @@ background: #fff;border: 1px solid #fff;}
 
 	#logo {
 		/*width: 30px;*/
-		width: 107px;
+		width: 155px;
 	}
 }
 
@@ -1203,6 +1208,10 @@ margin: 2px 5px 0;}
 		height: 80px;
 		position: unset;
 		margin: 0 auto;
+	}
+
+	#logo {
+		width: 155px;
 	}
 }
 
