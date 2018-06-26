@@ -851,7 +851,7 @@ background: #fff;border: 1px solid #fff;}
 	}
 
     .caption-data {
-        transform: translate(-50%,-46%);
+        transform: translate(-50%,-48%);
     }
 
     h1 {
@@ -859,7 +859,7 @@ background: #fff;border: 1px solid #fff;}
     }
 
     .banner-caption h1 {
-        font-size: 18px;
+        font-size: 16px;
         margin-bottom: 10px;
     }
 
@@ -867,6 +867,7 @@ background: #fff;border: 1px solid #fff;}
         line-height: 21px;
         font-size: 14px;
         margin-top: 10px;
+		width: 340px;
     }
 
     .brand a {
@@ -874,11 +875,12 @@ background: #fff;border: 1px solid #fff;}
     }
 
     .navbar-toggle {
-        padding: 8px 10px;
+		padding: 6px 8px;
     }
 
 	.banner-caption .yinyongTitle {
-		font-size: 15px;
+		font-size: 11px;
+		margin-top: 10px;
 	}
 
 	.orgTitle {
@@ -887,11 +889,20 @@ background: #fff;border: 1px solid #fff;}
 		margin-top: 10px;
 		color: #FFC400;
 		z-index: 2;
+		margin-bottom: 0;
 	}
 
-	#logo {
+	/*#logo {
 		width: 155px;
+		height: 40px;
+	}*/
+
+	#logo {
+		width: 130px;
+		height: 34px;
+		margin-top: -2px;
 	}
+
 }
 
 /* Fixed Header
@@ -938,7 +949,7 @@ background: #fff;border: 1px solid #fff;}
 .logo,
 .logo-section {
 	float: left;
-	margin-left: -10px;
+	margin-left: -8px;
 }
 .brand {
 	font-size: 30px;
@@ -976,8 +987,9 @@ background: #fff;border: 1px solid #fff;}
 	}
 
 	#logo {
-		/*width: 30px;*/
 		width: 155px;
+		margin-left: 10px;
+		height: 50px;
 	}
 }
 
@@ -1119,7 +1131,8 @@ margin: 2px 5px 0;}
 	}
 
 	#logo{
-		height: 35px;
+		height: 50px;
+		margin-top: -10px;
 	}
 
 	.brand{
@@ -1213,6 +1226,7 @@ margin: 2px 5px 0;}
 	#logo {
 		width: 155px;
 	}
+
 }
 
 /* Images Overlay
