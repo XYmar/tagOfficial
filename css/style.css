@@ -600,11 +600,12 @@ background: #fff;border: 1px solid #fff;}
 .orgTitle {
 	font-size: 16px;
 	line-height: 34px;
-	color: #ccc;
+	color: #FFC400;
 	position: absolute;
 	bottom: 0;
 	text-align: center;
 	width: 100%;
+	z-index: 2;
 }
 
 @media (min-width:1200px) {
@@ -810,6 +811,7 @@ background: #fff;border: 1px solid #fff;}
 	 }
 
 	 .fixed-header-on .header {
+		 /*background-color: rgb(47, 47, 47);*/
 		 background-color: rgb(47, 47, 47);
 		 padding: 10px 0;
 	 }
@@ -818,11 +820,12 @@ background: #fff;border: 1px solid #fff;}
 		 display: none;
 	 }
 
-	 .caption-data .orgTitle {
+	 .orgTitle {
 		 font-size: 10px;
 		 line-height: 34px;
 		 margin-top: 18px;
-		 color: #ccc;
+		 color: #FFC400;
+		 z-index: 2;
 	 }
 
 	 .brand a {
@@ -878,11 +881,12 @@ background: #fff;border: 1px solid #fff;}
 		font-size: 15px;
 	}
 
-	.caption-data .orgTitle {
+	.orgTitle {
 		font-size: 10px;
 		line-height: 22px;
 		margin-top: 10px;
-		color: #ccc;
+		color: #FFC400;
+		z-index: 2;
 	}
 }
 
@@ -967,7 +971,8 @@ background: #fff;border: 1px solid #fff;}
 	}
 
 	#logo {
-		width: 30px;
+		/*width: 30px;*/
+		width: 107px;
 	}
 }
 
@@ -1121,21 +1126,22 @@ margin: 2px 5px 0;}
 	}
 
 	.banner-caption .yinyongTitle {
-		font-size: 16px;
+		font-size: 14px;
 	}
 
 	.orgTitle {
 		font-size: 9px;
 		line-height: 18px;
-		color: #ccc;
 		position: absolute;
 		bottom: 0;
 		text-align: center;
 		width: 100%;
+		color: #FFC400;
+		z-index: 2;
 	}
 
 	.caption-data h3 {
-		line-height: 39px;
+		line-height: 32px;
 		font-size: 13px;
 	}
 
