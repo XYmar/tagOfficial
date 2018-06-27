@@ -127,6 +127,10 @@ blockquote {
 	-ms-transition: all 0.2s ease-in-out;
 	transition: all 0.2s ease-in-out;
 }
+#position {
+	height:50px;
+	width:155px;
+}
 .banner {
 	width: 100%;
 	height: 100%;
@@ -910,6 +914,7 @@ background: #fff;border: 1px solid #fff;}
 .fixed-header-on .header {
 	background-color: rgb(47, 47, 47);
 	padding: 10px 0;
+	height: 91px;
 }
 .fixed-header-on .brand {
 	font-size: 24px;
@@ -925,6 +930,7 @@ background: #fff;border: 1px solid #fff;}
 		padding-top: 20px;
 		padding-bottom: 20px;
 	}
+
 }
 @media (max-width:991px) {
 	.fixed-header-on .logo,
@@ -972,6 +978,8 @@ background: #fff;border: 1px solid #fff;}
 	font-size: 12px;
 }
 
+
+
 @media (min-width:769px) {
 	.main-navigation .container-fluid {
 		padding-left: 0;
@@ -990,6 +998,10 @@ background: #fff;border: 1px solid #fff;}
 		width: 155px;
 		margin-left: 8px;
 		height: 50px;
+	}
+
+	.rowLeft {
+		margin-left: -8px;
 	}
 }
 
@@ -1104,6 +1116,9 @@ margin: 2px 5px 0;}
     /*margin: 7.5px -15px;*/
     background: #060606;
 }
+	 #position{
+		 height:0;
+	 }
 }
 @media (max-width:480px) {
 
@@ -1225,6 +1240,16 @@ margin: 2px 5px 0;}
 
 	#logo {
 		width: 155px;
+	}
+
+	.logo,
+	.logo-section {
+		float: left;
+		margin-left: 0;
+	}
+
+	.container .rowLeft {
+		margin-left: 0;
 	}
 
 }
