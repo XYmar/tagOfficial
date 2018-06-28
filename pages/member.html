@@ -472,7 +472,7 @@
 <script src="../js/globalIP.js"></script>
 <script type="text/javascript">
     let passOld;
-
+    let role = $.cookie("myRole");
     let myTeamId = $.cookie("myTeamId");
     let username = $.cookie("myUsername");
     let password0 = $.cookie("myWPa");
@@ -484,39 +484,45 @@
     window.onload=function() {
 
         if ((username != null) && (username !== "null")) {
-            $.ajax({
-                //几个参数需要注意一下
-                type: "GET",//方法类型
-                dataType: "json",//预期服务器返回的数据类型
-                url: IpAll() + "users/" + myTeamId,//url
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-                },
-                success: function (result) {
-                    let data = result.data;
-                    passOld = data.password
+            if(role !== 'admin'){
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "GET",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: IpAll() + "users/" + myTeamId,//url
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+                    },
+                    success: function (result) {
+                        let data = result.data;
+                        passOld = data.password
 
-                    //console.log(result.data);//打印服务端返回的数据(调试用)
+                        //console.log(result.data);//打印服务端返回的数据(调试用)
 
-                    document.getElementById("username").innerHTML = data.username;
-                    document.getElementById("teamName").innerHTML = data.teamName;
-                    document.getElementById("name").value = data.name;
-                    document.getElementById("age").value = data.age;
-                    document.getElementById("sex").value = data.sex === 1 ? '女' : '男';
-                    document.getElementById("telephoneNumber").value = data.telephoneNumber;
-                    document.getElementById("organization").value = data.organization;
-                    document.getElementById('password').value = data.password;
-                    /*document.getElementById("job").innerHTML = data.job;*/
-                    document.getElementById("email").value = data.email;
-                    document.getElementById('inputLsch').value = data.organization;
+                        document.getElementById("username").innerHTML = data.username;
+                        document.getElementById("teamName").innerHTML = data.teamName;
+                        document.getElementById("name").value = data.name;
+                        document.getElementById("age").value = data.age;
+                        document.getElementById("sex").value = data.sex === 1 ? '女' : '男';
+                        document.getElementById("telephoneNumber").value = data.telephoneNumber;
+                        document.getElementById("organization").value = data.organization;
+                        document.getElementById('password').value = data.password;
+                        /*document.getElementById("job").innerHTML = data.job;*/
+                        document.getElementById("email").value = data.email;
+                        document.getElementById('inputLsch').value = data.organization;
 
-                },
-                error: function () {
-                    alert("请求错误！");
-                }
-            });
+                    },
+                    error: function () {
+                        alert("请求错误！");
+                    }
+                });
 
-            getAll();
+                getAll();
+            }else {
+                document.getElementById("showBody").style.display = "none";
+                window.location.href="../index.html";
+            }
+
         }else{
             document.getElementById("showBody").style.display = "none";
             window.location.href="login.html";

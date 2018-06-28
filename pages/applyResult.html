@@ -431,7 +431,7 @@
                     }
                 });
             }else{
-                $(".doEdit").attr("disabled", "disabled");
+                /*$(".doEdit").attr("disabled", "disabled");
                 document.getElementById("badge").innerHTML = "";                 //管理员登录时不显示身份图片
                 document.getElementById("upSpan").style.background = "lightgrey";
                 document.getElementById("upSpan").style.borderColor = "lightgrey";
@@ -439,7 +439,10 @@
                 document.getElementById("inputGNo").value = "";               //去掉账号密码的显示
                 document.getElementById("inputGPassword").value = "";
 
-                document.getElementById("message").innerHTML = "<span class=\"required-flag\">*</span>管理员不得进行操作";
+                document.getElementById("message").innerHTML = "<span class=\"required-flag\">*</span>管理员不得进行操作";*/
+
+                document.getElementById("showBody").style.display = "none";
+                window.location.href="../index.html";
             }
 
         }else{

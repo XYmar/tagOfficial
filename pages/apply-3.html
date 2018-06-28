@@ -23,7 +23,7 @@
 
 </head>
 
-<body style="background-image: url('../images/2.png');">
+<body style="background-image: url('../images/2.png');"  id="showBody">
 <!-- header start -->
 <header class="header fixed clearfix navbar navbar-fixed-top">
     <div class="container">
@@ -251,18 +251,25 @@
 <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
 <script src="../js/lightbox.js"></script>
 <script src="../js/globalIP.js"></script>
+<script src="../js/jquery.cookie.js"></script>
 <script type="text/javascript">
     window.onload=function(){
-        let fZheng = document.getElementById("fileZheng");
+        let role = $.cookie("myRole");
+        if(role === 'admin'){
+            document.getElementById("showBody").style.display = "none";
+            window.location.href="../index.html";
+        }else {
+            let fZheng = document.getElementById("fileZheng");
 
-        //this.files即获取input中上传的file对象 是个数组
-        fZheng.onchange = function(){
-            if(fZheng.value.length !== 0){
-                let file = this.files[0];
+            //this.files即获取input中上传的file对象 是个数组
+            fZheng.onchange = function(){
+                if(fZheng.value.length !== 0){
+                    let file = this.files[0];
 
-                divId = "idZhengmian";
+                    divId = "idZhengmian";
 
-                handleImg(file, divId);
+                    handleImg(file, divId);
+                }
             }
         }
 

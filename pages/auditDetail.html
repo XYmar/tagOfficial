@@ -592,78 +592,85 @@
     let password = $.base64.decode(password0);
     let token = username + ':' + password;
 
+    let role = $.cookie("myRole");
     window.onload=function(){
 
         if ((username != null) && (username !== "null")) {
-            let id = getUrlParam('id');
+            if(role === 'admin'){
+                let id = getUrlParam('id');
 
-            $.ajax({
-                //几个参数需要注意一下
-                type: "GET",//方法类型
-                dataType: "json",//预期服务器返回的数据类型
-                url: IpAll() + "users/" + id ,//url
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-                },
-                success: function (result) {
-                    let data = result.data;
-                    let thisRole = data.roleEntities[0].name;
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "GET",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: IpAll() + "users/" + id ,//url
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+                    },
+                    success: function (result) {
+                        let data = result.data;
+                        let thisRole = data.roleEntities[0].name;
 
-                    if(thisRole === "accept" || thisRole === "denied" ){
-                        $(".doAct").attr("disabled", "disabled");
+                        if(thisRole === "accept" || thisRole === "denied" ){
+                            $(".doAct").attr("disabled", "disabled");
+                        }
+
+                        document.getElementById("username").innerHTML = data.username;
+                        document.getElementById("teamName").innerHTML = data.teamName;
+                        document.getElementById("name").innerHTML = data.name;
+                        document.getElementById("age").innerHTML = data.age;
+                        document.getElementById("sex").innerHTML = data.sex === 1 ? '女' : '男';
+                        document.getElementById("telephoneNumber").innerHTML = data.telephoneNumber;
+                        document.getElementById("organization").innerHTML = data.organization;
+                        /*document.getElementById("job").innerHTML = data.job;*/
+                        document.getElementById("email").innerHTML = data.email;
+
+                    },
+                    error : function() {
+                        alert("请求错误！");
                     }
+                });
 
-                    document.getElementById("username").innerHTML = data.username;
-                    document.getElementById("teamName").innerHTML = data.teamName;
-                    document.getElementById("name").innerHTML = data.name;
-                    document.getElementById("age").innerHTML = data.age;
-                    document.getElementById("sex").innerHTML = data.sex === 1 ? '女' : '男';
-                    document.getElementById("telephoneNumber").innerHTML = data.telephoneNumber;
-                    document.getElementById("organization").innerHTML = data.organization;
-                    /*document.getElementById("job").innerHTML = data.job;*/
-                    document.getElementById("email").innerHTML = data.email;
+                let url = IpAll() + "users/" + id + "/badge" ;
+                let xhr = new XMLHttpRequest();
+                xhr.open('GET', url, true);
+                xhr.responseType = "blob";
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+                xhr.setRequestHeader("client_type", "DESKTOP_WEB");
+                xhr.onload = function() {
+                    if (this.status === 200) {
+                        let blob = this.response;
+                        let img = document.createElement("img");
+                        img.onload = function(e) {
+                            window.URL.revokeObjectURL(img.src);
+                        };
+                        img.src = window.URL.createObjectURL(blob);
+                        $("#badge").html(img);
 
-                },
-                error : function() {
-                    alert("请求错误！");
+                        //console.log($("#badge")[0].childNodes[0]);
+                        $("#badge")[0].childNodes[0].setAttribute("class","idCard");
+
+
+                        url= window.URL.createObjectURL(blob);  // 得到bolb对象路径，可当成普通的文件路径一样使用，赋值给src;
+
+                        //添加到文件列表
+                        let html = '<div class="col-md-12 idPic">' +
+                            '<div class="col-md-1 col-xs-3 idPic bigPic"><a class="btn btn-success btn-mini" href="' + url + '" data-lightbox="1111" data-title="查看原图" ' +
+                            'style="cursor:pointer;padding: 3px 8px;font-size: 11px;border-radius: 3px;float: unset;margin-top: 0;">查看原图</a></div>' +
+                            '</div>';
+
+                        let bigPicture = document.getElementById("bigPic");
+
+                        $(html).appendTo(bigPicture);
+
+                    }
                 }
-            });
+                xhr.send();
+            }else{
+                document.getElementById("showBody").style.display = "none";
+                window.location.href="../index.html";
 
-            let url = IpAll() + "users/" + id + "/badge" ;
-            let xhr = new XMLHttpRequest();
-            xhr.open('GET', url, true);
-            xhr.responseType = "blob";
-            xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-            xhr.setRequestHeader("client_type", "DESKTOP_WEB");
-            xhr.onload = function() {
-                if (this.status === 200) {
-                    let blob = this.response;
-                    let img = document.createElement("img");
-                    img.onload = function(e) {
-                        window.URL.revokeObjectURL(img.src);
-                    };
-                    img.src = window.URL.createObjectURL(blob);
-                    $("#badge").html(img);
-
-                    //console.log($("#badge")[0].childNodes[0]);
-                    $("#badge")[0].childNodes[0].setAttribute("class","idCard");
-
-
-                    url= window.URL.createObjectURL(blob);  // 得到bolb对象路径，可当成普通的文件路径一样使用，赋值给src;
-
-                    //添加到文件列表
-                    let html = '<div class="col-md-12 idPic">' +
-                        '<div class="col-md-1 col-xs-3 idPic bigPic"><a class="btn btn-success btn-mini" href="' + url + '" data-lightbox="1111" data-title="查看原图" ' +
-                        'style="cursor:pointer;padding: 3px 8px;font-size: 11px;border-radius: 3px;float: unset;margin-top: 0;">查看原图</a></div>' +
-                        '</div>';
-
-                    let bigPicture = document.getElementById("bigPic");
-
-                    $(html).appendTo(bigPicture);
-
-                }
             }
-            xhr.send();
         }else{
             document.getElementById("showBody").style.display = "none";
             window.location.href="login.html";

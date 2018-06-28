@@ -341,237 +341,244 @@
         let password0 = $.cookie("myWPa");
         let password = $.base64.decode(password0);
         let token = username + ':' + password;
+        let role = $.cookie("myRole");
 
         if ((username != null) && (username !== "null")) {
-            //alert("hhhh");
-            let datalistA = []
-            let datalistB = []
-            let dataAll = []
+            if(role === 'admin'){
+                //alert("hhhh");
+                let datalistA = []
+                let datalistB = []
+                let dataAll = []
 
-            // 获取未审核
-            $.ajax({
-                //几个参数需要注意一下
-                type: "GET",//方法类型
-                dataType: "json",//预期服务器返回的数据类型
-                url: IpAll() + "users/byRoleName" ,//url
-                data: {rolename: 'user'},
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-                },
-                success: function (result) {
-                    let str = "";
-                    let data = result.data;
-                    let dataLength = data.length
+                // 获取未审核
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "GET",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: IpAll() + "users/byRoleName" ,//url
+                    data: {rolename: 'user'},
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+                    },
+                    success: function (result) {
+                        let str = "";
+                        let data = result.data;
+                        let dataLength = data.length
 
-                    if(data.length !== 0){
-                        //console.log(result.data);//打印服务端返回的数据(调试用)
-                        let notAudit = document.getElementById('notAuditNum')
-                        notAudit.innerHTML = '[' + dataLength + '条]'
-                        document.getElementById('NoAuditInfo').innerHTML = ''
-                        let noAuditTbody = document.getElementById("noAudit");
-                        /*for (let i=0;i<data.length;i++) {
-                            str += "<tr>" +
-                                "<td style='display:none'>" + data[i].id + "</td>" +
-                                "<td>" + data[i].teamName + "</td>" +
-                                "<td>" + data[i].name + "</td>" +
-                                "<td>" + data[i].age + "</td>" +
-                                "<td>" + (data[i].sex === 0 ? '男' : '女') + "</td>" +
-                                "<td>" + data[i].telephoneNumber + "</td>" +
-                                "<td>" + data[i].organization + "</td>" +
-                                "<td><a href='auditDetail.html?id=" + data[i].id + "' style='float: none;'>" +
-                                "<button class='btn btn-success btn-success editMember' type='button' >审核</button> " +
-                                "</a></td>" +
-                                "</tr>";
-                        }
-                        noAuditTbody.innerHTML = str;*/
-                    }
-                    $('#memberInfoTableNotready').bootstrapTable({
-                        sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
-                        pagination : true, // 是否显示分页（*）
-                        pageNumber: 1,    //如果设置了分页，首页页码
-                        pageSize: 10,                       //每页的记录行数（*）
-                        pageList: [10,20,30],        //可供选择的每页的行数（*）
-                        search:true,
-                        columns: [{
-                            field: 'teamName',
-                            title: '组名'
-                        }, {
-                            field: 'name',
-                            title: '姓名'
-                        }, {
-                            field: 'age',
-                            title: '年龄'
-                        },{
-                            field: 'sex',
-                            title: '性别',
-                            formatter: sexFormatter
-                        },{
-                            field: 'telephoneNumber',
-                            title: '手机号'
-                        },{
-                            field: 'organization',
-                            title: '单位/学校'
-                        },{
-                            field: 'createTime',
-                            title: '注册时间'
-                        },{
-                            field: 'id',
-                            title: 'id',
-                            visible: false
-                        },{
-                            field: 'createTime',
-                            title: '注册时间',
-                            sortable: true,
-                            visible: false
-                        },{
-                            field: 'id',
-                            title: '操作',
-                            formatter: actionFormatter
-                        }
-                        ],
-                        data: data
-                    });
-
-                },
-                error : function() {
-                    alert("请求错误！");
-                }
-            });
-
-            // 获取通过和未通过
-            $.ajax({
-                //几个参数需要注意一下
-                type: "GET",//方法类型
-                dataType: "json",//预期服务器返回的数据类型
-                url: IpAll() + "users/byRoleName" ,//url
-                data: {rolename: 'accept'},
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-                },
-                success: function (result) {
-                    let str = "";
-                    datalistA = result.data;
-                    let dataLength = datalistA.length
-
-                    // 获取审核未通过的信息
-                    $.ajax({
-                        //几个参数需要注意一下
-                        type: "GET",//方法类型
-                        dataType: "json",//预期服务器返回的数据类型
-                        url: IpAll() + "users/byRoleName" ,//url
-                        data: {rolename: 'denied'},
-                        beforeSend: function (xhr) {
-                            xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-                        },
-                        success: function (result) {
-                            let str = "";
-                            datalistB = result.data
-
-                            // 拼接审核通过和未通过的数据
-                            let dataAll = datalistA.concat(datalistB)
-                            let dataLength = dataAll.length
-                            if(datalistA.length !== 0){
-                                //console.log(result.data);//打印服务端返回的数据(调试用)
-                                let hasAudit = document.getElementById('hasAuditNum')
-                                hasAudit.innerHTML = '['+ dataLength + '条]'
-                                document.getElementById('hasAuditInfo').innerHTML = ''
-                                /*let alreadyAuditTbody = document.getElementById("alreadyAudit");
-                                for (let i=0;i<data.length;i++) {
-                                    str += "<tr>" +
-                                        "<td>" + data[i].teamName + "</td>" +
-                                        "<td>" + data[i].name + "</td>" +
-                                        "<td>" + data[i].age + "</td>" +
-                                        "<td>" + (data[i].sex === 0 ? '男' : '女') + "</td>" +
-                                        "<td>" + data[i].telephoneNumber + "</td>" +
-                                        "<td>" + data[i].organization + "</td>" +
-                                        "<td><span style=\"color: #27A9E3;\">已审核</span></td>" +
-                                        "</tr>";
-                                }
-                                alreadyAuditTbody.innerHTML = str;*/
+                        if(data.length !== 0){
+                            //console.log(result.data);//打印服务端返回的数据(调试用)
+                            let notAudit = document.getElementById('notAuditNum')
+                            notAudit.innerHTML = '[' + dataLength + '条]'
+                            document.getElementById('NoAuditInfo').innerHTML = ''
+                            let noAuditTbody = document.getElementById("noAudit");
+                            /*for (let i=0;i<data.length;i++) {
+                                str += "<tr>" +
+                                    "<td style='display:none'>" + data[i].id + "</td>" +
+                                    "<td>" + data[i].teamName + "</td>" +
+                                    "<td>" + data[i].name + "</td>" +
+                                    "<td>" + data[i].age + "</td>" +
+                                    "<td>" + (data[i].sex === 0 ? '男' : '女') + "</td>" +
+                                    "<td>" + data[i].telephoneNumber + "</td>" +
+                                    "<td>" + data[i].organization + "</td>" +
+                                    "<td><a href='auditDetail.html?id=" + data[i].id + "' style='float: none;'>" +
+                                    "<button class='btn btn-success btn-success editMember' type='button' >审核</button> " +
+                                    "</a></td>" +
+                                    "</tr>";
                             }
-
-                            // 生成表格
-                            $('#memberInfoTableAlready').bootstrapTable({
-                                sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
-                                pagination : true, // 是否显示分页（*）
-                                pageNumber: 1,    //如果设置了分页，首页页码
-                                pageSize: 10,                       //每页的记录行数（*）
-                                pageList: [10,20,30],        //可供选择的每页的行数（*）
-                                search:true,
-                                columns: [{
-                                    field: 'teamName',
-                                    title: '组名'
-                                }, {
-                                    field: 'name',
-                                    title: '姓名'
-                                }, {
-                                    field: 'age',
-                                    title: '年龄'
-                                },{
-                                    field: 'sex',
-                                    title: '性别',
-                                    formatter: sexFormatter
-                                },{
-                                    field: 'telephoneNumber',
-                                    title: '手机号'
-                                },{
-                                    field: 'organization',
-                                    title: '单位/学校'
-                                },{
-                                    field: 'createTime',
-                                    title: '注册时间'
-                                },{
-                                    field: 'id',
-                                    title: 'id',
-                                    visible: false
-                                },{
-                                    field: 'authorities',
-                                    title: '状态',
-                                    formatter: statusFormatter
-                                }
-                                ],
-                                data: dataAll
-                            });
-
-                        },
-                        error : function() {
-                            alert("请求错误！");
+                            noAuditTbody.innerHTML = str;*/
                         }
-                    });
+                        $('#memberInfoTableNotready').bootstrapTable({
+                            sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
+                            pagination : true, // 是否显示分页（*）
+                            pageNumber: 1,    //如果设置了分页，首页页码
+                            pageSize: 10,                       //每页的记录行数（*）
+                            pageList: [10,20,30],        //可供选择的每页的行数（*）
+                            search:true,
+                            columns: [{
+                                field: 'teamName',
+                                title: '组名'
+                            }, {
+                                field: 'name',
+                                title: '姓名'
+                            }, {
+                                field: 'age',
+                                title: '年龄'
+                            },{
+                                field: 'sex',
+                                title: '性别',
+                                formatter: sexFormatter
+                            },{
+                                field: 'telephoneNumber',
+                                title: '手机号'
+                            },{
+                                field: 'organization',
+                                title: '单位/学校'
+                            },{
+                                field: 'createTime',
+                                title: '注册时间'
+                            },{
+                                field: 'id',
+                                title: 'id',
+                                visible: false
+                            },{
+                                field: 'createTime',
+                                title: '注册时间',
+                                sortable: true,
+                                visible: false
+                            },{
+                                field: 'id',
+                                title: '操作',
+                                formatter: actionFormatter
+                            }
+                            ],
+                            data: data
+                        });
 
-                },
-                error : function() {
-                    alert("请求错误！");
-                }
-            });
+                    },
+                    error : function() {
+                        alert("请求错误！");
+                    }
+                });
 
-            //生成性别
-            function sexFormatter(value) {
-                let sexValue
-                if (value == 0 ) {
-                    sexValue = '男'
-                }
-                else if (value == 1) {
-                    sexValue = '女'
-                }
-                return sexValue
-            }
+                // 获取通过和未通过
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "GET",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: IpAll() + "users/byRoleName" ,//url
+                    data: {rolename: 'accept'},
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+                    },
+                    success: function (result) {
+                        let str = "";
+                        datalistA = result.data;
+                        let dataLength = datalistA.length
 
-            //生成操作
-            function actionFormatter(value) {
-                return "<a href='auditDetail.html?id=" + value + "' style='float: none;'>" +
-                    "<button class='btn btn-success btn-success editMember' type='button' >审核</button> " +
-                    "</a>"
-            }
+                        // 获取审核未通过的信息
+                        $.ajax({
+                            //几个参数需要注意一下
+                            type: "GET",//方法类型
+                            dataType: "json",//预期服务器返回的数据类型
+                            url: IpAll() + "users/byRoleName" ,//url
+                            data: {rolename: 'denied'},
+                            beforeSend: function (xhr) {
+                                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+                            },
+                            success: function (result) {
+                                let str = "";
+                                datalistB = result.data
 
-            //生成状态
-            function statusFormatter(value) {
-                /*return "<span style=\"color: #27A9E3;\">已审核</span>"*/
-                if(value[0].authority.indexOf('accept') > 0) {
-                    return "<span style=\"color: #27A9E3;\">已审核</span>"
-                } else if(value[0].authority.indexOf('denied') > 0){
-                    return "<span style=\"color: #ff0000;\">未通过</span>"
+                                // 拼接审核通过和未通过的数据
+                                let dataAll = datalistA.concat(datalistB)
+                                let dataLength = dataAll.length
+                                if(datalistA.length !== 0){
+                                    //console.log(result.data);//打印服务端返回的数据(调试用)
+                                    let hasAudit = document.getElementById('hasAuditNum')
+                                    hasAudit.innerHTML = '['+ dataLength + '条]'
+                                    document.getElementById('hasAuditInfo').innerHTML = ''
+                                    /*let alreadyAuditTbody = document.getElementById("alreadyAudit");
+                                    for (let i=0;i<data.length;i++) {
+                                        str += "<tr>" +
+                                            "<td>" + data[i].teamName + "</td>" +
+                                            "<td>" + data[i].name + "</td>" +
+                                            "<td>" + data[i].age + "</td>" +
+                                            "<td>" + (data[i].sex === 0 ? '男' : '女') + "</td>" +
+                                            "<td>" + data[i].telephoneNumber + "</td>" +
+                                            "<td>" + data[i].organization + "</td>" +
+                                            "<td><span style=\"color: #27A9E3;\">已审核</span></td>" +
+                                            "</tr>";
+                                    }
+                                    alreadyAuditTbody.innerHTML = str;*/
+                                }
+
+                                // 生成表格
+                                $('#memberInfoTableAlready').bootstrapTable({
+                                    sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
+                                    pagination : true, // 是否显示分页（*）
+                                    pageNumber: 1,    //如果设置了分页，首页页码
+                                    pageSize: 10,                       //每页的记录行数（*）
+                                    pageList: [10,20,30],        //可供选择的每页的行数（*）
+                                    search:true,
+                                    columns: [{
+                                        field: 'teamName',
+                                        title: '组名'
+                                    }, {
+                                        field: 'name',
+                                        title: '姓名'
+                                    }, {
+                                        field: 'age',
+                                        title: '年龄'
+                                    },{
+                                        field: 'sex',
+                                        title: '性别',
+                                        formatter: sexFormatter
+                                    },{
+                                        field: 'telephoneNumber',
+                                        title: '手机号'
+                                    },{
+                                        field: 'organization',
+                                        title: '单位/学校'
+                                    },{
+                                        field: 'createTime',
+                                        title: '注册时间'
+                                    },{
+                                        field: 'id',
+                                        title: 'id',
+                                        visible: false
+                                    },{
+                                        field: 'authorities',
+                                        title: '状态',
+                                        formatter: statusFormatter
+                                    }
+                                    ],
+                                    data: dataAll
+                                });
+
+                            },
+                            error : function() {
+                                alert("请求错误！");
+                            }
+                        });
+
+                    },
+                    error : function() {
+                        alert("请求错误！");
+                    }
+                });
+
+                //生成性别
+                function sexFormatter(value) {
+                    let sexValue
+                    if (value == 0 ) {
+                        sexValue = '男'
+                    }
+                    else if (value == 1) {
+                        sexValue = '女'
+                    }
+                    return sexValue
                 }
+
+                //生成操作
+                function actionFormatter(value) {
+                    return "<a href='auditDetail.html?id=" + value + "' style='float: none;'>" +
+                        "<button class='btn btn-success btn-success editMember' type='button' >审核</button> " +
+                        "</a>"
+                }
+
+                //生成状态
+                function statusFormatter(value) {
+                    /*return "<span style=\"color: #27A9E3;\">已审核</span>"*/
+                    if(value[0].authority.indexOf('accept') > 0) {
+                        return "<span style=\"color: #27A9E3;\">已审核</span>"
+                    } else if(value[0].authority.indexOf('denied') > 0){
+                        return "<span style=\"color: #ff0000;\">未通过</span>"
+                    }
+                }
+            }else{
+                document.getElementById("showBody").style.display = "none";
+                window.location.href="../index.html";
+
             }
 
         }else{
@@ -579,9 +586,6 @@
             window.location.href="login.html";
 
         }
-
-
-
 
     }
 </script>
