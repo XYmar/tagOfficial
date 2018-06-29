@@ -5,8 +5,7 @@
 
 (function($){
 	$(document).ready(function(){
-        $(".banner-image").backstretch('images/mainPic13.jpg');
-		
+        $(".banner-image").backstretch('http://pb2edde5m.bkt.clouddn.com/mainPic13.jpg');
 		// Fixed header
 		//-----------------------------------------------
 		$(window).scroll(function() {
