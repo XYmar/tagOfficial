@@ -896,11 +896,6 @@ background: #fff;border: 1px solid #fff;}
 		margin-bottom: 0;
 	}
 
-	/*#logo {
-		width: 155px;
-		height: 40px;
-	}*/
-
 	#logo {
 		width: 130px;
 		height: 34px;
@@ -977,8 +972,6 @@ background: #fff;border: 1px solid #fff;}
 .site-slogan {
 	font-size: 12px;
 }
-
-
 
 @media (min-width:769px) {
 	.main-navigation .container-fluid {
@@ -1113,7 +1106,6 @@ margin: 2px 5px 0;}
 }
  @media (max-width:768px) {
 .navbar-nav {
-    /*margin: 7.5px -15px;*/
     background: #060606;
 }
 	 #position{
@@ -1121,7 +1113,6 @@ margin: 2px 5px 0;}
 	 }
 }
 @media (max-width:480px) {
-
 	h1 {
 		font-size: 25px;
 	}
@@ -1131,37 +1122,29 @@ margin: 2px 5px 0;}
 	h2{
 		font-size: 20px;
 	}
-
 	h2 span {
 		font-size: 25px;
 	}
-
 	h3 {
 		margin-top: 0;
 	}
-
 	.filters .nav-pills > li {
 		width: 100%;
 		display: block;
 	}
-
 	#logo{
 		height: 50px;
 		margin-top: -10px;
 	}
-
 	.brand{
 		font-size: 23px;
 	}
-
 	.banner-caption h1 {
 		font-size: 18px;
 	}
-
 	.banner-caption .yinyongTitle {
 		font-size: 14px;
 	}
-
 	.orgTitle {
 		font-size: 9px;
 		line-height: 18px;
@@ -1172,29 +1155,23 @@ margin: 2px 5px 0;}
 		color: #FFC400;
 		z-index: 2;
 	}
-
 	.caption-data h3 {
 		line-height: 32px;
 		font-size: 13px;
 	}
-
 	.gameArrange{
 		height: 650px;
 	}
-
 	.gameArrangeInner{
 		height: 440px;
 	}
-
 	.price-table .panel-heading h3 {
 		font-size: 30px;
 	}
-
 	.rankTable {
 		padding-left: 15px;
 		padding-right: 15px;
 	}
-
 	.table-bordered {
 		font-size: 12px;
 	}
@@ -1217,10 +1194,6 @@ margin: 2px 5px 0;}
         height: 250px;
         margin-top: 0;
     }
-
-	/*.titleToTop {
-		margin-top: 85px;
-	}*/
 
 	.caption-data {
 		position: absolute;
