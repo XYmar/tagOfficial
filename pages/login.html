@@ -1,25 +1,16 @@
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Cache-Control" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-
-    <!-- Mobile Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>军事智能·机器阅读</title>
-    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/login.css" rel="stylesheet" type="text/css" />
     <link href="../css/header.css" rel="stylesheet" type="text/css" />
 
     <style>
-        .rowLeft {
-            margin-left: -23px;
-        }
-
+        .rowLeft { margin-left: -23px; }
         @media (max-width:480px) {
             .rowLeft {
                 margin-left: -15px;
@@ -29,93 +20,60 @@
 </head>
 
 <body>
-<!-- header start -->
 <header class="header fixed clearfix navbar navbar-fixed-top">
     <div class="container">
         <div class="row rowLeft">
             <div class="col-md-12">
-
-                <!-- header-left start -->
                 <div class="header-left">
-
-                    <!-- logo -->
-                    <!--<div class="logo smooth-scroll">
-                        <a href="../index.html"><img id="logo" src="../images/logo.png" alt="Worthy"></a>
-                    </div>-->
-
-                    <!-- name-and-slogan -->
-                    <!--<div class="logo-section smooth-scroll">
-                        <div class="brand"><a href="../index.html">军事智能·机器阅读</a></div>
-                    </div>-->
-
                     <div class="logo smooth-scroll">
                         <a href="../index.html"><img id="logo" src="http://pb2edde5m.bkt.clouddn.com/logo2.png" alt="Worthy"></a>
                     </div>
                 </div>
-                <!-- header-left end -->
-
             </div>
         </div>
     </div>
 </header>
-<!-- header end -->
 <div class="container">
-
     <div class="row">
         <div class="col-md-12 toTop">
             <div class="row login_box">
-                <!--<div class="col-md-6">
-                    <img src="../images/reader3.jpg" />
-                    <div class="space"></div>
-                </div>-->
-                        <div class="login">
-                            <div class="login_logo"><a href="#"><img src="http://pb2edde5m.bkt.clouddn.com/reader3.jpg" /></a></div>
-                            <div class="login_name">
-                                <p>登录</p>
-                            </div>
-                            <form method="post" id="form1" onsubmit="return false" action="#">
-                                <!--<input name="username" type="text"  value="用户名" onfocus="this.value=''" onblur="if(this.value==''){this.value='用户名'}">
-                                <span id="password_text" onclick="this.style.display='none';document.getElementById('password').style.display='block';document.getElementById('password').focus().select();" >密码</span>
-                                <input name="password" type="password" id="password" style="display:none;" onblur="if(this.value==''){document.getElementById('password_text').style.display='block';this.style.display='none'};"/>-->
-                                <input name="username" type="text" id="username" placeholder="用户名">
-                                <div class="formValidate" id="uName"></div>
-                                <input name="password" type="password" id="password" placeholder="密码"/>
-                                <div class="formValidate" id="pwd"></div>
-                                <input class="btn btn-primary btn-block" value="登录" style="width:100%;" type="submit" onclick="login()">
-                                <br>
-                                <a href="apply-3.html">注册</a>
-                            </form>
+                    <div class="login">
+                        <div class="login_logo"><a href="#"><img src="http://pb2edde5m.bkt.clouddn.com/reader3.jpg" /></a></div>
+                        <div class="login_name">
+                            <p>登录</p>
                         </div>
-
-
+                        <form method="post" id="form1" onsubmit="return false" action="#">
+                            <input name="username" type="text" id="username" placeholder="用户名">
+                            <div class="formValidate" id="uName"></div>
+                            <input name="password" type="password" id="password" placeholder="密码"/>
+                            <div class="formValidate" id="pwd"></div>
+                            <input class="btn btn-primary btn-block" value="登录" style="width:100%;" type="submit" onclick="login()">
+                            <br>
+                            <a href="apply-3.html">注册</a>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 
 <script src="../js/jquery-3.3.1.js"></script>
 <script src="../js/cookie.js"></script>
 <script src="../js/jquery.cookie.js"></script>
 <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
-
 <script type="text/javascript" src="../js/jquery.base64.js"></script>
 <script src="../js/globalIP.js"></script>
 <script type="text/javascript">
     function validate(){
-        var username = $("#username").val();
-        var password = $("#password").val();
-
-        var uName = document.getElementById("uName");
-        var pwd = document.getElementById("pwd");
-
+        let username = $("#username").val();
+        let password = $("#password").val();
+        let uName = document.getElementById("uName");
+        let pwd = document.getElementById("pwd");
         uName.innerHTML = "";
         pwd.innerHTML = "";
+        let isValidate = false;
 
-        var isValidate = false;
-
-        //console.log(username.length);
         if(username.length == 0){
             uName.innerHTML += "用户名不能为空";
             isValidate = false;
@@ -129,37 +87,28 @@
         }else{
             isValidate = true;
         }
-
         return isValidate;
-
     }
 
     function login() {
-        //alert("hhhh");
-        var username = $("#username").val();
-        var password = $("#password").val();
-        var token = username + ':' + password;
+        let username = $("#username").val();
+        let password = $("#password").val();
+        let token = username + ':' + password;
 
-        //console.log(validate());
         if(validate()){
             $.ajax({
-                //几个参数需要注意一下
-                type: "GET",//方法类型
-                dataType: "json",//预期服务器返回的数据类型
-                url: IpAll() + "users/login" ,//url
+                type: "GET",
+                dataType: "json",
+                url: IpAll() + "users/login" ,
                 data: $('#form1').serialize(),
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
                 },
                 success: function (result) {
-                    //console.log(result.data.username);//打印服务端返回的数据(调试用)
-                    //setCookie("myUsername",result.data.username,null);
                     $.cookie("myUsername",result.data.username,{path:'/'});
                     $.cookie("myWPa",$.base64.encode(password),{path:'/'});
                     $.cookie("myTeamId",result.data.id,{path:'/'});
                     $.cookie("myRole",result.data.roleEntities[0].name,{path:'/'});
-
-
 
                     window.location.href='../index.html';
                 },
@@ -168,7 +117,6 @@
                 }
             });
         }
-
     }
 </script>
 </body>
