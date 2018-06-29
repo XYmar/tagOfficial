@@ -15,7 +15,6 @@
 </head>
 
 <body style="background-image: url('http://pb2edde5m.bkt.clouddn.com/bgPic.png');" id="showBody">
-<!-- header start -->
 <header class="header fixed clearfix navbar navbar-fixed-top">
     <div class="container">
         <div class="row">
@@ -26,20 +25,15 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-9">
-
-            </div>
         </div>
     </div>
 </header>
-<!-- header end -->
 <div class="container">
     <div class="row main-content">
         <div class="col-md-12 toTop">
             <h3 class="title-main">
                 我的团队信息
             </h3>
-            <!--border-radius: 10px;border: 1px solid #27A9E3;-->
             <div class="row">
                 <hr>
                 <div class="col-md-12 childToTop">
@@ -432,10 +426,9 @@
         if ((username != null) && (username !== "null")) {
             if(role !== 'admin'){
                 $.ajax({
-                    //几个参数需要注意一下
-                    type: "GET",//方法类型
-                    dataType: "json",//预期服务器返回的数据类型
-                    url: IpAll() + "users/" + myTeamId,//url
+                    type: "GET",
+                    dataType: "json",
+                    url: IpAll() + "users/" + myTeamId,
                     beforeSend: function (xhr) {
                         xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
                     },
