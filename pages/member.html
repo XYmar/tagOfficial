@@ -1,57 +1,30 @@
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>军事智能·机器阅读</title>
-
-    <!-- Mobile Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
     <link href="apply.css" rel="stylesheet" type="text/css" />
-
     <link rel="stylesheet" href="../css/apply.css">
-
     <link rel="stylesheet" href="../css/member.css">
     <link href="../css/header.css" rel="stylesheet" type="text/css" />
-
     <style>
-        .sexInput {
-            height: 12px;
-        }
+        .sexInput { height: 12px; }
     </style>
-
 </head>
 
-<body style="background-image: url('../images/2.png');" id="showBody">
+<body style="background-image: url('../images/bgPic.png');" id="showBody">
 <!-- header start -->
 <header class="header fixed clearfix navbar navbar-fixed-top">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-
-                <!-- header-left start -->
                 <div class="header-left">
-
-                    <!-- logo -->
-                    <!--<div class="logo smooth-scroll">
-                        <a href="../index.html"><img id="logo" src="../images/logo.png" alt="Worthy"></a>
-                    </div>-->
-
-                    <!-- name-and-slogan -->
-                    <!--<div class="logo-section smooth-scroll">
-                        <div class="brand"><a href="../index.html">军事智能·机器阅读</a></div>
-                    </div>-->
-
                     <div class="logo smooth-scroll">
                         <a href="../index.html"><img id="logo" src="../images/logo2.png" alt="Worthy"></a>
                     </div>
                 </div>
-                <!-- header-left end -->
-
             </div>
             <div class="col-md-9">
 
@@ -115,14 +88,12 @@
                                     <div class="form-group col-md-12">
                                     </div>
                                 </form>
-
                             </div>
 
                             <div class="col-md-12 modifyPasBtnCon"  style="padding: 0;text-align: center">
                                 <button type="button" class="btn btn-primary btn-primary" data-toggle="modal" data-target="#pasdialog">修改密码</button>
                             </div>
                         </div>
-
                     </div>
 
                     <!-- 组长信息 -->
@@ -185,27 +156,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--<div class="form-group col-md-12">
-                                        <label class="control-label col-md-5 col-xs-3">职位： </label>
-                                        <div class="controls col-md-7 col-xs-9">
-                                            <div class="auditDetailDiv" id="job">
-                                                xx
-                                            </div>
-                                        </div>
-                                    </div>-->
                                 </form>
                             </div>
                             <div class="col-md-12" style="padding: 0;text-align: center">
                                 <button type="button" class="btn btn-primary btn-primary" onclick="modifyInfo()">修改信息</button>
                             </div>
                         </div>
-
-
                     </div>
 
                     <!-- 组员信息 -->
                     <div class="row-fluid col-md-12" style="overflow: hidden;">
-                        <!--<div class="col-md-12 col-xs-12">-->
                             <div class="col-md-1" style="padding: 0">
                             </div>
                             <div class="col-md-2 col-xs-4" style="padding: 0">
@@ -285,8 +245,8 @@
                                             <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset()">取消</button>
                                             <button type="button" class="btn btn-primary" onclick="addMember()">添加</button>
                                         </div>
-                                    </div><!-- /.modal-content -->
-                                </div><!-- /.modal-dialog -->
+                                    </div>
+                                </div>
                             </div>
 
                             <!-- 组员修改弹框 -->
@@ -320,7 +280,6 @@
                                                                     女 </label>
                                                             </div>
                                                         </div>
-
                                                         <div class="form-group col-md-12">
                                                             <label class="control-label col-md-4 col-xs-3" for="inputLsch">单位/学校</label>
                                                             <div class="controls col-md-8 col-xs-9">
@@ -357,11 +316,9 @@
                                             <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset()">取消</button>
                                             <button type="button" class="btn btn-primary" onclick="editMember()">修改</button>
                                         </div>
-                                    </div><!-- /.modal-content -->
-                                </div><!-- /.modal-dialog -->
+                                    </div>
+                                </div>
                             </div>
-                        <!--</div>-->
-
                         <!-- 组员表格 -->
                         <div class="col-md-12 col-xs-12 row-fluid" style="padding: 0">
                             <div class="col-md-1" style="padding: 0">
@@ -405,18 +362,10 @@
                                         <img src="../images/JoinV.png" alt="" class="vEnter">
                                         <h3 class="message vMessage">微信扫一扫<br>关注该公众号</h3>
                                     </div>
-
-
-                                    <!--<div class="qr_code_pc">
-                                        <img id="js_pc_qr_code_img" class="qr_code_pc_img vEnter" src="../images/mainBaoming.webp.jpg">
-                                        <p class="message vMessage">微信扫一扫<br>关注该公众号</p>
-                                    </div>-->
                                 </div>
                         </div>
                     </div>
-
                     <br/>
-
                 </div>
             </div>
             <br>
@@ -458,8 +407,8 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset()">取消</button>
                     <button type="button" class="btn btn-primary" onclick="modifyPassword()">确认</button>
                 </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
+            </div>
+        </div>
     </div>
 </div>
 
@@ -468,7 +417,6 @@
 <script src="../js/cookie.js"></script>
 <script src="../js/jquery.cookie.js"></script>
 <script type="text/javascript" src="../js/jquery.base64.js"></script>
-
 <script src="../js/globalIP.js"></script>
 <script type="text/javascript">
     let passOld;
@@ -478,11 +426,9 @@
     let password0 = $.cookie("myWPa");
     let password = $.base64.decode(password0);
     let token = username + ':' + password;
-
     let editId = '';
 
     window.onload=function() {
-
         if ((username != null) && (username !== "null")) {
             if(role !== 'admin'){
                 $.ajax({
@@ -497,8 +443,6 @@
                         let data = result.data;
                         passOld = data.password
 
-                        //console.log(result.data);//打印服务端返回的数据(调试用)
-
                         document.getElementById("username").innerHTML = data.username;
                         document.getElementById("teamName").innerHTML = data.teamName;
                         document.getElementById("name").value = data.name;
@@ -507,39 +451,30 @@
                         document.getElementById("telephoneNumber").value = data.telephoneNumber;
                         document.getElementById("organization").value = data.organization;
                         document.getElementById('password').value = data.password;
-                        /*document.getElementById("job").innerHTML = data.job;*/
                         document.getElementById("email").value = data.email;
                         document.getElementById('inputLsch').value = data.organization;
-
                     },
                     error: function () {
                         alert("请求错误！");
                     }
                 });
-
                 getAll();
             }else {
                 document.getElementById("showBody").style.display = "none";
                 window.location.href="../index.html";
             }
-
         }else{
             document.getElementById("showBody").style.display = "none";
             window.location.href="login.html";
-
         }
-
-
     };
 
     function getAll(){
         let myTeamId = $.cookie("myTeamId");
-
         $.ajax({
-            //几个参数需要注意一下
-            type: "GET",//方法类型
-            dataType: "json",//预期服务器返回的数据类型
-            url: IpAll() + "users/" + myTeamId + "/crew" ,//url
+            type: "GET",
+            dataType: "json",
+            url: IpAll() + "users/" + myTeamId + "/crew" ,
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
             },
@@ -548,8 +483,6 @@
                 let data = result.data;
 
                 if(data.length !== 0){
-                    //console.log(result.data);//打印服务端返回的数据(调试用)
-
                     let memberTbody = document.getElementById("TeamMember");
                     for (let i=0;i<data.length;i++) {
                         str += "<tr>" +
@@ -570,7 +503,6 @@
                     }
                     memberTbody.innerHTML = str;
                 }
-
             },
             error : function() {
                 alert("请求错误！");
@@ -582,7 +514,6 @@
         $("#inputLname").val('');
         $("#inputLOld").val('');
         $("#inputLTel").val('');
-        /*$("#inputLsch").val('');*/
         $("#passWordNew").val('');
         $("#passWordAgain").val('');
     }
@@ -626,21 +557,16 @@
         let age = $("#inputLOld").val();                         //年龄
         let telephoneNumber = $("#inputLTel").val();             //电话
         let organization = $("#inputLsch").val();                //组织
-
         let sexAll = document.getElementsByName("sex");
         let sex = '';                                            //性别
         for(let i=0; i<sexAll.length; i ++){
             if(sexAll[i].checked){
                 sex = sexAll[i].value;
-                //alert(sex);
             }
         }
 
         let isValidate = false;
-
-
         if(name.length === 0){
-            //alert("密码不能为空");
             document.getElementById("inputLname").parentElement.style.border = "1px solid red";
             isValidate = false;
             return;
@@ -663,9 +589,7 @@
             isValidate = true;
         }
 
-
         if(telephoneNumber.length === 0){
-            //alert("密码不能为空");
             document.getElementById("inputLTel").parentElement.style.border = "1px solid red";
             isValidate = false;
             return;
@@ -678,7 +602,6 @@
                 isValidate = false;
                 return;
             }
-
         }
 
         if(organization.length === 0){
@@ -693,24 +616,18 @@
         if(sex !== ''){//获取name为sex的input的对象并判断是否被选中
             document.getElementById("Lsex").style.border = "0";
             isValidate = true;
-            //alert(sex);
         }else{
-            // alert("请选择性别");//如果性别的单选按钮没有被选择则弹出提示
             document.getElementById("Lsex").style.border = "1px solid red";
             isValidate = false;
-
             return;
         }
-
         return isValidate;
-
     }
 
     function validatePass() {
         let isValidate = false;
         let passwordNew = $("#passWordNew").val();
         let passwordAgain = $("#passWordAgain").val();
-        //console.log(passwordNew,passwordAgain)
         if (passwordNew.length === 0) {
             alert('密码不能为空')
         } else if (!CheckPassWord(passwordNew)){
@@ -727,12 +644,10 @@
 
     function addMember() {
         if(validate()){
-
             let name = $("#inputLname").val();                       //姓名
             let age = $("#inputLOld").val();                         //年龄
             let telephoneNumber = $("#inputLTel").val();             //电话
             let organization = $("#inputLsch").val();                //组织
-
             let sexAll = document.getElementsByName("sex0");
             let sex = '';                                            //性别
             for(let i=0; i<sexAll.length; i ++){
@@ -748,40 +663,32 @@
             formData.append("organization", organization);
             formData.append("sex", sex);
 
-            //alert("成功");
             $.ajax({
-                //几个参数需要注意一下
-
-                url: IpAll() + "users/" + myTeamId + "/crew",//url
-                // data: ({username: username,password: password,IDNumber: IDNumber}),
+                url: IpAll() + "users/" + myTeamId + "/crew",
                 data: formData,
-                type: "POST",//方法类型
+                type: "POST",
                 async:false,
-                dataType: "json",//预期服务器返回的数据类型
-                cache: false,//上传文件无需缓存
-                processData: false,//用于对data参数进行序列化处理 这里必须false
-                contentType: false, //必须
+                dataType: "json",
+                cache: false,
+                processData: false,
+                contentType: false,
                 enctype: 'multipart/form-data',
-
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
                 },
                 timeout : 5000,
                 success: function (result) {
-                    //window.location.href='login.html';
                     $("#mydialog").modal('hide');
                     getAll();
                     reset();
                 },
                 error : function(xhr) {
                     alert("注册失败！");
-
                 }
             });
         }else{
             return;
         }
-
     }
 
     function validateEdit(){
@@ -789,7 +696,6 @@
         let age = $("#editOld").val();  //年龄
         let telephoneNumber = $("#editTel").val(); //电话
         let organization = $("#editOrg").val();                //组织
-
         let sexAll = document.getElementsByName("sex");
         let sex = '';                                            //性别
         for(let i=0; i<sexAll.length; i ++){
@@ -797,7 +703,6 @@
                 sex = sexAll[i].value;
             }
         }
-
 
         let isValidate = false;
         let isValidateName = false;
@@ -837,7 +742,6 @@
                 document.getElementById("editTel").parentElement.style.border = "1px solid red";
                 isValidateTel = false;
             }
-
         }
 
         if(organization.length === 0){
@@ -853,30 +757,22 @@
         }else {
             isValidate = false
         }
-
         return isValidate;
-
     }
 
     function beforeEdit(event){
         $("#memberdialog").modal('show');
-
-        console.log(event);
         editId = event.target.id;
-        console.log(editId);
 
         $.ajax({
-            //几个参数需要注意一下
-            type: "GET",//方法类型
-            dataType: "json",//预期服务器返回的数据类型
-            url: IpAll() + "users/" + myTeamId + "/crew/" + editId ,//url
+            type: "GET",
+            dataType: "json",
+            url: IpAll() + "users/" + myTeamId + "/crew/" + editId ,
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
             },
             success: function (result) {
                 let data = result.data;
-
-                //console.log(result.data);//打印服务端返回的数据(调试用)
                 document.getElementById("editName").value = data.name;
                 if(data.sex === 0){
                     document.getElementById("man").checked = "checked";
@@ -886,13 +782,11 @@
                 document.getElementById("editOld").value = data.age;
                 document.getElementById("editTel").value = data.telephoneNumber;
                 document.getElementById("editOrg").value = data.organization;
-
             },
             error : function() {
                 alert("请求错误！");
             }
         });
-
     }
 
     function editMember() {
@@ -903,7 +797,6 @@
                 let age = $("#editOld").val();  //年龄
                 let telephoneNumber = $("#editTel").val(); //电话
                 let organization = $("#editOrg").val();                //组织
-
                 let sexAll = document.getElementsByName("sex");
                 let sex = '';                                            //性别
                 for(let i=0; i<sexAll.length; i ++){
@@ -913,9 +806,7 @@
                 }
 
                 $.ajax({
-                    //几个参数需要注意一下
-                    type: "PATCH",//方法类型
-                    //dataType: "json",//预期服务器返回的数据类型
+                    type: "PATCH",
                     data: ({name:name, age: age, telephoneNumber:telephoneNumber,organization:organization,sex:sex}),
                     contentType: 'application/x-www-form-urlencoded',
                     url: IpAll() + "users/" + myTeamId + "/crew/" + editId,//url
@@ -934,21 +825,16 @@
                 });
             }
         }
-
     }
-
 
     function delMember(event) {
         let r=confirm("确认删除吗");
-        if (r === true)
-        {
+        if (r === true){
             let delId = event.target.id;
-
             $.ajax({
-                //几个参数需要注意一下
-                type: "DELETE",//方法类型
-                dataType: "json",//预期服务器返回的数据类型
-                url: IpAll() + "users/" + myTeamId + "/crew/" + delId,//url
+                type: "DELETE",
+                dataType: "json",
+                url: IpAll() + "users/" + myTeamId + "/crew/" + delId,
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
                 },
@@ -960,13 +846,11 @@
                 }
             });
         }
-
     }
 
     function validateTelEmail(){
         let telephoneNumber = $("#telephoneNumber").val(); //电话
         let email = $("#email").val(); // 邮箱
-
         let isValidate = false;
         let isValidateTel = false;
         let isValidateEmail = false;
@@ -983,7 +867,6 @@
                 document.getElementById("telephoneNumber").parentElement.style.border = "1px solid red";
                 isValidateTel = false;
             }
-
         }
 
         if(email.length === 0){
@@ -1006,9 +889,7 @@
         }else {
             isValidate = false
         }
-
         return isValidate;
-
     }
 
     function modifyInfo() {
@@ -1018,7 +899,6 @@
             let telephoneNumber = $("#telephoneNumber").val(); //电话
             let email = $("#email").val(); // 邮箱
             let organization = $("#organization").val();                //组织
-
             let sexAll = document.getElementsByName("sex");
             let sex = '';                                            //性别
             for(let i=0; i<sexAll.length; i ++){
@@ -1034,34 +914,26 @@
             formData.append("email", email);
             formData.append("organization", organization);
             formData.append("sex", sex);
-
             $.ajax({
-                //几个参数需要注意一下
-
-                url: IpAll() + "users/" + myTeamId,//url
-                type: "post",//方法类型
+                url: IpAll() + "users/" + myTeamId,
+                type: "post",
                 data: formData,
                 async:false,
-                dataType: "json",//预期服务器返回的数据类型
-                processData: false,//用于对data参数进行序列化处理 这里必须false
-                contentType: false, //必须
-
+                dataType: "json",
+                processData: false,
+                contentType: false,
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
                 },
                 timeout : 5000,
                 success: function (result) {
-                    //window.location.href='login.html';
-                    //$("#mydialog").modal('hide');
                     alert('修改成功！')
                 },
                 error : function(xhr) {
                     alert("修改失败！");
-
                 }
             });
         }
-
     }
 
     function modifyPassword () {
@@ -1070,16 +942,13 @@
             let formData = new FormData();
             formData.append("password", passwordNew);//姓名
             $.ajax({
-                //几个参数需要注意一下
-
-                url: IpAll() + "users/" + myTeamId + "/password", //url
-                type: "post",//方法类型
+                url: IpAll() + "users/" + myTeamId + "/password",
+                type: "post",
                 data: formData,
                 async:false,
-                dataType: "json",//预期服务器返回的数据类型
-                processData: false,//用于对data参数进行序列化处理 这里必须false
-                contentType: false, //必须
-
+                dataType: "json",
+                processData: false,
+                contentType: false,
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
                 },
@@ -1096,6 +965,5 @@
         }
     }
 </script>
-
 </body>
 </html>
