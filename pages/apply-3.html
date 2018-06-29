@@ -2,25 +2,16 @@
 <html>
 <head>
     <title>军事智能·机器阅读</title>
-
-    <!-- Mobile Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
     <link href="apply.css" rel="stylesheet" type="text/css" />
-
     <link rel="stylesheet" href="../css/apply.css">
-
     <link rel="stylesheet" href="../css/fileUpload.css">
     <link rel="stylesheet" type="text/css" href="../css/reset.css">
     <link rel="stylesheet" type="text/css" href="../css/applyInfo.css">
     <link href="../css/header.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="../css/lightbox.css">
-
-
 </head>
 
 <body style="background-image: url('http://pb2edde5m.bkt.clouddn.com/bgPic.png');" id="showBody">
@@ -29,29 +20,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-
-                <!-- header-left start -->
                 <div class="header-left">
-
-                    <!-- logo -->
-                    <!--<div class="logo smooth-scroll">
-                        <a href="../index.html"><img id="logo" src="../images/logo.png" alt="Worthy"></a>
-                    </div>-->
-
-                    <!-- name-and-slogan -->
-                    <!--<div class="logo-section smooth-scroll">
-                        <div class="brand"><a href="../index.html">军事智能·机器阅读</a></div>
-                    </div>-->
-
                     <div class="logo smooth-scroll">
                         <a href="../index.html"><img id="logo" src="http://pb2edde5m.bkt.clouddn.com/logo2.png" alt="Worthy"></a>
                     </div>
                 </div>
-                <!-- header-left end -->
-
-            </div>
-            <div class="col-md-9">
-
             </div>
         </div>
     </div>
@@ -63,7 +36,6 @@
             <h3 class="title-main">
                 注册
             </h3>
-            <!--border-radius: 10px;border: 1px solid #27A9E3;-->
             <div class="row">
                 <hr>
                 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -111,9 +83,7 @@
                                     </form>
                                 </div>
                             </div>
-
                         </div>
-
 
                         <!-- 组长信息 -->
                         <div class="row-fluid col-md-12 col-sm-12 col-xs-12 applyBox">
@@ -152,7 +122,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                     </form>
                                 </div>
                                 <div class="col-md-6 formContainer">
@@ -181,17 +150,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <!--职位去除-->
-                                        <!--<div class="form-group col-md-12">
-                                            <label class="control-label col-md-3 col-xs-2" for="inputLmajor">职位</label>
-                                            <div class="controls col-md-9 col-xs-10">
-                                                <div style="border-radius: 4px;">
-                                                    <input id="inputLmajor" class="form-control" type="text" />
-                                                </div>
-                                            </div>
-                                        </div>-->
-
                                     </form>
                                 </div>
                             </div>
@@ -211,8 +169,6 @@
                                             请提供学生证或工作证，若为自由从业者提供身份证
                                         </h4>
                                     </div>
-
-
                                     <form class="row form-horizontal" enctype="multipart/form-data">
                                         <div style="padding: 0" id="Lpicture">
                                             <h3><span class="required-flag">*</span>附件文件：</h3>
@@ -225,20 +181,14 @@
                                                 <input class="chooseFile disableAll" type="file" name="diploma" id="fileZheng" accept="image/jpeg, image/png"/>
                                             </span>
                                             </div>
-
                                         </div>
                                     </form>
-
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
-
-
             <div class="col-md-12 col-sm-12 col-xs-12 commit_btn_container">
                 <button class="btn btn-success" type="button" onclick="doSubmit()">提交</button>
             </div>
@@ -260,34 +210,23 @@
             window.location.href="../index.html";
         }else {
             let fZheng = document.getElementById("fileZheng");
-
-            //this.files即获取input中上传的file对象 是个数组
             fZheng.onchange = function(){
                 if(fZheng.value.length !== 0){
                     let file = this.files[0];
-
                     divId = "idZhengmian";
-
                     handleImg(file, divId);
                 }
             }
         }
-
     }
 
     function handleImg(file, divId){
         //获取文件名称
         let fileName = file.name;
-        /*console.log("文件名---------");
-        console.log(file);
-        console.log(fileName);*/
-
         url=window.URL.createObjectURL(file);  // 得到bolb对象路径，可当成普通的文件路径一样使用，赋值给src;
-
         //清空文件列表
         let fileArea = document.getElementById("idZhengmian");
         fileArea.innerHTML = '';
-
         //添加到文件列表
         let html = '<div class="col-md-12 idPic">' +
             '<p class="fileName col-md-5 col-xs-12 idPic">' + fileName + '</p>' +
@@ -298,27 +237,14 @@
             '</div>';
 
         let $fileArea = document.getElementById(divId);
-        //console.log($fileArea);
-
         $(html).appendTo($fileArea);
     }
 
     function delFile(event){
         let e = event || window.event;
         let target = e.target || e.srcElement;
-
         let delDiv = target.parentNode.parentNode;
-        /*let id = delDiv.parentNode.id;
-
-        console.log("删除的div----");
-        console.log(delDiv);
-        console.log(id);*/
-        //alert(delDiv);
-
         let $fileArea = document.getElementById("idZhengmian");
-
-        //console.log($fileArea);
-
         $fileArea.removeChild(delDiv);
         let fZheng = document.getElementById("fileZheng");
         fZheng.value = '';
@@ -362,14 +288,11 @@
         let username = $("#inputGNo").val();                     //账号
         let password = $("#inputGPassword").val();               //密码
         let teamName = $("#inputGName").val();                   //组名
-
         let name = $("#inputLname").val();                       //姓名
         let age = $("#inputLOld").val();                         //年龄
         let telephoneNumber = $("#inputLTel").val();             //电话
         let organization = $("#inputLsch").val();                //组织
-        //let job = $("#inputLmajor").val();                       //职位
         let email = $("#inputLEmail").val();                     //邮箱
-
         let sexAll = document.getElementsByName("sex");
         let sex = '';                                            //性别
         for(let i=0; i<sexAll.length; i ++){
@@ -377,7 +300,6 @@
                 sex = sexAll[i].value;
             }
         }
-
         let badge = document.getElementById("fileZheng").files[0];  //获取文件
 
         let isValidate = false;
@@ -391,12 +313,8 @@
         let isValidateEmail = false;
         let isValidateBadge = false;
         let usernamePattern  = /^[a-zA-Z0-9]{6,15}$/
-        //let usernamePattern  = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,15}$/
 
-
-        //console.log(username.length);
         if(username.length === 0){
-            //alert("账号不能为空");
             document.getElementById("inputGNo").parentElement.style.border = "1px solid red";
             isValidateUsername = false;
         } else if(!usernamePattern.test(username)) {
@@ -409,7 +327,6 @@
         }
 
         if(password.length === 0){
-            //alert("密码不能为空");
             document.getElementById("inputGPassword").parentElement.style.border = "1px solid red";
             isValidatePwd = false;
         }else{
@@ -417,12 +334,10 @@
                 document.getElementById("inputGPassword").parentElement.style.border = "0";
                 isValidatePwd = true;
             }else{
-
                 alert("密码必须为字母与数字混合，且不小于6位");
                 document.getElementById("inputGPassword").parentElement.style.border = "1px solid red";
                 isValidatePwd = false;
             }
-
         }
 
         if(teamName.length === 0){
@@ -457,7 +372,6 @@
             isValidateAge = true;
         }
 
-
         if(telephoneNumber.length === 0){
             document.getElementById("inputLTel").parentElement.style.border = "1px solid red";
             isValidateTel = false;
@@ -470,7 +384,6 @@
                 document.getElementById("inputLTel").parentElement.style.border = "1px solid red";
                 isValidateTel = false;
             }
-
         }
 
         if(organization.length === 0){
@@ -480,15 +393,6 @@
             document.getElementById("inputLsch").parentElement.style.border = "0";
             isValidateOrg = true;
         }
-
-        /*if(job.length === 0){
-            document.getElementById("inputLmajor").parentElement.style.border = "1px solid red";
-            isValidate = false;
-            return;
-        }else{
-            document.getElementById("inputLmajor").parentElement.style.border = "0";
-            isValidate = true;
-        }*/
 
         if(email.length === 0){
             document.getElementById("inputLEmail").parentElement.style.border = "1px solid red";
@@ -502,26 +406,11 @@
                 document.getElementById("inputLEmail").parentElement.style.border = "1px solid red";
                 isValidateEmail = false;
             }
-
         }
 
-        /*if(sex !== ''){//获取name为sex的input的对象并判断是否被选中
-            document.getElementById("Lsex").style.border = "0";
-            isValidate = true;
-            //alert(sex);
-        }else{
-            // alert("请选择性别");//如果性别的单选按钮没有被选择则弹出提示
-            document.getElementById("Lsex").style.border = "1px solid red";
-            isValidate = false;
-
-            return;
-        }*/
-
         if (typeof(badge) === "undefined" || badge.size <= 0) {
-            //alert("请选择图片");
             document.getElementById("Lpicture").parentElement.style.border = "1px solid red";
             isValidateBadge = false;
-
         }else{
             document.getElementById("Lpicture").parentElement.style.border = "0";
             isValidateBadge = true;
@@ -533,31 +422,21 @@
         }else {
             isValidate = false
         }
-
         return isValidate;
-
     }
 
     function doSubmit() {
-        //alert("hhhh");
-
-
-        //console.log(validate());
         if(validate()){
             let r=confirm("提交后将无法修改，确认提交吗？");
-
             if (r === true) {
                 let username = $("#inputGNo").val();                     //账号
                 let password = $("#inputGPassword").val();               //密码
                 let teamName = $("#inputGName").val();                   //组名
-
                 let name = $("#inputLname").val();                       //姓名
                 let age = $("#inputLOld").val();                         //年龄
                 let telephoneNumber = $("#inputLTel").val();             //电话
                 let organization = $("#inputLsch").val();                //组织
-                //let job = $("#inputLmajor").val();                       //职位
                 let email = $("#inputLEmail").val();                     //邮箱
-
                 let sexAll = document.getElementsByName("sex");
                 let sex = '';                                            //性别
                 for(let i=0; i<sexAll.length; i ++){
@@ -567,12 +446,6 @@
                 }
 
                 let badge = document.getElementById("fileZheng").files[0];  //获取文件
-
-                /*if (typeof(badge) === "undefined" || badge.size <= 0) {
-                    alert("请选择图片");
-                    return;
-                }
-        */
                 let formData = new FormData();
                 formData.append("username", username);
                 formData.append("password", password);
@@ -581,49 +454,38 @@
                 formData.append("age", age);
                 formData.append("telephoneNumber", telephoneNumber);
                 formData.append("organization", organization);
-                //formData.append("job", job);
                 formData.append("email", email);
                 formData.append("sex", sex);
                 formData.append("badge", badge); //加入文件对象
 
-                //alert("成功");
                 $.ajax({
-                    //几个参数需要注意一下
-
-                    url: IpAll() + "users" ,//url
-                    // data: ({username: username,password: password,IDNumber: IDNumber}),
+                    url: IpAll() + "users" ,
                     data: formData,
-                    type: "POST",//方法类型
+                    type: "POST",
                     async:false,
-                    dataType: "json",//预期服务器返回的数据类型
-                    cache: false,//上传文件无需缓存
-                    processData: false,//用于对data参数进行序列化处理 这里必须false
-                    contentType: false, //必须
+                    dataType: "json",
+                    cache: false,
+                    processData: false,
+                    contentType: false,
                     enctype: 'multipart/form-data',
-
                     beforeSend: function (xhr) {
                         xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin'));
                     },
                     timeout : 5000,
                     success: function (result) {
-                        //window.location.href='login.html';
                         alert("审核中...");
                         window.location.href='../index.html';
                     },
                     error : function(error) {
                         let notifyMessage = error.responseJSON.message
                         alert(notifyMessage)
-
                     }
                 });
             }
-
         }else{
             return;
         }
-
     }
-
 </script>
 </body>
 </html>
