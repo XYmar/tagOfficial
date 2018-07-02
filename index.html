@@ -21,7 +21,7 @@
 <header class="header fixed clearfix navbar navbar-fixed-top">
     <div class="container">
         <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-7" id="hleft">
                 <!-- header-left start -->
                 <div class="header-left">
                     <div class="logo-section smooth-scroll">
@@ -30,7 +30,7 @@
                 </div>
                 <!-- header-left end -->
             </div>
-            <div class="col-md-5">
+            <div class="col-md-5" id="hright">
 
                 <!-- header-right start -->
                 <div class="header-right">
@@ -61,6 +61,7 @@
                                         <!--<li><a href="#news">新闻中心</a></li>-->
                                         <li><a href="#contact">联系我们</a></li>
                                         <li id="loginName"></li>
+                                        <li id="registAd"></li>
                                         <li id="loginOut"></li>
                                     </ul>
                                 </div>
@@ -502,6 +503,7 @@
         // 初始化内容
         let loginName = document.getElementById("loginName");
         let loginOut = document.getElementById("loginOut");
+        let registAd = document.getElementById("registAd");
         //let ifDown = document.getElementById("ifDown");
         let myUsername = $.cookie("myUsername");
         let myRole = $.cookie("myRole");
@@ -512,6 +514,12 @@
             if(myRole === "admin"){
                 loginName.innerHTML += "<a href='pages/audit.html'>审核</a>";
                 //ifDown.innerHTML = "<a href=\"files/附件1.txt\" download=\"训练数据集.txt\"><p style=\"color: #339BEB;\">点击下载，训练数据集</p> </a>"
+
+                if(myUsername === "admin") {
+                    /*document.getElementById('hleft').setAttribute("class", "col-md-5");
+                    document.getElementById('hright').setAttribute("class", "col-md-7");*/
+                    registAd.innerHTML += "<a href='pages/registAdmin.html'>注册</a>";
+                }
             }else if(myRole === "accept"){
                 loginName.innerHTML += "<a href='pages/member.html'>" + myUsername + "</a>";
                 //ifDown.innerHTML = "<a href=\"files/附件1.txt\" download=\"训练数据集.txt\"><p style=\"color: #339BEB;\">点击下载，训练数据集</p> </a>"
@@ -533,9 +541,12 @@
         $.cookie("myRole", null, {path: '/'});
         let loginName = document.getElementById("loginName");
         let loginOut = document.getElementById("loginOut");
+        let registAd = document.getElementById("registAd");
+
         loginName.innerHTML = "";
         loginName.innerHTML += "<a href='pages/login.html'>登录/注册</a>";
         loginOut.innerHTML = "";
+        registAd.innerHTML = "";
         //登录后才可下载
         /*let ifDown = document.getElementById("ifDown");
         ifDown.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"*/
