@@ -72,20 +72,27 @@
         let pwd = document.getElementById("pwd");
         uName.innerHTML = "";
         pwd.innerHTML = "";
+        let isValidateUname = false;
+        let isValidateUpwd = false;
         let isValidate = false;
 
         if(username.length == 0){
             uName.innerHTML += "用户名不能为空";
-            isValidate = false;
+            isValidateUname = false;
         }else{
-            isValidate = true;
+            isValidateUname = true;
         }
 
         if(password.length == 0){
             pwd.innerHTML += "密码不能为空";
-            isValidate = false;
+            isValidateUpwd = false;
         }else{
+            isValidateUpwd = true;
+        }
+        if(isValidateUname && isValidateUpwd){
             isValidate = true;
+        }else {
+            isValidate = false;
         }
         return isValidate;
     }
