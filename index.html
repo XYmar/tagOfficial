@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <link href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
     <link href="css/animations.min.css" rel="stylesheet">
     <link href="css/style.min.css" rel="stylesheet">
 </head>
@@ -464,7 +464,7 @@
     <!-- .footer end -->
 </footer>
 <!-- JavaScript -->
-<script type="text/javascript" src="plugins/jquery.min.js"></script>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="plugins/modernizr.js"></script>
 <script type="text/javascript" src="plugins/isotope/isotope.pkgd.min.js"></script>
@@ -530,6 +530,7 @@
 
     function delCookie() {
         $.cookie("myUsername", null, {path: '/'});
+        $.cookie("myRole", null, {path: '/'});
         let loginName = document.getElementById("loginName");
         let loginOut = document.getElementById("loginOut");
         loginName.innerHTML = "";

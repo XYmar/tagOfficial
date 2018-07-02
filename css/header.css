@@ -150,6 +150,23 @@ img {
 
 
 
+@media (min-width:992px) {
+    .bigPic {
+        margin-top: 220px;
+    }
+}
+
+@media (max-width:991px) {
+    .bigPic {
+        margin-top: 15px;
+    }
+
+    .smallBigPic {
+        height: 315px;
+    }
+
+}
+
 @media (max-width:767px) {
     .header.navbar-fixed-top {
         position: absolute;
@@ -266,5 +283,7 @@ img {
         height: 80px;
     }
 
-
+    .smallBigPic {
+        height: 260px;
+    }
 }
