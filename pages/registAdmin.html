@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>军事智能·机器阅读</title>
+    <link href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/login.css" rel="stylesheet" type="text/css" />
+    <link href="../css/header.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        .rowLeft { margin-left: -23px; }
+        @media (max-width:480px) {
+            .rowLeft {
+                margin-left: -15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<header class="header fixed clearfix navbar navbar-fixed-top">
+    <div class="container">
+        <div class="row rowLeft">
+            <div class="col-md-12">
+                <div class="header-left">
+                    <div class="logo smooth-scroll">
+                        <a href="../index.html"><img id="logo" src="http://pb2edde5m.bkt.clouddn.com/logo2.png" alt="Worthy"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 toTop">
+            <div class="row login_box">
+                    <div class="login">
+                        <div class="login_logo"><a href="#"><img src="http://pb2edde5m.bkt.clouddn.com/reader3.jpg" /></a></div>
+                        <div class="login_name">
+                            <p>注册</p>
+                        </div>
+                        <form method="post" id="form1" onsubmit="return false" action="#">
+                            <input name="username" type="text"  id="username" placeholder="用户名">
+                            <div class="formValidate" id="uName"></div>
+                            <input name="password" type="password" id="password" placeholder="密码"/>
+                            <div class="formValidate" id="pwd"></div>
+                            <input name="password" type="password" id="pwdConfirm" placeholder="再次输入密码"/>
+                            <div class="formValidate" id="pwdCon"></div>
+                            <input value="注册" style="width:100%;" type="submit" onclick="regist()">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="../js/cookie.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/jquery.base64.js"></script>
+<script src="../js/globalIP.js"></script>
+<script type="text/javascript">
+    function validate(){
+        var username = $("#username").val();
+        var password = $("#password").val();
+        var pwdConfirm = $("#pwdConfirm").val();
+
+        var uName = document.getElementById("uName");
+        var pwd = document.getElementById("pwd");
+        var pwdCon = document.getElementById("pwdCon");
+
+        uName.innerHTML = "";
+        pwd.innerHTML = "";
+        pwdCon.innerHTML = "";
+
+        let isValidateUname = false;
+        let isValidateUpwd = false;
+        let isValidateURepwd = false;
+        let isValidate = false;
+
+        console.log(username.length);
+        if(username.length == 0){
+            uName.innerHTML += "用户名不能为空";
+            isValidateUname = false;
+        }else if(username.length < 6){
+            uName.innerHTML += "用户名不得小于6位"
+            isValidateUname = false;
+        }else{
+            isValidateUname = true;
+        }
+
+        if(password.length == 0){
+            pwd.innerHTML += "密码不能为空";
+            isValidateUpwd = false;
+        }else if(password.length < 6){
+            pwd.innerHTML += "密码不得小于6位"
+            isValidateUpwd = false;
+        }else{
+            isValidateUpwd = true;
+        }
+
+        if(pwdConfirm.length == 0){
+            pwdCon.innerHTML += "请再次输入密码"
+            isValidateURepwd = false;
+        }else if(pwdConfirm != password){
+            pwdCon.innerHTML += "两次密码不一致";
+            isValidateURepwd = false;
+        }else{
+            isValidateURepwd = true;
+        }
+
+        if(isValidateUname && isValidateUpwd && isValidateURepwd){
+            isValidate = true;
+        }else {
+            isValidate = false;
+        }
+        return isValidate;
+    }
+
+    function regist() {
+        var username = $("#username").val();
+        var password = $("#password").val();
+
+        console.log(validate());
+        if(validate()){
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: IpAll() + "users/admin",
+                data: ({username: username,password: password}),
+
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:tszx11hcM@4'));
+                },
+                timeout : 5000,
+                success: function (result) {
+                    window.location.href='login.html';
+                },
+                error : function(error) {
+                    let notifyMessage = error.responseJSON.message
+                    alert(notifyMessage)
+                }
+            });
+        }else{
+            return;
+        }
+
+    }
+</script>
+</body>
+</html>
