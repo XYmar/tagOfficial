@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>军事智能·机器阅读</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="apply.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../css/apply.css">
+    <link rel="stylesheet" href="../css/fileUpload.css">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../css/applyInfo.css">
+    <link rel="stylesheet" href="http://58.213.141.220:10049/housingsubsidy/css/lightbox.css">
+    <link href="../css/header.css" rel="stylesheet" type="text/css" />
+</head>
+<body style="background-image: url('http://pb2edde5m.bkt.clouddn.com/bgPic.png');" id="showBody">
+<header class="header fixed clearfix navbar navbar-fixed-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="header-left">
+                    <div class="logo smooth-scroll">
+                        <a href="../index.html"><img id="logo" src="http://pb2edde5m.bkt.clouddn.com/logo2.png" alt="Worthy"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="row main-content">
+        <div class="col-md-12 toTop">
+            <h3 class="title-main">
+                团队详情
+            </h3>
+            <div class="row">
+                <hr>
+                <div class="col-md-12 childToTop">
+                    <!-- 未通过理由 -->
+                    <div class="row-fluid col-md-12" id="ifCause" style="display: none">
+                        <div class="col-md-1" style="padding: 0">
+                        </div>
+                        <div class="col-md-2" style="padding: 0">
+                            <h4 class="title">
+                                未通过理由
+                            </h4>
+                        </div>
+                        <div class="col-md-8 group-info">
+                            <div class="col-md-6">
+                                <form class="form-horizontal col-md-12">
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-5 col-xs-3">原因： </label>
+                                        <div class="controls col-md-7 col-xs-9">
+                                            <div class="auditDetailDiv" id="cause">
+                                                xx
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 参赛组信息 -->
+                    <div class="row-fluid col-md-12">
+                        <div class="col-md-1" style="padding: 0">
+                        </div>
+                        <div class="col-md-2" style="padding: 0">
+                            <h4 class="title">
+                                参赛组信息
+                            </h4>
+                        </div>
+                        <div class="col-md-8 group-info">
+                            <div class="col-md-6">
+                                <form class="form-horizontal col-md-12">
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-5 col-xs-3">账号： </label>
+                                        <div class="controls col-md-7 col-xs-9">
+                                            <div class="auditDetailDiv" id="username">
+                                                xx
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-6">
+                                <form class="form-horizontal col-md-12">
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-5 col-xs-3">组名称： </label>
+                                        <div class="controls col-md-7 col-xs-9">
+                                            <div class="auditDetailDiv" id="teamName">
+                                                xx
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 组长信息 -->
+                    <div class="row-fluid col-md-12">
+                        <div class="col-md-1" style="padding: 0">
+                        </div>
+                        <div class="col-md-2" style="padding: 0">
+                            <h4 class="title">
+                                组长信息
+                            </h4>
+                        </div>
+                        <div class="col-md-8 group-info">
+                            <div class="col-md-6">
+                                <form class="form-horizontal col-md-12">
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-5 col-xs-3">姓名： </label>
+                                        <div class="controls col-md-7 col-xs-9">
+                                            <div class="auditDetailDiv" id="name">
+                                                xx
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-5 col-xs-3">性别： </label>
+                                        <div class="controls col-md-7 col-xs-9 sexDiv" id="Lsex">
+                                            <div class="auditDetailDiv" id="sex">
+                                                xx
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-5 col-xs-3">单位/学校： </label>
+                                        <div class="controls col-md-7 col-xs-9">
+                                            <div class="auditDetailDiv" id="organization">
+                                                xx
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-6">
+                                <form class="form-horizontal col-md-12">
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-5 col-xs-3">年龄： </label>
+                                        <div class="controls col-md-7 col-xs-9">
+                                            <div class="auditDetailDiv" id="age">
+                                                xx
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-5 col-xs-3">电话： </label>
+                                        <div class="controls col-md-7 col-xs-9">
+                                            <div class="auditDetailDiv" id="telephoneNumber">
+                                                xx
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-5 col-xs-3">邮箱： </label>
+                                        <div class="controls col-md-7 col-xs-9">
+                                            <div class="auditDetailDiv" id="email">
+                                                xx
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 身份证 -->
+                    <div class="row-fluid col-md-12">
+                        <div class="col-md-1" style="padding: 0">
+                        </div>
+                        <div class="col-md-2" style="padding: 0">
+                            <h4 class="title">
+                                组长证件
+                            </h4>
+                        </div>
+                        <div class="col-md-8 group-info smallBigPic">
+                            <div class="col-md-6" id="badge">
+                                <img src="" class="idCard"/>
+                            </div>
+                            <div class="col-md-6" id="bigPic">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- 组员信息 -->
+                    <div class="row-fluid col-md-12" id="memberInfo" style="display: none;">
+                        <div class="col-md-1" style="padding: 0">
+                        </div>
+                        <div class="col-md-2" style="padding: 0">
+                            <h4 class="title">
+                                组员信息
+                            </h4>
+                        </div>
+                        <div class="col-md-8 group-info">
+                            <div class="col-md-12">
+                                <!-- 组员表格 -->
+                                <div class="col-md-12 col-xs-12 row-fluid" style="padding: 0">
+                                    <div class="col-md-12 table-responsive" style="padding: 0">
+                                        <table class="table table-bordered">
+                                            <thead style="color: #fff;background: #409eff;">
+                                            <tr>
+                                                <th>
+                                                    姓名
+                                                </th>
+                                                <th>
+                                                    年龄
+                                                </th>
+                                                <th>
+                                                    性别
+                                                </th>
+                                                <th>
+                                                    手机号
+                                                </th>
+                                                <th>
+                                                    单位/学校
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="TeamMember">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="../js/lightbox.js"></script>
+<script src="../js/cookie.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script type="text/javascript" src="../js/jquery.base64.js"></script>
+<script src="../js/globalIP.js"></script>
+<script type="text/javascript">
+    let username = $.cookie("myUsername");
+    let password0 = $.cookie("myWPa");
+    let password = $.base64.decode(password0);
+    let token = username + ':' + password;
+    let role = $.cookie("myRole");
+    window.onload=function(){
+        if ((username != null) && (username !== "null")) {
+            if(role === 'admin'){
+                let id = getUrlParam('id');
+
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: IpAll() + "users/" + id ,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+                    },
+                    success: function (result) {
+                        let data = result.data;
+                        let thisRole = data.roleEntities[0].name;
+
+                        if(thisRole !== "denied"){
+                            document.getElementById("memberInfo").style.display = "block";
+                        }else {
+                            document.getElementById("ifCause").style.display = "block";
+                        }
+                        document.getElementById("cause").innerHTML = data.message;
+                        document.getElementById("cause").style.color = "red";
+                        document.getElementById("username").innerHTML = data.username;
+                        document.getElementById("teamName").innerHTML = data.teamName;
+                        document.getElementById("name").innerHTML = data.name;
+                        document.getElementById("age").innerHTML = data.age;
+                        document.getElementById("sex").innerHTML = data.sex === 1 ? '女' : '男';
+                        document.getElementById("telephoneNumber").innerHTML = data.telephoneNumber;
+                        document.getElementById("organization").innerHTML = data.organization;
+                        document.getElementById("email").innerHTML = data.email;
+
+                    },
+                    error : function() {
+                        alert("请求错误！");
+                    }
+                });
+
+                let url = IpAll() + "users/" + id + "/badge" ;
+                let xhr = new XMLHttpRequest();
+                xhr.open('GET', url, true);
+                xhr.responseType = "blob";
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+                xhr.setRequestHeader("client_type", "DESKTOP_WEB");
+                xhr.onload = function() {
+                    if (this.status === 200) {
+                        let blob = this.response;
+                        let img = document.createElement("img");
+                        img.onload = function(e) {
+                            window.URL.revokeObjectURL(img.src);
+                        };
+                        img.src = window.URL.createObjectURL(blob);
+                        $("#badge").html(img);
+
+                        //console.log($("#badge")[0].childNodes[0]);
+                        $("#badge")[0].childNodes[0].setAttribute("class","idCard");
+
+
+                        url= window.URL.createObjectURL(blob);  // 得到bolb对象路径，可当成普通的文件路径一样使用，赋值给src;
+
+                        //添加到文件列表
+                        let html = '<div class="col-md-12 idPic">' +
+                            '<div class="col-md-1 col-xs-3 idPic bigPic"><a class="btn btn-success btn-mini" href="' + url + '" data-lightbox="1111" data-title="查看原图" ' +
+                            'style="cursor:pointer;padding: 3px 8px;font-size: 11px;border-radius: 3px;float: unset;margin-top: 0;">查看原图</a></div>' +
+                            '</div>';
+
+                        let bigPicture = document.getElementById("bigPic");
+
+                        $(html).appendTo(bigPicture);
+
+                    }
+                }
+                xhr.send();
+
+                getAll();
+
+            }else{
+                document.getElementById("showBody").style.display = "none";
+                window.location.href="../index.html";
+            }
+        }else{
+            document.getElementById("showBody").style.display = "none";
+            window.location.href="login.html";
+        }
+    }
+
+    //获取URL参数
+    function getUrlParam(name) {
+        let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); // 构造一个含有目标参数的正则表达式对象
+        let r = window.location.search.substr(1).match(reg);  // 匹配目标参数
+        if (r != null) return unescape(r[2]); return null; // 返回参数值
+    }
+
+    //组员信息
+    function getAll(){
+        let id = getUrlParam('id');
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: IpAll() + "users/" + id + "/crew" ,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let str = "";
+                let data = result.data;
+
+                if(data.length !== 0){
+                    let memberTbody = document.getElementById("TeamMember");
+                    for (let i=0;i<data.length;i++) {
+                        str += "<tr>" +
+                            "<td>" + data[i].name + "</td>" +
+                            "<td>" + data[i].age + "</td>" +
+                            "<td>" + (data[i].sex === 0 ? '男' : '女') + "</td>" +
+                            "<td>" + data[i].telephoneNumber + "</td>" +
+                            "<td>" + data[i].organization + "</td>" +
+                            "</tr>";
+                    }
+                    memberTbody.innerHTML = str;
+                }else {
+                    let memberTbody = document.getElementById("TeamMember");
+                    for (let i=0;i<data.length;i++) {
+                        str = "";
+                    }
+                    memberTbody.innerHTML = str;
+                }
+            },
+            error : function() {
+                alert("请求错误！");
+            }
+        });
+    }
+
+</script>
+</body>
+</html>
