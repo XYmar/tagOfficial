@@ -546,6 +546,21 @@ text-align:center;
 	width: 80px;
 	height: 80px;
 }
+
+.newUl li {
+	padding: 15px 0;
+	font-size: 18px;
+	width: 48%;
+	display: inline-block;
+	cursor: pointer;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.newUl li:hover{
+	color: #00aff0;
+}
 /* Forms
 ---------------------------------- */
 .form-control {
