@@ -11,6 +11,9 @@
     <link href="../css/header.css" rel="stylesheet" type="text/css" />
     <style>
         .rowLeft { margin-left: -23px; }
+        .auditState {
+            width: 70px !important;
+        }
         @media (max-width:480px) {
             .rowLeft {
                 margin-left: -15px;
@@ -282,7 +285,12 @@
                                     },{
                                         field: 'authorities',
                                         title: '状态',
+                                        class: 'auditState',
                                         formatter: statusFormatter
+                                    },{
+                                        field: 'id',
+                                        title: '操作',
+                                        formatter: actionFormatter2
                                     }
                                     ],
                                     data: dataAll
@@ -317,10 +325,17 @@
                         "</a>"
                 }
 
+                //生成操作
+                function actionFormatter2(value) {
+                    return "<a href='auditMemDetail.html?id=" + value + "' style='float: none;'>" +
+                        "<button class='btn btn-success btn-success editMember' type='button' >详情</button> " +
+                        "</a>"
+                }
+
                 //生成状态
                 function statusFormatter(value) {
                     if(value[0].authority.indexOf('accept') > 0) {
-                        return "<span style=\"color: #27A9E3;\">已审核</span>"
+                        return "<span style=\"color: #27A9E3;\">已通过</span>"
                     } else if(value[0].authority.indexOf('denied') > 0){
                         return "<span style=\"color: #ff0000;\">未通过</span>"
                     }
