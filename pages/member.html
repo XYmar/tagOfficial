@@ -534,7 +534,7 @@
     window.onload=function() {
         /*if ((username != null) && (username !== "null")) {
             if(role !== 'admin'){*/
-                $.ajax({
+                /*$.ajax({
                     type: "GET",
                     dataType: "json",
                     url: IpAll() + "users/" + myTeamId,
@@ -562,7 +562,9 @@
                         let notifyMessage = error.responseJSON.message
                         alert(notifyMessage)
                     }
-                });
+                });*/
+
+                resetAll();
                 getAll();
                 getAllScore();
 
@@ -575,6 +577,38 @@
             window.location.href="login.html";
         }*/
     };
+
+    function resetAll() {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: IpAll() + "users/" + myTeamId,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+                passOld = data.password
+
+                document.getElementById("username").innerHTML = data.username;
+                document.getElementById("teamName").innerHTML = data.teamName;
+                document.getElementById("name").value = data.name;
+                document.getElementById("age").value = data.age;
+                document.getElementById("sex").value = data.sex === 1 ? '女' : '男';
+                document.getElementById("telephoneNumber").value = data.telephoneNumber;
+                document.getElementById("organization").value = data.organization;
+                document.getElementById('password').value = data.password;
+                document.getElementById("email").value = data.email;
+                document.getElementById('inputLsch').value = data.organization;
+                document.getElementById('bleu').innerHTML = data.bleu_4_Score.toFixed(2);
+                document.getElementById('rouge').innerHTML = data.rouge_Score.toFixed(2);
+            },
+            error: function (error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
 
     function subFile() {
         let file = document.getElementById("fileZheng").files[0];  //获取文件
@@ -597,7 +631,7 @@
             timeout : 5000,
             success: function (result) {
                 getAllScore();
-                getAll();
+                resetAll();
             },
             error : function(error) {
                 let notifyMessage = error.responseJSON.message
@@ -665,8 +699,8 @@
                     let ScoreTbody = document.getElementById("TeamScore");
                     for (let i=0;i<data.length;i++) {
                         str += "<tr>" +
-                            "<td>" + data[i].bleu_4_Score + "</td>" +
-                            "<td>" + data[i].rouge_Score + "</td>" +
+                            "<td>" + data[i].bleu_4_Score.toFixed(2) + "</td>" +
+                            "<td>" + data[i].rouge_Score.toFixed(2) + "</td>" +
                             "</tr>";
                     }
                     ScoreTbody.innerHTML = str;
