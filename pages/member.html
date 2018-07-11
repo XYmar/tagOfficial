@@ -414,9 +414,58 @@
                                     </div>
                                     <div class="col-md-10 col-sm-10 col-xs-10  group-info">
                                         <div class="identifyContainer">
+                                            <div class="row">
+                                                <h4 class="sign">
+                                                    注意：每天仅可以提交两次
+                                                </h4>
+                                            </div>
+                                            <div class="col-md-5" style="border:1px solid lightgrey;border-radius: 4px;">
+                                                <form class="form-horizontal" enctype="multipart/form-data">
+                                                    <div style="padding: 0" id="Lpicture">
+                                                        <h3><span class="required-flag">*</span>文件1：</h3>
+                                                        <div class="fileArea" id="file1" style="padding-top:5px;">
+                                                        </div>
+                                                        <div class="col-xs-12 idPic">
+                                                            <span class="btn btn-info btn-small fileinput-button" style="padding: 4px 10px;font-size: 12px;">
+                                                                <i class="glyphicon glyphicon-plus"></i>
+                                                                <span>上传附件</span>
+                                                                <input class="chooseFile disableAll" type="file" name="diploma" id="file1Cont"/>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-5" style="border:1px solid lightgrey;border-radius: 4px">
+                                                <form class="form-horizontal" enctype="multipart/form-data">
+                                                    <div style="padding: 0" id="Lpicture2">
+                                                        <h3><span class="required-flag">*</span>文件2：</h3>
+                                                        <div class="fileArea" id="file2" style="padding-top:5px;">
+                                                        </div>
+                                                        <div class="col-xs-12 idPic">
+                                                            <span class="btn btn-info btn-small fileinput-button" style="padding: 4px 10px;font-size: 12px;">
+                                                                <i class="glyphicon glyphicon-plus"></i>
+                                                                <span>上传附件</span>
+                                                                <input class="chooseFile disableAll" type="file" name="diploma" id="file2Cont"/>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                            <div class="col-md-12 modifyPasBtnCon"  style="padding: 0;text-align: center;margin-top: 20px;">
+                                                <div class="col-md-11">
+                                                    <button type="button" class="btn  btn-success" style="width: 70px;height: 30px;font-size: 13px;" onclick="subFiles()">提交</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--<div class="col-md-10 col-sm-10 col-xs-10  group-info">
+                                        <div class="identifyContainer">
 
                                             <form class="row form-horizontal" enctype="multipart/form-data">
-                                                <div style="padding: 0" id="Lpicture">
+                                                <div style="padding: 0" id="Lpicture3">
                                                     <h3><span class="required-flag">*</span>注意：每天可提交两次</h3>
                                                     <div class="fileArea" id="idZhengmian" style="padding-top:5px;">
                                                     </div>
@@ -430,7 +479,7 @@
                                                 </div>
                                             </form>
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </div>
 
                                 <!-- 历史信息 -->
@@ -568,6 +617,24 @@
                 getAll();
                 getAllScore();
 
+                //添加文件
+                let file1 = document.getElementById("file1Cont");
+                let file2 = document.getElementById("file2Cont");
+                file1.onchange = function(){
+                    if(file1.value.length !== 0){
+                        let file = this.files[0];
+                        let divId = "file1";
+                        handleFile(file, divId);
+                    }
+                }
+                file2.onchange = function(){
+                    if(file2.value.length !== 0){
+                        let file = this.files[0];
+                        let divId = "file2";
+                        handleFile(file, divId);
+                    }
+                }
+
             /*}else {
                 document.getElementById("showBody").style.display = "none";
                 window.location.href="../index.html";
@@ -577,6 +644,41 @@
             window.location.href="login.html";
         }*/
     };
+    function handleFile(file, divId){
+        //获取文件名称
+        let fileName = file.name;
+        url=window.URL.createObjectURL(file);  // 得到bolb对象路径，可当成普通的文件路径一样使用，赋值给src;
+        //清空文件列表
+        let fileArea = document.getElementById(divId);
+        fileArea.innerHTML = '';
+        //添加到文件列表
+        let html = '<div class="col-md-12 idPic">' +
+            '<p class="fileName col-md-5 col-xs-12 idPic">' + fileName + '</p>' +
+            '<div class="col-md-1 col-xs-3 idPic"><span class="delFile btn btn-danger btn-mini disableAll newAddFile" onclick="delFile(event)"' +
+            ' style="cursor:pointer;padding: 3px 8px;font-size: 11px;border-radius: 3px;">删除</span></div>' +
+            '</div>';
+
+        let $fileArea = document.getElementById(divId);
+        $(html).appendTo($fileArea);
+    }
+
+    function delFile(event){
+        let e = event || window.event;
+        let target = e.target || e.srcElement;
+        let delDiv = target.parentNode.parentNode;
+        let id1 = delDiv.parentNode.id;
+        let id2 = delDiv.parentNode.parentNode.lastElementChild.lastElementChild.lastElementChild.id;
+        console.log(id1);
+        console.log("删除的div----");
+        console.log(delDiv.parentNode.parentNode.lastElementChild.lastElementChild.lastElementChild);
+        console.log();
+        console.log(id2);
+        let $fileArea = document.getElementById(id1);
+        console.log($fileArea);
+        $fileArea.removeChild(delDiv);
+        let fileCont = document.getElementById(id2);
+        fileCont.value = '';
+    }
 
     function resetAll() {
         $.ajax({
@@ -614,6 +716,38 @@
         let file = document.getElementById("fileZheng").files[0];  //获取文件
         let formData = new FormData();
         formData.append("file", file);
+
+        $.ajax({
+            url: IpAll() + "users/" + myTeamId + "/commitfile",
+            data: formData,
+            type: "PUT",
+            async:false,
+            dataType: "json",
+            cache: false,
+            processData: false,
+            contentType: false,
+            enctype: 'multipart/form-data',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            timeout : 5000,
+            success: function (result) {
+                getAllScore();
+                resetAll();
+            },
+            error : function(error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+
+    function subFiles() {
+        let file1 = document.getElementById("file1Cont").files[0];  //获取文件
+        let file2 = document.getElementById("file2Cont").files[0];  //获取文件
+        let formData = new FormData();
+        formData.append("ref", file1);
+        formData.append("pred", file2);
 
         $.ajax({
             url: IpAll() + "users/" + myTeamId + "/commitfile",
