@@ -11,6 +11,7 @@
     <link href="../css/header.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../css/applyInfo.css">
     <link rel="stylesheet" href="../css/fileUpload.css">
+    <link rel="stylesheet" href="../bootstrap-table/bootstrap-table.min.css">
     <style>
         .sexInput { height: 12px; }
     </style>
@@ -493,7 +494,7 @@
                                     <!-- 成绩表格 -->
                                     <div class="col-md-10 col-xs-10 row-fluid" style="padding: 0">
                                         <div class="col-md-12 table-responsive" style="padding: 0">
-                                            <table class="table table-bordered">
+                                            <!--<table class="table table-bordered">
                                                 <thead>
                                                 <tr>
                                                     <th>
@@ -502,11 +503,18 @@
                                                     <th>
                                                         ROUGE
                                                     </th>
+                                                    <th>
+                                                        日期
+                                                    </th>
                                                 </tr>
                                                 </thead>
                                                 <tbody id="TeamScore">
                                                 </tbody>
-                                            </table>
+                                            </table>-->
+                                            <div class="table-responsive" style="margin-top: -10px">
+                                                <table id="scoreInfoTable">
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -570,6 +578,8 @@
 <script src="../js/jquery.cookie.js"></script>
 <script type="text/javascript" src="../js/jquery.base64.js"></script>
 <script src="../js/globalIP.js"></script>
+<script src="../bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
 <script type="text/javascript">
     let passOld;
     let role = $.cookie("myRole");
@@ -702,8 +712,8 @@
                 document.getElementById('password').value = data.password;
                 document.getElementById("email").value = data.email;
                 document.getElementById('inputLsch').value = data.organization;
-                document.getElementById('bleu').innerHTML = data.bleu_4_Score.toFixed(2);
-                document.getElementById('rouge').innerHTML = data.rouge_Score.toFixed(2);
+                document.getElementById('bleu').innerHTML = data.bleu_4_Score.toFixed(2) + "%";
+                document.getElementById('rouge').innerHTML = data.rouge_Score.toFixed(2) + "%";
             },
             error: function (error) {
                 let notifyMessage = error.responseJSON.message
@@ -826,15 +836,40 @@
                 xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
             },
             success: function (result) {
-                let str = "";
+                //let str = "";
                 let data = result.data;
 
-                if(data.length !== 0){
+                $('#scoreInfoTable').bootstrapTable({
+                    sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination : true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 10,                       //每页的记录行数（*）
+                    pageList: [10,20,30],        //可供选择的每页的行数（*）
+                    search:true,
+                    columns: [{
+                        field: 'bleu_4_Score',
+                        title: 'BLEU_4',
+                        formatter: precentFormatter
+                    }, {
+                        field: 'rouge_Score',
+                        title: 'ROUGE',
+                        formatter: precentFormatter
+                    }, {
+                        field: 'createTime',
+                        title: '提交日期'
+                    }
+                    ],
+                    data: data
+                });
+
+
+                /*if(data.length !== 0){
                     let ScoreTbody = document.getElementById("TeamScore");
                     for (let i=0;i<data.length;i++) {
                         str += "<tr>" +
-                            "<td>" + data[i].bleu_4_Score.toFixed(2) + "</td>" +
-                            "<td>" + data[i].rouge_Score.toFixed(2) + "</td>" +
+                            "<td>" + data[i].bleu_4_Score.toFixed(2) + "%</td>" +
+                            "<td>" + data[i].rouge_Score.toFixed(2) + "%</td>" +
+                            "<td>" + data[i].createTime + "</td>" +
                             "</tr>";
                     }
                     ScoreTbody.innerHTML = str;
@@ -844,7 +879,7 @@
                         str = "";
                     }
                     ScoreTbody.innerHTML = str;
-                }
+                }*/
             },
             error : function(error) {
                 let notifyMessage = error.responseJSON.message
@@ -853,6 +888,9 @@
         });
     }
 
+    function precentFormatter(value) {
+        return value + "%";
+    }
     function reset(){
         $("#inputLname").val('');
         $("#inputLOld").val('');
