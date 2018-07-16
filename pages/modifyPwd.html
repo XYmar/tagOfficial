@@ -43,7 +43,7 @@
                         <div class="container">
                             <ul>
                                 <li><a href="#tab1" data-toggle="tab">基本信息验证</a></li>
-                                <li><a href="#tab2" data-toggle="tab">修改密码</a></li>
+                                <li><a href="#tab2" data-toggle="tab" id="modify">修改密码</a></li>
                             </ul>
                         </div>
                     </div>
@@ -115,12 +115,12 @@
                         <div  class="col-md-3">
 
                         </div>
-                        <form  class="form-horizontal col-md-6" style="padding: 50px 0;">
+                        <form  class="form-horizontal col-md-6" style="padding: 50px 0;"  autocomplete="off">
                             <div class="form-group">
                                 <label class="control-label col-md-4 col-sm-4 col-xs-4" for="pwd1" style="padding: 0;"><span class="required-flag">*</span>密码：</label>
                                 <div class="controls col-md-8 col-sm-8 col-xs-8">
                                     <div style="border-radius: 4px;">
-                                        <input id="pwd1" class="form-control" type="password" />
+                                        <input id="pwd1" class="form-control" type="password" autocomplete="off"/>
                                     </div>
                                 </div>
                             </div>
@@ -128,7 +128,7 @@
                                 <label class="control-label col-md-4 col-sm-4 col-xs-4" for="pwd2" style="padding: 0;"><span class="required-flag">*</span>确认密码：</label>
                                 <div class="controls col-md-8 col-sm-8 col-xs-8">
                                     <div style="border-radius: 4px;">
-                                        <input id="pwd2" class="form-control" type="password" />
+                                        <input id="pwd2" class="form-control" type="password"  autocomplete="off"/>
                                     </div>
                                 </div>
                             </div>
@@ -152,7 +152,7 @@
                         <li class="previous first" style="display:none;"><a href="#">上一步</a></li>
                         <li class="previous"><a href="#">上一步</a></li>
                         <li class="next last" style="display:none;"><a href="#">完成</a></li>
-                        <li class="next"><a href="#">下一步</a></li>
+                        <li class="next"><a href="#" id="nextA">下一步</a></li>
                     </ul>
                 </div>
             </div>
@@ -171,7 +171,8 @@
 <script src="../bootstrap-wizard/prettify.js"></script>
 <script type="text/javascript">
     let ifValid = false;
-
+    let count = 1;
+    document.getElementById("modify").disabled = true;
     function CheckPassWord(password) {//必须为字母加数字且长度不小于8位
         let str = password;
         if (str == null || str.length <6) {
@@ -203,20 +204,31 @@
 
     $(document).ready(function() {
         $('#rootwizard').bootstrapWizard({onNext: function(tab, navigation, index) {
-                if(index==1) {
+                count = index;
+                if(index===1) {
                     // Make sure we entered the name
                     if(!ifValid) {
                         alert('请先验证基本信息');
+                        document.getElementById("modify").disabled = true;
                         $('#username').focus();
                         return false;
                     }
                 }
 
             }, onTabShow: function(tab, navigation, index) {
+                count = index;
                 let $total = navigation.find('li').length;
                 let $current = index+1;
                 let $percent = ($current/$total) * 100;
                 $('#rootwizard .progress-bar').css({width:$percent+'%'});
+                if($current === 2){
+                    document.getElementById("nextA").style.background = "lightgrey";
+                    document.getElementById("nextA").style.color = "#fff";
+                }
+                if(ifValid && $current === 1){
+                    document.getElementById("nextA").style.background = "#5cb85c";
+                    document.getElementById("nextA").style.color = "#fff";
+                }
             }});
     });
 
@@ -249,6 +261,9 @@
             success: function (result) {
                 alert("验证通过...");
                 ifValid = true;
+                document.getElementById("modify").disabled = false;
+                document.getElementById("nextA").style.background = "#5cb85c";
+                document.getElementById("nextA").style.color = "#fff";
                 /*$('#rootwizard').bootstrapWizard({onNext: function(tab, navigation, index) {
                         if(index==1) {
                             return true;
