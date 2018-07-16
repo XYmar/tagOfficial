@@ -205,9 +205,9 @@
         $('#rootwizard').bootstrapWizard({onNext: function(tab, navigation, index) {
                 if(index==1) {
                     // Make sure we entered the name
-                    if(!$('#name').val()) {
-                        alert('You must enter your name');
-                        $('#name').focus();
+                    if(!ifValid) {
+                        alert('请先验证基本信息');
+                        $('#username').focus();
                         return false;
                     }
                 }
@@ -248,7 +248,7 @@
             timeout: 5000,
             success: function (result) {
                // alert("验证通过...");
-                //ifValid = true;
+                ifValid = true;
                 /*$('#rootwizard').bootstrapWizard({onNext: function(tab, navigation, index) {
                         if(index==1) {
                             return true;
