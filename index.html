@@ -442,6 +442,44 @@
         </div>
     </div>
 </section>
+<!-- section start -->
+<!-- 下载提交 -->
+<section class="section transprant-bg pclear secPadding">
+    <div class="container no-view" data-animation-effect="fadeIn">
+        <h1 id="download" class="title text-center">下载提交</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="media block-list">
+                    <div class="media-left">
+                        <i class="fa fa-clock-o"></i>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">数据下载</h3>
+                        <blockquote id="ifDown">
+
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="media block-list">
+                    <div class="media-left">
+                        <i class="fa fa-magic"></i>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">结果提交</h3>
+                        <blockquote>
+                            <p>点击此处进入结果提交页面。</p>
+
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
 <!-- 排行榜 -->
 <section id="ranking" class="price-table secPadding">
     <div class="container text-center">
@@ -1131,7 +1169,7 @@
         let loginName = document.getElementById("loginName");
         let loginOut = document.getElementById("loginOut");
         let registAd = document.getElementById("registAd");
-        //let ifDown = document.getElementById("ifDown");
+        let ifDown = document.getElementById("ifDown");
         let myUsername = $.cookie("myUsername");
         let myRole = $.cookie("myRole");
 
@@ -1140,26 +1178,24 @@
             loginOut.innerHTML = "";
             if(myRole === "admin"){
                 loginName.innerHTML += "<a href='pages/audit.html'>审核</a>";
-                //ifDown.innerHTML = "<a href=\"files/附件1.txt\" download=\"训练数据集.txt\"><p style=\"color: #339BEB;\">点击下载，训练数据集</p> </a>"
+                ifDown.innerHTML = "<a href=\"files/附件1.txt\" download=\"训练数据集.txt\"><p style=\"color: #339BEB;\">点击下载，训练数据集</p> </a>"
 
                 if(myUsername === "admin") {
-                    /*document.getElementById('hleft').setAttribute("class", "col-md-5");
-                    document.getElementById('hright').setAttribute("class", "col-md-7");*/
                     registAd.innerHTML += "<a href='pages/registAdmin.html'>注册</a>";
                 }
             }else if(myRole === "accept"){
                 loginName.innerHTML += "<a href='pages/member.html'>" + myUsername + "</a>";
-                //ifDown.innerHTML = "<a href=\"files/附件1.txt\" download=\"训练数据集.txt\"><p style=\"color: #339BEB;\">点击下载，训练数据集</p> </a>"
+                ifDown.innerHTML = "<a href=\"files/附件1.txt\" download=\"训练数据集.txt\"><p style=\"color: #339BEB;\">点击下载，训练数据集</p> </a>"
             }else if(myRole === "user" || myRole === "denied"){
                 loginName.innerHTML += "<a href='pages/applyResult.html'>" + myUsername + "</a>";
-                //ifDown.innerHTML = "<p>审核通过才能进行下载操作</p>"
+                ifDown.innerHTML = "<p>审核通过才能进行下载操作</p>"
             }
             loginOut.innerHTML += "<a href='#'><sapn onclick='delCookie()' class='exit'>退出</sapn></a>";
         } else {
             loginName.innerHTML = "";
             loginName.innerHTML += "<a href='pages/login.html'>登录/注册</a>";
             loginOut.innerHTML = "";
-            //ifDown.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"
+            ifDown.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"
         }
     }
 
@@ -1175,8 +1211,8 @@
         loginOut.innerHTML = "";
         registAd.innerHTML = "";
         //登录后才可下载
-        /*let ifDown = document.getElementById("ifDown");
-        ifDown.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"*/
+        let ifDown = document.getElementById("ifDown");
+        ifDown.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"
     }
 </script>
 </body>

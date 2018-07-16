@@ -371,7 +371,7 @@ color:#000;
 	padding-bottom: 0;
 }
 .secPadding{
-	padding: 70px 0;
+	padding: 50px 0;
 	/*padding: 15px 0;*/
 }
 .price-table .panel-heading h3{
@@ -519,6 +519,16 @@ text-align:center;
     float: right;
 	font-weight: bold;
 	font-size: 18px;
+}
+
+.block-list {
+	display: table;
+}
+
+.media-body {
+	display: table-cell;
+	vertical-align: top;
+	padding-top: 5px;
 }
 
 
@@ -1016,7 +1026,7 @@ background: #fff;border: 1px solid #fff;}
 /* block-lists
 ---------------------------------- */
 .block-list .media-left {
-	width: 60px;
+	width: 80px;
 }
 .block-list p{
 font-size: 16px;
