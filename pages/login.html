@@ -115,7 +115,11 @@
                     $.cookie("myUsername",result.data.username,{path:'/'});
                     $.cookie("myWPa",$.base64.encode(password),{path:'/'});
                     $.cookie("myTeamId",result.data.id,{path:'/'});
-                    $.cookie("myRole",result.data.roleEntities[0].name,{path:'/'});
+                    if(result.data.roleEntities.length === 2){
+                        $.cookie("myRole",result.data.roleEntities[1].name,{path:'/'});
+                    }else {
+                        $.cookie("myRole",result.data.roleEntities[0].name,{path:'/'});
+                    }
 
                     window.location.href='../index.html';
                 },

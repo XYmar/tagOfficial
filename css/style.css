@@ -521,6 +521,15 @@ text-align:center;
 	font-size: 18px;
 }
 
+.block-list {
+	display: table;
+}
+
+.media-body {
+	display: table-cell;
+	vertical-align: top;
+	padding-top: 5px;
+}
 
 /* Pills
 ---------------------------------- */
@@ -1001,7 +1010,7 @@ background: #fff;border: 1px solid #fff;}
 /* block-lists
 ---------------------------------- */
 .block-list .media-left {
-	width: 60px;
+	width: 80px;
 }
 .block-list p{
 font-size: 16px;
