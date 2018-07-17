@@ -565,11 +565,13 @@
             }else if(myRole === "accept"){
                 loginName.innerHTML += "<a href='pages/member.html'>" + myUsername + "</a>";
                 ifDown.innerHTML = "<a href=\"files/训练数据集.json\" download=\"训练数据集.txt\"><p style=\"color: #339BEB;\">点击下载，训练数据集</p> </a>"
-                ifUpload.innerHTML = "<a href=\"pages/member.html\"><p style=\"color: #339BEB;\">点此进入结果提交页面。</p> </a>"
+                //ifUpload.innerHTML = "<a href=\"pages/member.html\"><p style=\"color: #339BEB;\">点此进入结果提交页面。</p> </a>"
+                ifUpload.innerHTML = "<p>暂未开放</p>"
             }else if(myRole === "user" || myRole === "denied"){
                 loginName.innerHTML += "<a href='pages/applyResult.html'>" + myUsername + "</a>";
                 ifDown.innerHTML = "<p>审核通过才能进行下载操作</p>"
-                ifUpload.innerHTML = "<p>审核通过才能进行提交操作</p>"
+                ifUpload.innerHTML = "<p>暂未开放</p>"
+                //ifUpload.innerHTML = "<p>审核通过才能进行提交操作</p>"
             }
             loginOut.innerHTML += "<a href='#'><sapn onclick='delCookie()' class='exit'>退出</sapn></a>";
         } else {
@@ -577,7 +579,8 @@
             loginName.innerHTML += "<a href='pages/login.html'>登录/注册</a>";
             loginOut.innerHTML = "";
             ifDown.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"
-            ifUpload.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"
+            //ifUpload.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"
+            ifUpload.innerHTML = "<p>暂未开放</p>"
         }
     }
 
@@ -596,7 +599,8 @@
         let ifDown = document.getElementById("ifDown");
         let ifUpload = document.getElementById("ifUpload");
         ifDown.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"
-        ifUpload.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"
+        //ifUpload.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"
+        ifUpload.innerHTML = "<p>暂未开放</p>"
     }
 </script>
 </body>
