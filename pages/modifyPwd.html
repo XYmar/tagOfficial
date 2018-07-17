@@ -18,6 +18,7 @@
             }
         }
     </style>
+
 </head>
 
 <body>
@@ -102,7 +103,7 @@
                                 <div class="col-md-5">
 
                                 </div>
-                                <button class="btn btn-primary col-md-4" onclick="validatePwd()">验证</button>
+                                <button class="btn btn-primary col-md-4" type="button" onclick="validatePwd()">验证</button>
                             </div>
                             <!--<input class="btn btn-primary btn-block" value="验证"  type="submit" onclick="validatePwd()">-->
                             <br>
@@ -140,7 +141,7 @@
                                 <div class="col-md-5">
 
                                 </div>
-                                <button class="btn btn-primary col-md-4" type="submit" onclick="changePwd()">修改</button>
+                                <button class="btn btn-primary col-md-4" type="button" onclick="changePwd()">修改</button>
                             </div>
                             <!--<input class="btn btn-primary btn-block" value="修改" style="width:100%;" type="submit" onclick="changePwd()">-->
                             <br>
@@ -158,7 +159,6 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -254,9 +254,9 @@
             processData: false,
             contentType: false,
             enctype: 'multipart/form-data',
-            beforeSend: function (xhr) {
+            /*beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:tszx11hcM@4'));
-            },
+            },*/
             timeout: 5000,
             success: function (result) {
                 alert("验证通过...");
@@ -264,17 +264,6 @@
                 document.getElementById("modify").disabled = false;
                 document.getElementById("nextA").style.background = "#5cb85c";
                 document.getElementById("nextA").style.color = "#fff";
-                /*$('#rootwizard').bootstrapWizard({onNext: function(tab, navigation, index) {
-                        if(index==1) {
-                            return true;
-                        }
-                    }, onTabShow: function(tab, navigation, index) {
-                        let $total = navigation.find('li').length;
-                        let $current = index+1;
-                        let $percent = ($current/$total) * 100;
-                        $('#rootwizard .progress-bar').css({width:$percent+'%'});
-                    }});*/
-                //window.location.href = '../index.html';
             },
             error: function (error) {
                 let notifyMessage = error.responseJSON.message
@@ -314,13 +303,13 @@
                     processData: false,
                     contentType: false,
                     enctype: 'multipart/form-data',
-                    beforeSend: function (xhr) {
+                    /*beforeSend: function (xhr) {
                         xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:tszx11hcM@4'));
-                    },
+                    },*/
                     timeout: 5000,
                     success: function (result) {
                         alert("修改成功...");
-                        //window.location.href = '../index.html';
+                        window.location.href = 'login.html';
                     },
                     error: function (error) {
                         let notifyMessage = error.responseJSON.message
