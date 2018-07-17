@@ -90,22 +90,12 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!--<input name="username" type="text" id="username" placeholder="账号">
-                            <div class="formValidate" id="uName"></div>
-                            <input name="username" type="text" id="capName" placeholder="用户名">
-                            <div class="formValidate" id="capnameD"></div>
-                            <input name="password" type="text" id="tel" placeholder="电话"/>
-                            <div class="formValidate" id="pwd"></div>
-                            <input name="username" type="text" id="email" placeholder="邮箱">
-                            <div class="formValidate" id="emailD"></div>-->
                             <div class="col-md-12 col-sm-12 col-xs-12 commit_btn_container" style="margin-top: 20px;">
                                 <div class="col-md-5">
 
                                 </div>
                                 <button class="btn btn-primary col-md-4" type="button" onclick="validatePwd()">验证</button>
                             </div>
-                            <!--<input class="btn btn-primary btn-block" value="验证"  type="submit" onclick="validatePwd()">-->
                             <br>
                         </form>
                         <div class="col-md-3">
@@ -133,17 +123,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--<input name="username" type="password" id="pwd1" placeholder="密码">
-                            <div class="formValidate" id="pwd1D"></div>
-                            <input name="username" type="password" id="pwd2" placeholder="确认密码">
-                            <div class="formValidate" id="pwd2D"></div>-->
                             <div class="col-md-12 col-sm-12 col-xs-12 commit_btn_container" style="margin-top: 20px;">
                                 <div class="col-md-5">
 
                                 </div>
                                 <button class="btn btn-primary col-md-4" type="button" onclick="changePwd()">修改</button>
                             </div>
-                            <!--<input class="btn btn-primary btn-block" value="修改" style="width:100%;" type="submit" onclick="changePwd()">-->
                             <br>
                         </form>
                     </div>
@@ -254,9 +239,6 @@
             processData: false,
             contentType: false,
             enctype: 'multipart/form-data',
-            /*beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:tszx11hcM@4'));
-            },*/
             timeout: 5000,
             success: function (result) {
                 alert("验证通过...");
@@ -303,9 +285,6 @@
                     processData: false,
                     contentType: false,
                     enctype: 'multipart/form-data',
-                    /*beforeSend: function (xhr) {
-                        xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:tszx11hcM@4'));
-                    },*/
                     timeout: 5000,
                     success: function (result) {
                         alert("修改成功...");
