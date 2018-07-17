@@ -556,7 +556,7 @@
             console.log(myRole);
             if(myRole === "admin"){
                 loginName.innerHTML += "<a href='pages/audit.html'>审核</a>";
-                ifDown.innerHTML = "<a href=\"files/训练数据集.json\" download=\"训练数据集.txt\"><p style=\"color: #339BEB;\">点击下载，训练数据集</p> </a>"
+                ifDown.innerHTML = "<a href=\"files/训练数据集.json\" download=\"训练数据集.json\"><p style=\"color: #339BEB;\">点击下载，训练数据集</p> </a>"
                 ifUpload.innerHTML = "管理员不可执行提交操作。";
 
                 if(myUsername === "admin") {
@@ -564,7 +564,7 @@
                 }
             }else if(myRole === "accept"){
                 loginName.innerHTML += "<a href='pages/member.html'>" + myUsername + "</a>";
-                ifDown.innerHTML = "<a href=\"files/训练数据集.json\" download=\"训练数据集.txt\"><p style=\"color: #339BEB;\">点击下载，训练数据集</p> </a>"
+                ifDown.innerHTML = "<a href=\"files/训练数据集.json\" download=\"训练数据集.json\"><p style=\"color: #339BEB;\">点击下载，训练数据集</p> </a>"
                 //ifUpload.innerHTML = "<a href=\"pages/member.html\"><p style=\"color: #339BEB;\">点此进入结果提交页面。</p> </a>"
                 ifUpload.innerHTML = "<p>暂未开放</p>"
             }else if(myRole === "user" || myRole === "denied"){
