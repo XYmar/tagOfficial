@@ -49,6 +49,8 @@
                             <div class="formValidate" id="pwd"></div>
                             <input class="btn btn-primary btn-block" value="登录" style="width:100%;" type="submit" onclick="login()">
                             <br>
+                            <a href="modifyPwd.html" style="float:left;margin-top: 10px;">忘记密码？</a>
+                            <br>
                             <a href="apply-3.html">注册</a>
                         </form>
                     </div>
@@ -115,7 +117,11 @@
                     $.cookie("myUsername",result.data.username,{path:'/'});
                     $.cookie("myWPa",$.base64.encode(password),{path:'/'});
                     $.cookie("myTeamId",result.data.id,{path:'/'});
-                    $.cookie("myRole",result.data.roleEntities[0].name,{path:'/'});
+                    if(result.data.roleEntities.length === 2){
+                        $.cookie("myRole",result.data.roleEntities[1].name,{path:'/'});
+                    }else {
+                        $.cookie("myRole",result.data.roleEntities[0].name,{path:'/'});
+                    }
 
                     window.location.href='../index.html';
                 },

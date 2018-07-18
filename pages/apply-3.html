@@ -467,9 +467,6 @@
                     processData: false,
                     contentType: false,
                     enctype: 'multipart/form-data',
-                    beforeSend: function (xhr) {
-                        xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:tszx11hcM@4'));
-                    },
                     timeout : 5000,
                     success: function (result) {
                         alert("审核中...");
