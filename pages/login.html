@@ -118,7 +118,7 @@
                     $.cookie("myWPa",$.base64.encode(password),{path:'/'});
                     $.cookie("myTeamId",result.data.id,{path:'/'});
                     if(result.data.roleEntities.length === 2){
-                        $.cookie("myRole",result.data.roleEntities[1].name,{path:'/'});
+                        $.cookie("myRole","admin",{path:'/'});
                     }else {
                         $.cookie("myRole",result.data.roleEntities[0].name,{path:'/'});
                     }
