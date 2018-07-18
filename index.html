@@ -21,7 +21,7 @@
 <header class="header fixed clearfix navbar navbar-fixed-top">
     <div class="container">
         <div class="row">
-            <div class="col-md-6" id="hleft">
+            <div class="col-md-7" id="hleft">
                 <!-- header-left start -->
                 <div class="header-left">
                     <div class="logo-section smooth-scroll">
@@ -30,8 +30,8 @@
                 </div>
                 <!-- header-left end -->
             </div>
+            <div class="col-md-5" id="hright">
 
-            <div class="col-md-6" id="hright">
                 <!-- header-right start -->
                 <div class="header-right">
 
@@ -56,9 +56,9 @@
                                     <ul class="nav navbar-nav navbar-right">
                                         <li class="active"><a href="#banner">主页</a></li>
                                         <li><a href="#production">比赛介绍</a></li>
-                                        <li><a href="#download">下载提交</a></li>
-                                        <li><a href="#ranking">排行榜</a></li>
-                                        <li><a href="#news">新闻中心</a></li>
+                                        <!--<li><a href="#download">下载提交</a></li>-->
+                                        <!--<li><a href="#ranking">排行榜</a></li>-->
+                                        <!--<li><a href="#news">新闻中心</a></li>-->
                                         <li><a href="#contact">联系我们</a></li>
                                         <li id="loginName"></li>
                                         <li id="registAd"></li>
@@ -444,7 +444,7 @@
 </section>
 <!-- section start -->
 <!-- 下载提交 -->
-<section class="section transprant-bg pclear secPadding">
+<!--<section class="section transprant-bg pclear secPadding">
     <div class="container no-view" data-animation-effect="fadeIn">
         <h1 id="download" class="title text-center">下载提交</h1>
         <div class="row">
@@ -468,7 +468,6 @@
                     </div>
                     <div class="media-body">
                         <h3 class="media-heading">结果提交</h3>
-
                         <blockquote id="ifUpload">
 
                         </blockquote>
@@ -479,636 +478,7 @@
         </div>
 
     </div>
-</section>
-
-<!-- 排行榜 -->
-<section id="ranking" class="price-table secPadding">
-    <div class="container text-center">
-        <div class="heading">
-            <h1 class="text-center title" id="">在线评估结果排行榜</h1>
-            <div class="separator"></div>
-            <!--<p class="lead text-center">Lorem ipsum dolor sit amet laudantium incidunt ut laboriosam.</p>-->
-            <br>
-        </div>
-        <div class="row">
-            <div class="col-sm-12 rankTable">
-                <!--<div class="panel panel-default">-->
-
-                <div class="tabbable" id="tabs-777725"><!-- Only required for left/right tabs -->
-                    <ul class="nav nav-tabs">
-                        <li class="active" style="cursor: pointer;"><a contenteditable="false" data-toggle="tab"
-                                                                       href="#panel-709646">测试结果排行榜</a></li>
-                        <li><a contenteditable="false" data-toggle="tab" href="#panel-875540">最终结果排行榜</a></li>
-                        <li><a contenteditable="false" data-toggle="tab" href="#panel-875566">在线结果排行榜</a></li>
-                    </ul>
-
-                    <div class="tab-content">
-                        <div class="tab-pane active" contenteditable="true" id="panel-709646">
-                            <table class="table table-bordered" contenteditable="true">
-                                <thead>
-                                <tr class="rankTable">
-                                    <th style="width: 135px;">Rank</th>
-                                    <th>Model</th>
-                                    <th>ROUGE-L</th>
-                                    <th>BLEU-4</th>
-                                    <th>Submit Time</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td style="text-align: center;">
-                                        <img class="finalRank" src="images/first.png">
-                                    </td>
-                                    <td>NI-Reader-3(ensemble)</td>
-                                    <td>63.62</td>
-                                    <td>59.51</td>
-                                    <td>2018/5/17</td>
-                                </tr>
-                                <tr class="success">
-                                    <td>
-                                        <img class="finalRank" src="images/second.png">
-                                    </td>
-                                    <td>Z-Reader(ensemble)</td>
-                                    <td>61.23</td>
-                                    <td>56.24</td>
-                                    <td>2018/5/26</td>
-                                </tr>
-                                <tr class="error">
-                                    <td>
-                                        <img class="finalRank" src="images/third.png">
-                                    </td>
-                                    <td>BIDAF_S_RETURN</td>
-                                    <td>58.39</td>
-                                    <td>52.62</td>
-                                    <td>2018/5/26</td>
-                                </tr>
-                                <tr class="warning">
-                                    <td>4</td>
-                                    <td>s-Reader</td>
-                                    <td>58.15</td>
-                                    <td>52.1</td>
-                                    <td>2018/5/27</td>
-                                </tr>
-                                <tr class="info">
-                                    <td>5</td>
-                                    <td>terminator_t800(single)</td>
-                                    <td>58.13</td>
-                                    <td>50.33</td>
-                                    <td>2018/5/27</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="tab-pane" contenteditable="true" id="panel-875540">
-                            <table class="table table-bordered" contenteditable="true">
-                                <thead>
-                                <tr class="rankTable">
-                                    <th style="width: 135px;">Rank</th>
-                                    <th>Model</th>
-                                    <th>ROUGE-L</th>
-                                    <th>BLEU-4</th>
-                                    <th>Submit Time</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td style="text-align: center;">
-                                        <img class="finalRank" src="images/first.png">
-                                    </td>
-                                    <td>NI-Reader-3(ensemble)</td>
-                                    <td>63.62</td>
-                                    <td>59.51</td>
-                                    <td>2018/5/17</td>
-                                </tr>
-                                <tr class="success">
-                                    <td>
-                                        <img class="finalRank" src="images/second.png">
-                                    </td>
-                                    <td>Z-Reader(ensemble)</td>
-                                    <td>61.23</td>
-                                    <td>56.24</td>
-                                    <td>2018/5/26</td>
-                                </tr>
-                                <tr class="error">
-                                    <td>
-                                        <img class="finalRank" src="images/third.png">
-                                    </td>
-                                    <td>BIDAF_S_RETURN</td>
-                                    <td>58.39</td>
-                                    <td>52.62</td>
-                                    <td>2018/5/26</td>
-                                </tr>
-                                <tr class="warning">
-                                    <td>4</td>
-                                    <td>s-Reader</td>
-                                    <td>58.15</td>
-                                    <td>52.1</td>
-                                    <td>2018/5/27</td>
-                                </tr>
-                                <tr class="info">
-                                    <td>5</td>
-                                    <td>terminator_t800(single)</td>
-                                    <td>58.13</td>
-                                    <td>50.33</td>
-                                    <td>2018/5/27</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="tab-pane" contenteditable="true" id="panel-875566">
-                            <table class="table table-bordered" contenteditable="false">
-                                <thead>
-                                <tr class="rankTable">
-                                    <th style="width: 135px;">Rank</th>
-                                    <th>Model</th>
-                                    <th>ROUGE-L</th>
-                                    <th>BLEU-4</th>
-                                    <th>Submit Time</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td style="text-align: center;">
-                                        <img class="finalRank" src="images/first.png">
-                                    </td>
-                                    <td>NI-Reader-3(ensemble)</td>
-                                    <td>63.62</td>
-                                    <td>59.51</td>
-                                    <td>2018/5/17</td>
-                                </tr>
-                                <tr class="success">
-                                    <td>
-                                        <img class="finalRank" src="images/second.png">
-                                    </td>
-                                    <td>Z-Reader(ensemble)</td>
-                                    <td>61.23</td>
-                                    <td>56.24</td>
-                                    <td>2018/5/26</td>
-                                </tr>
-                                <tr class="error">
-                                    <td>
-                                        <img class="finalRank" src="images/third.png">
-                                    </td>
-                                    <td>BIDAF_S_RETURN</td>
-                                    <td>58.39</td>
-                                    <td>52.62</td>
-                                    <td>2018/5/26</td>
-                                </tr>
-                                <tr class="warning">
-                                    <td>4</td>
-                                    <td>s-Reader</td>
-                                    <td>58.15</td>
-                                    <td>52.1</td>
-                                    <td>2018/5/27</td>
-                                </tr>
-                                <tr class="info">
-                                    <td>5</td>
-                                    <td>terminator_t800(single)</td>
-                                    <td>58.13</td>
-                                    <td>50.33</td>
-                                    <td>2018/5/27</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!--</div>-->
-            </div>
-            <!--<div class="col-sm-3">
-                <div class="panel panel-default text-center">
-                    <div class="panel-heading">
-                        <h3>Plus</h3>
-                    </div>
-                    <div class="panel-body">
-                        <h3 class="panel-title price">$19<span class="price-cents">99</span><span class="price-month">mo.</span>
-                        </h3>
-                    </div>
-                    <ul class="list-group">
-                        <li class="list-group-item">10 Projects</li>
-                        <li class="list-group-item">10 GB of Storage</li>
-                        <li class="list-group-item">Up to 250 Users</li>
-                        <li class="list-group-item">25 GB Bandwidth</li>
-                        <li class="list-group-item">Security Suite</li>
-                        <li class="list-group-item"><a class="btn btn-default">Sign Up Now!</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="panel panel-danger text-center">
-                    <div class="panel-heading">
-                        <h3>Premium</h3>
-                    </div>
-                    <div class="panel-body">
-                        <h3 class="panel-title price">$29<span class="price-cents">99</span><span class="price-month">mo.</span>
-                        </h3>
-                    </div>
-                    <ul class="list-group">
-                        <li class="list-group-item">Unlimited</li>
-                        <li class="list-group-item">50 GB of Storage</li>
-                        <li class="list-group-item">Up to 1000 Users</li>
-                        <li class="list-group-item">100 GB Bandwidth</li>
-                        <li class="list-group-item">Security Suite</li>
-                        <li class="list-group-item"><a class="btn btn-primary">Sign Up Now!</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="panel panel-default text-center">
-                    <div class="panel-heading">
-                        <h3>Ultimate</h3>
-                    </div>
-                    <div class="panel-body">
-                        <h3 class="panel-title price">$49<span class="price-cents">99</span><span class="price-month">mo.</span>
-                        </h3>
-                    </div>
-                    <ul class="list-group">
-                        <li class="list-group-item">Unlimited</li>
-                        <li class="list-group-item">150 GB of Storage</li>
-                        <li class="list-group-item">Unlimited</li>
-                        <li class="list-group-item">500 GB Bandwidth</li>
-                        <li class="list-group-item">Security Suite</li>
-                        <li class="list-group-item"><a class="btn btn-default">Sign Up Now!</a></li>
-                    </ul>
-                </div>
-            </div>-->
-
-        </div>
-    </div>
-</section>
-<!-- 新闻中心 -->
-<section class="section secPadding">
-    <div class="container">
-        <h1 class="text-center title" id="news">新闻中心</h1>
-        <div class="separator"></div>
-        <p class="lead text-center">机器阅读理解技术竞赛新闻</p>
-        <br>
-        <div class="row no-view" data-animation-effect="fadeIn">
-            <div class="col-md-12">
-                <!-- portfolio items start -->
-                <div class="row grid-space-20">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <ul class="list-unstyled col-md-12 newUl">
-                                <li data-toggle="modal" data-target="#project-1">
-                                    <i class="fa fa-newspaper-o pr-10 colored"></i>
-                                    阅读理解竞赛圆满结束 竞赛结果将于5月15日发布
-                                </li>
-                                <li data-toggle="modal" data-target="#project-2">
-                                    <i class="fa fa-newspaper-o pr-10 colored"></i>
-                                    最终测试集将于2018年4月23日发布
-                                </li>
-
-                                <li data-toggle="modal" data-target="#project-3">
-                                    <i class="fa fa-newspaper-o pr-10 colored"></i>
-                                    赛程近半，在线测试结果提升显著
-                                </li>
-                                <li data-toggle="modal" data-target="#project-4">
-                                    <i class="fa fa-newspaper-o pr-10 colored"></i>
-                                    排行榜区即将开放，预祝参赛者取得佳绩
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row col-md-12">
-                        <div class="modal fade" id="project-1" tabindex="-1" role="dialog"
-                             aria-labelledby="project-1-label" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal"><span
-                                                aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                                        </button>
-                                        <h4 class="modal-title" id="project-1-label">新闻</h4>
-                                    </div>
-                                    <div class="modal-body">
-
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <img src="images/portfolio-1.jpg" alt="">
-                                                <br/>
-                                                <h3>阅读理解竞赛圆满结束 竞赛结果将于5月15日发布</h3>
-                                                <small>发布时间: 2018-05-02 12:00:00</small>
-                                                <p>感谢大家踊跃参加本次机器阅读理解竞赛！截止至评测结束时，共有153个国内外队伍提交了累计1305个有效结果，
-                                                    在线测试排行榜最高分由最初的35.96增长到63.62，成绩提升显著。最终竞赛结果预计于5月15日在网站排行榜公布并邮件通知参赛团队。
-                                                    获奖团队将受邀参与7月28日举行的第三届“语言与智能高峰论坛”的交流和颁奖活动，敬请关注。</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">
-                                            关闭
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="modal fade" id="project-2" tabindex="-1" role="dialog"
-                             aria-labelledby="project-2-label" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal"><span
-                                                aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                                        </button>
-                                        <h4 class="modal-title" id="project-2-label">新闻</h4>
-                                    </div>
-                                    <div class="modal-body">
-
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <img src="images/portfolio-2.jpg" alt="">
-                                                <br/>
-                                                <h3>最终测试集将于2018年4月23日发布</h3>
-                                                <small>发布时间: 2018-4-21 11:23:00</small>
-                                                <p>本次竞赛的最终测试数据集（测试数据2）将于4月23日凌晨0点在官网数据下载区公布，请参赛者们予以关注。</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">
-                                            关闭
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="modal fade" id="project-3" tabindex="-1" role="dialog"
-                             aria-labelledby="project-3-label" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal"><span
-                                                aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                                        </button>
-                                        <h4 class="modal-title" id="project-3-label">新闻</h4>
-                                    </div>
-                                    <div class="modal-body">
-
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <img src="images/portfolio-3.jpg" alt="">
-                                                <br/>
-                                                <h3>赛程近半，在线测试结果提升显著</h3>
-                                                <small>发布时间: 2018-4-20 17:35:00</small>
-                                                <p>截止到4月19日，排行榜最高分已经由最初的35.96上升至63.25，提升显著，成果喜人。祝参赛者们百尺竿头，更进一步。</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">
-                                            关闭
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="modal fade" id="project-4" tabindex="-1" role="dialog"
-                             aria-labelledby="project-4-label" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal"><span
-                                                aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                                        </button>
-                                        <h4 class="modal-title" id="project-4-label">新闻</h4>
-                                    </div>
-                                    <div class="modal-body">
-
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <img src="images/portfolio-4.jpg" alt="">
-                                                <br/>
-                                                <h3>排行榜区即将开放，预祝参赛者取得佳绩</h3>
-                                                <small>发布时间: 2018-3-29 18:30:00</small>
-                                                <p>在线评估结果排行榜”将于2018年3月31日报名截止、竞赛数据发放之后开放，预祝参赛者们都能取得满意的成绩。</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">
-                                            关闭
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--<div class="col-sm-6 col-md-3 isotope-item notice">
-                        <div class="image-box">
-                            <div class="overlay-container">
-                                <img src="images/portfolio-4.jpg" alt="">
-                                <a class="overlay" data-toggle="modal" data-target="#project-4">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                            <a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-4">Project
-                                Title</a>
-                        </div>
-                        &lt;!&ndash; Modal &ndash;&gt;
-
-                        &lt;!&ndash; Modal end &ndash;&gt;
-                    </div>
-
-                    <div class="col-sm-6 col-md-3 isotope-item web-publish">
-                        <div class="image-box">
-                            <div class="overlay-container">
-                                <img src="images/portfolio-5.jpg" alt="">
-                                <a class="overlay" data-toggle="modal" data-target="#project-5">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                            <a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-5">Project
-                                Title</a>
-                        </div>
-                        &lt;!&ndash; Modal &ndash;&gt;
-                        <div class="modal fade" id="project-5" tabindex="-1" role="dialog"
-                             aria-labelledby="project-5-label" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal"><span
-                                                aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                                        </button>
-                                        <h4 class="modal-title" id="project-5-label">新闻</h4>
-                                    </div>
-                                    <div class="modal-body">
-
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <img src="images/portfolio-5.jpg" alt="">
-                                                <br/>
-                                                <h3>竞赛数据集将于2018年3月31日发布</h3>
-                                                <small>发布时间: 2018-3-29 18:30:00</small>
-                                                <p>
-                                                    本次竞赛的30万数据集（含Dureader数据集中的20万数据和新增的10万数据）将于3月31日凌晨0点在官网数据下载区公布，敬请期待。</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">
-                                            关闭
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        &lt;!&ndash; Modal end &ndash;&gt;
-                    </div>
-
-                    <div class="col-sm-6 col-md-3 isotope-item notice">
-                        <div class="image-box">
-                            <div class="overlay-container">
-                                <img src="images/portfolio-6.jpg" alt="">
-                                <a class="overlay" data-toggle="modal" data-target="#project-6">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                            <a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-6">Project
-                                Title</a>
-                        </div>
-                        &lt;!&ndash; Modal &ndash;&gt;
-                        <div class="modal fade" id="project-6" tabindex="-1" role="dialog"
-                             aria-labelledby="project-6-label" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal"><span
-                                                aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                                        </button>
-                                        <h4 class="modal-title" id="project-6-label">新闻</h4>
-                                    </div>
-                                    <div class="modal-body">
-
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <img src="images/portfolio-6.jpg" alt="">
-                                                <br/>
-                                                <h3>机器阅读理解大赛引起业内相关领域研究者的广泛关注</h3>
-                                                <small>发布时间: 2018-3-26 11:30:00</small>
-                                                <p>截止到3月25日，已经有800多支团队或个人报名参赛。其中国内报名队伍715个，国际队伍109个。
-                                                    参赛的国际团队来自美国、英国、加拿大、新加坡等十余个国家。高校、科研院所和企业是参赛队伍中的主力。</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">
-                                            关闭
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        &lt;!&ndash; Modal end &ndash;&gt;
-                    </div>
-
-                    <div class="col-sm-6 col-md-3 isotope-item web-activity">
-                        <div class="image-box">
-                            <div class="overlay-container">
-                                <img src="images/portfolio-7.jpg" alt="">
-                                <a class="overlay" data-toggle="modal" data-target="#project-7">
-                                    <i class="fa fa-search-plus"></i>
-                                    <span>Site Building</span>
-                                </a>
-                            </div>
-                            <a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-7">Project
-                                Title</a>
-                        </div>
-                        &lt;!&ndash; Modal &ndash;&gt;
-                        <div class="modal fade" id="project-7" tabindex="-1" role="dialog"
-                             aria-labelledby="project-7-label" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal"><span
-                                                aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                                        </button>
-                                        <h4 class="modal-title" id="project-7-label">新闻</h4>
-                                    </div>
-                                    <div class="modal-body">
-
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <img src="images/portfolio-7.jpg" alt="">
-                                                <br/>
-                                                <h3>第三届“语言与智能高峰论坛”将于2018年7月28日在北京召开</h3>
-                                                <small>发布时间: 2018-01-17 12:23:23</small>
-                                                <p>第三届“语言与智能高峰论坛”将于2018年7月28日在北京召开，
-                                                    将进一步推动语言与智能领域的技术交流和发展，本次竞赛颁奖活动也在该论坛上举行。</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">
-                                            关闭
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        &lt;!&ndash; Modal end &ndash;&gt;
-                    </div>
-
-                    <div class="col-sm-6 col-md-3 isotope-item web-activity">
-                        <div class="image-box">
-                            <div class="overlay-container">
-                                <img src="images/portfolio-8.jpg" alt="">
-                                <a class="overlay" data-toggle="modal" data-target="#project-8">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                            <a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-8">Project
-                                Title</a>
-                        </div>
-                        &lt;!&ndash; Modal &ndash;&gt;
-                        <div class="modal fade" id="project-8" tabindex="-1" role="dialog"
-                             aria-labelledby="project-8-label" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal"><span
-                                                aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                                        </button>
-                                        <h4 class="modal-title" id="project-8-label">新闻</h4>
-                                    </div>
-                                    <div class="modal-body">
-
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <img src="images/portfolio-8.jpg" alt="">
-                                                <br/>
-                                                <h3>中国中文信息学会和中国计算机学会近期将举办"机器阅读理解大赛"</h3>
-                                                <small>发布时间: 2018-01-17 12:23:23</small>
-                                                <p>竞赛将于2018年3月1日正式开启报名通道，获胜团队将分享总额为10万人民币的奖金。报名时间为3月1日至3月31日。</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">
-                                            关闭
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        &lt;!&ndash; Modal end &ndash;&gt;
-                    </div>-->
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-</section>
-
+</section>-->
 <!-- 底部 -->
 <footer id="footer">
     <!-- .footer start -->
@@ -1175,9 +545,8 @@
         let loginName = document.getElementById("loginName");
         let loginOut = document.getElementById("loginOut");
         let registAd = document.getElementById("registAd");
-        let ifDown = document.getElementById("ifDown");
-        let ifUpload = document.getElementById("ifUpload");
-
+        /*let ifDown = document.getElementById("ifDown");
+        let ifUpload = document.getElementById("ifUpload");*/
         let myUsername = $.cookie("myUsername");
         let myRole = $.cookie("myRole");
 
@@ -1187,21 +556,21 @@
             console.log(myRole);
             if(myRole === "admin"){
                 loginName.innerHTML += "<a href='pages/audit.html'>审核</a>";
-                ifDown.innerHTML = "<a href=\"files/训练数据集.json\" download=\"训练数据集.json\"><p style=\"color: #339BEB;\">点击下载，训练数据集</p> </a>"
-                ifUpload.innerHTML = "管理员不可执行提交操作。";
+                /*ifDown.innerHTML = "<a href=\"files/训练数据集.json\" download=\"训练数据集.json\"><p style=\"color: #339BEB;\">点击下载，训练数据集</p> </a>"
+                ifUpload.innerHTML = "管理员不可执行提交操作。";*/
 
                 if(myUsername === "admin") {
                     registAd.innerHTML += "<a href='pages/registAdmin.html'>注册</a>";
                 }
             }else if(myRole === "accept"){
                 loginName.innerHTML += "<a href='pages/member.html'>" + myUsername + "</a>";
-                ifDown.innerHTML = "<a href=\"files/训练数据集.json\" download=\"训练数据集.json\"><p style=\"color: #339BEB;\">点击下载，训练数据集</p> </a>"
+                /*ifDown.innerHTML = "<a href=\"files/训练数据集.json\" download=\"训练数据集.json\"><p style=\"color: #339BEB;\">点击下载，训练数据集</p> </a>"
                 //ifUpload.innerHTML = "<a href=\"pages/member.html\"><p style=\"color: #339BEB;\">点此进入结果提交页面。</p> </a>"
-                ifUpload.innerHTML = "<p>暂未开放</p>"
+                ifUpload.innerHTML = "<p>暂未开放</p>"*/
             }else if(myRole === "user" || myRole === "denied"){
                 loginName.innerHTML += "<a href='pages/applyResult.html'>" + myUsername + "</a>";
-                ifDown.innerHTML = "<p>审核通过才能进行下载操作</p>"
-                ifUpload.innerHTML = "<p>暂未开放</p>"
+                /*ifDown.innerHTML = "<p>审核通过才能进行下载操作</p>"
+                ifUpload.innerHTML = "<p>暂未开放</p>"*/
                 //ifUpload.innerHTML = "<p>审核通过才能进行提交操作</p>"
             }
             loginOut.innerHTML += "<a href='#'><sapn onclick='delCookie()' class='exit'>退出</sapn></a>";
@@ -1209,9 +578,9 @@
             loginName.innerHTML = "";
             loginName.innerHTML += "<a href='pages/login.html'>登录/注册</a>";
             loginOut.innerHTML = "";
-            ifDown.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"
+            /*ifDown.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"
             //ifUpload.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"
-            ifUpload.innerHTML = "<p>暂未开放</p>"
+            ifUpload.innerHTML = "<p>暂未开放</p>"*/
         }
     }
 
@@ -1227,11 +596,11 @@
         loginOut.innerHTML = "";
         registAd.innerHTML = "";
         //登录后才可下载
-        let ifDown = document.getElementById("ifDown");
+        /*let ifDown = document.getElementById("ifDown");
         let ifUpload = document.getElementById("ifUpload");
         ifDown.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"
         //ifUpload.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"
-        ifUpload.innerHTML = "<p>暂未开放</p>"
+        ifUpload.innerHTML = "<p>暂未开放</p>"*/
     }
 </script>
 </body>
