@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>军事智能·机器阅读</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../bootstrap-table/bootstrap-table.min.css">
+    <link href="apply.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../css/member.css">
+    <link href="../css/header.css" rel="stylesheet" type="text/css" />
+    <style>
+        .rowLeft { margin-left: -23px; }
+        @media (max-width:480px) {
+            .rowLeft {
+                margin-left: -15px;
+            }
+        }
+    </style>
+</head>
+
+<!--<body style="background-image: url('http://pb2edde5m.bkt.clouddn.com/bgPic.png');" id="showBody">-->
+<body style="background: url('../images/range2.jpg') no-repeat;background-size: cover;" id="showBody">
+<header class="header fixed clearfix navbar navbar-fixed-top">
+    <div class="container">
+        <div class="row rowLeft">
+            <div class="col-md-12">
+                <div class="header-left">
+                    <div class="logo smooth-scroll">
+                        <a href="../index.html"><img id="logo" src="http://pb2edde5m.bkt.clouddn.com/logo2.png" alt="Worthy"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container auditContainer">
+    <div class="row main-content">
+        <div class="col-md-12 toTop">
+            <h3 class="title-main">
+                比赛排行
+            </h3>
+            <div class="row">
+                <hr>
+                <div class="col-md-12 childToTop">
+                    <div class="row-fluid" style="margin-top: 20px;">
+                        <div class="col-md-1 col-xs-12 row-fluid">
+                        </div>
+                        <div class="col-md-10 col-xs-12 row-fluid">
+                            <div id="hasAuditInfo" style="text-align: center">暂无数据</div>
+                            <div class="table-responsive" style="margin-top: -10px">
+                                <table id="memberInfoTableAlready">
+                                </table>
+                            </div>
+                            <!--<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingTwo">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed shenhea" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                已审核
+                                            </a>
+                                            <span id="hasAuditNum" style="margin-left:6px;"></span>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                        <div class="panel-body">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="../bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+<script src="../js/cookie.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script type="text/javascript" src="../js/jquery.base64.js"></script>
+<script src="../js/globalIP.js"></script>
+<script type="text/javascript">
+    window.onload=function(){
+        let username = $.cookie("myUsername");
+        let password0 = $.cookie("myWPa");
+        let password = $.base64.decode(password0);
+        let token = username + ':' + password;
+        let role = $.cookie("myRole");
+        if ((username != null) && (username !== "null")) {
+            if(role === 'admin'){
+                let datalistA = []
+                let datalistB = []
+
+                // 获取通过和未通过
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url: IpAll() + "users/byRoleName" ,
+                    data: {rolename: 'accept'},
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+                    },
+                    success: function (result) {
+                        datalistA = result.data;
+                        // 获取审核未通过的信息
+                        $.ajax({
+                            type: "GET",
+                            dataType: "json",
+                            url: IpAll() + "users/byRoleName" ,
+                            data: {rolename: 'denied'},
+                            beforeSend: function (xhr) {
+                                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+                            },
+                            success: function (result) {
+                                datalistB = result.data
+
+                                // 拼接审核通过和未通过的数据
+                                let dataAll = datalistA.concat(datalistB)
+                                let dataLength = dataAll.length
+                                if(datalistA.length !== 0){
+                                    document.getElementById('hasAuditInfo').innerHTML = ''
+                                }
+
+                                // 生成表格
+                                $('#memberInfoTableAlready').bootstrapTable({
+                                    sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
+                                    pagination : true, // 是否显示分页（*）
+                                    pageNumber: 1,    //如果设置了分页，首页页码
+                                    pageSize: 10,                       //每页的记录行数（*）
+                                    pageList: [10,20,30],        //可供选择的每页的行数（*）
+                                    search:true,
+                                    columns: [{
+                                        field: 'teamName',
+                                        title: '组名'
+                                    }, {
+                                        field: 'name',
+                                        title: '姓名'
+                                    }, {
+                                        field: 'age',
+                                        title: '年龄'
+                                    },{
+                                        field: 'sex',
+                                        title: '性别',
+                                        formatter: sexFormatter
+                                    },{
+                                        field: 'telephoneNumber',
+                                        title: '手机号'
+                                    },{
+                                        field: 'organization',
+                                        title: '单位/学校'
+                                    },{
+                                        field: 'createTime',
+                                        title: '注册时间'
+                                    },{
+                                        field: 'id',
+                                        title: 'id',
+                                        visible: false
+                                    },{
+                                        field: 'authorities',
+                                        title: '状态',
+                                        formatter: statusFormatter
+                                    }
+                                    ],
+                                    data: dataAll
+                                });
+                            },
+                            error : function() {
+                                alert("请求错误！");
+                            }
+                        });
+                    },
+                    error : function() {
+                        alert("请求错误！");
+                    }
+                });
+
+                //生成性别
+                function sexFormatter(value) {
+                    let sexValue
+                    if (value == 0 ) {
+                        sexValue = '男'
+                    }
+                    else if (value == 1) {
+                        sexValue = '女'
+                    }
+                    return sexValue
+                }
+
+                //生成操作
+                function actionFormatter(value) {
+                    return "<a href='auditDetail.html?id=" + value + "' style='float: none;'>" +
+                        "<button class='btn btn-success btn-success editMember' type='button' >审核</button> " +
+                        "</a>"
+                }
+
+                //生成状态
+                function statusFormatter(value) {
+                    if(value[0].authority.indexOf('accept') > 0) {
+                        return "<span style=\"color: #27A9E3;\">已审核</span>"
+                    } else if(value[0].authority.indexOf('denied') > 0){
+                        return "<span style=\"color: #ff0000;\">未通过</span>"
+                    }
+                }
+            }else{
+                document.getElementById("showBody").style.display = "none";
+                window.location.href="../index.html";
+
+            }
+        }else{
+            document.getElementById("showBody").style.display = "none";
+            window.location.href="login.html";
+        }
+    }
+</script>
+</body>
+</html>
