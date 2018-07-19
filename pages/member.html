@@ -417,7 +417,7 @@
                                         <div class="identifyContainer">
                                             <div class="row">
                                                 <h4 class="sign">
-                                                    注意：每天仅可以提交两次
+                                                    注意：每天仅可以提交四次
                                                 </h4>
                                             </div>
                                             <div class="col-md-5" style="border:1px solid lightgrey;border-radius: 4px;">
@@ -774,8 +774,8 @@
             },
             timeout : 5000,
             success: function (result) {
-                getAllScore();
                 resetAll();
+                getAllScore();
             },
             error : function(error) {
                 let notifyMessage = error.responseJSON.message
@@ -836,9 +836,10 @@
                 xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
             },
             success: function (result) {
-                //let str = "";
+                let str = "";
                 let data = result.data;
-
+                console.log(data);
+                $("#scoreInfoTable").bootstrapTable('destroy');
                 $('#scoreInfoTable').bootstrapTable({
                     sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
                     pagination : true, // 是否显示分页（*）
@@ -854,9 +855,10 @@
                         field: 'rouge_Score',
                         title: 'ROUGE',
                         formatter: precentFormatter
-                    }, {
+                    },  {
                         field: 'createTime',
-                        title: '提交日期'
+                        title: '提交日期',
+                        sortable: true
                     }
                     ],
                     data: data
