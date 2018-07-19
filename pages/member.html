@@ -591,8 +591,8 @@
     let editId = '';
 
     window.onload=function() {
-        /*if ((username != null) && (username !== "null")) {
-            if(role !== 'admin'){*/
+        if ((username != null) && (username !== "null")) {
+            if(role !== 'admin'){
                 /*$.ajax({
                     type: "GET",
                     dataType: "json",
@@ -645,14 +645,14 @@
                     }
                 }
 
-            /*}else {
+            }else {
                 document.getElementById("showBody").style.display = "none";
                 window.location.href="../index.html";
             }
         }else{
             document.getElementById("showBody").style.display = "none";
             window.location.href="login.html";
-        }*/
+        }
     };
     function handleFile(file, divId){
         //获取文件名称
