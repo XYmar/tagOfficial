@@ -42,7 +42,6 @@
                 <div class="col-md-12 childToTop">
                     <div class="col-md-1" style="padding: 0">
                     </div>
-                    <!-- tab页 -->
                     <div class="col-md-10">
 
                         <!-- 参赛组信息 -->
@@ -165,18 +164,18 @@
 
                         <!-- 组员信息 -->
                         <div class="row-fluid col-md-12" style="overflow: hidden;">
-                            <div class="col-md-2 col-xs-4" style="padding: 0">
+                            <div class="col-md-2" style="padding: 0">
                                 <h4 class="title">
                                     组员信息
                                 </h4>
                             </div>
                             <div class="col-md-10  group-info">
-                                <div class="col-md-12 col-xs-12 row-fluid" style="padding-bottom: 10px;">
+                                <div class="col-md-12" style="padding-bottom: 10px;">
                                     <button  type="button" class="btn btn-primary addMemBtn" data-toggle="modal" data-target="#mydialog">添加组员</button>
                                 </div>
 
                                 <!-- 组员表格 -->
-                                <div class="col-md-12 col-xs-12 row-fluid">
+                                <div class="col-md-12">
                                     <div class="col-md-12 table-responsive" style="padding: 0">
                                         <table class="table table-bordered">
                                             <thead>
@@ -356,16 +355,70 @@
 
                         <!-- 历史信息 -->
                         <div class="row-fluid col-md-12" style="overflow: hidden;">
-                            <div class="col-md-2 col-xs-4" style="padding: 0">
+                            <div class="col-md-2" style="padding: 0">
                                 <h4 class="title">
                                     历史成绩
                                 </h4>
                             </div>
 
                             <!-- 成绩表格 -->
-                            <div class="col-md-10 group-info">
-                                <div class="col-md-12 table-responsive">
-                                    <!--<table class="table table-bordered">
+                            <div class="col-md-10 group-info" style="padding: 10px 10px;">
+
+                                <!-- tab页开始 -->
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#trainingScoreInfo" aria-controls="home" role="tab" data-toggle="tab">训练成绩</a></li>
+                                    <li role="presentation"><a href="#preliminaryScoreInfo" aria-controls="profile" role="tab" data-toggle="tab">初赛成绩</a></li>
+                                    <li role="presentation"><a href="#finalScoreInfo" aria-controls="profile" role="tab" data-toggle="tab">决赛成绩</a></li>
+                                </ul>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="trainingScoreInfo">
+                                        <div class="col-md-12" style="padding: 0">
+                                            <!--<table class="table table-bordered">
+                                                <thead>
+                                                <tr>
+                                                    <th>
+                                                        BLEU_4
+                                                    </th>
+                                                    <th>
+                                                        ROUGE
+                                                    </th>
+                                                    <th>
+                                                        日期
+                                                    </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody id="TeamScore">
+                                                </tbody>
+                                            </table>-->
+                                            <div>
+                                                <table id="trainingScoreInfoTable">
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="preliminaryScoreInfo">
+                                        <div class="col-md-12" style="padding: 0">
+                                            <div>
+                                                <table id="preliminaryScoreInfoTable">
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="finalScoreInfo">
+                                        <div class="col-md-12" style="padding: 0">
+                                            <div>
+                                                <table id="finalScoreInfoTable">
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- tab页结束 -->
+
+                                <!--<div class="col-md-12 table-responsive">
+                                    &lt;!&ndash;<table class="table table-bordered">
                                         <thead>
                                         <tr>
                                             <th>
@@ -381,13 +434,12 @@
                                         </thead>
                                         <tbody id="TeamScore">
                                         </tbody>
-                                    </table>-->
-                                    <!--<div id="NoScoreInfo" style="text-align: center">暂无数据</div>-->
+                                    </table>&ndash;&gt;
                                     <div class="table-responsive" style="margin-top: -10px">
                                         <table id="scoreInfoTable">
                                         </table>
                                     </div>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                         <br>
@@ -404,8 +456,6 @@
                                 </div>
 
                     </div>
-                    <!-- tab页结束 -->
-
 
                     <br/>
                 </div>
@@ -477,7 +527,9 @@
             if(role !== 'admin'){*/
                 resetAll();
                 getAll();
-                getAllScore();
+                getTrainingScore();
+                getPreliminaryScoreScore();
+                getFinalScore();
 
                 //添加文件
                 let file1 = document.getElementById("file1Cont");
@@ -574,68 +626,6 @@
         });
     }
 
-    function subFile() {
-        let file = document.getElementById("fileZheng").files[0];  //获取文件
-        let formData = new FormData();
-        formData.append("file", file);
-
-        $.ajax({
-            url: IpAll() + "users/" + myTeamId + "/commitfile",
-            data: formData,
-            type: "PUT",
-            async:false,
-            dataType: "json",
-            cache: false,
-            processData: false,
-            contentType: false,
-            enctype: 'multipart/form-data',
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-            },
-            timeout : 5000,
-            success: function (result) {
-                getAllScore();
-                resetAll();
-            },
-            error : function(error) {
-                let notifyMessage = error.responseJSON.message
-                alert(notifyMessage)
-            }
-        });
-    }
-
-    function subFiles() {
-        let file1 = document.getElementById("file1Cont").files[0];  //获取文件
-        let file2 = document.getElementById("file2Cont").files[0];  //获取文件
-        let formData = new FormData();
-        formData.append("ref", file1);
-        formData.append("pred", file2);
-
-        $.ajax({
-            url: IpAll() + "users/" + myTeamId + "/commitfile",
-            data: formData,
-            type: "PUT",
-            async:false,
-            dataType: "json",
-            cache: false,
-            processData: false,
-            contentType: false,
-            enctype: 'multipart/form-data',
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-            },
-            timeout : 5000,
-            success: function (result) {
-                resetAll();
-                getAllScore();
-            },
-            error : function(error) {
-                let notifyMessage = error.responseJSON.message
-                alert(notifyMessage)
-            }
-        });
-    }
-
     function getAll(){
         let myTeamId = $.cookie("myTeamId");
         $.ajax({
@@ -678,24 +668,23 @@
         });
     }
 
-    function getAllScore(){
+    //训练成绩
+    function getTrainingScore(){
         let myTeamId = $.cookie("myTeamId");
         $.ajax({
             type: "GET",
             dataType: "json",
-            url: IpAll() + "users/" + myTeamId + "/scorelogs" ,
+            data: { type: 0 },
+            url: IpAll() + "users/" + myTeamId + "/scorelogsbytype" ,
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
             },
             success: function (result) {
                 let str = "";
                 let data = result.data;
-                /*if(data.length !== 0){
-                    document.getElementById('NoScoreInfo').innerHTML = ''
-                }*/
                 console.log(data);
-                $("#scoreInfoTable").bootstrapTable('destroy');
-                $('#scoreInfoTable').bootstrapTable({
+                $("#trainingScoreInfoTable").bootstrapTable('destroy');
+                $('#trainingScoreInfoTable').bootstrapTable({
                     sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
                     pagination : true, // 是否显示分页（*）
                     pageNumber: 1,    //如果设置了分页，首页页码
@@ -719,24 +708,102 @@
                     data: data
                 });
 
+            },
+            error : function(error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
 
-                /*if(data.length !== 0){
-                    let ScoreTbody = document.getElementById("TeamScore");
-                    for (let i=0;i<data.length;i++) {
-                        str += "<tr>" +
-                            "<td>" + data[i].bleu_4_Score.toFixed(2) + "%</td>" +
-                            "<td>" + data[i].rouge_Score.toFixed(2) + "%</td>" +
-                            "<td>" + data[i].createTime + "</td>" +
-                            "</tr>";
+    //初赛成绩
+    function getPreliminaryScoreScore(){
+        let myTeamId = $.cookie("myTeamId");
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: { type: 1 },
+            url: IpAll() + "users/" + myTeamId + "/scorelogsbytype" ,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let str = "";
+                let data = result.data;
+                console.log(data);
+                $("#preliminaryScoreInfoTable").bootstrapTable('destroy');
+                $('#preliminaryScoreInfoTable').bootstrapTable({
+                    sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination : true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 10,                       //每页的记录行数（*）
+                    pageList: [10,20,30],        //可供选择的每页的行数（*）
+                    search:true,
+                    columns: [{
+                        field: 'bleu_4_Score',
+                        title: 'BLEU_4',
+                        formatter: precentFormatter
+                    }, {
+                        field: 'rouge_Score',
+                        title: 'ROUGE',
+                        formatter: precentFormatter
+                    },  {
+                        field: 'createTime',
+                        title: '提交日期',
+                        sortable: true
                     }
-                    ScoreTbody.innerHTML = str;
-                }else {
-                    let ScoreTbody = document.getElementById("TeamScore");
-                    for (let i=0;i<data.length;i++) {
-                        str = "";
+                    ],
+                    data: data
+                });
+
+            },
+            error : function(error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+
+    //决赛成绩
+    function getFinalScore(){
+        let myTeamId = $.cookie("myTeamId");
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: { type: 2 },
+            url: IpAll() + "users/" + myTeamId + "/scorelogsbytype" ,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let str = "";
+                let data = result.data;
+                console.log(data);
+                $("#finalScoreInfoTable").bootstrapTable('destroy');
+                $('#finalScoreInfoTable').bootstrapTable({
+                    sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination : true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 10,                       //每页的记录行数（*）
+                    pageList: [10,20,30],        //可供选择的每页的行数（*）
+                    search:true,
+                    columns: [{
+                        field: 'bleu_4_Score',
+                        title: 'BLEU_4',
+                        formatter: precentFormatter
+                    }, {
+                        field: 'rouge_Score',
+                        title: 'ROUGE',
+                        formatter: precentFormatter
+                    },  {
+                        field: 'createTime',
+                        title: '提交日期',
+                        sortable: true
                     }
-                    ScoreTbody.innerHTML = str;
-                }*/
+                    ],
+                    data: data
+                });
+
             },
             error : function(error) {
                 let notifyMessage = error.responseJSON.message

@@ -39,9 +39,8 @@ btn.btn-small{*padding-top:3px;*padding-bottom:3px;}
 .addMemBtn {
     float: right;
     padding: 5px 16px;
-    margin-right: 0;
     font-size: 12px;
-    margin-top: 10px;
+    margin: 10px 0;
 }
 
 .brand {

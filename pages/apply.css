@@ -101,4 +101,9 @@ img{ border:none;}
     .form-horizontal .form-group {
         margin: 0 0;
     }
+
+    .nav>li>a {
+        padding: 10px 4px;
+        font-size: 12px;
+    }
 }
