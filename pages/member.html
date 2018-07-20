@@ -44,320 +44,355 @@
                     </div>
                     <!-- tab页 -->
                     <div class="col-md-10">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#baseInfo" aria-controls="home" role="tab" data-toggle="tab">基本信息</a></li>
-                            <li role="presentation"><a href="#scoreInfo" aria-controls="profile" role="tab" data-toggle="tab">成绩信息</a></li>
-                        </ul>
 
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="baseInfo">
-                                <!-- 参赛组信息 -->
-                                <div class="row-fluid col-md-12 memChildToTop">
-                                    <div class="col-md-2" style="padding: 0">
-                                        <h4 class="title">
-                                            参赛组信息
-                                        </h4>
-                                    </div>
-                                    <div class="col-md-10 group-info">
-                                        <div class="col-md-6">
-                                            <form class="form-horizontal col-md-12">
-                                                <div class="form-group col-md-12">
-                                                    <label class="control-label col-md-4 col-xs-3 memLabel">账号 ： </label>
-                                                    <div class="controls col-md-8 col-xs-9 memInput">
-                                                        <div class="auditDetailDiv" id="username">
-                                                            xx
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                            <form class="form-horizontal col-md-12">
-                                                <div class="form-group col-md-12">
-                                                    <label class="control-label col-md-4 col-xs-3 memLabel">密码 ： </label>
-                                                    <div class="controls col-md-8 col-xs-9 memInput">
-                                                        <input class="auditDetailDiv form-control" disabled="disabled" type="password" id="password">
-                                                        </input>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <form class="form-horizontal col-md-12">
-                                                <div class="form-group col-md-12">
-                                                    <label class="control-label col-md-4 col-xs-3 memLabel">组名 ： </label>
-                                                    <div class="controls col-md-8 col-xs-9 memInput">
-                                                        <div class="auditDetailDiv" id="teamName">
-                                                            xx
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                            <form class="form-horizontal col-md-12">
-                                                <div class="form-group col-md-12">
-                                                </div>
-                                            </form>
-                                        </div>
-
-                                        <div class="col-md-12 modifyPasBtnCon"  style="padding: 0;text-align: center">
-                                            <button type="button" class="btn btn-primary btn-primary" data-toggle="modal" data-target="#pasdialog">修改密码</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- 组长信息 -->
-                                <div class="row-fluid col-md-12">
-                                    <div class="col-md-2" style="padding: 0">
-                                        <h4 class="title">
-                                            组长信息
-                                        </h4>
-                                    </div>
-                                    <div class="col-md-10 group-info">
-                                        <div class="col-md-6">
-                                            <form class="form-horizontal col-md-12">
-                                                <div class="form-group col-md-12">
-                                                    <label class="control-label col-md-4 col-xs-3 memLabel">姓名： </label>
-                                                    <div class="controls col-md-8 col-xs-9 memInput">
-                                                        <input class="auditDetailDiv form-control" id="name" disabled="disabled">
-                                                        </input>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group col-md-12">
-                                                    <label class="control-label col-md-4 col-xs-3 memLabel">性别： </label>
-                                                    <div class="controls col-md-8 col-xs-9 sexDiv memInput">
-                                                        <input class="auditDetailDiv form-control" id="sex" disabled="disabled">
-                                                        </input>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group col-md-12">
-                                                    <label class="control-label col-md-4 col-xs-3 memLabel">单位/学校： </label>
-                                                    <div class="controls col-md-8 col-xs-9 memInput">
-                                                        <input class="auditDetailDiv form-control" id="organization" disabled="disabled">
-                                                        </input>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <form class="form-horizontal col-md-12">
-                                                <div class="form-group col-md-12">
-                                                    <label class="control-label col-md-4 col-xs-3 memLabel">年龄： </label>
-                                                    <div class="controls col-md-8 col-xs-9 memInput">
-                                                        <input class="auditDetailDiv form-control" id="age" disabled="disabled">
-                                                        </input>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group col-md-12">
-                                                    <label class="control-label col-md-4 col-xs-3 memLabel">电话： </label>
-                                                    <div class="controls col-md-8 col-xs-9 memInput">
-                                                        <div style="border-radius: 4px;">
-                                                            <input class="auditDetailDiv form-control" id="telephoneNumber" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group col-md-12">
-                                                    <label class="control-label col-md-4 col-xs-3 memLabel">邮箱： </label>
-                                                    <div class="controls col-md-8 col-xs-9 memInput">
-                                                        <div style="border-radius: 4px;">
-                                                            <input class="auditDetailDiv form-control" id="email" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="col-md-12" style="padding: 0;text-align: center">
-                                            <button type="button" class="btn btn-primary btn-primary" onclick="modifyInfo()">修改信息</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- 组员信息 -->
-                                <div class="row-fluid col-md-12" style="overflow: hidden;">
-                                    <div class="col-md-2 col-xs-4" style="padding: 0">
-                                        <h4 class="title">
-                                            组员信息
-                                        </h4>
-                                    </div>
-                                    <div class="col-md-10 col-xs-10" style="padding-right: 0;">
-                                        <button  type="button" class="btn btn-primary addMemBtn" data-toggle="modal" data-target="#mydialog">添加组员</button>
-                                    </div>
-
-                                    <!-- 组员弹框 -->
-                                    <div class="modal fade" id="mydialog" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" style="top: 25%;">
-                                        <div class="modal-dialog modal-lg" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="reset()"><span aria-hidden="true">&times;</span></button>
-                                                    <h4 class="modal-title title" id="gridSystemModalLabel">添加组员</h4>
-                                                </div>
-                                                <div class="modal-body" style="padding-bottom: 0">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <form class="form-horizontal col-md-12">
-                                                                <div class="form-group col-md-12">
-                                                                    <label class="control-label col-md-4 col-xs-3" for="inputLname">姓名</label>
-                                                                    <div class="controls col-md-8 col-xs-9">
-                                                                        <div style="border-radius: 4px;">
-                                                                            <input id="inputLname" class="form-control" type="text" />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group col-md-12">
-                                                                    <label class="control-label col-md-4 col-xs-3">性别</label>
-                                                                    <div class="controls col-md-8 col-xs-9 sexDiv" id="Lsex" style="padding-top: 5px;">
-                                                                        <label class="col-md-5 sexLabel">
-                                                                            <input class="sexInput" type="radio" name="sex0" value="0" checked id="boy">
-                                                                            男 </label>
-                                                                        <label class="col-md-5 sexLabel">
-                                                                            <input class="sexInput" type="radio" name="sex0" value="1">
-                                                                            女 </label>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="form-group col-md-12">
-                                                                    <label class="control-label col-md-4 col-xs-3" for="inputLsch">单位/学校</label>
-                                                                    <div class="controls col-md-8 col-xs-9">
-                                                                        <div style="border-radius: 4px;">
-                                                                            <input id="inputLsch" class="form-control" type="text" />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <form class="form-horizontal col-md-12">
-                                                                <div class="form-group col-md-12">
-                                                                    <label class="control-label col-md-4 col-xs-3" for="inputLOld">年龄</label>
-                                                                    <div class="controls col-md-8 col-xs-9">
-                                                                        <div style="border-radius: 4px;">
-                                                                            <input id="inputLOld" class="form-control" type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"/>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group col-md-12">
-                                                                    <label class="control-label col-md-4 col-xs-3" for="inputLTel">手机号</label>
-                                                                    <div class="controls col-md-8 col-xs-9">
-                                                                        <div style="border-radius: 4px;">
-                                                                            <input id="inputLTel" class="form-control" type="text" />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset()">取消</button>
-                                                    <button type="button" class="btn btn-primary" onclick="addMember()">添加</button>
+                        <!-- 参赛组信息 -->
+                        <div class="row-fluid col-md-12 memChildToTop">
+                            <div class="col-md-2" style="padding: 0">
+                                <h4 class="title">
+                                    参赛组信息
+                                </h4>
+                            </div>
+                            <div class="col-md-10 group-info">
+                                <div class="col-md-6">
+                                    <form class="form-horizontal col-md-12">
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label col-md-4 col-xs-3 memLabel">账号 ： </label>
+                                            <div class="controls col-md-8 col-xs-9 memInput">
+                                                <div class="auditDetailDiv" id="username">
+                                                    xx
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <!-- 组员修改弹框 -->
-                                    <div class="modal fade" id="memberdialog" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" style="top: 25%;">
-                                        <div class="modal-dialog modal-lg" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="reset()"><span aria-hidden="true">&times;</span></button>
-                                                    <h4 class="modal-title title">编辑组员</h4>
-                                                </div>
-                                                <div class="modal-body" style="padding-bottom: 0">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <form class="form-horizontal col-md-12">
-                                                                <div class="form-group col-md-12">
-                                                                    <label class="control-label col-md-4 col-xs-3">姓名</label>
-                                                                    <div class="controls col-md-8 col-xs-9">
-                                                                        <div style="border-radius: 4px;">
-                                                                            <input class="form-control" id="editName" type="text" />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group col-md-12">
-                                                                    <label class="control-label col-md-4 col-xs-3">性别</label>
-                                                                    <div class="controls col-md-8 col-xs-9 sexDiv"  id="editSex" style="padding-top: 5px;">
-                                                                        <label class="col-md-5 sexLabel">
-                                                                            <input class="sexInput" type="radio" name="sex" id="man" value="0" checked>
-                                                                            男 </label>
-                                                                        <label class="col-md-5 sexLabel">
-                                                                            <input class="sexInput" type="radio" name="sex" id="woman" value="1">
-                                                                            女 </label>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group col-md-12">
-                                                                    <label class="control-label col-md-4 col-xs-3" for="inputLsch">单位/学校</label>
-                                                                    <div class="controls col-md-8 col-xs-9">
-                                                                        <div style="border-radius: 4px;">
-                                                                            <input class="form-control" id="editOrg" type="text" />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <form class="form-horizontal col-md-12">
-                                                                <div class="form-group col-md-12">
-                                                                    <label class="control-label col-md-4 col-xs-3" for="inputLOld">年龄</label>
-                                                                    <div class="controls col-md-8 col-xs-9">
-                                                                        <div style="border-radius: 4px;">
-                                                                            <input  id="editOld" class="form-control" type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"/>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group col-md-12">
-                                                                    <label class="control-label col-md-4 col-xs-3" for="inputLTel">手机号</label>
-                                                                    <div class="controls col-md-8 col-xs-9">
-                                                                        <div style="border-radius: 4px;">
-                                                                            <input  id="editTel" class="form-control" type="text" />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset()">取消</button>
-                                                    <button type="button" class="btn btn-primary" onclick="editMember()">修改</button>
+                                    </form>
+                                    <form class="form-horizontal col-md-12">
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label col-md-4 col-xs-3 memLabel">密码 ： </label>
+                                            <div class="controls col-md-8 col-xs-9 memInput">
+                                                <input class="auditDetailDiv form-control" disabled="disabled" type="password" id="password">
+                                                </input>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-6">
+                                    <form class="form-horizontal col-md-12">
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label col-md-4 col-xs-3 memLabel">组名 ： </label>
+                                            <div class="controls col-md-8 col-xs-9 memInput">
+                                                <div class="auditDetailDiv" id="teamName">
+                                                    xx
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- 组员表格 -->
-                                    <div class="col-md-12 col-xs-12 row-fluid" style="padding: 0">
-                                        <div class="col-md-12 table-responsive" style="padding: 0">
-                                            <table class="table table-bordered">
-                                                <thead>
-                                                <tr>
-                                                    <th>
-                                                        姓名
-                                                    </th>
-                                                    <th>
-                                                        年龄
-                                                    </th>
-                                                    <th>
-                                                        性别
-                                                    </th>
-                                                    <th>
-                                                        手机号
-                                                    </th>
-                                                    <th>
-                                                        单位/学校
-                                                    </th>
+                                    </form>
+                                    <form class="form-horizontal col-md-12">
+                                        <div class="form-group col-md-12">
+                                        </div>
+                                    </form>
+                                </div>
 
-                                                    <th>
-                                                        操作
-                                                    </th>
-                                                </tr>
-                                                </thead>
-                                                <tbody id="TeamMember">
-                                                </tbody>
-                                            </table>
+                                <div class="col-md-12 modifyPasBtnCon"  style="padding: 0;text-align: center">
+                                    <button type="button" class="btn btn-primary btn-primary" data-toggle="modal" data-target="#pasdialog">修改密码</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 组长信息 -->
+                        <div class="row-fluid col-md-12">
+                            <div class="col-md-2" style="padding: 0">
+                                <h4 class="title">
+                                    组长信息
+                                </h4>
+                            </div>
+                            <div class="col-md-10 group-info">
+                                <div class="col-md-6">
+                                    <form class="form-horizontal col-md-12">
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label col-md-4 col-xs-3 memLabel">姓名： </label>
+                                            <div class="controls col-md-8 col-xs-9 memInput">
+                                                <input class="auditDetailDiv form-control" id="name" disabled="disabled">
+                                                </input>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label col-md-4 col-xs-3 memLabel">性别： </label>
+                                            <div class="controls col-md-8 col-xs-9 sexDiv memInput">
+                                                <input class="auditDetailDiv form-control" id="sex" disabled="disabled">
+                                                </input>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label col-md-4 col-xs-3 memLabel">单位/学校： </label>
+                                            <div class="controls col-md-8 col-xs-9 memInput">
+                                                <input class="auditDetailDiv form-control" id="organization" disabled="disabled">
+                                                </input>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-6">
+                                    <form class="form-horizontal col-md-12">
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label col-md-4 col-xs-3 memLabel">年龄： </label>
+                                            <div class="controls col-md-8 col-xs-9 memInput">
+                                                <input class="auditDetailDiv form-control" id="age" disabled="disabled">
+                                                </input>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label col-md-4 col-xs-3 memLabel">电话： </label>
+                                            <div class="controls col-md-8 col-xs-9 memInput">
+                                                <div style="border-radius: 4px;">
+                                                    <input class="auditDetailDiv form-control" id="telephoneNumber" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label col-md-4 col-xs-3 memLabel">邮箱： </label>
+                                            <div class="controls col-md-8 col-xs-9 memInput">
+                                                <div style="border-radius: 4px;">
+                                                    <input class="auditDetailDiv form-control" id="email" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-12" style="padding: 0;text-align: center">
+                                    <button type="button" class="btn btn-primary btn-primary" onclick="modifyInfo()">修改信息</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 组员信息 -->
+                        <div class="row-fluid col-md-12" style="overflow: hidden;">
+                            <div class="col-md-2 col-xs-4" style="padding: 0">
+                                <h4 class="title">
+                                    组员信息
+                                </h4>
+                            </div>
+                            <div class="col-md-10  group-info">
+                                <div class="col-md-12 col-xs-12 row-fluid" style="padding-bottom: 10px;">
+                                    <button  type="button" class="btn btn-primary addMemBtn" data-toggle="modal" data-target="#mydialog">添加组员</button>
+                                </div>
+
+                                <!-- 组员表格 -->
+                                <div class="col-md-12 col-xs-12 row-fluid">
+                                    <div class="col-md-12 table-responsive" style="padding: 0">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th>
+                                                    姓名
+                                                </th>
+                                                <th>
+                                                    年龄
+                                                </th>
+                                                <th>
+                                                    性别
+                                                </th>
+                                                <th>
+                                                    手机号
+                                                </th>
+                                                <th>
+                                                    单位/学校
+                                                </th>
+
+                                                <th>
+                                                    操作
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="TeamMember">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 组员弹框 -->
+                            <div class="modal fade" id="mydialog" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" style="top: 25%;">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="reset()"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title title" id="gridSystemModalLabel">添加组员</h4>
+                                        </div>
+                                        <div class="modal-body" style="padding-bottom: 0">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <form class="form-horizontal col-md-12">
+                                                        <div class="form-group col-md-12">
+                                                            <label class="control-label col-md-4 col-xs-3" for="inputLname">姓名</label>
+                                                            <div class="controls col-md-8 col-xs-9">
+                                                                <div style="border-radius: 4px;">
+                                                                    <input id="inputLname" class="form-control" type="text" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                            <label class="control-label col-md-4 col-xs-3">性别</label>
+                                                            <div class="controls col-md-8 col-xs-9 sexDiv" id="Lsex" style="padding-top: 5px;">
+                                                                <label class="col-md-5 sexLabel">
+                                                                    <input class="sexInput" type="radio" name="sex0" value="0" checked id="boy">
+                                                                    男 </label>
+                                                                <label class="col-md-5 sexLabel">
+                                                                    <input class="sexInput" type="radio" name="sex0" value="1">
+                                                                    女 </label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group col-md-12">
+                                                            <label class="control-label col-md-4 col-xs-3" for="inputLsch">单位/学校</label>
+                                                            <div class="controls col-md-8 col-xs-9">
+                                                                <div style="border-radius: 4px;">
+                                                                    <input id="inputLsch" class="form-control" type="text" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <form class="form-horizontal col-md-12">
+                                                        <div class="form-group col-md-12">
+                                                            <label class="control-label col-md-4 col-xs-3" for="inputLOld">年龄</label>
+                                                            <div class="controls col-md-8 col-xs-9">
+                                                                <div style="border-radius: 4px;">
+                                                                    <input id="inputLOld" class="form-control" type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                            <label class="control-label col-md-4 col-xs-3" for="inputLTel">手机号</label>
+                                                            <div class="controls col-md-8 col-xs-9">
+                                                                <div style="border-radius: 4px;">
+                                                                    <input id="inputLTel" class="form-control" type="text" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset()">取消</button>
+                                            <button type="button" class="btn btn-primary" onclick="addMember()">添加</button>
                                         </div>
                                     </div>
                                 </div>
-                                <br>
-                                <div class="row-fluid">
+                            </div>
+
+                            <!-- 组员修改弹框 -->
+                            <div class="modal fade" id="memberdialog" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" style="top: 25%;">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="reset()"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title title">编辑组员</h4>
+                                        </div>
+                                        <div class="modal-body" style="padding-bottom: 0">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <form class="form-horizontal col-md-12">
+                                                        <div class="form-group col-md-12">
+                                                            <label class="control-label col-md-4 col-xs-3">姓名</label>
+                                                            <div class="controls col-md-8 col-xs-9">
+                                                                <div style="border-radius: 4px;">
+                                                                    <input class="form-control" id="editName" type="text" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                            <label class="control-label col-md-4 col-xs-3">性别</label>
+                                                            <div class="controls col-md-8 col-xs-9 sexDiv"  id="editSex" style="padding-top: 5px;">
+                                                                <label class="col-md-5 sexLabel">
+                                                                    <input class="sexInput" type="radio" name="sex" id="man" value="0" checked>
+                                                                    男 </label>
+                                                                <label class="col-md-5 sexLabel">
+                                                                    <input class="sexInput" type="radio" name="sex" id="woman" value="1">
+                                                                    女 </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                            <label class="control-label col-md-4 col-xs-3" for="inputLsch">单位/学校</label>
+                                                            <div class="controls col-md-8 col-xs-9">
+                                                                <div style="border-radius: 4px;">
+                                                                    <input class="form-control" id="editOrg" type="text" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <form class="form-horizontal col-md-12">
+                                                        <div class="form-group col-md-12">
+                                                            <label class="control-label col-md-4 col-xs-3" for="inputLOld">年龄</label>
+                                                            <div class="controls col-md-8 col-xs-9">
+                                                                <div style="border-radius: 4px;">
+                                                                    <input  id="editOld" class="form-control" type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                            <label class="control-label col-md-4 col-xs-3" for="inputLTel">手机号</label>
+                                                            <div class="controls col-md-8 col-xs-9">
+                                                                <div style="border-radius: 4px;">
+                                                                    <input  id="editTel" class="form-control" type="text" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset()">取消</button>
+                                            <button type="button" class="btn btn-primary" onclick="editMember()">修改</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- 历史信息 -->
+                        <div class="row-fluid col-md-12" style="overflow: hidden;">
+                            <div class="col-md-2 col-xs-4" style="padding: 0">
+                                <h4 class="title">
+                                    历史成绩
+                                </h4>
+                            </div>
+
+                            <!-- 成绩表格 -->
+                            <div class="col-md-10 group-info">
+                                <div class="col-md-12 table-responsive">
+                                    <!--<table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>
+                                                BLEU_4
+                                            </th>
+                                            <th>
+                                                ROUGE
+                                            </th>
+                                            <th>
+                                                日期
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="TeamScore">
+                                        </tbody>
+                                    </table>-->
+                                    <!--<div id="NoScoreInfo" style="text-align: center">暂无数据</div>-->
+                                    <div class="table-responsive" style="margin-top: -10px">
+                                        <table id="scoreInfoTable">
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <!-- 公众号 -->
+                        <div class="row-fluid">
                                     <div class="col-md-12">
                                         <div class="col-md-12 col-xs-12 vDiv">
                                             <div class="vJoinDiv">
@@ -367,159 +402,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="scoreInfo">
-                                <!-- 成绩信息 -->
-                                <div class="row-fluid col-md-12 memChildToTop">
-                                    <div class="col-md-2" style="padding: 0">
-                                        <h4 class="title">
-                                            成绩信息
-                                        </h4>
-                                    </div>
-                                    <div class="col-md-10 group-info">
-                                        <div class="col-md-6">
-                                            <form class="form-horizontal col-md-12">
-                                                <div class="form-group col-md-12">
-                                                    <label class="col-md-4 col-xs-3 memLabel">BLEU_4： </label>
-                                                    <div class="controls col-md-8 col-xs-9 memInput">
-                                                        <div id="bleu">
-                                                            xx
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <form class="form-horizontal col-md-12">
-                                                <div class="form-group col-md-12">
-                                                    <label class="col-md-4 col-xs-3 memLabel">ROUGE： </label>
-                                                    <div class="controls col-md-8 col-xs-9 memInput">
-                                                        <div id="rouge">
-                                                            xx
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <!-- 身份证 -->
-                                <div class="row-fluid col-md-12 col-sm-12 col-xs-12" style="border-bottom: 0;">
-                                    <div class="col-md-2 col-sm-12 col-xs-12 titleInfo" style="padding: 0">
-                                        <h4 class="title">
-                                            结果提交
-                                        </h4>
-                                    </div>
-                                    <div class="col-md-10 col-sm-10 col-xs-10  group-info">
-                                        <div class="identifyContainer">
-                                            <div class="row">
-                                                <h4 class="sign">
-                                                    注意：每天仅可以提交四次
-                                                </h4>
-                                            </div>
-                                            <div class="col-md-5" style="border:1px solid lightgrey;border-radius: 4px;">
-                                                <form class="form-horizontal" enctype="multipart/form-data">
-                                                    <div style="padding: 0" id="Lpicture">
-                                                        <h3><span class="required-flag">*</span>文件1：</h3>
-                                                        <div class="fileArea" id="file1" style="padding-top:5px;">
-                                                        </div>
-                                                        <div class="col-xs-12 idPic">
-                                                            <span class="btn btn-info btn-small fileinput-button" style="padding: 4px 10px;font-size: 12px;">
-                                                                <i class="glyphicon glyphicon-plus"></i>
-                                                                <span>上传附件</span>
-                                                                <input class="chooseFile disableAll" type="file" name="diploma" id="file1Cont"/>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="col-md-1"></div>
-                                            <div class="col-md-5" style="border:1px solid lightgrey;border-radius: 4px">
-                                                <form class="form-horizontal" enctype="multipart/form-data">
-                                                    <div style="padding: 0" id="Lpicture2">
-                                                        <h3><span class="required-flag">*</span>文件2：</h3>
-                                                        <div class="fileArea" id="file2" style="padding-top:5px;">
-                                                        </div>
-                                                        <div class="col-xs-12 idPic">
-                                                            <span class="btn btn-info btn-small fileinput-button" style="padding: 4px 10px;font-size: 12px;">
-                                                                <i class="glyphicon glyphicon-plus"></i>
-                                                                <span>上传附件</span>
-                                                                <input class="chooseFile disableAll" type="file" name="diploma" id="file2Cont"/>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-
-                                            <div class="col-md-12 modifyPasBtnCon"  style="padding: 0;text-align: center;margin-top: 20px;">
-                                                <div class="col-md-11">
-                                                    <button type="button" class="btn  btn-success" style="width: 70px;height: 30px;font-size: 13px;" onclick="subFiles()">提交</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!--<div class="col-md-10 col-sm-10 col-xs-10  group-info">
-                                        <div class="identifyContainer">
-
-                                            <form class="row form-horizontal" enctype="multipart/form-data">
-                                                <div style="padding: 0" id="Lpicture3">
-                                                    <h3><span class="required-flag">*</span>注意：每天可提交两次</h3>
-                                                    <div class="fileArea" id="idZhengmian" style="padding-top:5px;">
-                                                    </div>
-                                                    <div class="col-xs-12 idPic">
-                                                        <span class="btn btn-success btn-small fileinput-button">
-                                                            <i class="glyphicon glyphicon-plus"></i>
-                                                            <span>提交</span>
-                                                            <input class="chooseFile disableAll" type="file" name="diploma" id="fileZheng"  onchange="subFile()"/>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>-->
-                                </div>
-
-                                <!-- 历史信息 -->
-                                <div class="row-fluid col-md-12" style="overflow: hidden;">
-                                    <div class="col-md-2 col-xs-4" style="padding: 0">
-                                        <h4 class="title">
-                                            历史成绩
-                                        </h4>
-                                    </div>
-
-                                    <!-- 成绩表格 -->
-                                    <div class="col-md-10 col-xs-10 row-fluid" style="padding: 0">
-                                        <div class="col-md-12 table-responsive" style="padding: 0">
-                                            <!--<table class="table table-bordered">
-                                                <thead>
-                                                <tr>
-                                                    <th>
-                                                        BLEU_4
-                                                    </th>
-                                                    <th>
-                                                        ROUGE
-                                                    </th>
-                                                    <th>
-                                                        日期
-                                                    </th>
-                                                </tr>
-                                                </thead>
-                                                <tbody id="TeamScore">
-                                                </tbody>
-                                            </table>-->
-                                            <div class="table-responsive" style="margin-top: -10px">
-                                                <table id="scoreInfoTable">
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                     </div>
                     <!-- tab页结束 -->
@@ -591,38 +473,8 @@
     let editId = '';
 
     window.onload=function() {
-        if ((username != null) && (username !== "null")) {
-            if(role !== 'admin'){
-                /*$.ajax({
-                    type: "GET",
-                    dataType: "json",
-                    url: IpAll() + "users/" + myTeamId,
-                    beforeSend: function (xhr) {
-                        xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-                    },
-                    success: function (result) {
-                        let data = result.data;
-                        passOld = data.password
-
-                        document.getElementById("username").innerHTML = data.username;
-                        document.getElementById("teamName").innerHTML = data.teamName;
-                        document.getElementById("name").value = data.name;
-                        document.getElementById("age").value = data.age;
-                        document.getElementById("sex").value = data.sex === 1 ? '女' : '男';
-                        document.getElementById("telephoneNumber").value = data.telephoneNumber;
-                        document.getElementById("organization").value = data.organization;
-                        document.getElementById('password').value = data.password;
-                        document.getElementById("email").value = data.email;
-                        document.getElementById('inputLsch').value = data.organization;
-                        document.getElementById('bleu').innerHTML = data.bleu_4_Score;
-                        document.getElementById('rouge').innerHTML = data.rouge_Score;
-                    },
-                    error: function (error) {
-                        let notifyMessage = error.responseJSON.message
-                        alert(notifyMessage)
-                    }
-                });*/
-
+        /*if ((username != null) && (username !== "null")) {
+            if(role !== 'admin'){*/
                 resetAll();
                 getAll();
                 getAllScore();
@@ -645,14 +497,14 @@
                     }
                 }
 
-            }else {
+            /*}else {
                 document.getElementById("showBody").style.display = "none";
                 window.location.href="../index.html";
             }
         }else{
             document.getElementById("showBody").style.display = "none";
             window.location.href="login.html";
-        }
+        }*/
     };
     function handleFile(file, divId){
         //获取文件名称
@@ -838,6 +690,9 @@
             success: function (result) {
                 let str = "";
                 let data = result.data;
+                /*if(data.length !== 0){
+                    document.getElementById('NoScoreInfo').innerHTML = ''
+                }*/
                 console.log(data);
                 $("#scoreInfoTable").bootstrapTable('destroy');
                 $('#scoreInfoTable').bootstrapTable({
