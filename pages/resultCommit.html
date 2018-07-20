@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>军事智能·机器阅读</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="apply.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../css/apply.css">
+    <link rel="stylesheet" href="../css/member.css">
+    <link href="../css/header.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../css/applyInfo.css">
+    <link rel="stylesheet" href="../css/fileUpload.css">
+    <link rel="stylesheet" href="../bootstrap-table/bootstrap-table.min.css">
+    <style>
+        .sexInput { height: 12px; }
+    </style>
+</head>
+
+<body style="background-image: url('http://pb2edde5m.bkt.clouddn.com/bgPic.png');" id="showBody">
+<header class="header fixed clearfix navbar navbar-fixed-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="header-left">
+                    <div class="logo smooth-scroll">
+                        <a href="../index.html"><img id="logo" src="http://pb2edde5m.bkt.clouddn.com/logo2.png" alt="Worthy"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="row main-content">
+        <div class="col-md-12 toTop">
+            <h3 class="title-main">
+                训练提交
+            </h3>
+            <div class="row">
+                <hr>
+                <div class="col-md-12 childToTop">
+                    <div class="col-md-1" style="padding: 0">
+                    </div>
+                    <!-- tab页 -->
+                    <div class="col-md-10">
+                        <!-- 成绩信息 -->
+                        <div class="row-fluid col-md-12 memChildToTop">
+                            <div class="col-md-2" style="padding: 0">
+                                <h4 class="title">
+                                    成绩信息
+                                </h4>
+                            </div>
+                            <div class="col-md-10 group-info">
+                                <div class="col-md-6">
+                                    <form class="form-horizontal col-md-12">
+                                        <div class="form-group col-md-12">
+                                            <label class="col-md-4 col-xs-3 memLabel">BLEU_4： </label>
+                                            <div class="controls col-md-8 col-xs-9 memInput">
+                                                <div id="bleu">
+                                                    xx
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-6">
+                                    <form class="form-horizontal col-md-12">
+                                        <div class="form-group col-md-12">
+                                            <label class="col-md-4 col-xs-3 memLabel">ROUGE： </label>
+                                            <div class="controls col-md-8 col-xs-9 memInput">
+                                                <div id="rouge">
+                                                    xx
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- 身份证 -->
+                        <div class="row-fluid col-md-12 col-sm-12" style="border-bottom: 0;">
+                            <div class="col-md-2 col-sm-12 col-xs-12 titleInfo" style="padding: 0">
+                                <h4 class="title">
+                                    结果提交
+                                </h4>
+                            </div>
+                            <div class="col-md-10 group-info">
+                                <div class="identifyContainer">
+
+                                    <div class="col-md-10">
+                                        <h4 class="sign">
+                                            注意：只可以提交JSON文件，每天仅可以提交四次
+                                        </h4>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <form class="form-horizontal" enctype="multipart/form-data">
+                                            <div style="padding: 0" id="Lpicture">
+                                                <h3><span class="required-flag">*</span>文件1：</h3>
+                                                <div class="fileArea" id="file1" style="padding-top:5px;">
+                                                </div>
+                                                <div class="col-md-2 idPic">
+                                                            <span class="btn btn-info btn-small fileinput-button" style="padding: 4px 10px;font-size: 12px;">
+                                                                <i class="glyphicon glyphicon-plus"></i>
+                                                                <span>上传附件</span>
+                                                                <input class="chooseFile disableAll" type="file" name="diploma" id="file1Cont" accept="application/json"/>
+                                                            </span>
+                                                </div>
+                                                <div class="col-md-5 modifyPasBtnCon">
+                                                    <div class="col-md-12">
+                                                        <button type="button" class="btn  btn-success" style="width: 70px;height: 27px;font-size: 12px;padding: 4px 0;" onclick="subFiles()">提交</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!--<div class="col-md-10 col-sm-10 col-xs-10  group-info">
+                                <div class="identifyContainer">
+
+                                    <form class="row form-horizontal" enctype="multipart/form-data">
+                                        <div style="padding: 0" id="Lpicture3">
+                                            <h3><span class="required-flag">*</span>注意：每天可提交两次</h3>
+                                            <div class="fileArea" id="idZhengmian" style="padding-top:5px;">
+                                            </div>
+                                            <div class="col-xs-12 idPic">
+                                                <span class="btn btn-success btn-small fileinput-button">
+                                                    <i class="glyphicon glyphicon-plus"></i>
+                                                    <span>提交</span>
+                                                    <input class="chooseFile disableAll" type="file" name="diploma" id="fileZheng"  onchange="subFile()"/>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>-->
+                        </div>
+
+                        <!-- 历史信息 -->
+                        <div class="row-fluid col-md-12" style="overflow: hidden;">
+                            <div class="col-md-2" style="padding: 0">
+                                <h4 class="title">
+                                    历史成绩
+                                </h4>
+                            </div>
+
+                            <!-- 成绩表格 -->
+                            <div class="col-md-10 group-info" style="padding: 10px 10px;">
+
+                                <!-- tab页开始 -->
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#trainingScoreInfo" aria-controls="home" role="tab" data-toggle="tab">训练成绩</a></li>
+                                    <li role="presentation"><a href="#preliminaryScoreInfo" aria-controls="profile" role="tab" data-toggle="tab">初赛成绩</a></li>
+                                    <li role="presentation"><a href="#finalScoreInfo" aria-controls="profile" role="tab" data-toggle="tab">决赛成绩</a></li>
+                                </ul>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="trainingScoreInfo">
+                                        <div class="col-md-12" style="padding: 0">
+                                            <!--<table class="table table-bordered">
+                                                <thead>
+                                                <tr>
+                                                    <th>
+                                                        BLEU_4
+                                                    </th>
+                                                    <th>
+                                                        ROUGE
+                                                    </th>
+                                                    <th>
+                                                        日期
+                                                    </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody id="TeamScore">
+                                                </tbody>
+                                            </table>-->
+                                            <div>
+                                                <table id="trainingScoreInfoTable">
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="preliminaryScoreInfo">
+                                        <div class="col-md-12" style="padding: 0">
+                                            <div>
+                                                <table id="preliminaryScoreInfoTable">
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="finalScoreInfo">
+                                        <div class="col-md-12" style="padding: 0">
+                                            <div>
+                                                <table id="finalScoreInfoTable">
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- tab页结束 -->
+
+                                <!--<div class="col-md-12 table-responsive">
+                                    &lt;!&ndash;<table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>
+                                                BLEU_4
+                                            </th>
+                                            <th>
+                                                ROUGE
+                                            </th>
+                                            <th>
+                                                日期
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="TeamScore">
+                                        </tbody>
+                                    </table>&ndash;&gt;
+                                    <div class="table-responsive" style="margin-top: -10px">
+                                        <table id="scoreInfoTable">
+                                        </table>
+                                    </div>
+                                </div>-->
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- tab页结束 -->
+
+
+                    <br/>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="../js/cookie.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script type="text/javascript" src="../js/jquery.base64.js"></script>
+<script src="../js/globalIP.js"></script>
+<script src="../bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript">
+    let role = $.cookie("myRole");
+    let myTeamId = $.cookie("myTeamId");
+    let username = $.cookie("myUsername");
+    let password0 = $.cookie("myWPa");
+    let password = $.base64.decode(password0);
+    let token = username + ':' + password;
+    let editId = '';
+
+    window.onload=function() {
+        /*if ((username != null) && (username !== "null")) {
+            if(role !== 'admin'){*/
+
+                resetAll();
+                getTrainingScore();
+                getPreliminaryScoreScore();
+                getFinalScore();
+
+                //添加文件
+                let file1 = document.getElementById("file1Cont");
+                let file2 = document.getElementById("file2Cont");
+                file1.onchange = function(){
+                    if(file1.value.length !== 0){
+                        let file = this.files[0];
+                        console.log(file);
+                        let divId = "file1";
+                        handleFile(file, divId);
+                    }
+                }
+                file2.onchange = function(){
+                    if(file2.value.length !== 0){
+                        let file = this.files[0];
+                        let divId = "file2";
+                        handleFile(file, divId);
+                    }
+                }
+
+            /*}else {
+                document.getElementById("showBody").style.display = "none";
+                window.location.href="../index.html";
+            }
+        }else{
+            document.getElementById("showBody").style.display = "none";
+            window.location.href="login.html";
+        }*/
+    };
+    function handleFile(file, divId){
+        //获取文件名称
+        let fileName = file.name;
+        url=window.URL.createObjectURL(file);  // 得到bolb对象路径，可当成普通的文件路径一样使用，赋值给src;
+        //清空文件列表
+        let fileArea = document.getElementById(divId);
+        fileArea.innerHTML = '';
+        //添加到文件列表
+        let html = '<div class="col-md-12 idPic">' +
+            '<p class="fileName col-md-5 col-xs-12 idPic">' + fileName + '</p>' +
+            '<div class="col-md-1 col-xs-3 idPic"><span class="delFile btn btn-danger btn-mini disableAll newAddFile" onclick="delFile(event)"' +
+            ' style="cursor:pointer;padding: 3px 8px;font-size: 11px;border-radius: 3px;">删除</span></div>' +
+            '</div>';
+
+        let $fileArea = document.getElementById(divId);
+        $(html).appendTo($fileArea);
+    }
+
+    function delFile(event){
+        let e = event || window.event;
+        let target = e.target || e.srcElement;
+        let delDiv = target.parentNode.parentNode;
+        let id1 = delDiv.parentNode.id;
+        let id2 = delDiv.parentNode.parentNode.lastElementChild.lastElementChild.lastElementChild.id;
+        console.log(id1);
+        console.log("删除的div----");
+        console.log(delDiv.parentNode.parentNode.lastElementChild.lastElementChild.lastElementChild);
+        console.log();
+        console.log(id2);
+        let $fileArea = document.getElementById(id1);
+        console.log($fileArea);
+        $fileArea.removeChild(delDiv);
+        let fileCont = document.getElementById(id2);
+        fileCont.value = '';
+    }
+
+    function resetAll() {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: IpAll() + "users/" + myTeamId,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+
+                document.getElementById('bleu').innerHTML = data.bleu4ScoreF.toFixed(2) + "%";
+                document.getElementById('rouge').innerHTML = data.rougelScoreF.toFixed(2) + "%";
+            },
+            error: function (error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+
+    function subFiles() {
+        console.log(document.getElementById("file1Cont").files[0]);
+        let file1 = document.getElementById("file1Cont").files[0];  //获取文件
+        let formData = new FormData();
+        formData.append("ref", file1);
+        formData.append("type", 0);
+
+        $.ajax({
+            url: IpAll() + "users/" + myTeamId + "/commitfile",
+            data: formData,
+            type: "PUT",
+            async:false,
+            dataType: "json",
+            cache: false,
+            processData: false,
+            contentType: false,
+            enctype: 'multipart/form-data',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            timeout : 5000,
+            success: function (result) {
+                resetAll();
+                getTrainingScore();
+            },
+            error : function(error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+
+    //训练成绩
+    function getTrainingScore(){
+        let myTeamId = $.cookie("myTeamId");
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: { type: 0 },
+            url: IpAll() + "users/" + myTeamId + "/scorelogsbytype" ,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let str = "";
+                let data = result.data;
+                console.log(data);
+                $("#trainingScoreInfoTable").bootstrapTable('destroy');
+                $('#trainingScoreInfoTable').bootstrapTable({
+                    sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination : true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 10,                       //每页的记录行数（*）
+                    pageList: [10,20,30],        //可供选择的每页的行数（*）
+                    search:true,
+                    columns: [{
+                        field: 'bleu_4_Score',
+                        title: 'BLEU_4',
+                        formatter: precentFormatter
+                    }, {
+                        field: 'rouge_Score',
+                        title: 'ROUGE',
+                        formatter: precentFormatter
+                    },  {
+                        field: 'createTime',
+                        title: '提交日期',
+                        sortable: true
+                    }
+                    ],
+                    data: data
+                });
+
+            },
+            error : function(error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+
+    //初赛成绩
+    function getPreliminaryScoreScore(){
+        let myTeamId = $.cookie("myTeamId");
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: { type: 1 },
+            url: IpAll() + "users/" + myTeamId + "/scorelogsbytype" ,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let str = "";
+                let data = result.data;
+                console.log(data);
+                $("#preliminaryScoreInfoTable").bootstrapTable('destroy');
+                $('#preliminaryScoreInfoTable').bootstrapTable({
+                    sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination : true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 10,                       //每页的记录行数（*）
+                    pageList: [10,20,30],        //可供选择的每页的行数（*）
+                    search:true,
+                    columns: [{
+                        field: 'bleu_4_Score',
+                        title: 'BLEU_4',
+                        formatter: precentFormatter
+                    }, {
+                        field: 'rouge_Score',
+                        title: 'ROUGE',
+                        formatter: precentFormatter
+                    },  {
+                        field: 'createTime',
+                        title: '提交日期',
+                        sortable: true
+                    }
+                    ],
+                    data: data
+                });
+
+            },
+            error : function(error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+
+    //决赛成绩
+    function getFinalScore(){
+        let myTeamId = $.cookie("myTeamId");
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: { type: 2 },
+            url: IpAll() + "users/" + myTeamId + "/scorelogsbytype" ,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let str = "";
+                let data = result.data;
+                console.log(data);
+                $("#finalScoreInfoTable").bootstrapTable('destroy');
+                $('#finalScoreInfoTable').bootstrapTable({
+                    sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination : true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 10,                       //每页的记录行数（*）
+                    pageList: [10,20,30],        //可供选择的每页的行数（*）
+                    search:true,
+                    columns: [{
+                        field: 'bleu_4_Score',
+                        title: 'BLEU_4',
+                        formatter: precentFormatter
+                    }, {
+                        field: 'rouge_Score',
+                        title: 'ROUGE',
+                        formatter: precentFormatter
+                    },  {
+                        field: 'createTime',
+                        title: '提交日期',
+                        sortable: true
+                    }
+                    ],
+                    data: data
+                });
+
+            },
+            error : function(error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+
+    function precentFormatter(value) {
+        return value.toFixed(2) + "%";
+    }
+    function reset(){
+        $("#inputLname").val('');
+        $("#inputLOld").val('');
+        $("#inputLTel").val('');
+        $("#passWordNew").val('');
+        $("#passWordAgain").val('');
+    }
+
+</script>
+</body>
+</html>

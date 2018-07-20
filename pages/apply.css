@@ -78,6 +78,7 @@ img{ border:none;}
     }
     h4.sign{
         display: inline-block;
+        font-size: 12px;
     }
     #informationContainer{
         padding: 0;
