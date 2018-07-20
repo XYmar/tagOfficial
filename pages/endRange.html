@@ -43,34 +43,63 @@
             </h3>
             <div class="row">
                 <hr>
-                <div class="col-md-12 childToTop">
-                    <div class="row-fluid" style="margin-top: 20px;">
-                        <div class="col-md-1 col-xs-12 row-fluid">
-                        </div>
-                        <div class="col-md-10 col-xs-12 row-fluid">
-                            <div id="hasAuditInfo" style="text-align: center">暂无数据</div>
-                            <div class="table-responsive" style="margin-top: -10px">
-                                <table id="memberInfoTableAlready">
-                                </table>
-                            </div>
-                            <!--<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" role="tab" id="headingTwo">
-                                        <h4 class="panel-title">
-                                            <a class="collapsed shenhea" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                已审核
-                                            </a>
-                                            <span id="hasAuditNum" style="margin-left:6px;"></span>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                        <div class="panel-body">
+                <div class="col-md-12 row-fluid childToTop">
+                    <!-- 成绩表格 -->
+                    <div class="col-md-12 group-info" style="padding: 10px 10px;">
 
-                                        </div>
+                        <!-- tab页开始 -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#trainingScoreInfo" aria-controls="home" role="tab" data-toggle="tab">训练成绩</a></li>
+                            <li role="presentation"><a href="#preliminaryScoreInfo" aria-controls="profile" role="tab" data-toggle="tab">初赛成绩</a></li>
+                            <li role="presentation"><a href="#finalScoreInfo" aria-controls="profile" role="tab" data-toggle="tab">决赛成绩</a></li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="trainingScoreInfo">
+                                <div class="col-md-12" style="padding: 0">
+                                    <!--<table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>
+                                                BLEU_4
+                                            </th>
+                                            <th>
+                                                ROUGE
+                                            </th>
+                                            <th>
+                                                日期
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="TeamScore">
+                                        </tbody>
+                                    </table>-->
+                                    <div>
+                                        <table id="trainingScoreInfoTable">
+                                        </table>
                                     </div>
                                 </div>
-                            </div>-->
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="preliminaryScoreInfo">
+                                <div class="col-md-12" style="padding: 0">
+                                    <div>
+                                        <table id="preliminaryScoreInfoTable">
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="finalScoreInfo">
+                                <div class="col-md-12" style="padding: 0">
+                                    <div>
+                                        <table id="finalScoreInfoTable">
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <!-- tab页结束 -->
+
                     </div>
                     <br>
                 </div>
@@ -90,128 +119,20 @@
 <script type="text/javascript" src="../js/jquery.base64.js"></script>
 <script src="../js/globalIP.js"></script>
 <script type="text/javascript">
+    let username = $.cookie("myUsername");
+    let password0 = $.cookie("myWPa");
+    let password = $.base64.decode(password0);
+    let token = username + ':' + password;
+    let role = $.cookie("myRole");
+
     window.onload=function(){
-        let username = $.cookie("myUsername");
-        let password0 = $.cookie("myWPa");
-        let password = $.base64.decode(password0);
-        let token = username + ':' + password;
-        let role = $.cookie("myRole");
-        if ((username != null) && (username !== "null")) {
-            if(role === 'admin'){
-                let datalistA = []
-                let datalistB = []
 
-                // 获取通过和未通过
-                $.ajax({
-                    type: "GET",
-                    dataType: "json",
-                    url: IpAll() + "users/byRoleName" ,
-                    data: {rolename: 'accept'},
-                    beforeSend: function (xhr) {
-                        xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-                    },
-                    success: function (result) {
-                        datalistA = result.data;
-                        // 获取审核未通过的信息
-                        $.ajax({
-                            type: "GET",
-                            dataType: "json",
-                            url: IpAll() + "users/byRoleName" ,
-                            data: {rolename: 'denied'},
-                            beforeSend: function (xhr) {
-                                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-                            },
-                            success: function (result) {
-                                datalistB = result.data
-
-                                // 拼接审核通过和未通过的数据
-                                let dataAll = datalistA.concat(datalistB)
-                                let dataLength = dataAll.length
-                                if(datalistA.length !== 0){
-                                    document.getElementById('hasAuditInfo').innerHTML = ''
-                                }
-
-                                // 生成表格
-                                $('#memberInfoTableAlready').bootstrapTable({
-                                    sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
-                                    pagination : true, // 是否显示分页（*）
-                                    pageNumber: 1,    //如果设置了分页，首页页码
-                                    pageSize: 10,                       //每页的记录行数（*）
-                                    pageList: [10,20,30],        //可供选择的每页的行数（*）
-                                    search:true,
-                                    columns: [{
-                                        field: 'teamName',
-                                        title: '组名'
-                                    }, {
-                                        field: 'name',
-                                        title: '姓名'
-                                    }, {
-                                        field: 'age',
-                                        title: '年龄'
-                                    },{
-                                        field: 'sex',
-                                        title: '性别',
-                                        formatter: sexFormatter
-                                    },{
-                                        field: 'telephoneNumber',
-                                        title: '手机号'
-                                    },{
-                                        field: 'organization',
-                                        title: '单位/学校'
-                                    },{
-                                        field: 'createTime',
-                                        title: '注册时间'
-                                    },{
-                                        field: 'id',
-                                        title: 'id',
-                                        visible: false
-                                    },{
-                                        field: 'authorities',
-                                        title: '状态',
-                                        formatter: statusFormatter
-                                    }
-                                    ],
-                                    data: dataAll
-                                });
-                            },
-                            error : function() {
-                                alert("请求错误！");
-                            }
-                        });
-                    },
-                    error : function() {
-                        alert("请求错误！");
-                    }
-                });
-
-                //生成性别
-                function sexFormatter(value) {
-                    let sexValue
-                    if (value == 0 ) {
-                        sexValue = '男'
-                    }
-                    else if (value == 1) {
-                        sexValue = '女'
-                    }
-                    return sexValue
-                }
-
-                //生成操作
-                function actionFormatter(value) {
-                    return "<a href='auditDetail.html?id=" + value + "' style='float: none;'>" +
-                        "<button class='btn btn-success btn-success editMember' type='button' >审核</button> " +
-                        "</a>"
-                }
-
-                //生成状态
-                function statusFormatter(value) {
-                    if(value[0].authority.indexOf('accept') > 0) {
-                        return "<span style=\"color: #27A9E3;\">已审核</span>"
-                    } else if(value[0].authority.indexOf('denied') > 0){
-                        return "<span style=\"color: #ff0000;\">未通过</span>"
-                    }
-                }
-            }else{
+        /*if ((username != null) && (username !== "null")) {
+            if(role === 'admin'){*/
+                getTrainingScore();
+                getPreliminaryScoreScore();
+                getFinalScore();
+            /*}else{
                 document.getElementById("showBody").style.display = "none";
                 window.location.href="../index.html";
 
@@ -219,7 +140,149 @@
         }else{
             document.getElementById("showBody").style.display = "none";
             window.location.href="login.html";
-        }
+        }*/
+    }
+
+    //训练成绩
+    function getTrainingScore(){
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: { type: 0 },
+            url: IpAll() + "users/ranking" ,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+                console.log(data);
+                $("#trainingScoreInfoTable").bootstrapTable('destroy');
+                $('#trainingScoreInfoTable').bootstrapTable({
+                    sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination : true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30,40],        //可供选择的每页的行数（*）
+                    search:true,
+                    columns: [{
+                        field: 'bleu4ScoreF',
+                        title: 'BLEU_4',
+                        formatter: precentFormatter
+                    }, {
+                        field: 'rougelScoreF',
+                        title: 'ROUGE',
+                        formatter: precentFormatter
+                    },  {
+                        field: 'createTime',
+                        title: '提交日期',
+                        sortable: true
+                    }
+                    ],
+                    data: data
+                });
+
+            },
+            error : function(error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+
+    //初赛成绩
+    function getPreliminaryScoreScore(){
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: { type: 1 },
+            url: IpAll() + "users/ranking" ,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+                console.log(data);
+                $("#preliminaryScoreInfoTable").bootstrapTable('destroy');
+                $('#preliminaryScoreInfoTable').bootstrapTable({
+                    sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination : true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30,40],        //可供选择的每页的行数（*）
+                    search:true,
+                    columns: [{
+                        field: 'bleu4ScoreP',
+                        title: 'BLEU_4',
+                        formatter: precentFormatter
+                    }, {
+                        field: 'rougelScoreP',
+                        title: 'ROUGE',
+                        formatter: precentFormatter
+                    },  {
+                        field: 'createTime',
+                        title: '提交日期',
+                        sortable: true
+                    }
+                    ],
+                    data: data
+                });
+
+            },
+            error : function(error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+
+    //决赛成绩
+    function getFinalScore(){
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: { type: 2 },
+            url: IpAll() + "users/ranking" ,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+                console.log(data);
+                $("#finalScoreInfoTable").bootstrapTable('destroy');
+                $('#finalScoreInfoTable').bootstrapTable({
+                    sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination : true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30,40],        //可供选择的每页的行数（*）
+                    search:true,
+                    columns: [{
+                        field: 'bleu4ScoreT',
+                        title: 'BLEU_4',
+                        formatter: precentFormatter
+                    }, {
+                        field: 'rougelScoreT',
+                        title: 'ROUGE',
+                        formatter: precentFormatter
+                    },  {
+                        field: 'createTime',
+                        title: '提交日期',
+                        sortable: true
+                    }
+                    ],
+                    data: data
+                });
+
+            },
+            error : function(error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+
+    function precentFormatter(value) {
+        return value.toFixed(2) + "%";
     }
 </script>
 </body>
