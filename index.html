@@ -502,7 +502,7 @@
 
                                     <div class="col-md-6">训练集</div>
                                     <div class="col-md-4">
-                                        <a href="files/训练数据集.json" download="训练数据集.json"><button class="btn downloadBtn" id="trainBtn"  disabled="disabled" type="button" onclick="validatePwd()">下载</button></a>
+                                        <a href="javascript: void(0)" id="trainA"><button class="btn downloadBtn" id="trainBtn"  disabled="disabled" type="button" onclick="validatePwd()">下载</button></a>
                                     </div>
 
                                 </li>
@@ -513,7 +513,7 @@
 
                                     <div class="col-md-6">初赛数据</div>
                                     <div class="col-md-4">
-                                        <a href="files/训练数据集.json" download="训练数据集.json"><button class="btn downloadBtn" id="primaryBtn"  disabled="disabled" type="button" onclick="validatePwd()">下载</button></a>
+                                        <a href="javascript: void(0)" id="primaryA"><button class="btn downloadBtn" id="primaryBtn"  disabled="disabled" type="button" onclick="validatePwd()">下载</button></a>
                                     </div>
 
                                 </li>
@@ -524,7 +524,7 @@
 
                                     <div class="col-md-6">决赛数据</div>
                                     <div class="col-md-4">
-                                        <a href="files/训练数据集.json" download="训练数据集.json"><button class="btn downloadBtn" id="finalBtn"   disabled="disabled" type="button" onclick="validatePwd()">下载</button></a>
+                                        <a href="javascript: void(0)" id="finalA"><button class="btn downloadBtn" id="finalBtn"   disabled="disabled" type="button" onclick="validatePwd()">下载</button></a>
                                     </div>
 
                                 </li>
@@ -564,18 +564,18 @@
                             <ul class="list-unstyled col-md-12 newUl">
                                 <li>
                                     <i class="fa fa-chain  pr-10 colored"></i>
-                                    <a href="pages/resultCommit.html">跳转至训练结果提交页面</a>
+                                    <a href="javascript: void(0)" id="trainCommit">训练结果提交</a>
 
                                 </li>
                                 <li>
                                     <i class="fa fa-chain  pr-10 colored"></i>
-                                    <a href="pages/resultCommit.html">初赛结果提交</a>
+                                    <a href="javascript: void(0)" id="primaryCommit">初赛结果提交</a>
 
                                 </li>
 
                                 <li>
                                     <i class="fa fa-chain  pr-10 colored"></i>
-                                    <a href="pages/resultCommit.html">决赛结果提交</a>
+                                    <a href="javascript: void(0)" id="finalCommit">决赛结果提交</a>
 
                                 </li>
                             </ul>
@@ -1049,21 +1049,49 @@
                     let primaryTime = moment(new Date(2018, 8, 19)).format();
                     let FinalTime = moment(new Date(2018, 9, 27)).format();*/
                     let trainTime = moment(new Date(2018, 6, 23)).format();
-                    let primaryTime = moment(new Date(2018, 6, 23)).format();
+                    let primaryTime = moment(new Date(2018, 6, 24)).format();
                     let FinalTime = moment(new Date(2018, 6, 24)).format();
                     console.log(trainTime);
                     //moment('2010-10-20').isAfter('2010-10-19');
                     if(moment(nowTime).isAfter(trainTime)){        //8月1日后
                         document.getElementById("trainBtn").disabled = false;
+
+                        document.getElementById("trainA").href = "files/训练数据集.json";
+                        document.getElementById("trainA").download="训练数据集.json";
+
+                        document.getElementById("trainCommit").href = "pages/resultCommit.html?id=0";
+                        document.getElementById("primaryCommit").style.color = "lightgrey";
+                        document.getElementById("primaryCommit").style.cursor = "none";
+                        document.getElementById("finalCommit").style.color = "lightgrey";
+                        document.getElementById("finalCommit").style.cursor = "none";
                     }
                     if(moment(nowTime).isAfter(primaryTime)){        //9月19日后
                         document.getElementById("trainBtn").disabled = false;
                         document.getElementById("primaryBtn").disabled = false;
+                        document.getElementById("trainA").href = "files/训练数据集.json";
+                        document.getElementById("primaryA").href = "files/训练数据集.json";
+                        document.getElementById("trainA").download="训练数据集.json";
+                        document.getElementById("primaryA").download="训练数据集.json";
+
+                        document.getElementById("trainCommit").href = "pages/resultCommit.html?id=0";
+                        document.getElementById("primaryCommit").href = "pages/resultCommit.html?id=1";
+                        document.getElementById("finalCommit").style.color = "lightgrey";
+                        document.getElementById("finalCommit").style.cursor = "none";
                     }
                     if(moment(nowTime).isAfter(FinalTime)){        //10月27日后
                         document.getElementById("trainBtn").disabled = false;
                         document.getElementById("primaryBtn").disabled = false;
                         document.getElementById("finalBtn").disabled = false;
+                        document.getElementById("trainA").href = "files/训练数据集.json";
+                        document.getElementById("primaryA").href = "files/训练数据集.json";
+                        document.getElementById("finalA").href = "files/训练数据集.json";
+                        document.getElementById("trainA").download="训练数据集.json";
+                        document.getElementById("primaryA").download="训练数据集.json";
+                        document.getElementById("finalA").download="训练数据集.json";
+
+                        document.getElementById("trainCommit").href = "pages/resultCommit.html?id=0";
+                        document.getElementById("primaryCommit").href = "pages/resultCommit.html?id=1";
+                        document.getElementById("finalCommit").href = "pages/resultCommit.html?id=2";
                     }
 
                     document.getElementById("time").innerHTML = "服务器时间是："+nowTime.getFullYear()+"-"+(nowTime.getMonth()+1)+"-"+nowTime.getDate()+" "+nowTime.getHours()+":"+nowTime.getMinutes()+":"+nowTime.getSeconds();
