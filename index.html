@@ -502,7 +502,7 @@
 
                                     <div class="col-md-6">训练集</div>
                                     <div class="col-md-4">
-                                        <a href="files/训练数据集.json" download="训练数据集.json"><button class="btn downloadBtn" type="button" onclick="validatePwd()">下载</button></a>
+                                        <a href="files/训练数据集.json" download="训练数据集.json"><button class="btn downloadBtn" id="trainBtn"  disabled="disabled" type="button" onclick="validatePwd()">下载</button></a>
                                     </div>
 
                                 </li>
@@ -513,7 +513,7 @@
 
                                     <div class="col-md-6">初赛数据</div>
                                     <div class="col-md-4">
-                                        <a href="files/训练数据集.json" download="训练数据集.json"><button class="btn downloadBtn" type="button" onclick="validatePwd()">下载</button></a>
+                                        <a href="files/训练数据集.json" download="训练数据集.json"><button class="btn downloadBtn" id="primaryBtn"  disabled="disabled" type="button" onclick="validatePwd()">下载</button></a>
                                     </div>
 
                                 </li>
@@ -524,7 +524,7 @@
 
                                     <div class="col-md-6">决赛数据</div>
                                     <div class="col-md-4">
-                                        <a href="files/训练数据集.json" download="训练数据集.json"><button class="btn btn-primary downloadBtn" type="button" onclick="validatePwd()">下载</button></a>
+                                        <a href="files/训练数据集.json" download="训练数据集.json"><button class="btn downloadBtn" id="finalBtn"   disabled="disabled" type="button" onclick="validatePwd()">下载</button></a>
                                     </div>
 
                                 </li>
@@ -954,7 +954,7 @@
         </div>
     </div>
 </section>-->
-
+<p id="time"></p>
 <!-- 底部 -->
 <footer id="footer">
     <!-- .footer start -->
@@ -989,7 +989,11 @@
 <script src="js/jquery.cookie.js"></script>
 <script type="text/javascript" src="js/jquery.base64.js"></script>
 <script src="js/globalIP.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.19.4/moment.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.19.4/moment-with-locales.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.19.4/locale/zh-cn.js"></script>
 <script>
+    let nowTime;
     window.onload = function () {
         let myTeamId = $.cookie("myTeamId");
         let username = $.cookie("myUsername");
@@ -1016,6 +1020,56 @@
                 //alert("请求错误！");
             }
         });
+
+        //获取服务器时间
+        ajax()
+        function ajax(option){
+            let xhr = null;
+            if(window.XMLHttpRequest){
+                xhr = new window.XMLHttpRequest();
+            }else{ // ie
+                xhr = new ActiveObject("Microsoft")
+            }
+            // 通过get的方式请求当前文件
+            xhr.open("get","/");
+            xhr.send(null);
+            // 监听请求状态变化
+            xhr.onreadystatechange = function(){
+                let time = null;
+                    //curDate = null;
+                if(xhr.readyState===2){
+                    // 获取响应头里的时间戳
+                    time = xhr.getResponseHeader("Date");
+                    console.log(xhr.getAllResponseHeaders())
+                    nowTime = new Date(time);
+                    console.log(moment().format());
+
+                    /*真实时间
+                    let trainTime = moment(new Date(2018, 7, 1)).format();
+                    let primaryTime = moment(new Date(2018, 8, 19)).format();
+                    let FinalTime = moment(new Date(2018, 9, 27)).format();*/
+                    let trainTime = moment(new Date(2018, 6, 23)).format();
+                    let primaryTime = moment(new Date(2018, 6, 23)).format();
+                    let FinalTime = moment(new Date(2018, 6, 24)).format();
+                    console.log(trainTime);
+                    //moment('2010-10-20').isAfter('2010-10-19');
+                    if(moment(nowTime).isAfter(trainTime)){        //8月1日后
+                        document.getElementById("trainBtn").disabled = false;
+                    }
+                    if(moment(nowTime).isAfter(primaryTime)){        //9月19日后
+                        document.getElementById("trainBtn").disabled = false;
+                        document.getElementById("primaryBtn").disabled = false;
+                    }
+                    if(moment(nowTime).isAfter(FinalTime)){        //10月27日后
+                        document.getElementById("trainBtn").disabled = false;
+                        document.getElementById("primaryBtn").disabled = false;
+                        document.getElementById("finalBtn").disabled = false;
+                    }
+
+                    document.getElementById("time").innerHTML = "服务器时间是："+nowTime.getFullYear()+"-"+(nowTime.getMonth()+1)+"-"+nowTime.getDate()+" "+nowTime.getHours()+":"+nowTime.getMinutes()+":"+nowTime.getSeconds();
+                }
+            }
+        }
 
         // 初始化内容
         let loginName = document.getElementById("loginName");
