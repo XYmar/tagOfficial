@@ -352,8 +352,17 @@
             success: function (result) {
                 let data = result.data;
 
-                document.getElementById('bleu').innerHTML = data.bleu4ScoreF.toFixed(2) + "%";
-                document.getElementById('rouge').innerHTML = data.rougelScoreF.toFixed(2) + "%";
+                if(id === "0"){
+                    document.getElementById('bleu').innerHTML = data.bleu4ScoreT.toFixed(2) + "%";
+                    document.getElementById('rouge').innerHTML = data.rougelScoreT.toFixed(2) + "%";
+                }else if(id === "1"){
+                    document.getElementById('bleu').innerHTML = data.bleu4ScoreP.toFixed(2) + "%";
+                    document.getElementById('rouge').innerHTML = data.rougelScoreP.toFixed(2) + "%";
+                }else if(id === "2"){
+                    document.getElementById('bleu').innerHTML = data.bleu4ScoreF.toFixed(2) + "%";
+                    document.getElementById('rouge').innerHTML = data.rougelScoreF.toFixed(2) + "%";
+                }
+
             },
             error: function (error) {
                 let notifyMessage = error.responseJSON.message
@@ -384,6 +393,7 @@
             },
             timeout : 5000,
             success: function (result) {
+                alert("提交成功");
                 resetAll();
                 getTrainingScore();
             },
