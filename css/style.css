@@ -531,6 +531,20 @@ text-align:center;
 	padding-top: 5px;
 }
 
+.downloadBtn {
+	background-color: #428bca;
+	color: #ffff;
+	font-size: 12px;
+	min-width: 100px;
+	padding: 6px 15px;
+}
+.downloadBtn:hover{
+	background-color: #11b9ca !important;;
+	color: #ffff !important;;
+	font-size: 12px !important;;
+	min-width: 100px !important;;
+	padding: 6px 15px !important;
+}
 /* Pills
 ---------------------------------- */
 .nav-pills > li.active > a,
@@ -568,7 +582,7 @@ text-align:center;
 }
 
 .newUl li:hover{
-	color: #00aff0;
+	/*color: #00aff0;*/
 }
 /* Forms
 ---------------------------------- */
