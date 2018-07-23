@@ -328,16 +328,15 @@
         let target = e.target || e.srcElement;
         let delDiv = target.parentNode.parentNode;
         let id1 = delDiv.parentNode.id;
-        let id2 = delDiv.parentNode.parentNode.lastElementChild.lastElementChild.lastElementChild.id;
+        //let id2 = delDiv.parentNode.parentNode.lastElementChild.lastElementChild.lastElementChild.id;
         console.log(id1);
         console.log("删除的div----");
         console.log(delDiv.parentNode.parentNode.lastElementChild.lastElementChild.lastElementChild);
         console.log();
-        console.log(id2);
         let $fileArea = document.getElementById(id1);
         console.log($fileArea);
         $fileArea.removeChild(delDiv);
-        let fileCont = document.getElementById(id2);
+        let fileCont = document.getElementById("file1Cont");
         fileCont.value = '';
     }
 
