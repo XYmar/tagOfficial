@@ -34,8 +34,7 @@
 <div class="container">
     <div class="row main-content">
         <div class="col-md-12 toTop">
-            <h3 class="title-main">
-                训练提交
+            <h3 class="title-main" id="commitTitle">
             </h3>
             <div class="row">
                 <hr>
@@ -260,11 +259,19 @@
     let password = $.base64.decode(password0);
     let token = username + ':' + password;
     let editId = '';
-
+    let id = getUrlParam('id');
     window.onload=function() {
         /*if ((username != null) && (username !== "null")) {
             if(role !== 'admin'){*/
 
+                //根据不同阶段显示不同标题
+                if(id === "0"){
+                    document.getElementById("commitTitle").innerHTML = "训练结果提交"
+                }else if(id === "1"){
+                    document.getElementById("commitTitle").innerHTML = "初赛结果提交"
+                }else if(id === "2"){
+                    document.getElementById("commitTitle").innerHTML = "决赛结果提交"
+                }
                 resetAll();
                 getTrainingScore();
                 getPreliminaryScoreScore();
@@ -281,13 +288,13 @@
                         handleFile(file, divId);
                     }
                 }
-                file2.onchange = function(){
+                /*file2.onchange = function(){
                     if(file2.value.length !== 0){
                         let file = this.files[0];
                         let divId = "file2";
                         handleFile(file, divId);
                     }
-                }
+                }*/
 
             /*}else {
                 document.getElementById("showBody").style.display = "none";
@@ -534,6 +541,14 @@
     function precentFormatter(value) {
         return value.toFixed(2) + "%";
     }
+
+    //获取URL参数
+    function getUrlParam(name) {
+        let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); // 构造一个含有目标参数的正则表达式对象
+        let r = window.location.search.substr(1).match(reg);  // 匹配目标参数
+        if (r != null) return unescape(r[2]); return null; // 返回参数值
+    }
+
     function reset(){
         $("#inputLname").val('');
         $("#inputLOld").val('');
