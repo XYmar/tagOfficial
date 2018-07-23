@@ -954,7 +954,6 @@
         </div>
     </div>
 </section>-->
-<p id="time"></p>
 <!-- 底部 -->
 <footer id="footer">
     <!-- .footer start -->
@@ -1055,6 +1054,8 @@
                     //moment('2010-10-20').isAfter('2010-10-19');
                     if(moment(nowTime).isAfter(trainTime)){        //8月1日后
                         document.getElementById("trainBtn").disabled = false;
+                        document.getElementById("primaryBtn").style.background = "lightgrey";
+                        document.getElementById("finalBtn").style.background = "lightgrey";
 
                         document.getElementById("trainA").href = "files/训练数据集.json";
                         document.getElementById("trainA").download="训练数据集.json";
@@ -1064,10 +1065,23 @@
                         document.getElementById("primaryCommit").style.cursor = "none";
                         document.getElementById("finalCommit").style.color = "lightgrey";
                         document.getElementById("finalCommit").style.cursor = "none";
+                    }else{                                       //8月1日前
+                        document.getElementById("trainBtn").style.background = "lightgrey";
+                        document.getElementById("primaryBtn").style.background = "lightgrey";
+                        document.getElementById("finalBtn").style.background = "lightgrey";
+
+                        document.getElementById("trainCommit").style.color = "lightgrey";
+                        document.getElementById("trainCommit").style.cursor = "none";
+                        document.getElementById("primaryCommit").style.color = "lightgrey";
+                        document.getElementById("primaryCommit").style.cursor = "none";
+                        document.getElementById("finalCommit").style.color = "lightgrey";
+                        document.getElementById("finalCommit").style.cursor = "none";
                     }
                     if(moment(nowTime).isAfter(primaryTime)){        //9月19日后
                         document.getElementById("trainBtn").disabled = false;
                         document.getElementById("primaryBtn").disabled = false;
+                        document.getElementById("finalBtn").style.background = "lightgrey";
+
                         document.getElementById("trainA").href = "files/训练数据集.json";
                         document.getElementById("primaryA").href = "files/训练数据集.json";
                         document.getElementById("trainA").download="训练数据集.json";
