@@ -1053,62 +1053,48 @@
                     console.log(trainTime);
                     //moment('2010-10-20').isAfter('2010-10-19');
                     if(moment(nowTime).isAfter(trainTime)){        //8月1日后
-                        document.getElementById("trainBtn").disabled = false;
-                        document.getElementById("primaryBtn").style.background = "lightgrey";
-                        document.getElementById("finalBtn").style.background = "lightgrey";
+                        undisabled("trainBtn");
+                        unclickBtn("primaryBtn");
+                        unclickBtn("finalBtn");
+                        downloadA("trainA");
 
-                        document.getElementById("trainA").href = "files/训练数据集.json";
-                        document.getElementById("trainA").download="训练数据集.json";
-
-                        document.getElementById("trainCommit").href = "pages/resultCommit.html?id=0";
-                        document.getElementById("primaryCommit").style.color = "lightgrey";
-                        document.getElementById("primaryCommit").style.cursor = "none";
-                        document.getElementById("finalCommit").style.color = "lightgrey";
-                        document.getElementById("finalCommit").style.cursor = "none";
+                        commitA("trainCommit");
+                        uncommit("primaryCommit");
+                        uncommit("finalCommit");
                     }else{                                       //8月1日前
-                        document.getElementById("trainBtn").style.background = "lightgrey";
-                        document.getElementById("primaryBtn").style.background = "lightgrey";
-                        document.getElementById("finalBtn").style.background = "lightgrey";
+                        unclickBtn("trainBtn");
+                        unclickBtn("primaryBtn");
+                        unclickBtn("finalBtn");
 
-                        document.getElementById("trainCommit").style.color = "lightgrey";
-                        document.getElementById("trainCommit").style.cursor = "none";
-                        document.getElementById("primaryCommit").style.color = "lightgrey";
-                        document.getElementById("primaryCommit").style.cursor = "none";
-                        document.getElementById("finalCommit").style.color = "lightgrey";
-                        document.getElementById("finalCommit").style.cursor = "none";
+                        uncommit("trainCommit");
+                        uncommit("primaryCommit");
+                        uncommit("finalCommit");
                     }
                     if(moment(nowTime).isAfter(primaryTime)){        //9月19日后
-                        document.getElementById("trainBtn").disabled = false;
-                        document.getElementById("primaryBtn").disabled = false;
-                        document.getElementById("finalBtn").style.background = "lightgrey";
+                        undisabled("trainBtn");
+                        undisabled("primaryBtn");
+                        unclickBtn("finalBtn");
 
-                        document.getElementById("trainA").href = "files/训练数据集.json";
-                        document.getElementById("primaryA").href = "files/训练数据集.json";
-                        document.getElementById("trainA").download="训练数据集.json";
-                        document.getElementById("primaryA").download="训练数据集.json";
+                        downloadA("trainA");
+                        downloadA("primaryA");
 
-                        document.getElementById("trainCommit").href = "pages/resultCommit.html?id=0";
-                        document.getElementById("primaryCommit").href = "pages/resultCommit.html?id=1";
-                        document.getElementById("finalCommit").style.color = "lightgrey";
-                        document.getElementById("finalCommit").style.cursor = "none";
+                        commitA("trainCommit");
+                        commitA("primaryCommit");
+                        uncommit("finalCommit");
                     }
                     if(moment(nowTime).isAfter(FinalTime)){        //10月27日后
-                        document.getElementById("trainBtn").disabled = false;
-                        document.getElementById("primaryBtn").disabled = false;
-                        document.getElementById("finalBtn").disabled = false;
-                        document.getElementById("trainA").href = "files/训练数据集.json";
-                        document.getElementById("primaryA").href = "files/训练数据集.json";
-                        document.getElementById("finalA").href = "files/训练数据集.json";
-                        document.getElementById("trainA").download="训练数据集.json";
-                        document.getElementById("primaryA").download="训练数据集.json";
-                        document.getElementById("finalA").download="训练数据集.json";
+                        undisabled("trainBtn");
+                        undisabled("primaryBtn");
+                        undisabled("finalBtn");
 
-                        document.getElementById("trainCommit").href = "pages/resultCommit.html?id=0";
-                        document.getElementById("primaryCommit").href = "pages/resultCommit.html?id=1";
-                        document.getElementById("finalCommit").href = "pages/resultCommit.html?id=2";
+                        downloadA("trainA");
+                        downloadA("primaryA");
+                        downloadA("finalA");
+
+                        commitA("trainCommit");
+                        commitA("primaryCommit");
+                        commitA("finalCommit");
                     }
-
-                    document.getElementById("time").innerHTML = "服务器时间是："+nowTime.getFullYear()+"-"+(nowTime.getMonth()+1)+"-"+nowTime.getDate()+" "+nowTime.getHours()+":"+nowTime.getMinutes()+":"+nowTime.getSeconds();
                 }
             }
         }
@@ -1174,6 +1160,35 @@
         ifDown.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"
         //ifUpload.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"
         ifUpload.innerHTML = "<p>暂未开放</p>"*/
+    }
+
+    function undisabled(id){                   //下载按钮变为可点击
+        document.getElementById(id).disabled = false;
+    }
+
+    function unclickBtn(id){                   //不可下载时按钮的样式
+        document.getElementById(id).style.background = "lightgrey";
+    }
+
+    function downloadA(id){                     //可下载时，下载的a标签
+        document.getElementById(id).href = "files/训练数据集.json";
+        document.getElementById(id).download="训练数据集.json";
+    }
+
+    function uncommit(id){                      //不可提交时链接的样式
+        document.getElementById(id).style.color = "lightgrey";
+        document.getElementById(id).style.cursor = "none";
+    }
+
+    function commitA(id) {
+        if(id === "trainCommit"){
+            document.getElementById(id).href = "pages/resultCommit.html?id=0";
+        }else if(id === "primaryCommit"){
+            document.getElementById(id).href = "pages/resultCommit.html?id=1";
+        }else if(id === "finalCommit"){
+            document.getElementById(id).href = "pages/resultCommit.html?id=2";
+        }
+
     }
 </script>
 </body>
