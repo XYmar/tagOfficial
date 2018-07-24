@@ -621,9 +621,6 @@
             dataType: "json",
             data: { type: 0 },
             url: IpAll() + "users/" + myTeamId + "/scorelogsbytype" ,
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-            },
             success: function (result) {
                 let str = "";
                 let data = result.data;
@@ -669,9 +666,6 @@
             dataType: "json",
             data: { type: 1 },
             url: IpAll() + "users/" + myTeamId + "/scorelogsbytype" ,
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-            },
             success: function (result) {
                 let str = "";
                 let data = result.data;
@@ -717,9 +711,6 @@
             dataType: "json",
             data: { type: 2 },
             url: IpAll() + "users/" + myTeamId + "/scorelogsbytype" ,
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-            },
             success: function (result) {
                 let str = "";
                 let data = result.data;
