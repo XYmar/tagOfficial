@@ -190,6 +190,10 @@
 <script type="text/javascript" src="../js/jquery.base64.js"></script>
 <script src="../js/globalIP.js"></script>
 <script type="text/javascript">
+    let isTrainLoaded = false;
+    let isPrimaryLoaded = false;
+    let isFinalLoaded = false;
+
     window.onload=function(){
         let username = $.cookie("myUsername");
         let password0 = $.cookie("myWPa");
@@ -413,9 +417,9 @@
                     }
                 }
 
-                getTrainingScore();
-                getPreliminaryScoreScore();
-                getFinalScore();
+                getTrainingScore({"init": 1});
+                getPreliminaryScoreScore({"init": 1});
+                getFinalScore({"init": 1});
             }else{
                 document.getElementById("showBody").style.display = "none";
                 window.location.href="../index.html";
@@ -428,12 +432,15 @@
     }
 
     //训练成绩
-    function getTrainingScore(){
+    function getTrainingScore(opts){
         $.ajax({
             type: "GET",
             dataType: "json",
             data: { type: 0 },
             url: IpAll() + "users/ranking" ,
+            beforeSend: function() {
+                isTrainLoaded = false;
+            },
             success: function (result) {
                 let data = result.data;
                 console.log(data);
@@ -463,20 +470,30 @@
                 });
 
             },
+            complete: function() {
+                isTrainLoaded = true;
+            },
             error : function(error) {
                 let notifyMessage = error.responseJSON.message
                 alert(notifyMessage)
             }
         });
     }
+    getTrainingScore({"init": 1});
+    setInterval(function() {
+        isTrainLoaded && getTrainingScore({"init": 0});
+    }, 10000);
 
     //初赛成绩
-    function getPreliminaryScoreScore(){
+    function getPreliminaryScoreScore(opts){
         $.ajax({
             type: "GET",
             dataType: "json",
             data: { type: 1 },
             url: IpAll() + "users/ranking" ,
+            beforeSend: function() {
+                isPrimaryLoaded = false;
+            },
             success: function (result) {
                 let data = result.data;
                 console.log(data);
@@ -506,20 +523,30 @@
                 });
 
             },
+            complete: function() {
+                isPrimaryLoaded = true;
+            },
             error : function(error) {
                 let notifyMessage = error.responseJSON.message
                 alert(notifyMessage)
             }
         });
     }
+    getPreliminaryScoreScore({"init": 1});
+    setInterval(function(opts) {
+        isPrimaryLoaded && getPreliminaryScoreScore({"init": 0});
+    }, 10000);
 
     //决赛成绩
-    function getFinalScore(){
+    function getFinalScore(opts){
         $.ajax({
             type: "GET",
             dataType: "json",
             data: { type: 2 },
             url: IpAll() + "users/ranking" ,
+            beforeSend: function() {
+                isFinalLoaded = false;
+            },
             success: function (result) {
                 let data = result.data;
                 console.log(data);
@@ -549,16 +576,24 @@
                 });
 
             },
+            complete: function() {
+                isFinalLoaded = true;
+            },
             error : function(error) {
                 let notifyMessage = error.responseJSON.message
                 alert(notifyMessage)
             }
         });
     }
+    getFinalScore({"init": 1});
+    setInterval(function() {
+        isFinalLoaded && getFinalScore({"init": 0});
+    }, 10000);
 
     function precentFormatter(value) {
         return value.toFixed(2) + "%";
     }
+
 </script>
 </body>
 </html>
