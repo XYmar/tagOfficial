@@ -251,6 +251,7 @@
 <script src="../js/globalIP.js"></script>
 <script src="../bootstrap-table/bootstrap-table.min.js"></script>
 <script src="../bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+<script src="../layer/layer.js"></script>
 <script type="text/javascript">
     let role = $.cookie("myRole");
     let myTeamId = $.cookie("myTeamId");
@@ -371,6 +372,10 @@
     }
 
     function subFiles() {
+        layer.msg('正在计算...', {
+            icon: 16
+            ,shade: 0.01
+        });
         console.log(document.getElementById("file1Cont").files[0]);
         let file1 = document.getElementById("file1Cont").files[0];  //获取文件
         let formData = new FormData();
@@ -381,7 +386,7 @@
             url: IpAll() + "users/" + myTeamId + "/commitfile",
             data: formData,
             type: "PUT",
-            async:false,
+            async: true,
             dataType: "json",
             cache: false,
             processData: false,
@@ -393,6 +398,7 @@
             timeout : 5000,
             success: function (result) {
                 alert("提交成功");
+                layer.closeAll('loading');
                 resetAll();
                 getTrainingScore();
             },
