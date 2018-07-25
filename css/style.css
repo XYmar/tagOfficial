@@ -107,7 +107,7 @@ blockquote {
 	padding-left: 0;
 	padding-right: 0;
 }
-.title {
+.title0 {
 	margin-top: 0;
 }
 
@@ -587,10 +587,11 @@ text-align:center;
 /* Forms
 ---------------------------------- */
 .form-control {
-	height: 45px;
+	/*height: 45px;*/
+    height: 34px;
 	-webkit-border-radius: 0px;
 	-moz-border-radius: 0px;
-	border-radius: 0px;
+	border-radius: 4px;
 }
 .form-control-feedback {
 	color: #cccccc;

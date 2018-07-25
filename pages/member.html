@@ -531,24 +531,6 @@
                 getPreliminaryScoreScore();
                 getFinalScore();
 
-                //添加文件
-                let file1 = document.getElementById("file1Cont");
-                let file2 = document.getElementById("file2Cont");
-                file1.onchange = function(){
-                    if(file1.value.length !== 0){
-                        let file = this.files[0];
-                        let divId = "file1";
-                        handleFile(file, divId);
-                    }
-                }
-                file2.onchange = function(){
-                    if(file2.value.length !== 0){
-                        let file = this.files[0];
-                        let divId = "file2";
-                        handleFile(file, divId);
-                    }
-                }
-
             /*}else {
                 document.getElementById("showBody").style.display = "none";
                 window.location.href="../index.html";
@@ -558,41 +540,6 @@
             window.location.href="login.html";
         }*/
     };
-    function handleFile(file, divId){
-        //获取文件名称
-        let fileName = file.name;
-        url=window.URL.createObjectURL(file);  // 得到bolb对象路径，可当成普通的文件路径一样使用，赋值给src;
-        //清空文件列表
-        let fileArea = document.getElementById(divId);
-        fileArea.innerHTML = '';
-        //添加到文件列表
-        let html = '<div class="col-md-12 idPic">' +
-            '<p class="fileName col-md-5 col-xs-12 idPic">' + fileName + '</p>' +
-            '<div class="col-md-1 col-xs-3 idPic"><span class="delFile btn btn-danger btn-mini disableAll newAddFile" onclick="delFile(event)"' +
-            ' style="cursor:pointer;padding: 3px 8px;font-size: 11px;border-radius: 3px;">删除</span></div>' +
-            '</div>';
-
-        let $fileArea = document.getElementById(divId);
-        $(html).appendTo($fileArea);
-    }
-
-    function delFile(event){
-        let e = event || window.event;
-        let target = e.target || e.srcElement;
-        let delDiv = target.parentNode.parentNode;
-        let id1 = delDiv.parentNode.id;
-        let id2 = delDiv.parentNode.parentNode.lastElementChild.lastElementChild.lastElementChild.id;
-        console.log(id1);
-        console.log("删除的div----");
-        console.log(delDiv.parentNode.parentNode.lastElementChild.lastElementChild.lastElementChild);
-        console.log();
-        console.log(id2);
-        let $fileArea = document.getElementById(id1);
-        console.log($fileArea);
-        $fileArea.removeChild(delDiv);
-        let fileCont = document.getElementById(id2);
-        fileCont.value = '';
-    }
 
     function resetAll() {
         $.ajax({
@@ -616,8 +563,6 @@
                 document.getElementById('password').value = data.password;
                 document.getElementById("email").value = data.email;
                 document.getElementById('inputLsch').value = data.organization;
-                document.getElementById('bleu').innerHTML = data.bleu_4_Score.toFixed(2) + "%";
-                document.getElementById('rouge').innerHTML = data.rouge_Score.toFixed(2) + "%";
             },
             error: function (error) {
                 let notifyMessage = error.responseJSON.message
@@ -676,9 +621,6 @@
             dataType: "json",
             data: { type: 0 },
             url: IpAll() + "users/" + myTeamId + "/scorelogsbytype" ,
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-            },
             success: function (result) {
                 let str = "";
                 let data = result.data;
@@ -693,11 +635,11 @@
                     search:true,
                     columns: [{
                         field: 'bleu_4_Score',
-                        title: 'BLEU_4',
+                        title: 'BLEU-4',
                         formatter: precentFormatter
                     }, {
                         field: 'rouge_Score',
-                        title: 'ROUGE',
+                        title: 'ROUGE-L',
                         formatter: precentFormatter
                     },  {
                         field: 'createTime',
@@ -724,9 +666,6 @@
             dataType: "json",
             data: { type: 1 },
             url: IpAll() + "users/" + myTeamId + "/scorelogsbytype" ,
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-            },
             success: function (result) {
                 let str = "";
                 let data = result.data;
@@ -741,11 +680,11 @@
                     search:true,
                     columns: [{
                         field: 'bleu_4_Score',
-                        title: 'BLEU_4',
+                        title: 'BLEU-4',
                         formatter: precentFormatter
                     }, {
                         field: 'rouge_Score',
-                        title: 'ROUGE',
+                        title: 'ROUGE-L',
                         formatter: precentFormatter
                     },  {
                         field: 'createTime',
@@ -772,9 +711,6 @@
             dataType: "json",
             data: { type: 2 },
             url: IpAll() + "users/" + myTeamId + "/scorelogsbytype" ,
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-            },
             success: function (result) {
                 let str = "";
                 let data = result.data;
@@ -789,11 +725,11 @@
                     search:true,
                     columns: [{
                         field: 'bleu_4_Score',
-                        title: 'BLEU_4',
+                        title: 'BLEU-4',
                         formatter: precentFormatter
                     }, {
                         field: 'rouge_Score',
-                        title: 'ROUGE',
+                        title: 'ROUGE-L',
                         formatter: precentFormatter
                     },  {
                         field: 'createTime',

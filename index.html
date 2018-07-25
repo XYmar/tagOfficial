@@ -13,7 +13,10 @@
     <link href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
     <link href="css/animations.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="bootstrap-table/bootstrap-table.min.css">
+    <link href="pages/apply.css" rel="stylesheet" type="text/css" />
     <link href="css/style.min.css" rel="stylesheet">
+
 </head>
 <body class="no-trans">
 <div class="scrollToTop"><i class="icon-up-open-big"></i></div>
@@ -140,7 +143,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 id="production" class="title text-center">比赛介绍</h1>
+                <h1 id="production" class="title0 text-center">比赛介绍</h1>
                 <p class="lead text-center">
                     <strong>包括： </strong>参赛报名、组织机构、竞赛任务、赛程安排、奖项设置。
                 </p>
@@ -484,9 +487,9 @@
 <!-- 下载数据 -->
 <section class="section secPadding">
     <div class="container">
-        <h1 class="text-center title" id="download">下载数据</h1>
+        <h1 class="text-center title0" id="download">下载数据</h1>
         <div class="separator"></div>
-        <p class="lead text-center">按不同时间开放相应的下载功能</p>
+        <p class="lead text-center" id="downloadMess"></p>
         <br>
         <div class="row no-view" data-animation-effect="fadeIn">
             <div class="col-md-12">
@@ -535,7 +538,7 @@
 
                                     <div class="col-md-6">竞赛细则</div>
                                     <div class="col-md-4">
-                                        <a href="files/训练数据集.json" download="训练数据集.json"><button class="btn btn-primary downloadBtn" type="button" onclick="validatePwd()">下载</button></a>
+                                        <a href="files/训练数据集.json" download="训练数据集.json"><button class="btn downloadBtn" type="button" onclick="validatePwd()">下载</button></a>
                                     </div>
 
                                 </li>
@@ -551,9 +554,9 @@
 <!-- 结果提交 -->
 <section class="section secPadding">
     <div class="container">
-        <h1 class="text-center title" id="commit">结果提交</h1>
+        <h1 class="text-center title0" id="commit">结果提交</h1>
         <div class="separator"></div>
-        <p class="lead text-center">按不同时间开放相应的提交功能</p>
+        <p class="lead text-center" id="commitMess"></p>
         <br>
         <div class="row no-view" data-animation-effect="fadeIn">
             <div class="col-md-12">
@@ -591,7 +594,7 @@
 <section id="ranking" class="price-table secPadding">
     <div class="container text-center">
         <div class="heading">
-            <h1 class="text-center title" id="">在线评估结果排行榜</h1>
+            <h1 class="text-center title0" id="">在线评估结果排行榜</h1>
             <div class="separator"></div>
             <!--<p class="lead text-center">Lorem ipsum dolor sit amet laudantium incidunt ut laboriosam.</p>-->
             <br>
@@ -599,8 +602,46 @@
         <div class="row">
             <div class="col-sm-12 rankTable">
                 <!--<div class="panel panel-default">-->
+                <div class="col-md-12 group-info" style="padding: 10px 10px;">
 
-                <div class="tabbable" id="tabs-777725"><!-- Only required for left/right tabs -->
+                    <!-- tab页开始 -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#trainingScoreInfo" aria-controls="home" role="tab" data-toggle="tab">训练成绩</a></li>
+                        <li role="presentation"><a href="#preliminaryScoreInfo" aria-controls="profile" role="tab" data-toggle="tab">初赛成绩</a></li>
+                        <li role="presentation"><a href="#finalScoreInfo" aria-controls="profile" role="tab" data-toggle="tab">决赛成绩</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="trainingScoreInfo">
+                            <div class="col-md-12" style="padding: 0">
+                                <div>
+                                    <table id="trainingScoreInfoTable" style="height: 100px;">
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="preliminaryScoreInfo">
+                            <div class="col-md-12" style="padding: 0">
+                                <div>
+                                    <table id="preliminaryScoreInfoTable">
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="finalScoreInfo">
+                            <div class="col-md-12" style="padding: 0">
+                                <div>
+                                    <table id="finalScoreInfoTable">
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- tab页结束 -->
+
+                </div>
+                <!--<div class="tabbable" id="tabs-777725">&lt;!&ndash; Only required for left/right tabs &ndash;&gt;
                     <ul class="nav nav-tabs">
                         <li class="active" style="cursor: pointer;"><a contenteditable="false" data-toggle="tab"
                                                                        href="#panel-709646">测试结果排行榜</a></li>
@@ -780,7 +821,7 @@
                             </table>
                         </div>
                     </div>
-                </div>
+                </div>-->
 
             </div>
         </div>
@@ -959,7 +1000,7 @@
     <!-- .footer start -->
     <div class="footer section" style="padding: 30px 0;">
         <div class="container">
-            <h1 class="title text-center" id="contact">联系我们</h1>
+            <h1 class="title0 text-center" id="contact">联系我们</h1>
             <div class="row">
                 <div class="col-sm-12">
                     <div class="footer-content">
@@ -988,17 +1029,20 @@
 <script src="js/jquery.cookie.js"></script>
 <script type="text/javascript" src="js/jquery.base64.js"></script>
 <script src="js/globalIP.js"></script>
+<script src="bootstrap-table/bootstrap-table.min.js"></script>
+<script src="bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
 <script src="https://cdn.bootcss.com/moment.js/2.19.4/moment.min.js"></script>
 <script src="https://cdn.bootcss.com/moment.js/2.19.4/moment-with-locales.js"></script>
 <script src="https://cdn.bootcss.com/moment.js/2.19.4/locale/zh-cn.js"></script>
 <script>
     let nowTime;
+    let myTeamId = $.cookie("myTeamId");
+    let username = $.cookie("myUsername");
+    let password0 = $.cookie("myWPa");
+    let password = $.base64.decode(password0);
+    let token = username + ':' + password;
     window.onload = function () {
-        let myTeamId = $.cookie("myTeamId");
-        let username = $.cookie("myUsername");
-        let password0 = $.cookie("myWPa");
-        let password = $.base64.decode(password0);
-        let token = username + ':' + password;
+
         //查询用户状态
         $.ajax({
             //几个参数需要注意一下
@@ -1010,7 +1054,7 @@
             },
             success: function (result) {
                 if(result.data.roleEntities.length === 2){
-                    $.cookie("myRole",result.data.roleEntities[1].name,{path:'/'});
+                    $.cookie("myRole","admin",{path:'/'});
                 }else {
                     $.cookie("myRole",result.data.roleEntities[0].name,{path:'/'});
                 }
@@ -1020,106 +1064,13 @@
             }
         });
 
-        //获取服务器时间
-
-        function ajax(role){
-            let xhr = null;
-            if(window.XMLHttpRequest){
-                xhr = new window.XMLHttpRequest();
-            }else{ // ie
-                xhr = new ActiveObject("Microsoft")
-            }
-            // 通过get的方式请求当前文件
-            xhr.open("get","/");
-            xhr.send(null);
-            // 监听请求状态变化
-            xhr.onreadystatechange = function(){
-                let time = null;
-                    //curDate = null;
-                if(xhr.readyState===2){
-                    // 获取响应头里的时间戳
-                    time = xhr.getResponseHeader("Date");
-                    console.log(xhr.getAllResponseHeaders())
-                    nowTime = new Date(time);
-                    console.log(moment().format());
-
-                    /*真实时间
-                    let trainTime = moment(new Date(2018, 7, 1)).format();
-                    let primaryTime = moment(new Date(2018, 8, 19)).format();
-                    let FinalTime = moment(new Date(2018, 9, 27)).format();*/
-                    let trainTime = moment(new Date(2018, 6, 23)).format();
-                    let primaryTime = moment(new Date(2018, 6, 24)).format();
-                    let FinalTime = moment(new Date(2018, 6, 24)).format();
-                    console.log(trainTime);
-                    //moment('2010-10-20').isAfter('2010-10-19');
-                    console.log(role);
-                    if(moment(nowTime).isBefore(trainTime)|| role === "null" || role === "user" || role === "denied"){         //8月1日前、未审核、被拒绝
-                        unclickBtn("trainBtn");
-                        unclickBtn("primaryBtn");
-                        unclickBtn("finalBtn");
-
-                        uncommit("trainCommit");
-                        uncommit("primaryCommit");
-                        uncommit("finalCommit");
-                    }else if(moment(nowTime).isAfter(trainTime)){        //8月1日后、管理员、已审核用户
-                        undisabled("trainBtn");
-                        unclickBtn("primaryBtn");
-                        unclickBtn("finalBtn");
-                        downloadA("trainA");
-
-                        if(role === "admin"){
-                            uncommit("trainCommit");
-                            uncommit("primaryCommit");
-                            uncommit("finalCommit");
-                        }else{
-                            commitA("trainCommit");
-                            uncommit("primaryCommit");
-                            uncommit("finalCommit");
-                        }
-                    }else if(moment(nowTime).isAfter(primaryTime)){        //9月19日后
-                        undisabled("trainBtn");
-                        undisabled("primaryBtn");
-                        unclickBtn("finalBtn");
-
-                        downloadA("trainA");
-                        downloadA("primaryA");
-
-                        if(role === "admin"){
-                            uncommit("trainCommit");
-                            uncommit("primaryCommit");
-                            uncommit("finalCommit");
-                        }else{
-                            commitA("trainCommit");
-                            commitA("primaryCommit");
-                            uncommit("finalCommit");
-                        }
-                    }else if(moment(nowTime).isAfter(FinalTime)){        //10月27日后
-                        undisabled("trainBtn");
-                        undisabled("primaryBtn");
-                        undisabled("finalBtn");
-
-                        downloadA("trainA");
-                        downloadA("primaryA");
-                        downloadA("finalA");
-
-                        if(role === "admin"){
-                            uncommit("trainCommit");
-                            uncommit("primaryCommit");
-                            uncommit("finalCommit");
-                        }else{
-                            commitA("trainCommit");
-                            commitA("primaryCommit");
-                            commitA("finalCommit");
-                        }
-                    }
-                }
-            }
-        }
 
         // 初始化内容
         let loginName = document.getElementById("loginName");
         let loginOut = document.getElementById("loginOut");
         let registAd = document.getElementById("registAd");
+        let downloadMess = document.getElementById("downloadMess");
+        let commitMess = document.getElementById("commitMess");
         /*let ifDown = document.getElementById("ifDown");
         let ifUpload = document.getElementById("ifUpload");*/
 
@@ -1152,15 +1103,119 @@
                 ifUpload.innerHTML = "<p>暂未开放</p>"*/
                 //ifUpload.innerHTML = "<p>审核通过才能进行提交操作</p>"
             }
+
             loginOut.innerHTML += "<a href='#'><sapn onclick='delCookie()' class='exit'>退出</sapn></a>";
+
+            downloadMess.innerHTML = "按不同时间开放相应的下载功能";
+            commitMess.innerHTML = "按不同时间开放相应的提交功能";
         } else {
             loginName.innerHTML = "";
             loginName.innerHTML += "<a href='pages/login.html'>登录/注册</a>";
             loginOut.innerHTML = "";
             ajax(myRole);
+            downloadMess.innerHTML = "请先登录";
+            commitMess.innerHTML = "请先登录";
             /*ifDown.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"
             //ifUpload.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"
             ifUpload.innerHTML = "<p>暂未开放</p>"*/
+        }
+
+        getTrainingScore();
+        getPreliminaryScoreScore();
+        getFinalScore();
+    }
+    //获取服务器时间
+    function ajax(role){
+        let xhr = null;
+        if(window.XMLHttpRequest){
+            xhr = new window.XMLHttpRequest();
+        }else{ // ie
+            xhr = new ActiveObject("Microsoft")
+        }
+        // 通过get的方式请求当前文件
+        xhr.open("get","/");
+        xhr.send(null);
+        // 监听请求状态变化
+        xhr.onreadystatechange = function(){
+            let time = null;
+            //curDate = null;
+            if(xhr.readyState===2){
+                // 获取响应头里的时间戳
+                time = xhr.getResponseHeader("Date");
+                console.log(xhr.getAllResponseHeaders())
+                nowTime = new Date(time);
+                console.log(moment().format());
+
+                /*真实时间
+                let trainTime = moment(new Date(2018, 7, 1)).format();
+                let primaryTime = moment(new Date(2018, 8, 19)).format();
+                let FinalTime = moment(new Date(2018, 9, 27)).format();*/
+                let trainTime = moment(new Date(2018, 6, 23)).format();
+                let primaryTime = moment(new Date(2018, 6, 24)).format();
+                let FinalTime = moment(new Date(2018, 6, 24)).format();
+                console.log(trainTime);
+                //moment('2010-10-20').isAfter('2010-10-19');
+                console.log(role);
+                if(moment(nowTime).isBefore(trainTime)|| role === "null" || role === "user" || role === "denied"){         //8月1日前、未审核、被拒绝
+                    unclickBtn("trainBtn");
+                    unclickBtn("primaryBtn");
+                    unclickBtn("finalBtn");
+
+                    uncommit("trainCommit");
+                    uncommit("primaryCommit");
+                    uncommit("finalCommit");
+                }else if(moment(nowTime).isAfter(trainTime)){        //8月1日后、管理员、已审核用户
+                    undisabled("trainBtn");
+                    unclickBtn("primaryBtn");
+                    unclickBtn("finalBtn");
+                    downloadA("trainA");
+
+                    if(role === "admin"){
+                        uncommit("trainCommit");
+                        uncommit("primaryCommit");
+                        uncommit("finalCommit");
+                    }else{
+                        commitA("trainCommit");
+                        uncommit("primaryCommit");
+                        uncommit("finalCommit");
+                    }
+                }else if(moment(nowTime).isAfter(primaryTime)){        //9月19日后
+                    undisabled("trainBtn");
+                    undisabled("primaryBtn");
+                    unclickBtn("finalBtn");
+
+                    downloadA("trainA");
+                    downloadA("primaryA");
+
+                    if(role === "admin"){
+                        uncommit("trainCommit");
+                        uncommit("primaryCommit");
+                        uncommit("finalCommit");
+                    }else{
+                        commitA("trainCommit");
+                        commitA("primaryCommit");
+                        uncommit("finalCommit");
+                    }
+                }else if(moment(nowTime).isAfter(FinalTime)){        //10月27日后
+                    undisabled("trainBtn");
+                    undisabled("primaryBtn");
+                    undisabled("finalBtn");
+
+                    downloadA("trainA");
+                    downloadA("primaryA");
+                    downloadA("finalA");
+
+                    if(role === "admin"){
+                        uncommit("trainCommit");
+                        uncommit("primaryCommit");
+                        uncommit("finalCommit");
+                    }else{
+                        commitA("trainCommit");
+                        commitA("primaryCommit");
+                        commitA("finalCommit");
+                    }
+                }
+            }
         }
     }
 
@@ -1171,10 +1226,16 @@
         let loginOut = document.getElementById("loginOut");
         let registAd = document.getElementById("registAd");
 
+        let downloadMess = document.getElementById("downloadMess");
+        let commitMess = document.getElementById("commitMess");
+
         loginName.innerHTML = "";
         loginName.innerHTML += "<a href='pages/login.html'>登录/注册</a>";
         loginOut.innerHTML = "";
         registAd.innerHTML = "";
+        ajax("null");
+        downloadMess.innerHTML = "请先登录";
+        commitMess.innerHTML = "请先登录";
         //登录后才可下载
         /*let ifDown = document.getElementById("ifDown");
         let ifUpload = document.getElementById("ifUpload");
@@ -1209,6 +1270,160 @@
         }else if(id === "finalCommit"){
             document.getElementById(id).href = "pages/resultCommit.html?id=2";
         }
+    }
+
+    //训练成绩
+    function getTrainingScore(){
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: { type: 0 },
+            url: IpAll() + "users/ranking" ,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+                console.log(data);
+                $("#trainingScoreInfoTable").bootstrapTable('destroy');
+                $('#trainingScoreInfoTable').bootstrapTable({
+                    sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination : true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30,40],        //可供选择的每页的行数（*）
+                    search:true,
+                    striped: true,
+                    columns: [{
+                        field: 'teamName',
+                        title: '队伍名称'
+                    },{
+                        field: 'bleu4ScoreT',
+                        title: 'BLEU-4',
+                        formatter: precentFormatter
+                    }, {
+                        field: 'rougelScoreT',
+                        title: 'ROUGE-L',
+                        formatter: precentFormatter
+                    },  {
+                        field: 'commitDateT',
+                        title: '提交日期',
+                        sortable: true
+                    }
+                    ],
+                    data: data
+                });
+
+            },
+            error : function(error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+
+    //初赛成绩
+    function getPreliminaryScoreScore(){
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: { type: 1 },
+            url: IpAll() + "users/ranking" ,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+                console.log(data);
+                $("#preliminaryScoreInfoTable").bootstrapTable('destroy');
+                $('#preliminaryScoreInfoTable').bootstrapTable({
+                    sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination : true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30,40],        //可供选择的每页的行数（*）
+                    search:true,
+                    striped: true,
+                    columns: [{
+                        field: 'teamName',
+                        title: '队伍名称'
+                    },{
+                        field: 'bleu4ScoreP',
+                        title: 'BLEU-4',
+                        formatter: precentFormatter
+                    }, {
+                        field: 'rougelScoreP',
+                        title: 'ROUGE-L',
+                        formatter: precentFormatter
+                    },  {
+                        field: 'commitDateP',
+                        title: '提交日期',
+                        sortable: true
+                    }
+                    ],
+                    data: data
+                });
+
+            },
+            error : function(error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+
+    //决赛成绩
+    function getFinalScore(){
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: { type: 2 },
+            url: IpAll() + "users/ranking" ,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+                console.log(data);
+                $("#finalScoreInfoTable").bootstrapTable('destroy');
+                $('#finalScoreInfoTable').bootstrapTable({
+                    sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination : true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30,40],        //可供选择的每页的行数（*）
+                    search:true,
+                    striped: true,
+                    columns: [{
+                        field: 'teamName',
+                        title: '队伍名称'
+                    },{
+                        field: 'bleu4ScoreF',
+                        title: 'BLEU-4',
+                        formatter: precentFormatter
+                    }, {
+                        field: 'rougelScoreF',
+                        title: 'ROUGE-L',
+                        formatter: precentFormatter
+                    },  {
+                        field: 'commitDateF',
+                        title: '提交日期',
+                        sortable: true
+                    }
+                    ],
+                    data: data
+                });
+
+            },
+            error : function(error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+
+    function precentFormatter(value) {
+        return value.toFixed(2) + "%";
     }
 </script>
 </body>

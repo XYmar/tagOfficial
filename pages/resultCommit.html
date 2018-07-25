@@ -328,16 +328,15 @@
         let target = e.target || e.srcElement;
         let delDiv = target.parentNode.parentNode;
         let id1 = delDiv.parentNode.id;
-        let id2 = delDiv.parentNode.parentNode.lastElementChild.lastElementChild.lastElementChild.id;
+        //let id2 = delDiv.parentNode.parentNode.lastElementChild.lastElementChild.lastElementChild.id;
         console.log(id1);
         console.log("删除的div----");
         console.log(delDiv.parentNode.parentNode.lastElementChild.lastElementChild.lastElementChild);
         console.log();
-        console.log(id2);
         let $fileArea = document.getElementById(id1);
         console.log($fileArea);
         $fileArea.removeChild(delDiv);
-        let fileCont = document.getElementById(id2);
+        let fileCont = document.getElementById("file1Cont");
         fileCont.value = '';
     }
 
@@ -352,8 +351,17 @@
             success: function (result) {
                 let data = result.data;
 
-                document.getElementById('bleu').innerHTML = data.bleu4ScoreF.toFixed(2) + "%";
-                document.getElementById('rouge').innerHTML = data.rougelScoreF.toFixed(2) + "%";
+                if(id === "0"){
+                    document.getElementById('bleu').innerHTML = data.bleu4ScoreT.toFixed(2) + "%";
+                    document.getElementById('rouge').innerHTML = data.rougelScoreT.toFixed(2) + "%";
+                }else if(id === "1"){
+                    document.getElementById('bleu').innerHTML = data.bleu4ScoreP.toFixed(2) + "%";
+                    document.getElementById('rouge').innerHTML = data.rougelScoreP.toFixed(2) + "%";
+                }else if(id === "2"){
+                    document.getElementById('bleu').innerHTML = data.bleu4ScoreF.toFixed(2) + "%";
+                    document.getElementById('rouge').innerHTML = data.rougelScoreF.toFixed(2) + "%";
+                }
+
             },
             error: function (error) {
                 let notifyMessage = error.responseJSON.message
@@ -384,6 +392,7 @@
             },
             timeout : 5000,
             success: function (result) {
+                alert("提交成功");
                 resetAll();
                 getTrainingScore();
             },
@@ -419,11 +428,11 @@
                     search:true,
                     columns: [{
                         field: 'bleu_4_Score',
-                        title: 'BLEU_4',
+                        title: 'BLEU-4',
                         formatter: precentFormatter
                     }, {
                         field: 'rouge_Score',
-                        title: 'ROUGE',
+                        title: 'ROUGE-L',
                         formatter: precentFormatter
                     },  {
                         field: 'createTime',
@@ -467,11 +476,11 @@
                     search:true,
                     columns: [{
                         field: 'bleu_4_Score',
-                        title: 'BLEU_4',
+                        title: 'BLEU-4',
                         formatter: precentFormatter
                     }, {
                         field: 'rouge_Score',
-                        title: 'ROUGE',
+                        title: 'ROUGE-L',
                         formatter: precentFormatter
                     },  {
                         field: 'createTime',
@@ -515,11 +524,11 @@
                     search:true,
                     columns: [{
                         field: 'bleu_4_Score',
-                        title: 'BLEU_4',
+                        title: 'BLEU-4',
                         formatter: precentFormatter
                     }, {
                         field: 'rouge_Score',
-                        title: 'ROUGE',
+                        title: 'ROUGE-L',
                         formatter: precentFormatter
                     },  {
                         field: 'createTime',
