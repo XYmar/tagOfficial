@@ -676,7 +676,6 @@
         <div class="heading">
             <h1 class="text-center title0" id="">在线评估结果排行榜</h1>
             <div class="separator"></div>
-            <!--<p class="lead text-center">Lorem ipsum dolor sit amet laudantium incidunt ut laboriosam.</p>-->
             <br>
         </div>
         <div class="row">
@@ -686,22 +685,13 @@
 
                     <!-- tab页开始 -->
                     <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#trainingScoreInfo" aria-controls="home" role="tab" data-toggle="tab">训练成绩</a></li>
-                        <li role="presentation"><a href="#preliminaryScoreInfo" aria-controls="profile" role="tab" data-toggle="tab">初赛成绩</a></li>
+                        <li role="presentation" class="active"><a href="#preliminaryScoreInfo" aria-controls="profile" role="tab" data-toggle="tab">初赛成绩</a></li>
                         <li role="presentation"><a href="#finalScoreInfo" aria-controls="profile" role="tab" data-toggle="tab">决赛成绩</a></li>
                     </ul>
 
                     <!-- Tab panes -->
                     <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="trainingScoreInfo">
-                            <div class="col-md-12" style="padding: 0">
-                                <div>
-                                    <table id="trainingScoreInfoTable" style="height: 100px;">
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="preliminaryScoreInfo">
+                        <div role="tabpanel" class="tab-pane active" id="preliminaryScoreInfo">
                             <div class="col-md-12" style="padding: 0">
                                 <div>
                                     <table id="preliminaryScoreInfoTable">
@@ -1200,7 +1190,6 @@
             ifUpload.innerHTML = "<p>暂未开放</p>"*/
         }
 
-        getTrainingScore();
         getPreliminaryScoreScore();
         getFinalScore();
     }
@@ -1358,56 +1347,6 @@
         }
     }
 
-    //训练成绩
-    function getTrainingScore(){
-        $.ajax({
-            type: "GET",
-            dataType: "json",
-            data: { type: 0 },
-            url: IpAll() + "users/ranking" ,
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-            },
-            success: function (result) {
-                let data = result.data;
-                console.log(data);
-                $("#trainingScoreInfoTable").bootstrapTable('destroy');
-                $('#trainingScoreInfoTable').bootstrapTable({
-                    sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
-                    pagination : true, // 是否显示分页（*）
-                    pageNumber: 1,    //如果设置了分页，首页页码
-                    pageSize: 30,                       //每页的记录行数（*）
-                    pageList: [30,40],        //可供选择的每页的行数（*）
-                    search:true,
-                    striped: true,
-                    columns: [{
-                        field: 'teamName',
-                        title: '队伍名称'
-                    },{
-                        field: 'bleu4ScoreT',
-                        title: 'BLEU-4',
-                        formatter: precentFormatter
-                    }, {
-                        field: 'rougelScoreT',
-                        title: 'ROUGE-L',
-                        formatter: precentFormatter
-                    },  {
-                        field: 'commitDateT',
-                        title: '提交日期',
-                        sortable: true
-                    }
-                    ],
-                    data: data
-                });
-
-            },
-            error : function(error) {
-                let notifyMessage = error.responseJSON.message
-                alert(notifyMessage)
-            }
-        });
-    }
-
     //初赛成绩
     function getPreliminaryScoreScore(){
         $.ajax({
@@ -1415,9 +1354,6 @@
             dataType: "json",
             data: { type: 1 },
             url: IpAll() + "users/ranking" ,
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-            },
             success: function (result) {
                 let data = result.data;
                 console.log(data);
@@ -1465,9 +1401,6 @@
             dataType: "json",
             data: { type: 2 },
             url: IpAll() + "users/ranking" ,
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-            },
             success: function (result) {
                 let data = result.data;
                 console.log(data);
