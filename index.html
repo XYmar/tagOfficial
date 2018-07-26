@@ -24,7 +24,7 @@
 <header class="header fixed clearfix navbar navbar-fixed-top">
     <div class="container">
         <div class="row">
-            <div class="col-md-3" id="hleft">
+            <div class="col-md-2" id="hleft">
                 <!-- header-left start -->
                 <div class="header-left">
                     <div class="logo-section smooth-scroll">
@@ -34,7 +34,7 @@
                 <!-- header-left end -->
             </div>
 
-            <div class="col-md-9" id="hright">
+            <div class="col-md-10" id="hright">
                 <!-- header-right start -->
                 <div class="header-right">
 
@@ -498,7 +498,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <ul class="list-unstyled col-md-12 newUl">
-                                <li>
+                                <!--<li>
                                     <div class="col-md-1">
                                         <i class="fa fa-download  pr-10 colored"></i>
                                     </div>
@@ -508,26 +508,14 @@
                                         <a href="javascript: void(0)" id="trainA"><button class="btn downloadBtn" id="trainBtn"  disabled="disabled" type="button" onclick="validatePwd()">下载</button></a>
                                     </div>
 
-                                </li>
+                                </li>-->
                                 <li>
                                     <div class="col-md-1">
                                         <i class="fa fa-download  pr-10 colored"></i>
                                     </div>
 
-                                    <div class="col-md-6">初赛数据</div>
-                                    <div class="col-md-4">
-                                        <a href="javascript: void(0)" id="primaryA"><button class="btn downloadBtn" id="primaryBtn"  disabled="disabled" type="button" onclick="validatePwd()">下载</button></a>
-                                    </div>
-
-                                </li>
-                                <li>
-                                    <div class="col-md-1">
-                                        <i class="fa fa-download  pr-10 colored"></i>
-                                    </div>
-
-                                    <div class="col-md-6">决赛数据</div>
-                                    <div class="col-md-4">
-                                        <a href="javascript: void(0)" id="finalA"><button class="btn downloadBtn" id="finalBtn"   disabled="disabled" type="button" onclick="validatePwd()">下载</button></a>
+                                    <div class="col-md-11">
+                                        <a href="javascript: void(0)" id="trainA"><button class="btn downloadBtn" id="trainBtn"  disabled="disabled" type="button">训练集</button></a>
                                     </div>
 
                                 </li>
@@ -536,9 +524,38 @@
                                         <i class="fa fa-download  pr-10 colored"></i>
                                     </div>
 
-                                    <div class="col-md-6">竞赛细则</div>
-                                    <div class="col-md-4">
-                                        <a href="files/训练数据集.json" download="训练数据集.json"><button class="btn downloadBtn" type="button" onclick="validatePwd()">下载</button></a>
+                                    <div class="col-md-11">
+                                        <a href="javascript: void(0)" id="primaryA"><button class="btn downloadBtn" id="primaryBtn"  disabled="disabled" type="button">初赛数据</button></a>
+                                    </div>
+
+                                </li>
+                                <li>
+                                    <div class="col-md-1">
+                                        <i class="fa fa-download  pr-10 colored"></i>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <a href="javascript: void(0)" id="finalA"><button class="btn downloadBtn" id="finalBtn"   disabled="disabled" type="button">决赛数据</button></a>
+                                    </div>
+
+                                </li>
+                                <li>
+                                    <div class="col-md-1">
+                                        <i class="fa fa-download  pr-10 colored"></i>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <a href="files/竞赛细则.docx" download="竞赛细则.docx"><button class="btn downloadBtn" type="button">竞赛细则</button></a>
+                                    </div>
+
+                                </li>
+                                <li>
+                                    <div class="col-md-1">
+                                        <i class="fa fa-download  pr-10 colored"></i>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <a href="https://github.com/militaryai2018/MachineReading.git" target="_blank"><button class="btn downloadBtn" type="button">评测代码</button></a>
                                     </div>
 
                                 </li>
@@ -561,6 +578,69 @@
         <div class="row no-view" data-animation-effect="fadeIn">
             <div class="col-md-12">
                 <!-- portfolio items start -->
+                <div class="row grid-space-20">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="list-unstyled col-md-12 newUl">
+                                <!--<li>
+                                    <div class="col-md-1">
+                                        <i class="fa fa-download  pr-10 colored"></i>
+                                    </div>
+
+                                    <div class="col-md-6">训练集</div>
+                                    <div class="col-md-4">
+                                        <a href="javascript: void(0)" id="trainA"><button class="btn downloadBtn" id="trainBtn"  disabled="disabled" type="button" onclick="validatePwd()">下载</button></a>
+                                    </div>
+
+                                </li>-->
+                                <li>
+                                    <div class="col-md-1">
+                                        <i class="fa fa-download  pr-10 colored"></i>
+                                    </div>
+
+                                    <div class="col-md-11">
+                                        <a href="javascript: void(0)" id="trainCommit"><button class="btn downloadBtn" id="trainCommitBtn"  disabled="disabled" type="button">训练结果提交</button></a>
+                                    </div>
+
+                                </li>
+                                <li>
+                                    <div class="col-md-1">
+                                        <i class="fa fa-download  pr-10 colored"></i>
+                                    </div>
+
+                                    <div class="col-md-11">
+                                        <a href="javascript: void(0)" id="primaryCommit"><button class="btn downloadBtn" id="primaryCommitBtn"  disabled="disabled" type="button">初赛结果提交</button></a>
+                                    </div>
+
+                                </li>
+                                <li>
+                                    <div class="col-md-1">
+                                        <i class="fa fa-download  pr-10 colored"></i>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <a href="javascript: void(0)" id="finalCommit"><button class="btn downloadBtn" id="finalCommitBtn"   disabled="disabled" type="button">决赛结果提交</button></a>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--<section class="section secPadding">
+    <div class="container">
+        <h1 class="text-center title0" id="commit">结果提交</h1>
+        <div class="separator"></div>
+        <p class="lead text-center" id="commitMess"></p>
+        <br>
+        <div class="row no-view" data-animation-effect="fadeIn">
+            <div class="col-md-12">
+                &lt;!&ndash; portfolio items start &ndash;&gt;
                 <div class="row grid-space-20">
                     <div class="row">
                         <div class="col-md-12">
@@ -589,14 +669,13 @@
             </div>
         </div>
     </div>
-</section>
+</section>-->
 <!-- 排行榜 -->
 <section id="ranking" class="price-table secPadding">
     <div class="container text-center">
         <div class="heading">
             <h1 class="text-center title0" id="">在线评估结果排行榜</h1>
             <div class="separator"></div>
-            <!--<p class="lead text-center">Lorem ipsum dolor sit amet laudantium incidunt ut laboriosam.</p>-->
             <br>
         </div>
         <div class="row">
@@ -606,22 +685,13 @@
 
                     <!-- tab页开始 -->
                     <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#trainingScoreInfo" aria-controls="home" role="tab" data-toggle="tab">训练成绩</a></li>
-                        <li role="presentation"><a href="#preliminaryScoreInfo" aria-controls="profile" role="tab" data-toggle="tab">初赛成绩</a></li>
+                        <li role="presentation" class="active"><a href="#preliminaryScoreInfo" aria-controls="profile" role="tab" data-toggle="tab">初赛成绩</a></li>
                         <li role="presentation"><a href="#finalScoreInfo" aria-controls="profile" role="tab" data-toggle="tab">决赛成绩</a></li>
                     </ul>
 
                     <!-- Tab panes -->
                     <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="trainingScoreInfo">
-                            <div class="col-md-12" style="padding: 0">
-                                <div>
-                                    <table id="trainingScoreInfoTable" style="height: 100px;">
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="preliminaryScoreInfo">
+                        <div role="tabpanel" class="tab-pane active" id="preliminaryScoreInfo">
                             <div class="col-md-12" style="padding: 0">
                                 <div>
                                     <table id="preliminaryScoreInfoTable">
@@ -1082,7 +1152,7 @@
             loginOut.innerHTML = "";
             console.log(myRole);
             if(myRole === "admin"){
-                loginName.innerHTML += "<a href='pages/audit.html'>审核</a>";
+                loginName.innerHTML += "<a href='pages/audit.html'>管理员</a>";
                 ajax(myRole);
                 /*ifDown.innerHTML = "<a href=\"files/训练数据集.json\" download=\"训练数据集.json\"><p style=\"color: #339BEB;\">点击下载，训练数据集</p> </a>"
                 ifUpload.innerHTML = "管理员不可执行提交操作。";*/
@@ -1112,7 +1182,7 @@
             loginName.innerHTML = "";
             loginName.innerHTML += "<a href='pages/login.html'>登录/注册</a>";
             loginOut.innerHTML = "";
-            ajax(myRole);
+            ajax('null');
             downloadMess.innerHTML = "请先登录";
             commitMess.innerHTML = "请先登录";
             /*ifDown.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"
@@ -1120,7 +1190,6 @@
             ifUpload.innerHTML = "<p>暂未开放</p>"*/
         }
 
-        getTrainingScore();
         getPreliminaryScoreScore();
         getFinalScore();
     }
@@ -1161,9 +1230,9 @@
                     unclickBtn("primaryBtn");
                     unclickBtn("finalBtn");
 
-                    uncommit("trainCommit");
-                    uncommit("primaryCommit");
-                    uncommit("finalCommit");
+                    unclickBtn("trainCommitBtn");
+                    unclickBtn("primaryCommitBtn");
+                    unclickBtn("finalCommitBtn");
                 }else if(moment(nowTime).isAfter(trainTime)){        //8月1日后、管理员、已审核用户
                     undisabled("trainBtn");
                     unclickBtn("primaryBtn");
@@ -1171,13 +1240,14 @@
                     downloadA("trainA");
 
                     if(role === "admin"){
-                        uncommit("trainCommit");
-                        uncommit("primaryCommit");
-                        uncommit("finalCommit");
+                        unclickBtn("trainCommitBtn");
+                        unclickBtn("primaryCommitBtn");
+                        unclickBtn("finalCommitBtn");
                     }else{
+                        undisabled("trainCommitBtn");
                         commitA("trainCommit");
-                        uncommit("primaryCommit");
-                        uncommit("finalCommit");
+                        unclickBtn("primaryCommitBtn");
+                        unclickBtn("finalCommitBtn");
                     }
                 }else if(moment(nowTime).isAfter(primaryTime)){        //9月19日后
                     undisabled("trainBtn");
@@ -1188,13 +1258,15 @@
                     downloadA("primaryA");
 
                     if(role === "admin"){
-                        uncommit("trainCommit");
-                        uncommit("primaryCommit");
-                        uncommit("finalCommit");
+                        unclickBtn("trainCommitBtn");
+                        unclickBtn("primaryCommitBtn");
+                        unclickBtn("finalCommitBtn");
                     }else{
+                        undisabled("trainCommitBtn");
+                        undisabled("primaryCommitBtn");
                         commitA("trainCommit");
                         commitA("primaryCommit");
-                        uncommit("finalCommit");
+                        unclickBtn("finalCommitBtn");
                     }
                 }else if(moment(nowTime).isAfter(FinalTime)){        //10月27日后
                     undisabled("trainBtn");
@@ -1206,10 +1278,13 @@
                     downloadA("finalA");
 
                     if(role === "admin"){
-                        uncommit("trainCommit");
-                        uncommit("primaryCommit");
-                        uncommit("finalCommit");
+                        unclickBtn("trainCommitBtn");
+                        unclickBtn("primaryCommitBtn");
+                        unclickBtn("finalCommitBtn");
                     }else{
+                        undisabled("trainCommitBtn");
+                        undisabled("primaryCommitBtn");
+                        undisabled("finalCommitBtn");
                         commitA("trainCommit");
                         commitA("primaryCommit");
                         commitA("finalCommit");
@@ -1248,7 +1323,7 @@
         document.getElementById(id).disabled = false;
     }
 
-    function unclickBtn(id){                   //不可下载时按钮的样式
+    function unclickBtn(id){                   //不可下载时按钮的样式   不可提交时按钮
         document.getElementById(id).style.background = "lightgrey";
     }
 
@@ -1257,10 +1332,10 @@
         document.getElementById(id).download="训练数据集.json";
     }
 
-    function uncommit(id){                      //不可提交时链接的样式
+    /*function uncommit(id){                      //不可提交时链接的样式
         document.getElementById(id).style.color = "lightgrey";
         document.getElementById(id).style.cursor = "none";
-    }
+    }*/
 
     function commitA(id) {
         if(id === "trainCommit"){
@@ -1272,56 +1347,6 @@
         }
     }
 
-    //训练成绩
-    function getTrainingScore(){
-        $.ajax({
-            type: "GET",
-            dataType: "json",
-            data: { type: 0 },
-            url: IpAll() + "users/ranking" ,
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-            },
-            success: function (result) {
-                let data = result.data;
-                console.log(data);
-                $("#trainingScoreInfoTable").bootstrapTable('destroy');
-                $('#trainingScoreInfoTable').bootstrapTable({
-                    sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
-                    pagination : true, // 是否显示分页（*）
-                    pageNumber: 1,    //如果设置了分页，首页页码
-                    pageSize: 30,                       //每页的记录行数（*）
-                    pageList: [30,40],        //可供选择的每页的行数（*）
-                    search:true,
-                    striped: true,
-                    columns: [{
-                        field: 'teamName',
-                        title: '队伍名称'
-                    },{
-                        field: 'bleu4ScoreT',
-                        title: 'BLEU-4',
-                        formatter: precentFormatter
-                    }, {
-                        field: 'rougelScoreT',
-                        title: 'ROUGE-L',
-                        formatter: precentFormatter
-                    },  {
-                        field: 'commitDateT',
-                        title: '提交日期',
-                        sortable: true
-                    }
-                    ],
-                    data: data
-                });
-
-            },
-            error : function(error) {
-                let notifyMessage = error.responseJSON.message
-                alert(notifyMessage)
-            }
-        });
-    }
-
     //初赛成绩
     function getPreliminaryScoreScore(){
         $.ajax({
@@ -1329,9 +1354,6 @@
             dataType: "json",
             data: { type: 1 },
             url: IpAll() + "users/ranking" ,
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-            },
             success: function (result) {
                 let data = result.data;
                 console.log(data);
@@ -1379,9 +1401,6 @@
             dataType: "json",
             data: { type: 2 },
             url: IpAll() + "users/ranking" ,
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-            },
             success: function (result) {
                 let data = result.data;
                 console.log(data);

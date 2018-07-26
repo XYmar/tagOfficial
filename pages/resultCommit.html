@@ -90,8 +90,7 @@
                                 <div class="identifyContainer">
 
                                     <div class="col-md-10">
-                                        <h4 class="sign">
-                                            注意：只可以提交JSON文件，每天仅可以提交四次
+                                        <h4 class="sign" id="warning">
                                         </h4>
                                     </div>
                                     <div class="col-md-12">
@@ -109,7 +108,7 @@
                                                 </div>
                                                 <div class="col-md-5 modifyPasBtnCon">
                                                     <div class="col-md-12">
-                                                        <button type="button" class="btn  btn-success" style="width: 70px;height: 27px;font-size: 12px;padding: 4px 0;" onclick="subFiles()">提交</button>
+                                                        <button type="button" class="btn  btn-success" id="ifSub" style="width: 70px;height: 27px;font-size: 12px;padding: 4px 0;" onclick="subFiles()">提交</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -251,6 +250,7 @@
 <script src="../js/globalIP.js"></script>
 <script src="../bootstrap-table/bootstrap-table.min.js"></script>
 <script src="../bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+<script src="../layer/layer.js"></script>
 <script type="text/javascript">
     let role = $.cookie("myRole");
     let myTeamId = $.cookie("myTeamId");
@@ -354,13 +354,27 @@
                 if(id === "0"){
                     document.getElementById('bleu').innerHTML = data.bleu4ScoreT.toFixed(2) + "%";
                     document.getElementById('rouge').innerHTML = data.rougelScoreT.toFixed(2) + "%";
+                    document.getElementById("warning").innerHTML = "注意：只可以提交JSON文件，今日还可提交 " + data.commitTimesT + " 次"
+                    if(data.commitTimesT === 0){
+                        document.getElementById("ifSub").disabled = true;
+                    }
                 }else if(id === "1"){
                     document.getElementById('bleu').innerHTML = data.bleu4ScoreP.toFixed(2) + "%";
                     document.getElementById('rouge').innerHTML = data.rougelScoreP.toFixed(2) + "%";
+                    document.getElementById("warning").innerHTML = "注意：只可以提交JSON文件，今日还可提交 " + data.commitTimesP + " 次"
+
+                    if(data.commitTimesP === 0){
+                        document.getElementById("ifSub").disabled = true;
+                    }
                 }else if(id === "2"){
                     document.getElementById('bleu').innerHTML = data.bleu4ScoreF.toFixed(2) + "%";
                     document.getElementById('rouge').innerHTML = data.rougelScoreF.toFixed(2) + "%";
+                    document.getElementById("warning").innerHTML = "注意：只可以提交JSON文件，今日还可提交 " + data.commitTimesF + " 次"
+                    if(data.commitTimesF === 0){
+                        document.getElementById("ifSub").disabled = true;
+                    }
                 }
+
 
             },
             error: function (error) {
@@ -371,36 +385,46 @@
     }
 
     function subFiles() {
-        console.log(document.getElementById("file1Cont").files[0]);
         let file1 = document.getElementById("file1Cont").files[0];  //获取文件
-        let formData = new FormData();
-        formData.append("ref", file1);
-        formData.append("type", 0);
+        console.log(typeof (file1));
+        if(typeof (file1) !== "undefined"){
+            let formData = new FormData();
+            formData.append("ref", file1);
+            formData.append("type", 0);
+            layer.msg('正在计算...', {
+                icon: 16,
+                shade: 0.01
+            });
+            $.ajax({
+                url: IpAll() + "users/" + myTeamId + "/commitfile",
+                data: formData,
+                type: "PUT",
+                async: true,
+                dataType: "json",
+                cache: false,
+                processData: false,
+                contentType: false,
+                enctype: 'multipart/form-data',
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+                },
+                timeout : 5000,
+                success: function (result) {
+                    alert("提交成功");
+                    layer.closeAll('loading');
+                    resetAll();
+                    getTrainingScore();
+                },
+                error : function(error) {
+                    let notifyMessage = error.responseJSON.message
+                    alert(notifyMessage)
+                    layer.closeAll('loading');
+                }
+            });
+        }else {
+            alert("请先选择文件");
+        }
 
-        $.ajax({
-            url: IpAll() + "users/" + myTeamId + "/commitfile",
-            data: formData,
-            type: "PUT",
-            async:false,
-            dataType: "json",
-            cache: false,
-            processData: false,
-            contentType: false,
-            enctype: 'multipart/form-data',
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-            },
-            timeout : 5000,
-            success: function (result) {
-                alert("提交成功");
-                resetAll();
-                getTrainingScore();
-            },
-            error : function(error) {
-                let notifyMessage = error.responseJSON.message
-                alert(notifyMessage)
-            }
-        });
     }
 
     //训练成绩
