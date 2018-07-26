@@ -261,9 +261,8 @@
     let editId = '';
     let id = getUrlParam('id');
     window.onload=function() {
-        /*if ((username != null) && (username !== "null")) {
-            if(role !== 'admin'){*/
-
+        if ((username != null) && (username !== "null")) {
+            if(role !== 'admin'){
                 //根据不同阶段显示不同标题
                 if(id === "0"){
                     document.getElementById("commitTitle").innerHTML = "训练结果提交"
@@ -288,22 +287,15 @@
                         handleFile(file, divId);
                     }
                 }
-                /*file2.onchange = function(){
-                    if(file2.value.length !== 0){
-                        let file = this.files[0];
-                        let divId = "file2";
-                        handleFile(file, divId);
-                    }
-                }*/
 
-            /*}else {
+            }else {
                 document.getElementById("showBody").style.display = "none";
                 window.location.href="../index.html";
             }
         }else{
             document.getElementById("showBody").style.display = "none";
             window.location.href="login.html";
-        }*/
+        }
     };
     function handleFile(file, divId){
         //获取文件名称

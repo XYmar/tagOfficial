@@ -593,36 +593,6 @@
     window.onload=function() {
         if ((username != null) && (username !== "null")) {
             if(role !== 'admin'){
-                /*$.ajax({
-                    type: "GET",
-                    dataType: "json",
-                    url: IpAll() + "users/" + myTeamId,
-                    beforeSend: function (xhr) {
-                        xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-                    },
-                    success: function (result) {
-                        let data = result.data;
-                        passOld = data.password
-
-                        document.getElementById("username").innerHTML = data.username;
-                        document.getElementById("teamName").innerHTML = data.teamName;
-                        document.getElementById("name").value = data.name;
-                        document.getElementById("age").value = data.age;
-                        document.getElementById("sex").value = data.sex === 1 ? '女' : '男';
-                        document.getElementById("telephoneNumber").value = data.telephoneNumber;
-                        document.getElementById("organization").value = data.organization;
-                        document.getElementById('password').value = data.password;
-                        document.getElementById("email").value = data.email;
-                        document.getElementById('inputLsch').value = data.organization;
-                        document.getElementById('bleu').innerHTML = data.bleu_4_Score;
-                        document.getElementById('rouge').innerHTML = data.rouge_Score;
-                    },
-                    error: function (error) {
-                        let notifyMessage = error.responseJSON.message
-                        alert(notifyMessage)
-                    }
-                });*/
-
                 resetAll();
                 getAll();
                 getAllScore();

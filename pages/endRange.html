@@ -127,12 +127,12 @@
 
     window.onload=function(){
 
-        /*if ((username != null) && (username !== "null")) {
-            if(role === 'admin'){*/
+        if ((username != null) && (username !== "null")) {
+            if(role === 'admin'){
                 getTrainingScore();
                 getPreliminaryScoreScore();
                 getFinalScore();
-            /*}else{
+            }else{
                 document.getElementById("showBody").style.display = "none";
                 window.location.href="../index.html";
 
@@ -140,7 +140,7 @@
         }else{
             document.getElementById("showBody").style.display = "none";
             window.location.href="login.html";
-        }*/
+        }
     }
 
     //训练成绩
