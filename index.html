@@ -24,7 +24,7 @@
 <header class="header fixed clearfix navbar navbar-fixed-top">
     <div class="container">
         <div class="row">
-            <div class="col-md-3" id="hleft">
+            <div class="col-md-2" id="hleft">
                 <!-- header-left start -->
                 <div class="header-left">
                     <div class="logo-section smooth-scroll">
@@ -34,7 +34,7 @@
                 <!-- header-left end -->
             </div>
 
-            <div class="col-md-9" id="hright">
+            <div class="col-md-10" id="hright">
                 <!-- header-right start -->
                 <div class="header-right">
 
@@ -555,7 +555,7 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <a href="https://github.com/militaryai2018/MachineReading.git"><button class="btn downloadBtn" type="button">评测代码</button></a>
+                                        <a href="https://github.com/militaryai2018/MachineReading.git" target="_blank"><button class="btn downloadBtn" type="button">评测代码</button></a>
                                     </div>
 
                                 </li>
@@ -1152,7 +1152,7 @@
             loginOut.innerHTML = "";
             console.log(myRole);
             if(myRole === "admin"){
-                loginName.innerHTML += "<a href='pages/audit.html'>审核</a>";
+                loginName.innerHTML += "<a href='pages/audit.html'>管理员</a>";
                 ajax(myRole);
                 /*ifDown.innerHTML = "<a href=\"files/训练数据集.json\" download=\"训练数据集.json\"><p style=\"color: #339BEB;\">点击下载，训练数据集</p> </a>"
                 ifUpload.innerHTML = "管理员不可执行提交操作。";*/
