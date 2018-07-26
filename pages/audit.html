@@ -453,12 +453,15 @@
                     pageList: [30,40],        //可供选择的每页的行数（*）
                     search:true,
                     columns: [{
+                        field: 'teamName',
+                        title: '队伍名称'
+                    },{
                         field: 'bleu4ScoreT',
-                        title: 'BLEU_4',
+                        title: 'BLEU-4',
                         formatter: precentFormatter
                     }, {
                         field: 'rougelScoreT',
-                        title: 'ROUGE',
+                        title: 'ROUGE-L',
                         formatter: precentFormatter
                     },  {
                         field: 'createTime',
@@ -506,12 +509,15 @@
                     pageList: [30,40],        //可供选择的每页的行数（*）
                     search:true,
                     columns: [{
+                        field: 'teamName',
+                        title: '队伍名称'
+                    },{
                         field: 'bleu4ScoreP',
-                        title: 'BLEU_4',
+                        title: 'BLEU-4',
                         formatter: precentFormatter
                     }, {
                         field: 'rougelScoreP',
-                        title: 'ROUGE',
+                        title: 'ROUGE-L',
                         formatter: precentFormatter
                     },  {
                         field: 'createTime',
@@ -559,12 +565,15 @@
                     pageList: [30,40],        //可供选择的每页的行数（*）
                     search:true,
                     columns: [{
+                        field: 'teamName',
+                        title: '队伍名称'
+                    },{
                         field: 'bleu4ScoreF',
-                        title: 'BLEU_4',
+                        title: 'BLEU-4',
                         formatter: precentFormatter
                     }, {
                         field: 'rougelScoreF',
-                        title: 'ROUGE',
+                        title: 'ROUGE-L',
                         formatter: precentFormatter
                     },  {
                         field: 'createTime',
