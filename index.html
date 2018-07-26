@@ -1152,6 +1152,8 @@
     let password0 = $.cookie("myWPa");
     let password = $.base64.decode(password0);
     let token = username + ':' + password;
+    let serverTime;
+
     window.onload = function () {
 
         //查询用户状态
@@ -1169,6 +1171,7 @@
                 }else {
                     $.cookie("myRole",result.data.roleEntities[0].name,{path:'/'});
                 }
+
             },
             error: function () {
                 //alert("请求错误！");
@@ -1236,36 +1239,35 @@
     }
     //获取服务器时间
     function ajax(role){
-        let xhr = null;
-        if(window.XMLHttpRequest){
-            xhr = new window.XMLHttpRequest();
-        }else{ // ie
-            xhr = new ActiveObject("Microsoft")
-        }
-        // 通过get的方式请求当前文件
-        xhr.open("get",IpAll());
-        xhr.send(null);
-        // 监听请求状态变化
-        xhr.onreadystatechange = function(){
-            let time = null;
-            //curDate = null;
-            if(xhr.readyState===2){
-                // 获取响应头里的时间戳
-                time = xhr.getResponseHeader("Date");
-                console.log(xhr.getAllResponseHeaders())
-                nowTime = new Date(time);
-                console.log(moment().format());
+        $.ajax({
+            //几个参数需要注意一下
+            type: "GET",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: IpAll() + "users/time",//url
+            success: function (result) {
+                nowTime = moment(result.data).format('YYYY-MM-DD HH:mm:ss');
+                /*alert(result.data);
+                alert(serverTime);*/
+                //moment(Date.now()).format('YYYY-MM-DD HH:mm:ss')
 
-                /*真实时间
+                // 真实时间
                 let trainTime = moment(new Date(2018, 7, 1)).format();
                 let primaryTime = moment(new Date(2018, 8, 19)).format();
-                let FinalTime = moment(new Date(2018, 9, 27)).format();*/
-                let trainTime = moment(new Date(2018, 6, 23)).format();
+                let FinalTime = moment(new Date(2018, 9, 27)).format();
+                /*let trainTime = moment(new Date(2018, 6, 23)).format();
                 let primaryTime = moment(new Date(2018, 6, 24)).format();
-                let FinalTime = moment(new Date(2018, 6, 24)).format();
+                let FinalTime = moment(new Date(2018, 6, 24)).format();*/
+                console.log("当前时间------");
+                console.log(nowTime);
+                console.log("训练时间------")
                 console.log(trainTime);
+                console.log(moment(nowTime).isAfter(trainTime));
                 //moment('2010-10-20').isAfter('2010-10-19');
                 console.log(role);
+                console.log(primaryTime);
+                console.log(moment(nowTime).isAfter(primaryTime));
+                console.log(FinalTime);
+                console.log(moment(nowTime).isAfter(FinalTime));
                 if(moment(nowTime).isBefore(trainTime)|| role === "null" || role === "user" || role === "denied"){         //8月1日前、未审核、被拒绝
                     unclickBtn("trainBtn");
                     unclickBtn("primaryBtn");
@@ -1274,65 +1276,78 @@
                     unclickBtn("trainCommitBtn");
                     unclickBtn("primaryCommitBtn");
                     unclickBtn("finalCommitBtn");
-                }else if(moment(nowTime).isAfter(trainTime)){        //8月1日后、管理员、已审核用户
-                    undisabled("trainBtn");
-                    unclickBtn("primaryBtn");
-                    unclickBtn("finalBtn");
-                    downloadA("trainA");
+                }else {
+                    if(moment(nowTime).isAfter(FinalTime)){        //10月27日后
+                        undisabled("trainBtn");
+                        undisabled("primaryBtn");
+                        undisabled("finalBtn");
 
-                    if(role === "admin"){
-                        unclickBtn("trainCommitBtn");
-                        unclickBtn("primaryCommitBtn");
-                        unclickBtn("finalCommitBtn");
-                    }else{
-                        undisabled("trainCommitBtn");
-                        commitA("trainCommit");
-                        unclickBtn("primaryCommitBtn");
-                        unclickBtn("finalCommitBtn");
+                        downloadA("trainA");
+                        downloadA("primaryA");
+                        downloadA("finalA");
+
+                        if(role === "admin"){
+                            unclickBtn("trainCommitBtn");
+                            unclickBtn("primaryCommitBtn");
+                            unclickBtn("finalCommitBtn");
+                        }else{
+                            undisabled("trainCommitBtn");
+                            undisabled("primaryCommitBtn");
+                            undisabled("finalCommitBtn");
+                            commitA("trainCommit");
+                            commitA("primaryCommit");
+                            commitA("finalCommit");
+                        }
+                        //alert("10yue");
                     }
-                }else if(moment(nowTime).isAfter(primaryTime)){        //9月19日后
-                    undisabled("trainBtn");
-                    undisabled("primaryBtn");
-                    unclickBtn("finalBtn");
 
-                    downloadA("trainA");
-                    downloadA("primaryA");
+                    else if(moment(nowTime).isAfter(primaryTime)){        //9月19日后
+                        undisabled("trainBtn");
+                        undisabled("primaryBtn");
+                        unclickBtn("finalBtn");
 
-                    if(role === "admin"){
-                        unclickBtn("trainCommitBtn");
-                        unclickBtn("primaryCommitBtn");
-                        unclickBtn("finalCommitBtn");
-                    }else{
-                        undisabled("trainCommitBtn");
-                        undisabled("primaryCommitBtn");
-                        commitA("trainCommit");
-                        commitA("primaryCommit");
-                        unclickBtn("finalCommitBtn");
+                        downloadA("trainA");
+                        downloadA("primaryA");
+
+                        if(role === "admin"){
+                            unclickBtn("trainCommitBtn");
+                            unclickBtn("primaryCommitBtn");
+                            unclickBtn("finalCommitBtn");
+                        }else{
+                            undisabled("trainCommitBtn");
+                            undisabled("primaryCommitBtn");
+                            commitA("trainCommit");
+                            commitA("primaryCommit");
+                            unclickBtn("finalCommitBtn");
+                        }
+                        //alert("9yue");
                     }
-                }else if(moment(nowTime).isAfter(FinalTime)){        //10月27日后
-                    undisabled("trainBtn");
-                    undisabled("primaryBtn");
-                    undisabled("finalBtn");
+                    else if(moment(nowTime).isAfter(trainTime)){        //8月1日后、管理员、已审核用户
+                        undisabled("trainBtn");
+                        unclickBtn("primaryBtn");
+                        unclickBtn("finalBtn");
+                        downloadA("trainA");
 
-                    downloadA("trainA");
-                    downloadA("primaryA");
-                    downloadA("finalA");
-
-                    if(role === "admin"){
-                        unclickBtn("trainCommitBtn");
-                        unclickBtn("primaryCommitBtn");
-                        unclickBtn("finalCommitBtn");
-                    }else{
-                        undisabled("trainCommitBtn");
-                        undisabled("primaryCommitBtn");
-                        undisabled("finalCommitBtn");
-                        commitA("trainCommit");
-                        commitA("primaryCommit");
-                        commitA("finalCommit");
+                        if(role === "admin"){
+                            unclickBtn("trainCommitBtn");
+                            unclickBtn("primaryCommitBtn");
+                            unclickBtn("finalCommitBtn");
+                        }else{
+                            undisabled("trainCommitBtn");
+                            commitA("trainCommit");
+                            unclickBtn("primaryCommitBtn");
+                            unclickBtn("finalCommitBtn");
+                        }
+                        //alert("8yue");
                     }
                 }
+
+            },
+            error: function () {
+                //alert("请求错误！");
             }
-        }
+        });
+
     }
 
     function delCookie() {
