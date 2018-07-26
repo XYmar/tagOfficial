@@ -1264,6 +1264,10 @@ margin: 2px 5px 0;}
 		margin-left: 0;
 	}
 
+	.newUl li {
+		width: 48%;
+	}
+
 }
 
 /* Images Overlay
