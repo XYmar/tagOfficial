@@ -59,7 +59,7 @@
                                     <ul class="nav navbar-nav navbar-right">
                                         <li class="active"><a href="#banner">主页</a></li>
                                         <li><a href="#production">比赛介绍</a></li>
-                                        <li><a href="#download">下载数据</a></li>
+                                        <li><a href="#download">下载</a></li>
                                         <li><a href="#commit">结果提交</a></li>
                                         <li><a href="#ranking">排行榜</a></li>
                                         <!--<li><a href="#news">新闻中心</a></li>-->
@@ -265,7 +265,7 @@
                                         <p>
                                             对于给定的专业类文章，通过机器阅读，能够在文中定位、分析、推理指定问题的答案。
                                             问题涵盖6种类型：事实型问题、列表型问题、定义型问题、观点型问题、篇章型问题，问题描述和示例参见
-                                            <a href="files/附件1.txt" download="附件1.txt">附件1</a>。
+                                            <a href="files/附件1.pdf" download="附件1.pdf">附件1</a>。
                                         </p>
                                         <p>
                                             参赛选手需要让机器阅读以上6类问题并生成答案，答案与标准答案的匹配程度将使用ROUGE-L和BLEU指标进行评测，
@@ -487,7 +487,7 @@
 <!-- 下载数据 -->
 <section class="section secPadding">
     <div class="container">
-        <h1 class="text-center title0" id="download">下载数据</h1>
+        <h1 class="text-center title0" id="download">下载</h1>
         <div class="separator"></div>
         <p class="lead text-center" id="downloadMess"></p>
         <br>
@@ -535,7 +535,7 @@
                                         </div>
 
                                         <div class="col-md-6 col-xs-6">
-                                            <a href="javascript: void(0)" id="primaryA"><button class="btn downloadBtn" id="primaryBtn"  disabled="disabled" type="button">初赛数据</button></a>
+                                            <a href="javascript: void(0)" id="primaryA"><button class="btn downloadBtn" id="primaryBtn"  disabled="disabled" type="button">初赛测试集</button></a>
                                         </div>
                                     </div>
 
@@ -550,7 +550,7 @@
                                         </div>
 
                                         <div class="col-md-6 col-xs-6">
-                                            <a href="javascript: void(0)" id="finalA"><button class="btn downloadBtn" id="finalBtn"   disabled="disabled" type="button">决赛数据</button></a>
+                                            <a href="javascript: void(0)" id="finalA"><button class="btn downloadBtn" id="finalBtn"   disabled="disabled" type="button">决赛测试集</button></a>
                                         </div>
                                     </div>
 
@@ -565,7 +565,7 @@
                                         </div>
 
                                         <div class="col-md-6 col-xs-6">
-                                            <a href="files/竞赛细则.docx" download="竞赛细则.docx"><button class="btn downloadBtn" type="button">竞赛细则</button></a>
+                                            <a href="files/竞赛细则.pdf" download="竞赛细则.pdf"><button class="btn downloadBtn" type="button">竞赛细则</button></a>
                                         </div>
                                     </div>
 
@@ -1349,8 +1349,8 @@
     }
 
     function downloadA(id){                     //可下载时，下载的a标签
-        document.getElementById(id).href = "files/训练数据集.json";
-        document.getElementById(id).download="训练数据集.json";
+        document.getElementById(id).href = "files/训练数据集.pdf";
+        document.getElementById(id).download="训练数据集.pdf";
     }
 
     /*function uncommit(id){                      //不可提交时链接的样式
