@@ -1349,8 +1349,8 @@
     }
 
     function downloadA(id){                     //可下载时，下载的a标签
-        document.getElementById(id).href = "files/训练数据集.pdf";
-        document.getElementById(id).download="训练数据集.pdf";
+        document.getElementById(id).href = "files/训练数据集.json";
+        document.getElementById(id).download="训练数据集.json";
     }
 
     /*function uncommit(id){                      //不可提交时链接的样式
@@ -1409,8 +1409,6 @@
 
             },
             error : function(error) {
-                let notifyMessage = error.responseJSON.message
-                alert(notifyMessage)
             }
         });
     }
@@ -1456,8 +1454,6 @@
 
             },
             error : function(error) {
-                let notifyMessage = error.responseJSON.message
-                alert(notifyMessage)
             }
         });
     }
