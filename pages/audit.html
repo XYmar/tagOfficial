@@ -127,23 +127,6 @@
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active" id="trainingScoreInfo">
                                     <div class="col-md-12" style="padding: 0">
-                                        <!--<table class="table table-bordered">
-                                            <thead>
-                                            <tr>
-                                                <th>
-                                                    BLEU_4
-                                                </th>
-                                                <th>
-                                                    ROUGE
-                                                </th>
-                                                <th>
-                                                    日期
-                                                </th>
-                                            </tr>
-                                            </thead>
-                                            <tbody id="TeamScore">
-                                            </tbody>
-                                        </table>-->
                                         <div>
                                             <table id="trainingScoreInfoTable">
                                             </table>
@@ -453,12 +436,12 @@
                         field: 'teamName',
                         title: '队伍名称'
                     },{
-                        field: 'bleu4ScoreT',
-                        title: 'BLEU-4',
-                        formatter: precentFormatter
-                    }, {
                         field: 'rougelScoreT',
                         title: 'ROUGE-L',
+                        formatter: precentFormatter
+                    }, {
+                        field: 'bleu4ScoreT',
+                        title: 'BLEU-4',
                         formatter: precentFormatter
                     },  {
                         field: 'commitDateT',
@@ -509,12 +492,12 @@
                         field: 'teamName',
                         title: '队伍名称'
                     },{
-                        field: 'bleu4ScoreP',
-                        title: 'BLEU-4',
-                        formatter: precentFormatter
-                    }, {
                         field: 'rougelScoreP',
                         title: 'ROUGE-L',
+                        formatter: precentFormatter
+                    }, {
+                        field: 'bleu4ScoreP',
+                        title: 'BLEU-4',
                         formatter: precentFormatter
                     },  {
                         field: 'commitDateP',
@@ -565,12 +548,12 @@
                         field: 'teamName',
                         title: '队伍名称'
                     },{
-                        field: 'bleu4ScoreF',
-                        title: 'BLEU-4',
-                        formatter: precentFormatter
-                    }, {
                         field: 'rougelScoreF',
                         title: 'ROUGE-L',
+                        formatter: precentFormatter
+                    }, {
+                        field: 'bleu4ScoreF',
+                        title: 'BLEU-4',
                         formatter: precentFormatter
                     },  {
                         field: 'commitDateF',

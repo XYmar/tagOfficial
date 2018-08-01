@@ -54,9 +54,9 @@
                                 <div class="col-md-6">
                                     <form class="form-horizontal col-md-12">
                                         <div class="form-group col-md-12">
-                                            <label class="col-md-4 col-xs-3 memLabel">BLEU_4： </label>
+                                            <label class="col-md-4 col-xs-3 memLabel">ROUGE-L： </label>
                                             <div class="controls col-md-8 col-xs-9 memInput">
-                                                <div id="bleu">
+                                                <div id="rouge">
                                                     xx
                                                 </div>
                                             </div>
@@ -66,9 +66,9 @@
                                 <div class="col-md-6">
                                     <form class="form-horizontal col-md-12">
                                         <div class="form-group col-md-12">
-                                            <label class="col-md-4 col-xs-3 memLabel">ROUGE： </label>
+                                            <label class="col-md-4 col-xs-3 memLabel">BLEU-4： </label>
                                             <div class="controls col-md-8 col-xs-9 memInput">
-                                                <div id="rouge">
+                                                <div id="bleu">
                                                     xx
                                                 </div>
                                             </div>
@@ -96,7 +96,7 @@
                                     <div class="col-md-12">
                                         <form class="form-horizontal" enctype="multipart/form-data">
                                             <div style="padding: 0" id="Lpicture">
-                                                <h3><span class="required-flag">*</span>文件1：</h3>
+                                                <h3><span class="required-flag">*</span>文件：</h3>
                                                 <div class="fileArea" id="file1" style="padding-top:5px;">
                                                 </div>
                                                 <div class="col-md-2 idPic">
@@ -443,14 +443,14 @@
                     pageList: [10,20,30],        //可供选择的每页的行数（*）
                     search:true,
                     columns: [{
+                        field: 'rouge_Score',
+                        title: 'ROUGE-L',
+                        formatter: precentFormatter
+                    }, {
                         field: 'bleu_4_Score',
                         title: 'BLEU-4',
                         formatter: precentFormatter
                     }, {
-                        field: 'rouge_Score',
-                        title: 'ROUGE-L',
-                        formatter: precentFormatter
-                    },  {
                         field: 'createTime',
                         title: '提交日期',
                         sortable: true
@@ -491,12 +491,12 @@
                     pageList: [10,20,30],        //可供选择的每页的行数（*）
                     search:true,
                     columns: [{
-                        field: 'bleu_4_Score',
-                        title: 'BLEU-4',
-                        formatter: precentFormatter
-                    }, {
                         field: 'rouge_Score',
                         title: 'ROUGE-L',
+                        formatter: precentFormatter
+                    }, {
+                        field: 'bleu_4_Score',
+                        title: 'BLEU-4',
                         formatter: precentFormatter
                     },  {
                         field: 'createTime',
@@ -539,12 +539,12 @@
                     pageList: [10,20,30],        //可供选择的每页的行数（*）
                     search:true,
                     columns: [{
-                        field: 'bleu_4_Score',
-                        title: 'BLEU-4',
-                        formatter: precentFormatter
-                    }, {
                         field: 'rouge_Score',
                         title: 'ROUGE-L',
+                        formatter: precentFormatter
+                    }, {
+                        field: 'bleu_4_Score',
+                        title: 'BLEU-4',
                         formatter: precentFormatter
                     },  {
                         field: 'createTime',
