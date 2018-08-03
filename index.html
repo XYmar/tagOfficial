@@ -1233,7 +1233,7 @@
                 nowTime = moment(result.data).format('YYYY-MM-DD HH:mm:ss');
 
                 // 真实时间
-                let trainTime = moment(new Date(2018, 7, 1)).format();
+                let trainTime = moment(new Date(2018, 6, 1)).format();
                 let primaryTime = moment(new Date(2018, 8, 19)).format();
                 let FinalTime = moment(new Date(2018, 9, 27)).format();
                 if(moment(nowTime).isBefore(trainTime)|| role === "null" || role === "user" || role === "denied"){         //8月1日前、未审核、被拒绝
@@ -1349,8 +1349,8 @@
     }
 
     function downloadA(id){                     //可下载时，下载的a标签
-        document.getElementById(id).href = "files/训练数据集.json";
-        document.getElementById(id).download="训练数据集.json";
+        document.getElementById(id).href = "files/训练数据集.zip";
+        document.getElementById(id).download="训练数据集.zip";
     }
 
     /*function uncommit(id){                      //不可提交时链接的样式
