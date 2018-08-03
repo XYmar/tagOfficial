@@ -385,7 +385,8 @@
             formData.append("type", 0);
             layer.msg('正在计算...', {
                 icon: 16,
-                shade: 0.01
+                shade: 0.01,
+                time: false //取消自动关闭
             });
             $.ajax({
                 url: IpAll() + "users/" + myTeamId + "/commitfile",
@@ -400,17 +401,41 @@
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
                 },
-                timeout : 5000,
+                timeout : 120000,
                 success: function (result) {
-                    alert("提交成功");
-                    layer.closeAll('loading');
-                    resetAll();
-                    getTrainingScore();
+                    layer.alert('提交成功', {
+                        closeBtn: 0,    // 是否显示关闭按钮
+                        anim: 0,//动画类型
+                        btn: ['确定'],//按钮
+                        icon: 6,    // icon
+                        yes:function(){
+                            layer.closeAll();
+                            resetAll();
+                            getTrainingScore();
+                    }});
                 },
                 error : function(error) {
-                    let notifyMessage = error.responseJSON.message
-                    alert(notifyMessage)
-                    layer.closeAll('loading');
+                    layer.closeAll();
+                    if(error.responseJSON && error.responseJSON.message){
+                        let notifyMessage = error.responseJSON.message
+                        layer.alert(notifyMessage, {
+                            closeBtn: 0,    // 是否显示关闭按钮
+                            anim: 0,//动画类型
+                            btn: ['确定'],//按钮
+                            icon: 5,    // icon
+                            yes:function(){
+                                layer.closeAll();
+                            }});
+                    }else{
+                        layer.alert('请求超时', {
+                            closeBtn: 0,    // 是否显示关闭按钮
+                            anim: 0,//动画类型
+                            btn: ['确定'],//按钮
+                            icon: 5,    // icon
+                            yes:function(){
+                                layer.closeAll();
+                        }});
+                    }
                 }
             });
         }else {
