@@ -77,9 +77,13 @@
         let isValidateUname = false;
         let isValidateUpwd = false;
         let isValidate = false;
+        let usernamePattern  = /^[a-zA-Z0-9]{6,15}$/
 
         if(username.length == 0){
             uName.innerHTML += "用户名不能为空";
+            isValidateUname = false;
+        }else if(!usernamePattern.test(username)) {
+            uName.innerHTML = "账号必须是6-15位的英文字母或数字";
             isValidateUname = false;
         }else{
             isValidateUname = true;
