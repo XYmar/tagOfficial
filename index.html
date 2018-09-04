@@ -519,7 +519,7 @@
                                         </div>
 
                                         <div class="col-md-6 col-xs-6">
-                                            <a href="javascript: void(0)" id="trainA"><button class="btn downloadBtn" id="trainBtn"  disabled="disabled" type="button">训练集</button></a>
+                                            <a href="javascript: void(0)" id="trainA"><button class="btn downloadBtn" id="trainBtn"  disabled="disabled" type="button" onclick="trainCount()">训练集</button></a>
                                         </div>
                                     </div>
 
@@ -535,7 +535,7 @@
                                         </div>
 
                                         <div class="col-md-6 col-xs-6">
-                                            <a href="javascript: void(0)" id="primaryA"><button class="btn downloadBtn" id="primaryBtn"  disabled="disabled" type="button">初赛测试集</button></a>
+                                            <a href="javascript: void(0)" id="primaryA"><button class="btn downloadBtn" id="primaryBtn"  disabled="disabled" type="button" onclick="preCount()">初赛测试集</button></a>
                                         </div>
                                     </div>
 
@@ -550,7 +550,7 @@
                                         </div>
 
                                         <div class="col-md-6 col-xs-6">
-                                            <a href="javascript: void(0)" id="finalA"><button class="btn downloadBtn" id="finalBtn"   disabled="disabled" type="button">决赛测试集</button></a>
+                                            <a href="javascript: void(0)" id="finalA"><button class="btn downloadBtn" id="finalBtn"   disabled="disabled" type="button" onclick="finalCount()">决赛测试集</button></a>
                                         </div>
                                     </div>
 
@@ -1495,6 +1495,69 @@
 
     function precentFormatter(value) {
         return value.toFixed(2) + "%";
+    }
+
+    //训练集
+    function trainCount(){
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: IpAll() + "downloadlogs",
+            data: {"type": 0},
+
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            timeout : 5000,
+            success: function (result) {
+            },
+            error : function(error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+
+    //初赛测试集
+    function preCount(){
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: IpAll() + "downloadlogs",
+            data: {"type": 1},
+
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            timeout : 5000,
+            success: function (result) {
+            },
+            error : function(error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+
+    //决赛测试集
+    function finalCount(){
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: IpAll() + "downloadlogs",
+            data: {"type": 2},
+
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            timeout : 5000,
+            success: function (result) {
+            },
+            error : function(error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
     }
 </script>
 </body>
