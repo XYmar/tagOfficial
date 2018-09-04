@@ -7,6 +7,7 @@
     <link href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../bootstrap-table/bootstrap-table.min.css">
     <link href="apply.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../css/apply.css">
     <link rel="stylesheet" href="../css/member.css">
     <link href="../css/header.css" rel="stylesheet" type="text/css" />
     <style>
@@ -156,6 +157,128 @@
                         <div class="col-md-1">
                         </div>
                     </div>
+                    <!-- 提交次数 -->
+                    <div class="row-fluid col-md-12">
+                        <div class="col-md-1 row-fluid">
+                        </div>
+                        <div class="col-md-11 col-xs-11 row-fluid">
+                            <h3 class="message" style="margin-top: 20px;"><span class="required-flag">*</span>提交次数如下</h3>
+                        </div>
+                    </div>
+                    <div class="row-fluid col-md-12 memChildToTop">
+                        <div class="col-md-1 row-fluid">
+                        </div>
+                        <div class="col-md-10 group-info">
+                            <div class="col-md-6">
+                                <form class="form-horizontal col-md-12">
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-5 col-xs-4 memLabel">训练集提交次数：</label>
+                                        <div class="controls col-md-7 col-xs-8 memInput">
+                                            <div class="auditDetailDiv" id="trainCount">
+                                                xx
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <form class="form-horizontal col-md-12">
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-5 col-xs-4 memLabel">初赛测试集提交次数：</label>
+                                        <div class="controls col-md-7 col-xs-8 memInput">
+                                            <div class="auditDetailDiv" id="preCount">
+                                                xx
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-6">
+                                <form class="form-horizontal col-md-12">
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-5 col-xs-4 memLabel">决赛测试集提交次数：</label>
+                                        <div class="controls col-md-7 col-xs-8 memInput">
+                                            <div class="auditDetailDiv" id="finalCount">
+                                                xx
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <form class="form-horizontal col-md-12">
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-5 col-xs-4 memLabel">总提交次数：</label>
+                                        <div class="controls col-md-7 col-xs-8 memInput">
+                                            <div class="auditDetailDiv" id="allCount">
+                                                xx
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 提交队伍 -->
+                    <div class="row-fluid col-md-12">
+                        <div class="col-md-1 row-fluid">
+                        </div>
+                        <div class="col-md-10 col-xs-10 row-fluid">
+                            <h3 class="message" style="margin-top: 20px;"><span class="required-flag">*</span>提交队伍如下</h3>
+                        </div>
+                    </div>
+                    <div class="row-fluid col-md-12" style="margin-top: 10px;">
+                        <div class="col-md-1">
+                        </div>
+                        <div class="col-md-10 col-xs-12 group-info" style="padding: 10px 10px;">
+
+                            <!-- tab页开始 -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#downloadCountInfo" aria-controls="home" role="tab" data-toggle="tab">训练集</a></li>
+                                <li role="presentation"><a href="#preCountInfo" aria-controls="profile" role="tab" data-toggle="tab">初赛测试集</a></li>
+                                <li role="presentation"><a href="#finalCountInfo" aria-controls="profile" role="tab" data-toggle="tab">决赛测试集</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="downloadCountInfo">
+                                    <div class="col-md-12" style="padding: 0">
+                                        <div>
+                                            <table id="downloadCountTable">
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="preCountInfo">
+                                    <div class="col-md-12" style="padding: 0">
+                                        <div>
+                                            <table id="preCountTable">
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="finalCountInfo">
+                                    <div class="col-md-12" style="padding: 0">
+                                        <div>
+                                            <table id="finalCountTable">
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- tab页结束 -->
+
+                        </div>
+                        <div class="col-md-1">
+                        </div>
+                    </div>
+                    <!--<div class="row-fluid col-md-12" style="margin-top: 10px;">
+                        <div class="col-md-1">
+                        </div>
+                        <div class="col-md-10 col-xs-12 group-info" style="padding: 10px 10px;">
+                            <table id="downloadCount">
+                            </table>
+
+                        </div>
+                        <div class="col-md-1">
+                        </div>
+                    </div>-->
                 </div>
             </div>
             <br>
@@ -177,11 +300,11 @@
     let isPrimaryLoaded = false;
     let isFinalLoaded = false;
 
+    let username = $.cookie("myUsername");
+    let password0 = $.cookie("myWPa");
+    let password = $.base64.decode(password0);
+    let token = username + ':' + password;
     window.onload=function(){
-        let username = $.cookie("myUsername");
-        let password0 = $.cookie("myWPa");
-        let password = $.base64.decode(password0);
-        let token = username + ':' + password;
         let role = $.cookie("myRole");
         if ((username != null) && (username !== "null")) {
             if(role === 'admin'){
@@ -400,6 +523,15 @@
                 getTrainingScore({"init": 1});
                 getPreliminaryScoreScore({"init": 1});
                 getFinalScore({"init": 1});
+
+                getTrainCount();
+                getPreCount();
+                getFinalCount();
+                getAllCount();
+
+                getTrainTeamCount();
+                getPreTeamCount();
+                getFinalTeamCount();
             }else{
                 document.getElementById("showBody").style.display = "none";
                 window.location.href="../index.html";
@@ -581,6 +713,210 @@
 
     function precentFormatter(value) {
         return value.toFixed(2) + "%";
+    }
+
+    //训练集提交次数
+    function getTrainCount(opts){
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: { type: 0 },
+            url: IpAll() + "downloadlogs/countsbytype" ,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+                document.getElementById("trainCount").innerHTML = data;
+            },
+            error : function(error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+    //初赛集提交次数
+    function getPreCount(opts){
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: { type: 1 },
+            url: IpAll() + "downloadlogs/countsbytype" ,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+                document.getElementById("preCount").innerHTML = data;
+            },
+            error : function(error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+    //决赛集提交次数
+    function getFinalCount(opts){
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: { type: 2 },
+            url: IpAll() + "downloadlogs/countsbytype" ,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+                document.getElementById("finalCount").innerHTML = data;
+            },
+            error : function(error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+    //总提交次数
+    function getAllCount(opts){
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: IpAll() + "downloadlogs/counts" ,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+                document.getElementById("allCount").innerHTML = data;
+            },
+            error : function(error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+
+    //训练集提交队伍
+    function getTrainTeamCount(opts){
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: { type: 0 },
+            url: IpAll() + "downloadlogs/users" ,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+                console.log(data);
+                $("#downloadCountTable").bootstrapTable('destroy');
+                $('#downloadCountTable').bootstrapTable({
+                    sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination : true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30,40],        //可供选择的每页的行数（*）
+                    search:true,
+                    columns: [{
+                        field: 'teamName',
+                        title: '队伍名称'
+                    },{
+                        field: 'name',
+                        title: '队长'
+                    },{
+                        field: 'telephoneNumber',
+                        title: '联系方式'
+                    }],
+                    data: data
+                });
+
+            },
+            error : function(error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+    //初赛测试集提交队伍
+    function getPreTeamCount(opts){
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: { type: 1 },
+            url: IpAll() + "downloadlogs/users" ,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+                console.log(data);
+                $("#preCountTable").bootstrapTable('destroy');
+                $('#preCountTable').bootstrapTable({
+                    sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination : true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30,40],        //可供选择的每页的行数（*）
+                    search:true,
+                    columns: [{
+                        field: 'teamName',
+                        title: '队伍名称'
+                    },{
+                        field: 'name',
+                        title: '队长'
+                    },{
+                        field: 'telephoneNumber',
+                        title: '联系方式'
+                    }],
+                    data: data
+                });
+
+            },
+            error : function(error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+    //决赛测试集提交队伍
+    function getFinalTeamCount(opts){
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: { type: 2 },
+            url: IpAll() + "downloadlogs/users" ,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+                console.log(data);
+                $("#finalCountTable").bootstrapTable('destroy');
+                $('#finalCountTable').bootstrapTable({
+                    sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination : true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30,40],        //可供选择的每页的行数（*）
+                    search:true,
+                    columns: [{
+                        field: 'teamName',
+                        title: '队伍名称'
+                    },{
+                        field: 'name',
+                        title: '队长'
+                    },{
+                        field: 'telephoneNumber',
+                        title: '联系方式'
+                    }],
+                    data: data
+                });
+
+            },
+            error : function(error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
     }
 
 </script>
