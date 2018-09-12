@@ -586,7 +586,8 @@ text-align:center;
 	padding: 15px 0;
 	font-size: 18px;
 	/*width: 48.5%;*/
-	/*width: 99%;*/
+	width: 96%;
+	text-align: left;
 	display: inline-block;
 	cursor: pointer;
 	overflow: hidden;
