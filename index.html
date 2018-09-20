@@ -1900,6 +1900,7 @@
                 // 真实时间
                 let trainTime = moment(new Date(2018, 6, 1)).format();
                 let primaryTime = moment(new Date(2018, 8, 19)).format();
+                let primaryEndTime = moment(new Date(2018, 8, 24)).format();
                 let FinalTime = moment(new Date(2018, 9, 27)).format();
                 if (moment(nowTime).isBefore(trainTime) || role === "null" || role === "user" || role === "denied") {         //8月1日前、未审核、被拒绝
                     unclickBtn("trainBtn");
@@ -1933,6 +1934,25 @@
                         }
                     }
 
+                    else if (moment(nowTime).isAfter(primaryEndTime)) {        //9月24号提交按钮取消可点击
+                        undisabled("trainBtn");
+                        undisabled("primaryBtn");
+                        unclickBtn("finalBtn");
+
+                        downloadA("trainA");
+                        downloadA("primaryA");
+
+                        if (role === "admin") {
+                            unclickBtn("trainCommitBtn");
+                            unclickBtn("primaryCommitBtn");
+                            unclickBtn("finalCommitBtn");
+                        } else {
+                            undisabled("trainCommitBtn");
+                            unclickBtn("primaryCommitBtn");
+                            commitA("trainCommit");
+                            unclickBtn("finalCommitBtn");
+                        }
+                    }
                     else if (moment(nowTime).isAfter(primaryTime)) {        //9月19日后
                         undisabled("trainBtn");
                         undisabled("primaryBtn");
