@@ -2165,6 +2165,7 @@
                     pageList: [30, 40],        //可供选择的每页的行数（*）
                     search: false,
                     striped: true,
+                    rowStyle: rowStyle,
                     columns: [
                         {
                             filed: '',
@@ -2218,6 +2219,7 @@
                     pageList: [30, 40],        //可供选择的每页的行数（*）
                     search: false,
                     striped: true,
+                    rowStyle: rowStyle,
                     columns: [
                         {
                             filed: '',
@@ -2275,6 +2277,14 @@
         let pageNumber = lineTable.bootstrapTable('getOptions').pageNumber;
         //返回序号，注意index是从0开始的，所以要加上1
         return pageSize * (pageNumber - 1) + index + 1;*/
+    }
+
+    function rowStyle (row, index) {
+        let classes = ['success', 'info'];
+        if (index < 10) {//前十行
+            return { classes: classes[0] };
+        }
+        return {classes: ''};
     }
 
     //训练集
