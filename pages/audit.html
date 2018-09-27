@@ -325,7 +325,7 @@
                         let data = result.data;
                         let dataLength = data.length
                         if(data.length !== 0){
-                            //console.log(result.data);//打印服务端返回的数据(调试用)
+                            ////console.log(result.data);//打印服务端返回的数据(调试用)
                             let notAudit = document.getElementById('notAuditNum')
                             notAudit.innerHTML = '[' + dataLength + '条]'
                             document.getElementById('NoAuditInfo').innerHTML = ''
@@ -555,7 +555,7 @@
             },
             success: function (result) {
                 let data = result.data;
-                console.log(data);
+                //console.log(data);
                 $("#trainingScoreInfoTable").bootstrapTable('destroy');
                 $('#trainingScoreInfoTable').bootstrapTable({
                     sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
@@ -611,7 +611,7 @@
             },
             success: function (result) {
                 let data = result.data;
-                console.log(data);
+                //console.log(data);
                 $("#preliminaryScoreInfoTable").bootstrapTable('destroy');
                 $('#preliminaryScoreInfoTable').bootstrapTable({
                     sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
@@ -667,7 +667,7 @@
             },
             success: function (result) {
                 let data = result.data;
-                console.log(data);
+                //console.log(data);
                 $("#finalScoreInfoTable").bootstrapTable('destroy');
                 $('#finalScoreInfoTable').bootstrapTable({
                     sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
@@ -807,7 +807,7 @@
             },
             success: function (result) {
                 let data = result.data;
-                console.log(data);
+                //console.log(data);
                 $("#downloadCountTable").bootstrapTable('destroy');
                 $('#downloadCountTable').bootstrapTable({
                     sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
@@ -848,7 +848,7 @@
             },
             success: function (result) {
                 let data = result.data;
-                console.log(data);
+                //console.log(data);
                 $("#preCountTable").bootstrapTable('destroy');
                 $('#preCountTable').bootstrapTable({
                     sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
@@ -889,7 +889,7 @@
             },
             success: function (result) {
                 let data = result.data;
-                console.log(data);
+                //console.log(data);
                 $("#finalCountTable").bootstrapTable('destroy');
                 $('#finalCountTable').bootstrapTable({
                     sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
