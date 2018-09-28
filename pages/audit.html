@@ -268,17 +268,6 @@
                         <div class="col-md-1">
                         </div>
                     </div>
-                    <!--<div class="row-fluid col-md-12" style="margin-top: 10px;">
-                        <div class="col-md-1">
-                        </div>
-                        <div class="col-md-10 col-xs-12 group-info" style="padding: 10px 10px;">
-                            <table id="downloadCount">
-                            </table>
-
-                        </div>
-                        <div class="col-md-1">
-                        </div>
-                    </div>-->
                 </div>
             </div>
             <br>
@@ -325,26 +314,10 @@
                         let data = result.data;
                         let dataLength = data.length
                         if(data.length !== 0){
-                            ////console.log(result.data);//打印服务端返回的数据(调试用)
                             let notAudit = document.getElementById('notAuditNum')
                             notAudit.innerHTML = '[' + dataLength + '条]'
                             document.getElementById('NoAuditInfo').innerHTML = ''
                             let noAuditTbody = document.getElementById("noAudit");
-                            /*for (let i=0;i<data.length;i++) {
-                                str += "<tr>" +
-                                    "<td style='display:none'>" + data[i].id + "</td>" +
-                                    "<td>" + data[i].teamName + "</td>" +
-                                    "<td>" + data[i].name + "</td>" +
-                                    "<td>" + data[i].age + "</td>" +
-                                    "<td>" + (data[i].sex === 0 ? '男' : '女') + "</td>" +
-                                    "<td>" + data[i].telephoneNumber + "</td>" +
-                                    "<td>" + data[i].organization + "</td>" +
-                                    "<td><a href='auditDetail.html?id=" + data[i].id + "' style='float: none;'>" +
-                                    "<button class='btn btn-success btn-success editMember' type='button' >审核</button> " +
-                                    "</a></td>" +
-                                    "</tr>";
-                            }
-                            noAuditTbody.innerHTML = str;*/
                         }
                         $('#memberInfoTableNotready').bootstrapTable({
                             sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
@@ -431,11 +404,11 @@
 
                                 // 生成表格
                                 $('#memberInfoTableAlready').bootstrapTable({
-                                    sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
-                                    pagination : true, // 是否显示分页（*）
-                                    pageNumber: 1,    //如果设置了分页，首页页码
-                                    pageSize: 10,                       //每页的记录行数（*）
-                                    pageList: [10,20,30],        //可供选择的每页的行数（*）
+                                    sidePagination : "client",
+                                    pagination : true,
+                                    pageNumber: 1,
+                                    pageSize: 10,
+                                    pageList: [10,20,30],
                                     search:true,
                                     columns: [{
                                         field: 'teamName',
@@ -555,7 +528,6 @@
             },
             success: function (result) {
                 let data = result.data;
-                //console.log(data);
                 $("#trainingScoreInfoTable").bootstrapTable('destroy');
                 $('#trainingScoreInfoTable').bootstrapTable({
                     sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
@@ -611,7 +583,6 @@
             },
             success: function (result) {
                 let data = result.data;
-                //console.log(data);
                 $("#preliminaryScoreInfoTable").bootstrapTable('destroy');
                 $('#preliminaryScoreInfoTable').bootstrapTable({
                     sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
@@ -667,7 +638,6 @@
             },
             success: function (result) {
                 let data = result.data;
-                //console.log(data);
                 $("#finalScoreInfoTable").bootstrapTable('destroy');
                 $('#finalScoreInfoTable').bootstrapTable({
                     sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
@@ -807,7 +777,6 @@
             },
             success: function (result) {
                 let data = result.data;
-                //console.log(data);
                 $("#downloadCountTable").bootstrapTable('destroy');
                 $('#downloadCountTable').bootstrapTable({
                     sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
@@ -848,7 +817,6 @@
             },
             success: function (result) {
                 let data = result.data;
-                //console.log(data);
                 $("#preCountTable").bootstrapTable('destroy');
                 $('#preCountTable').bootstrapTable({
                     sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
@@ -889,7 +857,6 @@
             },
             success: function (result) {
                 let data = result.data;
-                //console.log(data);
                 $("#finalCountTable").bootstrapTable('destroy');
                 $('#finalCountTable').bootstrapTable({
                     sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）

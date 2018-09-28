@@ -287,7 +287,6 @@
                         img.src = window.URL.createObjectURL(blob);
                         $("#badge").html(img);
 
-                        ////console.log($("#badge")[0].childNodes[0]);
                         $("#badge")[0].childNodes[0].setAttribute("class","idCard");
                     }
                 }
@@ -363,7 +362,7 @@
     function handleImg(file, divId){
         //获取文件名称
         let fileName = file.name;
-        url=window.URL.createObjectURL(file);  // 得到bolb对象路径，可当成普通的文件路径一样使用，赋值给src;
+        url=window.URL.createObjectURL(file);
         //清空文件列表
         let fileArea = document.getElementById("idZhengmian");
         fileArea.innerHTML = '';

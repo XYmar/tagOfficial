@@ -282,7 +282,6 @@
                 file1.onchange = function(){
                     if(file1.value.length !== 0){
                         let file = this.files[0];
-                        //console.log(file);
                         let divId = "file1";
                         handleFile(file, divId);
                     }
@@ -300,7 +299,7 @@
     function handleFile(file, divId){
         //获取文件名称
         let fileName = file.name;
-        url=window.URL.createObjectURL(file);  // 得到bolb对象路径，可当成普通的文件路径一样使用，赋值给src;
+        url=window.URL.createObjectURL(file);
         //清空文件列表
         let fileArea = document.getElementById(divId);
         fileArea.innerHTML = '';
@@ -320,13 +319,7 @@
         let target = e.target || e.srcElement;
         let delDiv = target.parentNode.parentNode;
         let id1 = delDiv.parentNode.id;
-        //let id2 = delDiv.parentNode.parentNode.lastElementChild.lastElementChild.lastElementChild.id;
-        //console.log(id1);
-        //console.log("删除的div----");
-        //console.log(delDiv.parentNode.parentNode.lastElementChild.lastElementChild.lastElementChild);
-        //console.log();
         let $fileArea = document.getElementById(id1);
-        //console.log($fileArea);
         $fileArea.removeChild(delDiv);
         let fileCont = document.getElementById("file1Cont");
         fileCont.value = '';
@@ -378,7 +371,6 @@
 
     function subFiles() {
         let file1 = document.getElementById("file1Cont").files[0];  //获取文件
-        //console.log(typeof (file1));
         if(typeof (file1) !== "undefined"){
             let formData = new FormData();
             formData.append("ref", file1);
@@ -458,7 +450,6 @@
             success: function (result) {
                 let str = "";
                 let data = result.data;
-                //console.log(data);
                 $("#trainingScoreInfoTable").bootstrapTable('destroy');
                 $('#trainingScoreInfoTable').bootstrapTable({
                     sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
@@ -506,7 +497,6 @@
             success: function (result) {
                 let str = "";
                 let data = result.data;
-                //console.log(data);
                 $("#preliminaryScoreInfoTable").bootstrapTable('destroy');
                 $('#preliminaryScoreInfoTable').bootstrapTable({
                     sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
@@ -554,7 +544,6 @@
             success: function (result) {
                 let str = "";
                 let data = result.data;
-                //console.log(data);
                 $("#finalScoreInfoTable").bootstrapTable('destroy');
                 $('#finalScoreInfoTable').bootstrapTable({
                     sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
