@@ -593,8 +593,8 @@
                             "<td>" + (data[i].sex === 0 ? '男' : '女') + "</td>" +
                             "<td>" + data[i].telephoneNumber + "</td>" +
                             "<td>" + data[i].organization + "</td>" +
-                            "<td><button class='btn btn-success btn-small editMember' type='button' id='" + data[i].id + "' data-toggle='modal' onclick='beforeEdit(event)'>编辑</button>\n" +
-                            "<button class='btn btn-danger btn-small editMember' type='button' id='" + data[i].id + "' onclick='delMember(event)'>删除</button></td>" +
+                            "<td><button class='btn btn-success btn-small editMember' type='button' id='" + data[i].id + "' data-toggle='modal' disabled=\"disabled\" style=\"background: lightgrey;border-color: lightgrey;\" onclick='beforeEdit(event)'>编辑</button>\n" +
+                            "<button class='btn btn-danger btn-small editMember' type='button' id='" + data[i].id + "' disabled=\"disabled\" style=\"background: lightgrey;border-color: lightgrey;\" onclick='delMember(event)'>删除</button></td>" +
                             "</tr>";
                     }
                     memberTbody.innerHTML = str;
