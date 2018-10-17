@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<!--[if IE 9]>
+<html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>军事智能·机器阅读</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <link href="http://apps.bdimg.com/libs/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
+    <link href="css/animations.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="bootstrap-table/bootstrap-table.min.css">
+    <link href="pages/apply.css" rel="stylesheet" type="text/css"/>
+    <link href="css/style.min.css" rel="stylesheet">
+
+</head>
+<body class="no-trans">
+<div class="scrollToTop"><i class="icon-up-open-big"></i></div>
+<!-- header -->
+<header class="header fixed clearfix navbar navbar-fixed-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2" id="hleft">
+                <!-- header-left start -->
+                <div class="header-left">
+                    <div class="logo-section smooth-scroll">
+                        <div class="brand"><a href="#banner"><img id="logo"
+                                                                  src="http://pb2edde5m.bkt.clouddn.com/logo2.png"
+                                                                  alt="Worthy"></a></div>
+                    </div>
+                </div>
+                <!-- header-left end -->
+            </div>
+
+            <div class="col-md-10" id="hright">
+                <!-- header-right start -->
+                <div class="header-right">
+
+                    <!-- main-navigation start -->
+                    <div class="main-navigation animated">
+                        <!-- navbar start -->
+                        <nav class="navbar navbar-default" role="navigation">
+                            <div class="container-fluid">
+                                <!-- Toggle get grouped for better mobile display -->
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                            data-target="#navbar-collapse-1">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li class="active"><a href="#banner">主页</a></li>
+                                        <li><a href="#production">比赛介绍</a></li>
+                                        <li><a href="#download">下载</a></li>
+                                        <li><a href="#commit">结果提交</a></li>
+                                        <li><a href="#ranking">排行榜</a></li>
+                                        <li><a href="#news">新闻中心</a></li>
+                                        <li><a href="#contact">联系我们</a></li>
+                                        <li id="loginName"></li>
+                                        <li id="registAd"></li>
+                                        <li id="loginOut"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                        <!-- navbar end -->
+                    </div>
+                    <!-- main-navigation end -->
+                </div>
+                <!-- header-right end -->
+            </div>
+        </div>
+    </div>
+</header>
+<!-- 首页 -->
+<div id="banner" class="banner">
+    <div class="banner-image"></div>
+    <div class="banner-caption titleToTop">
+        <div class="container">
+            <div class="row">
+                <div class="caption-data" style="margin-top: 0px; opacity: 1;" data-animation-effect="fadeIn">
+                    <h1>“莱斯杯”全国第一届“军事智能·机器阅读”挑战赛</h1>
+                    <h1 class="yinyongTitle">—军委装备发展部中国电科联合基金资助</h1>
+                    <h3 class="padding-top30">
+                        军事文本机器阅读，四十万豪奖等你来拿！
+                        <br>
+                        每一次的国庆大阅兵，是否你都心潮澎湃？
+                        <br>
+                        国防技术实力的日益提升，是否你也骄傲自豪？
+                        <br>
+                        AI新成果不断冲击大众眼球，是否你也跃跃欲试？
+                        <br>
+                        那么，
+                        <br>
+                        “军事智能•机器阅读”挑战赛来了，你准备好了吗？
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h3 class="orgTitle">
+        主 办：中国电子科技集团公司第二十八研究所
+        <br>
+        承 办：信息系统工程重点实验室、联合作战指挥系统技术及应用重点实验室
+    </h3>
+</div>
+<!-- section start -->
+<!-- 下载提交 -->
+<!--<section class="section transprant-bg pclear secPadding">
+    <div class="container no-view" data-animation-effect="fadeIn">
+        <h1 id="download" class="title text-center">下载提交</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="media block-list">
+                    <div class="media-left">
+                        <i class="fa fa-clock-o"></i>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">数据下载</h3>
+                        <blockquote id="ifDown">
+
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="media block-list">
+                    <div class="media-left">
+                        <i class="fa fa-magic"></i>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">结果提交</h3>
+
+                        <blockquote id="ifUpload">
+
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>-->
+<!-- 下载数据 -->
+<section class="section secPadding">
+    <div class="container">
+        <h1 class="text-center title0" id="download">下载</h1>
+        <div class="separator"></div>
+        <p class="lead text-center" id="downloadMess" style="color: red;"></p>
+        <br>
+        <div class="row no-view" data-animation-effect="fadeIn">
+            <div class="col-md-12">
+                <!-- portfolio items start -->
+                <div class="row grid-space-20">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="list-unstyled col-md-12 newUl">
+                                <li>
+                                    <div class="col-md-3">
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="col-md-1 col-xs-2">
+                                            <i class="fa fa-download  pr-10 colored"></i>
+                                        </div>
+
+                                        <div class="col-md-6 col-xs-6">
+                                            <a href="javascript: void(0)" id="trainA">
+                                                <button class="btn downloadBtn" id="trainBtn" disabled="disabled"
+                                                        type="button" onclick="trainCount()">军事新闻
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+
+
+                                </li>
+                                <li>
+                                    <div class="col-md-3">
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="col-md-1 col-xs-2">
+                                            <i class="fa fa-download  pr-10 colored"></i>
+                                        </div>
+
+                                        <div class="col-md-6 col-xs-6">
+                                            <a href="javascript: void(0)" id="primaryA">
+                                                <button class="btn downloadBtn" id="primaryBtn" disabled="disabled"
+                                                        type="button" onclick="preCount()">防务快讯
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li>
+                                    <div class="col-md-3">
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="col-md-1 col-xs-2">
+                                            <i class="fa fa-download  pr-10 colored"></i>
+                                        </div>
+
+                                        <div class="col-md-6 col-xs-6">
+                                            <a href="javascript: void(0)" id="finalA">
+                                                <button class="btn downloadBtn" id="finalBtn" disabled="disabled"
+                                                        type="button" onclick="finalCount()">非密情报
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- 结果提交 -->
+<section class="section secPadding">
+    <div class="container">
+        <h1 class="text-center title0" id="commit">结果提交</h1>
+        <div class="separator"></div>
+        <p class="lead text-center" id="commitMess" style="color: red;"></p>
+        <br>
+        <div class="row no-view" data-animation-effect="fadeIn">
+            <div class="col-md-12">
+                <!-- portfolio items start -->
+                <div class="row grid-space-20">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="list-unstyled col-md-12 newUl">
+                                <li>
+                                    <div class="col-md-3">
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="col-md-1 col-xs-2">
+                                            <i class="fa fa-download  pr-10 colored"></i>
+                                        </div>
+
+                                        <div class="col-md-6 col-xs-6">
+                                            <a href="javascript: void(0)" id="trainCommit">
+                                                <button class="btn downloadBtn" id="trainCommitBtn" disabled="disabled"
+                                                        type="button">第一轮提交
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li>
+                                    <div class="col-md-3">
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="col-md-1 col-xs-2">
+                                            <i class="fa fa-download  pr-10 colored"></i>
+                                        </div>
+
+                                        <div class="col-md-6 col-xs-6">
+                                            <a href="javascript: void(0)" id="primaryCommit">
+                                                <button class="btn downloadBtn" id="primaryCommitBtn"
+                                                        disabled="disabled" type="button">第二轮提交
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li>
+                                    <div class="col-md-3">
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="col-md-1 col-xs-2">
+                                            <i class="fa fa-download  pr-10 colored"></i>
+                                        </div>
+
+                                        <div class="col-md-6 col-xs-6">
+                                            <a href="javascript: void(0)" id="finalCommit">
+                                                <button class="btn downloadBtn" id="finalCommitBtn" disabled="disabled"
+                                                        type="button">第三轮提交
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--<section class="section secPadding">
+    <div class="container">
+        <h1 class="text-center title0" id="commit">结果提交</h1>
+        <div class="separator"></div>
+        <p class="lead text-center" id="commitMess"></p>
+        <br>
+        <div class="row no-view" data-animation-effect="fadeIn">
+            <div class="col-md-12">
+                &lt;!&ndash; portfolio items start &ndash;&gt;
+                <div class="row grid-space-20">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="list-unstyled col-md-12 newUl">
+                                <li>
+                                    <i class="fa fa-chain  pr-10 colored"></i>
+                                    <a href="javascript: void(0)" id="trainCommit">训练结果提交</a>
+
+                                </li>
+                                <li>
+                                    <i class="fa fa-chain  pr-10 colored"></i>
+                                    <a href="javascript: void(0)" id="primaryCommit">初赛结果提交</a>
+
+                                </li>
+
+                                <li>
+                                    <i class="fa fa-chain  pr-10 colored"></i>
+                                    <a href="javascript: void(0)" id="finalCommit">决赛结果提交</a>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>-->
+<!-- 排行榜 -->
+<section id="ranking" class="price-table secPadding">
+    <div class="container text-center">
+        <div class="heading">
+            <h1 class="text-center title0" id="">在线评估结果排行榜</h1>
+            <div class="separator"></div>
+            <br>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 rankTable">
+                <!--<div class="panel panel-default">-->
+                <div class="col-md-12 group-info" style="padding: 10px 10px;">
+
+                    <!-- tab页开始 -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#preliminaryScoreInfo" aria-controls="profile"
+                                                                  role="tab" data-toggle="tab">初赛成绩</a></li>
+                        <li role="presentation"><a href="#finalScoreInfo" aria-controls="profile" role="tab"
+                                                   data-toggle="tab">决赛成绩</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="preliminaryScoreInfo">
+                            <div class="col-md-12" style="padding: 0">
+                                <div>
+                                    <table id="preliminaryScoreInfoTable">
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="finalScoreInfo">
+                            <div class="col-md-12" style="padding: 0">
+                                <div>
+                                    <table id="finalScoreInfoTable">
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- tab页结束 -->
+
+                </div>
+                <!--<div class="tabbable" id="tabs-777725">&lt;!&ndash; Only required for left/right tabs &ndash;&gt;
+                    <ul class="nav nav-tabs">
+                        <li class="active" style="cursor: pointer;"><a contenteditable="false" data-toggle="tab"
+                                                                       href="#panel-709646">测试结果排行榜</a></li>
+                        <li><a contenteditable="false" data-toggle="tab" href="#panel-875540">最终结果排行榜</a></li>
+                        <li><a contenteditable="false" data-toggle="tab" href="#panel-875566">在线结果排行榜</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" contenteditable="true" id="panel-709646">
+                            <table class="table table-bordered" contenteditable="true">
+                                <thead>
+                                <tr class="rankTable">
+                                    <th style="width: 135px;">Rank</th>
+                                    <th>Model</th>
+                                    <th>ROUGE-L</th>
+                                    <th>BLEU-4</th>
+                                    <th>Submit Time</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td style="text-align: center;">
+                                        <img class="finalRank" src="images/first.png">
+                                    </td>
+                                    <td>NI-Reader-3(ensemble)</td>
+                                    <td>63.62</td>
+                                    <td>59.51</td>
+                                    <td>2018/5/17</td>
+                                </tr>
+                                <tr class="success">
+                                    <td>
+                                        <img class="finalRank" src="images/second.png">
+                                    </td>
+                                    <td>Z-Reader(ensemble)</td>
+                                    <td>61.23</td>
+                                    <td>56.24</td>
+                                    <td>2018/5/26</td>
+                                </tr>
+                                <tr class="error">
+                                    <td>
+                                        <img class="finalRank" src="images/third.png">
+                                    </td>
+                                    <td>BIDAF_S_RETURN</td>
+                                    <td>58.39</td>
+                                    <td>52.62</td>
+                                    <td>2018/5/26</td>
+                                </tr>
+                                <tr class="warning">
+                                    <td>4</td>
+                                    <td>s-Reader</td>
+                                    <td>58.15</td>
+                                    <td>52.1</td>
+                                    <td>2018/5/27</td>
+                                </tr>
+                                <tr class="info">
+                                    <td>5</td>
+                                    <td>terminator_t800(single)</td>
+                                    <td>58.13</td>
+                                    <td>50.33</td>
+                                    <td>2018/5/27</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="tab-pane" contenteditable="true" id="panel-875540">
+                            <table class="table table-bordered" contenteditable="true">
+                                <thead>
+                                <tr class="rankTable">
+                                    <th style="width: 135px;">Rank</th>
+                                    <th>Model</th>
+                                    <th>ROUGE-L</th>
+                                    <th>BLEU-4</th>
+                                    <th>Submit Time</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td style="text-align: center;">
+                                        <img class="finalRank" src="images/first.png">
+                                    </td>
+                                    <td>NI-Reader-3(ensemble)</td>
+                                    <td>63.62</td>
+                                    <td>59.51</td>
+                                    <td>2018/5/17</td>
+                                </tr>
+                                <tr class="success">
+                                    <td>
+                                        <img class="finalRank" src="images/second.png">
+                                    </td>
+                                    <td>Z-Reader(ensemble)</td>
+                                    <td>61.23</td>
+                                    <td>56.24</td>
+                                    <td>2018/5/26</td>
+                                </tr>
+                                <tr class="error">
+                                    <td>
+                                        <img class="finalRank" src="images/third.png">
+                                    </td>
+                                    <td>BIDAF_S_RETURN</td>
+                                    <td>58.39</td>
+                                    <td>52.62</td>
+                                    <td>2018/5/26</td>
+                                </tr>
+                                <tr class="warning">
+                                    <td>4</td>
+                                    <td>s-Reader</td>
+                                    <td>58.15</td>
+                                    <td>52.1</td>
+                                    <td>2018/5/27</td>
+                                </tr>
+                                <tr class="info">
+                                    <td>5</td>
+                                    <td>terminator_t800(single)</td>
+                                    <td>58.13</td>
+                                    <td>50.33</td>
+                                    <td>2018/5/27</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="tab-pane" contenteditable="true" id="panel-875566">
+                            <table class="table table-bordered" contenteditable="false">
+                                <thead>
+                                <tr class="rankTable">
+                                    <th style="width: 135px;">Rank</th>
+                                    <th>Model</th>
+                                    <th>ROUGE-L</th>
+                                    <th>BLEU-4</th>
+                                    <th>Submit Time</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td style="text-align: center;">
+                                        <img class="finalRank" src="images/first.png">
+                                    </td>
+                                    <td>NI-Reader-3(ensemble)</td>
+                                    <td>63.62</td>
+                                    <td>59.51</td>
+                                    <td>2018/5/17</td>
+                                </tr>
+                                <tr class="success">
+                                    <td>
+                                        <img class="finalRank" src="images/second.png">
+                                    </td>
+                                    <td>Z-Reader(ensemble)</td>
+                                    <td>61.23</td>
+                                    <td>56.24</td>
+                                    <td>2018/5/26</td>
+                                </tr>
+                                <tr class="error">
+                                    <td>
+                                        <img class="finalRank" src="images/third.png">
+                                    </td>
+                                    <td>BIDAF_S_RETURN</td>
+                                    <td>58.39</td>
+                                    <td>52.62</td>
+                                    <td>2018/5/26</td>
+                                </tr>
+                                <tr class="warning">
+                                    <td>4</td>
+                                    <td>s-Reader</td>
+                                    <td>58.15</td>
+                                    <td>52.1</td>
+                                    <td>2018/5/27</td>
+                                </tr>
+                                <tr class="info">
+                                    <td>5</td>
+                                    <td>terminator_t800(single)</td>
+                                    <td>58.13</td>
+                                    <td>50.33</td>
+                                    <td>2018/5/27</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>-->
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--<section id="ranking" class="price-table secPadding">
+    <div class="container text-center">
+        <div class="heading">
+            <h1 class="text-center title0" id="">在线评估结果排行榜</h1>
+            <div class="separator"></div>
+            <br>
+        </div>
+        <div class="row">
+            <img src="images/排行榜临时图片.png" alt="">
+        </div>
+    </div>
+</section>-->
+<!-- 底部 -->
+<footer id="footer">
+    <!-- .footer start -->
+    <div class="footer section" style="padding: 30px 0;">
+        <div class="container">
+            <h1 class="title0 text-center" id="contact">联系我们</h1>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="footer-content">
+                        <div class="widget-content" style="text-align: center;">
+                            <p>相关事宜最终解释权归竞赛组委会所有</p><br/>
+                            <p class="contacts">报名咨询热线： &nbsp; <i class="fa fa-phone"></i> 025-84288548 </p>
+                            <p class="contacts">QQ交流群： &nbsp; <i class="fa fa-qq"></i> 805176800（请备注队名） </p>
+                            <p>联系人： 王羽 </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- .footer end -->
+</footer>
+<!-- JavaScript -->
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="plugins/modernizr.js"></script>
+<script type="text/javascript" src="plugins/isotope/isotope.pkgd.min.js"></script>
+<script type="text/javascript" src="plugins/jquery.backstretch.min.js"></script>
+<script type="text/javascript" src="plugins/jquery.appear.js"></script>
+<script type="text/javascript" src="js/custom.js"></script>
+<script src="js/cookie.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/jquery.base64.js"></script>
+<script src="js/globalIP.js"></script>
+<script src="bootstrap-table/bootstrap-table.min.js"></script>
+<script src="bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.19.4/moment.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.19.4/moment-with-locales.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.19.4/locale/zh-cn.js"></script>
+<script>
+    let nowTime;
+    let myTeamId = $.cookie("myTeamId");
+    let username = $.cookie("myUsername");
+    let password0 = $.cookie("myWPa");
+    let password = $.base64.decode(password0);
+    let token = username + ':' + password;
+
+    window.onload = function () {
+
+        //查询用户状态
+        $.ajax({
+            //几个参数需要注意一下
+            type: "GET",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: IpAll() + "users/" + myTeamId,//url
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                if (result.data.roleEntities.length === 2) {
+                    $.cookie("myRole", "admin", {path: '/'});
+                } else {
+                    $.cookie("myRole", result.data.roleEntities[0].name, {path: '/'});
+                }
+
+            },
+            error: function () {
+            }
+        });
+
+
+        // 初始化内容
+        let loginName = document.getElementById("loginName");
+        let loginOut = document.getElementById("loginOut");
+        let registAd = document.getElementById("registAd");
+        let downloadMess = document.getElementById("downloadMess");
+        let commitMess = document.getElementById("commitMess");
+
+        let myUsername = $.cookie("myUsername");
+        let myRole = $.cookie("myRole");
+
+        if ((myUsername != null) && (myUsername !== "null")) {
+            loginName.innerHTML = "";
+            loginOut.innerHTML = "";
+            if (myRole === "admin") {
+                loginName.innerHTML += "<a href='pages/audit.html'>管理员</a>";
+                ajax(myRole);
+
+                if (myUsername === "admin") {
+                    registAd.innerHTML += "<a href='pages/registAdmin.html'>注册</a>";
+                }
+            } else if (myRole === "accept") {
+                loginName.innerHTML += "<a href='pages/member.html'>" + myUsername + "</a>";
+                ajax(myRole);
+            } else if (myRole === "user" || myRole === "denied") {
+                loginName.innerHTML += "<a href='pages/applyResult.html'>" + myUsername + "</a>";
+                ajax(myRole);
+            }
+
+            loginOut.innerHTML += "<a href='#'><sapn onclick='delCookie()' class='exit'>退出</sapn></a>";
+
+            downloadMess.innerHTML = "按不同时间开放相应的下载功能";
+            commitMess.innerHTML = "按不同时间开放相应的提交功能";
+        } else {
+            loginName.innerHTML = "";
+            loginName.innerHTML += "<a href='pages/login.html'>登录/注册</a>";
+            loginOut.innerHTML = "";
+            ajax('null');
+            downloadMess.innerHTML = "请先登录";
+            commitMess.innerHTML = "请先登录";
+        }
+
+        getPreliminaryScoreScore2();
+        /*getPreliminaryScoreScore();
+        getFinalScore();*/
+    }
+
+    //访问静态json数据
+    function getPreliminaryScoreScore2() {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "files/preScore.json",
+            success: function (result) {
+                let data = result.data;
+                $("#preliminaryScoreInfoTable").bootstrapTable('destroy');
+                $('#preliminaryScoreInfoTable').bootstrapTable({
+                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination: true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30, 40],        //可供选择的每页的行数（*）
+                    search: false,
+                    striped: true,
+                    rowStyle: rowStyle,
+                    columns: [
+                        {
+                            filed: '',
+                            title: '序号',
+                            align: "center",
+                            width: 40,
+                            formatter: linenumber
+                        },
+                        {
+                            field: 'teamName',
+                            title: '队伍名称'
+                        }, {
+                            field: 'rougelScoreP',
+                            title: 'ROUGE-L',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'bleu4ScoreP',
+                            title: 'BLEU-4',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'commitDateP',
+                            title: '提交日期'/*,
+                        sortable: true*/
+                        }
+                    ],
+                    data: data
+                });
+
+            },
+            error: function (error) {
+            }
+        });
+    }
+
+    function ifInArr(arr,id) {
+        let flag = false;
+        for(let i=0;i<arr.length;i++){
+            if(id === arr[i]){
+                flag = true;
+                break;
+            }
+        }
+        return flag;
+    }
+
+    //获取服务器时间
+    function ajax(role) {
+        $.ajax({
+            //几个参数需要注意一下
+            type: "GET",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: IpAll() + "users/time",//url
+            success: function (result) {
+                nowTime = moment(result.data).format('YYYY-MM-DD HH:mm:ss');
+
+                // 真实时间
+                let trainTime = moment(new Date(2018, 6, 1)).format();
+                let primaryTime = moment(new Date(2018, 8, 19)).format();
+                let primaryEndTime = moment(new Date(2018, 8, 24)).format();
+                let FinalTime = moment(new Date(2018, 9, 27)).format();
+                if (moment(nowTime).isBefore(trainTime) || role === "null" || role === "user" || role === "denied") {         //8月1日前、未审核、被拒绝
+                    unclickBtn("trainBtn");
+                    unclickBtn("primaryBtn");
+                    unclickBtn("finalBtn");
+
+                    unclickBtn("trainCommitBtn");
+                    unclickBtn("primaryCommitBtn");
+                    unclickBtn("finalCommitBtn");
+                } else {
+                    if (moment(nowTime).isAfter(FinalTime)) {        //10月27日后
+                        undisabled("trainBtn");
+                        undisabled("primaryBtn");
+                        undisabled("finalBtn");
+
+                        downloadA("trainA");
+                        downloadA("primaryA");
+                        downloadA("finalA");
+
+                        if (role === "admin") {
+                            unclickBtn("trainCommitBtn");
+                            unclickBtn("primaryCommitBtn");
+                            unclickBtn("finalCommitBtn");
+                        } else {
+                            undisabled("trainCommitBtn");
+                            undisabled("primaryCommitBtn");
+                            undisabled("finalCommitBtn");
+                            commitA("trainCommit");
+                            commitA("primaryCommit");
+                            commitA("finalCommit");
+                        }
+                    }
+
+                    else if (moment(nowTime).isAfter(primaryEndTime)) {        //9月24号提交按钮取消可点击
+                        undisabled("trainBtn");
+                        undisabled("primaryBtn");
+                        unclickBtn("finalBtn");
+
+                        downloadA("trainA");
+                        downloadA("primaryA");
+                        let topTenArr = [];
+                        $.ajax({
+                            type: "GET",
+                            dataType: "json",
+                            url: "files/topTen.json",
+                            success: function (result) {
+                                let data = result.data;
+                                for(let i=0;i<data.length;i++){
+                                    topTenArr.push(data[i].id);
+                                }
+
+
+                                if (role === "admin") {
+                                    unclickBtn("trainCommitBtn");
+                                    unclickBtn("primaryCommitBtn");
+                                    unclickBtn("finalCommitBtn");
+                                } else if(!ifInArr(topTenArr, myTeamId)){    //非前十名取消可点击
+                                    undisabled("trainCommitBtn");
+                                    unclickBtn("primaryCommitBtn");
+                                    commitA("trainCommit");
+                                    unclickBtn("finalCommitBtn");
+                                }else {                                     //前十名可提交
+                                    undisabled("trainCommitBtn");
+                                    undisabled("primaryCommitBtn");
+                                    commitA("trainCommit");
+                                    commitA("primaryCommit");
+                                    unclickBtn("finalCommitBtn");
+                                }
+                            }
+                        });
+
+                    }
+                    else if (moment(nowTime).isAfter(primaryTime)) {        //9月19日后
+                        undisabled("trainBtn");
+                        undisabled("primaryBtn");
+                        unclickBtn("finalBtn");
+
+                        downloadA("trainA");
+                        downloadA("primaryA");
+
+                        if (role === "admin") {
+                            unclickBtn("trainCommitBtn");
+                            unclickBtn("primaryCommitBtn");
+                            unclickBtn("finalCommitBtn");
+                        } else {
+                            undisabled("trainCommitBtn");
+                            undisabled("primaryCommitBtn");
+                            commitA("trainCommit");
+                            commitA("primaryCommit");
+                            unclickBtn("finalCommitBtn");
+                        }
+                    }
+                    else if (moment(nowTime).isAfter(trainTime)) {        //8月1日后、管理员、已审核用户
+                        undisabled("trainBtn");
+                        unclickBtn("primaryBtn");
+                        unclickBtn("finalBtn");
+                        downloadA("trainA");
+
+                        if (role === "admin") {
+                            unclickBtn("trainCommitBtn");
+                            unclickBtn("primaryCommitBtn");
+                            unclickBtn("finalCommitBtn");
+                        } else {
+                            undisabled("trainCommitBtn");
+                            commitA("trainCommit");
+                            unclickBtn("primaryCommitBtn");
+                            unclickBtn("finalCommitBtn");
+                        }
+                    }
+                }
+
+            },
+            error: function () {
+                //alert("请求错误！");
+            }
+        });
+
+    }
+
+    function delCookie() {
+        $.cookie("myUsername", null, {path: '/'});
+        $.cookie("myRole", null, {path: '/'});
+        let loginName = document.getElementById("loginName");
+        let loginOut = document.getElementById("loginOut");
+        let registAd = document.getElementById("registAd");
+
+        let downloadMess = document.getElementById("downloadMess");
+        let commitMess = document.getElementById("commitMess");
+
+        loginName.innerHTML = "";
+        loginName.innerHTML += "<a href='pages/login.html'>登录/注册</a>";
+        loginOut.innerHTML = "";
+        registAd.innerHTML = "";
+        ajax("null");
+        downloadMess.innerHTML = "请先登录";
+        commitMess.innerHTML = "请先登录";
+        //登录后才可下载
+        /*let ifDown = document.getElementById("ifDown");
+        let ifUpload = document.getElementById("ifUpload");
+        ifDown.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"
+        //ifUpload.innerHTML = "<a href='pages/login.html'><p style=\"color: #339BEB;\">请先登录</p></a>"
+        ifUpload.innerHTML = "<p>暂未开放</p>"*/
+    }
+
+    function undisabled(id) {                   //下载按钮变为可点击
+        document.getElementById(id).disabled = false;
+    }
+
+    function unclickBtn(id) {                   //不可下载时按钮的样式   不可提交时按钮
+        document.getElementById(id).style.background = "lightgrey";
+    }
+
+    function downloadA(id) {                     //可下载时，下载的a标签
+        if (id === "trainA") {
+            document.getElementById(id).href = "files/训练数据集.zip";
+            document.getElementById(id).download = "训练数据集.zip";
+        } else if (id === "primaryA") {
+            document.getElementById(id).href = "files/初赛测试集.zip";
+            document.getElementById(id).download = "初赛测试集.zip";
+        } else if (id === "finalA") {
+        }
+
+    }
+
+    /*function uncommit(id){                      //不可提交时链接的样式
+        document.getElementById(id).style.color = "lightgrey";
+        document.getElementById(id).style.cursor = "none";
+    }*/
+
+    function commitA(id) {
+        if (id === "trainCommit") {
+            document.getElementById(id).href = "pages/resultCommit.html?id=0";
+        } else if (id === "primaryCommit") {
+            document.getElementById(id).href = "pages/resultCommit.html?id=1";
+        } else if (id === "finalCommit") {
+            document.getElementById(id).href = "pages/resultCommit.html?id=2";
+        }
+    }
+
+    //初赛成绩
+    function getPreliminaryScoreScore() {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: {type: 1},
+            url: IpAll() + "users/ranking",
+            success: function (result) {
+                let data = result.data;
+                document.getElementById("tmpData").innerHTML = data;
+                $("#preliminaryScoreInfoTable").bootstrapTable('destroy');
+                $('#preliminaryScoreInfoTable').bootstrapTable({
+                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination: true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30, 40],        //可供选择的每页的行数（*）
+                    search: false,
+                    striped: true,
+                    rowStyle: rowStyle,
+                    columns: [
+                        {
+                            filed: '',
+                            title: '序号',
+                            align: "center",
+                            width: 40,
+                            formatter: linenumber
+                        },
+                        {
+                            field: 'teamName',
+                            title: '队伍名称'
+                        }, {
+                            field: 'rougelScoreP',
+                            title: 'ROUGE-L',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'bleu4ScoreP',
+                            title: 'BLEU-4',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'commitDateP',
+                            title: '提交日期'/*,
+                        sortable: true*/
+                        }
+                    ],
+                    data: data
+                });
+
+            },
+            error: function (error) {
+            }
+        });
+    }
+
+    //决赛成绩
+    /*function getFinalScore() {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: {type: 2},
+            url: IpAll() + "users/ranking",
+            success: function (result) {
+                let data = result.data;
+                $("#finalScoreInfoTable").bootstrapTable('destroy');
+                $('#finalScoreInfoTable').bootstrapTable({
+                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination: true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30, 40],        //可供选择的每页的行数（*）
+                    search: false,
+                    striped: true,
+                    rowStyle: rowStyle,
+                    columns: [
+                        {
+                            filed: '',
+                            title: '序号',
+                            align: "center",
+                            width: 40,
+                            formatter: linenumber
+                        },
+                        {
+                            field: 'teamName',
+                            title: '队伍名称'
+                        }, {
+                            field: 'rougelScoreF',
+                            title: 'ROUGE-L',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'bleu4ScoreF',
+                            title: 'BLEU-4',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'commitDateF',
+                            title: '提交日期'/!*,
+                        sortable: true*!/
+                        }
+                    ],
+                    data: data
+                });
+
+            },
+            error: function (error) {
+            }
+        });
+    }*/
+
+    function precentFormatter(value) {
+        return value.toFixed(2) + "%";
+    }
+
+    function linenumber(value, row, index) {
+        let number = index + 1;
+        if (number === 1) {
+            number = "<img style='width: 30px;height:30px;'  src='images/first.png' />"
+        } else if (number === 2) {
+            number = "<img style='width: 30px;height:30px;'  src='images/second.png' />"
+        } else if (number === 3) {
+            number = "<img style='width: 30px;height:30px;'  src='images/third.png' />"
+        }
+        return number;
+    }
+
+    function rowStyle(row, index) {
+        let classes = ['success', 'info'];
+        if (index < 10) {//前十行
+            return {classes: classes[0]};
+        }
+        return {classes: ''};
+    }
+
+    //训练集
+    function trainCount() {
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: IpAll() + "downloadlogs",
+            data: {"type": 0},
+
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            timeout: 5000,
+            success: function (result) {
+            },
+            error: function (error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+
+    //初赛测试集
+    function preCount() {
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: IpAll() + "downloadlogs",
+            data: {"type": 1},
+
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            timeout: 5000,
+            success: function (result) {
+            },
+            error: function (error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+
+    //决赛测试集
+    function finalCount() {
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: IpAll() + "downloadlogs",
+            data: {"type": 2},
+
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            timeout: 5000,
+            success: function (result) {
+            },
+            error: function (error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+</script>
+</body>
+</html>
