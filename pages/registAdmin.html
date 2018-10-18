@@ -83,7 +83,6 @@
         let isValidateURepwd = false;
         let isValidate = false;
 
-        console.log(username.length);
         if(username.length == 0){
             uName.innerHTML += "用户名不能为空";
             isValidateUname = false;
@@ -126,7 +125,6 @@
         var username = $("#username").val();
         var password = $("#password").val();
 
-        console.log(validate());
         if(validate()){
             $.ajax({
                 type: "POST",

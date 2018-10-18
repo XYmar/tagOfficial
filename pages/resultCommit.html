@@ -54,9 +54,9 @@
                                 <div class="col-md-6">
                                     <form class="form-horizontal col-md-12">
                                         <div class="form-group col-md-12">
-                                            <label class="col-md-4 col-xs-3 memLabel">BLEU_4： </label>
+                                            <label class="col-md-4 col-xs-3 memLabel">ROUGE-L： </label>
                                             <div class="controls col-md-8 col-xs-9 memInput">
-                                                <div id="bleu">
+                                                <div id="rouge">
                                                     xx
                                                 </div>
                                             </div>
@@ -66,9 +66,9 @@
                                 <div class="col-md-6">
                                     <form class="form-horizontal col-md-12">
                                         <div class="form-group col-md-12">
-                                            <label class="col-md-4 col-xs-3 memLabel">ROUGE： </label>
+                                            <label class="col-md-4 col-xs-3 memLabel">BLEU-4： </label>
                                             <div class="controls col-md-8 col-xs-9 memInput">
-                                                <div id="rouge">
+                                                <div id="bleu">
                                                     xx
                                                 </div>
                                             </div>
@@ -96,7 +96,7 @@
                                     <div class="col-md-12">
                                         <form class="form-horizontal" enctype="multipart/form-data">
                                             <div style="padding: 0" id="Lpicture">
-                                                <h3><span class="required-flag">*</span>文件1：</h3>
+                                                <h3><span class="required-flag">*</span>文件：</h3>
                                                 <div class="fileArea" id="file1" style="padding-top:5px;">
                                                 </div>
                                                 <div class="col-md-2 idPic">
@@ -261,9 +261,8 @@
     let editId = '';
     let id = getUrlParam('id');
     window.onload=function() {
-        /*if ((username != null) && (username !== "null")) {
-            if(role !== 'admin'){*/
-
+        if ((username != null) && (username !== "null")) {
+            if(role !== 'admin'){
                 //根据不同阶段显示不同标题
                 if(id === "0"){
                     document.getElementById("commitTitle").innerHTML = "训练结果提交"
@@ -283,32 +282,24 @@
                 file1.onchange = function(){
                     if(file1.value.length !== 0){
                         let file = this.files[0];
-                        console.log(file);
                         let divId = "file1";
                         handleFile(file, divId);
                     }
                 }
-                /*file2.onchange = function(){
-                    if(file2.value.length !== 0){
-                        let file = this.files[0];
-                        let divId = "file2";
-                        handleFile(file, divId);
-                    }
-                }*/
 
-            /*}else {
+            }else {
                 document.getElementById("showBody").style.display = "none";
                 window.location.href="../index.html";
             }
         }else{
             document.getElementById("showBody").style.display = "none";
             window.location.href="login.html";
-        }*/
+        }
     };
     function handleFile(file, divId){
         //获取文件名称
         let fileName = file.name;
-        url=window.URL.createObjectURL(file);  // 得到bolb对象路径，可当成普通的文件路径一样使用，赋值给src;
+        url=window.URL.createObjectURL(file);
         //清空文件列表
         let fileArea = document.getElementById(divId);
         fileArea.innerHTML = '';
@@ -328,13 +319,7 @@
         let target = e.target || e.srcElement;
         let delDiv = target.parentNode.parentNode;
         let id1 = delDiv.parentNode.id;
-        //let id2 = delDiv.parentNode.parentNode.lastElementChild.lastElementChild.lastElementChild.id;
-        console.log(id1);
-        console.log("删除的div----");
-        console.log(delDiv.parentNode.parentNode.lastElementChild.lastElementChild.lastElementChild);
-        console.log();
         let $fileArea = document.getElementById(id1);
-        console.log($fileArea);
         $fileArea.removeChild(delDiv);
         let fileCont = document.getElementById("file1Cont");
         fileCont.value = '';
@@ -386,14 +371,14 @@
 
     function subFiles() {
         let file1 = document.getElementById("file1Cont").files[0];  //获取文件
-        console.log(typeof (file1));
         if(typeof (file1) !== "undefined"){
             let formData = new FormData();
             formData.append("ref", file1);
-            formData.append("type", 0);
+            formData.append("type", id);
             layer.msg('正在计算...', {
                 icon: 16,
-                shade: 0.01
+                shade: 0.01,
+                time: false //取消自动关闭
             });
             $.ajax({
                 url: IpAll() + "users/" + myTeamId + "/commitfile",
@@ -408,17 +393,41 @@
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
                 },
-                timeout : 5000,
+                timeout : 120000,
                 success: function (result) {
-                    alert("提交成功");
-                    layer.closeAll('loading');
-                    resetAll();
-                    getTrainingScore();
+                    layer.alert('提交成功', {
+                        closeBtn: 0,    // 是否显示关闭按钮
+                        anim: 0,//动画类型
+                        btn: ['确定'],//按钮
+                        icon: 6,    // icon
+                        yes:function(){
+                            layer.closeAll();
+                            resetAll();
+                            getTrainingScore();
+                    }});
                 },
                 error : function(error) {
-                    let notifyMessage = error.responseJSON.message
-                    alert(notifyMessage)
-                    layer.closeAll('loading');
+                    layer.closeAll();
+                    if(error.responseJSON && error.responseJSON.message){
+                        let notifyMessage = error.responseJSON.message
+                        layer.alert(notifyMessage, {
+                            closeBtn: 0,    // 是否显示关闭按钮
+                            anim: 0,//动画类型
+                            btn: ['确定'],//按钮
+                            icon: 5,    // icon
+                            yes:function(){
+                                layer.closeAll();
+                            }});
+                    }else{
+                        layer.alert('请求超时', {
+                            closeBtn: 0,    // 是否显示关闭按钮
+                            anim: 0,//动画类型
+                            btn: ['确定'],//按钮
+                            icon: 5,    // icon
+                            yes:function(){
+                                layer.closeAll();
+                        }});
+                    }
                 }
             });
         }else {
@@ -441,7 +450,6 @@
             success: function (result) {
                 let str = "";
                 let data = result.data;
-                console.log(data);
                 $("#trainingScoreInfoTable").bootstrapTable('destroy');
                 $('#trainingScoreInfoTable').bootstrapTable({
                     sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
@@ -451,14 +459,14 @@
                     pageList: [10,20,30],        //可供选择的每页的行数（*）
                     search:true,
                     columns: [{
+                        field: 'rouge_Score',
+                        title: 'ROUGE-L',
+                        formatter: precentFormatter
+                    }, {
                         field: 'bleu_4_Score',
                         title: 'BLEU-4',
                         formatter: precentFormatter
                     }, {
-                        field: 'rouge_Score',
-                        title: 'ROUGE-L',
-                        formatter: precentFormatter
-                    },  {
                         field: 'createTime',
                         title: '提交日期',
                         sortable: true
@@ -489,7 +497,6 @@
             success: function (result) {
                 let str = "";
                 let data = result.data;
-                console.log(data);
                 $("#preliminaryScoreInfoTable").bootstrapTable('destroy');
                 $('#preliminaryScoreInfoTable').bootstrapTable({
                     sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
@@ -499,12 +506,12 @@
                     pageList: [10,20,30],        //可供选择的每页的行数（*）
                     search:true,
                     columns: [{
-                        field: 'bleu_4_Score',
-                        title: 'BLEU-4',
-                        formatter: precentFormatter
-                    }, {
                         field: 'rouge_Score',
                         title: 'ROUGE-L',
+                        formatter: precentFormatter
+                    }, {
+                        field: 'bleu_4_Score',
+                        title: 'BLEU-4',
                         formatter: precentFormatter
                     },  {
                         field: 'createTime',
@@ -537,7 +544,6 @@
             success: function (result) {
                 let str = "";
                 let data = result.data;
-                console.log(data);
                 $("#finalScoreInfoTable").bootstrapTable('destroy');
                 $('#finalScoreInfoTable').bootstrapTable({
                     sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
@@ -547,12 +553,12 @@
                     pageList: [10,20,30],        //可供选择的每页的行数（*）
                     search:true,
                     columns: [{
-                        field: 'bleu_4_Score',
-                        title: 'BLEU-4',
-                        formatter: precentFormatter
-                    }, {
                         field: 'rouge_Score',
                         title: 'ROUGE-L',
+                        formatter: precentFormatter
+                    }, {
+                        field: 'bleu_4_Score',
+                        title: 'BLEU-4',
                         formatter: precentFormatter
                     },  {
                         field: 'createTime',

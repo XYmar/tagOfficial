@@ -51,7 +51,7 @@
                             <br>
                             <a href="modifyPwd.html" style="float:left;margin-top: 10px;">忘记密码？</a>
                             <br>
-                            <a href="apply-3.html">注册</a>
+                            <!--<a href="javascript: void(0)">注册</a>-->
                         </form>
                     </div>
                 </div>
@@ -77,9 +77,13 @@
         let isValidateUname = false;
         let isValidateUpwd = false;
         let isValidate = false;
+        let usernamePattern  = /^[a-zA-Z0-9]{5,15}$/
 
         if(username.length == 0){
             uName.innerHTML += "用户名不能为空";
+            isValidateUname = false;
+        }else if(!usernamePattern.test(username)) {
+            uName.innerHTML = "账号必须是5-15位的英文字母或数字";
             isValidateUname = false;
         }else{
             isValidateUname = true;

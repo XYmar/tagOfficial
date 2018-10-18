@@ -171,7 +171,7 @@
                             </div>
                             <div class="col-md-10  group-info">
                                 <div class="col-md-12" style="padding-bottom: 10px;">
-                                    <button  type="button" class="btn btn-primary addMemBtn" data-toggle="modal" data-target="#mydialog">添加组员</button>
+                                    <button  type="button" class="btn btn-primary addMemBtn" disabled="disabled" style="background: lightgrey;border-color: lightgrey;" data-toggle="modal" data-target="#mydialog">添加组员</button>
                                 </div>
 
                                 <!-- 组员表格 -->
@@ -523,22 +523,22 @@
     let editId = '';
 
     window.onload=function() {
-        /*if ((username != null) && (username !== "null")) {
-            if(role !== 'admin'){*/
+        if ((username != null) && (username !== "null")) {
+            if(role !== 'admin'){
                 resetAll();
                 getAll();
                 getTrainingScore();
                 getPreliminaryScoreScore();
                 getFinalScore();
 
-            /*}else {
+            }else {
                 document.getElementById("showBody").style.display = "none";
                 window.location.href="../index.html";
             }
         }else{
             document.getElementById("showBody").style.display = "none";
             window.location.href="login.html";
-        }*/
+        }
     };
 
     function resetAll() {
@@ -593,8 +593,8 @@
                             "<td>" + (data[i].sex === 0 ? '男' : '女') + "</td>" +
                             "<td>" + data[i].telephoneNumber + "</td>" +
                             "<td>" + data[i].organization + "</td>" +
-                            "<td><button class='btn btn-success btn-small editMember' type='button' id='" + data[i].id + "' data-toggle='modal' onclick='beforeEdit(event)'>编辑</button>\n" +
-                            "<button class='btn btn-danger btn-small editMember' type='button' id='" + data[i].id + "' onclick='delMember(event)'>删除</button></td>" +
+                            "<td><button class='btn btn-success btn-small editMember' type='button' id='" + data[i].id + "' data-toggle='modal' disabled=\"disabled\" style=\"background: lightgrey;border-color: lightgrey;\" onclick='beforeEdit(event)'>编辑</button>\n" +
+                            "<button class='btn btn-danger btn-small editMember' type='button' id='" + data[i].id + "' disabled=\"disabled\" style=\"background: lightgrey;border-color: lightgrey;\" onclick='delMember(event)'>删除</button></td>" +
                             "</tr>";
                     }
                     memberTbody.innerHTML = str;
@@ -627,7 +627,6 @@
             success: function (result) {
                 let str = "";
                 let data = result.data;
-                console.log(data);
                 $("#trainingScoreInfoTable").bootstrapTable('destroy');
                 $('#trainingScoreInfoTable').bootstrapTable({
                     sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
@@ -675,7 +674,6 @@
             success: function (result) {
                 let str = "";
                 let data = result.data;
-                console.log(data);
                 $("#preliminaryScoreInfoTable").bootstrapTable('destroy');
                 $('#preliminaryScoreInfoTable').bootstrapTable({
                     sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
@@ -723,7 +721,6 @@
             success: function (result) {
                 let str = "";
                 let data = result.data;
-                console.log(data);
                 $("#finalScoreInfoTable").bootstrapTable('destroy');
                 $('#finalScoreInfoTable').bootstrapTable({
                     sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）

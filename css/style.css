@@ -537,6 +537,7 @@ text-align:center;
 	font-size: 12px;
 	min-width: 100px;
 	padding: 6px 15px;
+	border-radius: 4px;
 }
 .downloadBtn:hover{
 	background-color: #11b9ca !important;;
@@ -571,9 +572,22 @@ text-align:center;
 }
 
 .newUl li {
+	 padding: 15px 0;
+	 font-size: 18px;
+	 width: 32.5%;
+	 display: inline-block;
+	 cursor: pointer;
+	 overflow: hidden;
+	 white-space: nowrap;
+	 text-overflow: ellipsis;
+ }
+
+.newUl2 li {
 	padding: 15px 0;
 	font-size: 18px;
-	width: 33%;
+	/*width: 48.5%;*/
+	width: 96%;
+	text-align: left;
 	display: inline-block;
 	cursor: pointer;
 	overflow: hidden;
@@ -581,8 +595,8 @@ text-align:center;
 	text-overflow: ellipsis;
 }
 
-.newUl li:hover{
-	/*color: #00aff0;*/
+.newUl2 li:hover{
+	color: #00aff0;
 }
 /* Forms
 ---------------------------------- */
@@ -837,7 +851,7 @@ background: #fff;border: 1px solid #fff;}
 		padding-right: 0;
 	}
 	.navbar-nav {
-		float: left !important;
+		float: right !important;
 	}
 
 	 .caption-data h3 {
@@ -1018,7 +1032,7 @@ background: #fff;border: 1px solid #fff;}
 		padding-right: 0;
 	}
 	.navbar-nav {
-		float: left !important;
+		float: right !important;
 		min-width: 760px;
 	}
 
@@ -1262,6 +1276,10 @@ margin: 2px 5px 0;}
 
 	.container .rowLeft {
 		margin-left: 0;
+	}
+
+	.newUl li {
+		width: 48%;
 	}
 
 }
