@@ -22,7 +22,15 @@
         body { padding: 20px 100px; }
         #wrapper { text-align: center; }
 
-
+        .bgimg{
+            position: fixed;
+            left:0px;
+            top:0px;
+            margin:auto;
+            width:100%;
+            height:100%;
+            z-index:-1000;
+        }
         /*It appears that the Pictos Font resets the line-height of the icon.. so if you are using them, delete the line below. */
         .icon:before { line-height: .7em; }
 
@@ -32,7 +40,7 @@
 </head>
 
 <body>
-
+<img src="../images/blackgold1.jpg" alt="" width='100%' height='100%' class="bgimg">
 <div class="container auditContainer">
     <div class="row main-content">
         <div class="col-md-12 toTop">
