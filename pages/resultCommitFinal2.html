@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../css/header2.css" type="text/css" />
     <link rel="stylesheet" href="../css/fileUpload.css">
     <link rel="stylesheet" href="../bootstrap-table/bootstrap-table.min.css">
-    <!--<link rel="stylesheet" type="text/css" href="../css/applyInfo.css">-->
+    <link rel="stylesheet" type="text/css" href="../css/applyInfo2.css">
 
     <link rel="stylesheet" type="text/css" href="../css/buttons.css"/>
     <link rel="stylesheet" type="text/css" href="../css/resultFinal.css"/>
@@ -225,7 +225,99 @@
     let token = username + ':' + password;
 
     window.onload = function () {
+        //根据不同阶段显示不同标题
+        /*if(id === "0"){
+            document.getElementById("commitTitle").innerHTML = "训练结果提交"
+        }else if(id === "1"){
+            document.getElementById("commitTitle").innerHTML = "初赛结果提交"
+        }else if(id === "2"){
+            document.getElementById("commitTitle").innerHTML = "决赛结果提交"
+        }*/
+        resetAll();
         getPreliminaryScoreScore2();
+
+        //添加文件
+        let file1 = document.getElementById("file1Cont");
+        file1.onchange = function(){
+            if(file1.value.length !== 0){
+                let file = this.files[0];
+                let divId = "file1";
+                handleFile(file, divId);
+            }
+        }
+    }
+
+    function handleFile(file, divId){
+        //获取文件名称
+        let fileName = file.name;
+        url=window.URL.createObjectURL(file);
+        //清空文件列表
+        let fileArea = document.getElementById(divId);
+        fileArea.innerHTML = '';
+        //添加到文件列表
+        let html = '<div class="col-md-12 idPic">' +
+            '<p class="fileName col-md-5 col-xs-12 idPic">' + fileName + '</p>' +
+            '<div class="col-md-1 col-xs-3 idPic"><span class="delFile btn btn-danger btn-mini disableAll newAddFile" onclick="delFile(event)"' +
+            ' style="cursor:pointer;padding: 3px 8px;font-size: 11px;border-radius: 3px;">删除</span></div>' +
+            '</div>';
+
+        let $fileArea = document.getElementById(divId);
+        $(html).appendTo($fileArea);
+    }
+
+    function delFile(event){
+        let e = event || window.event;
+        let target = e.target || e.srcElement;
+        let delDiv = target.parentNode.parentNode;
+        let id1 = delDiv.parentNode.id;
+        let $fileArea = document.getElementById(id1);
+        $fileArea.removeChild(delDiv);
+        let fileCont = document.getElementById("file1Cont");
+        fileCont.value = '';
+    }
+
+    function resetAll() {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: IpAll() + "users/" + myTeamId,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+
+                if(id === "0"){
+                    document.getElementById('bleu').innerHTML = data.bleu4ScoreT.toFixed(2) + "%";
+                    document.getElementById('rouge').innerHTML = data.rougelScoreT.toFixed(2) + "%";
+                    document.getElementById("warning").innerHTML = "注意：只可以提交JSON文件，今日还可提交 " + data.commitTimesT + " 次"
+                    if(data.commitTimesT === 0){
+                        document.getElementById("ifSub").disabled = true;
+                    }
+                }else if(id === "1"){
+                    document.getElementById('bleu').innerHTML = data.bleu4ScoreP.toFixed(2) + "%";
+                    document.getElementById('rouge').innerHTML = data.rougelScoreP.toFixed(2) + "%";
+                    document.getElementById("warning").innerHTML = "注意：只可以提交JSON文件，今日还可提交 " + data.commitTimesP + " 次"
+
+                    if(data.commitTimesP === 0){
+                        document.getElementById("ifSub").disabled = true;
+                    }
+                }else if(id === "2"){
+                    document.getElementById('bleu').innerHTML = data.bleu4ScoreF.toFixed(2) + "%";
+                    document.getElementById('rouge').innerHTML = data.rougelScoreF.toFixed(2) + "%";
+                    document.getElementById("warning").innerHTML = "注意：只可以提交JSON文件，今日还可提交 " + data.commitTimesF + " 次"
+                    if(data.commitTimesF === 0){
+                        document.getElementById("ifSub").disabled = true;
+                    }
+                }
+
+
+            },
+            error: function (error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
     }
 
     //访问静态json数据

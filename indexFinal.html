@@ -424,35 +424,12 @@
             <div class="col-sm-12 rankTable">
                 <!--<div class="panel panel-default">-->
                 <div class="col-md-12 group-info" style="padding: 10px 10px;">
-
-                    <!-- tab页开始 -->
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#preliminaryScoreInfo" aria-controls="profile"
-                                                                  role="tab" data-toggle="tab">初赛成绩</a></li>
-                        <li role="presentation"><a href="#finalScoreInfo" aria-controls="profile" role="tab"
-                                                   data-toggle="tab">决赛成绩</a></li>
-                    </ul>
-
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="preliminaryScoreInfo">
-                            <div class="col-md-12" style="padding: 0">
-                                <div>
-                                    <table id="preliminaryScoreInfoTable">
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="finalScoreInfo">
-                            <div class="col-md-12" style="padding: 0">
-                                <div>
-                                    <table id="finalScoreInfoTable">
-                                    </table>
-                                </div>
-                            </div>
+                    <div class="col-md-12" style="padding: 0">
+                        <div>
+                            <table id="endTable">
+                            </table>
                         </div>
                     </div>
-                    <!-- tab页结束 -->
 
                 </div>
 
@@ -722,6 +699,11 @@
                             field: 'commitDateP',
                             title: '提交日期'/*,
                         sortable: true*/
+                        }, {
+                            field: 'commitDateP',
+                            title: '名次升降',
+                            align: "center",
+                            formatter: rankOrder
                         }
                     ],
                     data: data
@@ -798,6 +780,49 @@
                             field: 'commitDateP',
                             title: '提交日期'/*,
                         sortable: true*/
+                        }
+                    ],
+                    data: data
+                });
+
+                $("#endTable").bootstrapTable('destroy');
+                $('#endTable').bootstrapTable({
+                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination: true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30, 40],        //可供选择的每页的行数（*）
+                    search: false,
+                    striped: true,
+                    rowStyle: rowStyle,
+                    columns: [
+                        {
+                            filed: '',
+                            title: '序号',
+                            align: "center",
+                            width: 40,
+                            formatter: linenumber
+                        },
+                        {
+                            field: 'teamName',
+                            title: '队伍名称'
+                        }, {
+                            field: 'rougelScoreP',
+                            title: 'ROUGE-L',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'bleu4ScoreP',
+                            title: 'BLEU-4',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'commitDateP',
+                            title: '提交日期'/*,
+                        sortable: true*/
+                        }, {
+                            field: 'commitDateP',
+                            title: '名次升降',
+                            align: "center",
+                            formatter: rankOrder
                         }
                     ],
                     data: data
@@ -1081,6 +1106,18 @@
             number = "<img style='width: 30px;height:30px;'  src='images/second.png' />"
         } else if (number === 3) {
             number = "<img style='width: 30px;height:30px;'  src='images/third.png' />"
+        }
+        return number;
+    }
+
+    function rankOrder(value, row, index) {
+        let number = index + 1;
+        if (number === 1) {
+            number = "<div style='width: 50px;'><div style='float: left;width: 20px;margin-left: 15px;'><img style='width: 10px;height:20px;'  src='images/升.png' /></div>" + "<div style='float: left;'>1</div></div>"
+        } else if (number === 2) {
+            number = "--"
+        } else if (number === 3) {
+            number = "<div style='float: left;width: 20px;margin-left: 15px;'><img style='width: 10px;height:20px;'  src='images/降.png' /></div>" + "<div style='float: left;'>2</div>"
         }
         return number;
     }

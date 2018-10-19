@@ -1,0 +1,12 @@
+.idPic {
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.fileName {
+    display: inline-block;
+    overflow: hidden;
+    max-width: 80%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
