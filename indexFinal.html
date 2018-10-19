@@ -722,6 +722,10 @@
                             field: 'commitDateP',
                             title: '提交日期'/*,
                         sortable: true*/
+                        }, {
+                            field: 'commitDateP',
+                            title: '名次升降',
+                            formatter: rankOrder
                         }
                     ],
                     data: data
@@ -1081,6 +1085,18 @@
             number = "<img style='width: 30px;height:30px;'  src='images/second.png' />"
         } else if (number === 3) {
             number = "<img style='width: 30px;height:30px;'  src='images/third.png' />"
+        }
+        return number;
+    }
+
+    function rankOrder(value, row, index) {
+        let number = index + 1;
+        if (number === 1) {
+            number = "<div style='float: left;width: 20px;margin-left: 15px;'><img style='width: 10px;height:20px;'  src='images/升.png' /></div>" + "<div style='float: left;'>1</div>"
+        } else if (number === 2) {
+            number = "--"
+        } else if (number === 3) {
+            number = "<div style='float: left;width: 20px;margin-left: 15px;'><img style='width: 10px;height:20px;'  src='images/降.png' /></div>" + "<div style='float: left;'>2</div>"
         }
         return number;
     }
