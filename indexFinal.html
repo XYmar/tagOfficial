@@ -60,11 +60,11 @@
                                 <div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
                                     <ul class="nav navbar-nav navbar-right">
                                         <li class="active"><a href="#banner">主页</a></li>
-                                        <li><a href="#production">比赛介绍</a></li>
+                                        <!--<li><a href="#production">比赛介绍</a></li>-->
                                         <li><a href="#download">下载</a></li>
                                         <li><a href="#commit">结果提交</a></li>
                                         <li><a href="#ranking">排行榜</a></li>
-                                        <li><a href="#news">新闻中心</a></li>
+                                        <!--<li><a href="#news">新闻中心</a></li>-->
                                         <li><a href="#contact">联系我们</a></li>
                                         <li id="loginName"></li>
                                         <li id="registAd"></li>
@@ -176,9 +176,9 @@
                                         </div>
 
                                         <div class="col-md-6 col-xs-6">
-                                            <a href="javascript: void(0)" id="trainA">
-                                                <button class="btn downloadBtn" id="trainBtn" disabled="disabled"
-                                                        type="button" onclick="trainCount()">军事新闻
+                                            <a href="javascript: void(0)" id="affairNews">
+                                                <button class="btn downloadBtn" id="affairBtn" disabled="disabled"
+                                                        type="button" onclick="affairBtnDownload()">军事新闻
                                                 </button>
                                             </a>
                                         </div>
@@ -196,9 +196,9 @@
                                         </div>
 
                                         <div class="col-md-6 col-xs-6">
-                                            <a href="javascript: void(0)" id="primaryA">
-                                                <button class="btn downloadBtn" id="primaryBtn" disabled="disabled"
-                                                        type="button" onclick="preCount()">防务快讯
+                                            <a href="javascript: void(0)" id="defenseNews">
+                                                <button class="btn downloadBtn" id="defenseBtn" disabled="disabled"
+                                                        type="button" onclick="defenseNewsDownload()">防务快讯
                                                 </button>
                                             </a>
                                         </div>
@@ -215,9 +215,9 @@
                                         </div>
 
                                         <div class="col-md-6 col-xs-6">
-                                            <a href="javascript: void(0)" id="finalA">
-                                                <button class="btn downloadBtn" id="finalBtn" disabled="disabled"
-                                                        type="button" onclick="finalCount()">非密情报
+                                            <a href="javascript: void(0)" id="NonSecret">
+                                                <button class="btn downloadBtn" id="nonSecretBtn" disabled="disabled"
+                                                        type="button" onclick="NonSecretDownload()">非密情报
                                                 </button>
                                             </a>
                                         </div>
@@ -257,8 +257,8 @@
                                         </div>
 
                                         <div class="col-md-6 col-xs-6">
-                                            <a href="javascript: void(0)" id="trainCommit">
-                                                <button class="btn downloadBtn" id="trainCommitBtn" disabled="disabled"
+                                            <a href="javascript: void(0)" id="firstCommit">
+                                                <button class="btn downloadBtn" id="firstCommitBtn" disabled="disabled"
                                                         type="button">第一轮提交
                                                 </button>
                                             </a>
@@ -276,8 +276,8 @@
                                         </div>
 
                                         <div class="col-md-6 col-xs-6">
-                                            <a href="javascript: void(0)" id="primaryCommit">
-                                                <button class="btn downloadBtn" id="primaryCommitBtn"
+                                            <a href="javascript: void(0)" id="secondCommit">
+                                                <button class="btn downloadBtn" id="secondCommitBtn"
                                                         disabled="disabled" type="button">第二轮提交
                                                 </button>
                                             </a>
@@ -295,8 +295,8 @@
                                         </div>
 
                                         <div class="col-md-6 col-xs-6">
-                                            <a href="javascript: void(0)" id="finalCommit">
-                                                <button class="btn downloadBtn" id="finalCommitBtn" disabled="disabled"
+                                            <a href="javascript: void(0)" id="thirdCommit">
+                                                <button class="btn downloadBtn" id="thirdCommitBtn" disabled="disabled"
                                                         type="button">第三轮提交
                                                 </button>
                                             </a>
@@ -328,18 +328,18 @@
                             <ul class="list-unstyled col-md-12 newUl">
                                 <li>
                                     <i class="fa fa-chain  pr-10 colored"></i>
-                                    <a href="javascript: void(0)" id="trainCommit">训练结果提交</a>
+                                    <a href="javascript: void(0)" id="firstCommit">训练结果提交</a>
 
                                 </li>
                                 <li>
                                     <i class="fa fa-chain  pr-10 colored"></i>
-                                    <a href="javascript: void(0)" id="primaryCommit">初赛结果提交</a>
+                                    <a href="javascript: void(0)" id="secondCommit">初赛结果提交</a>
 
                                 </li>
 
                                 <li>
                                     <i class="fa fa-chain  pr-10 colored"></i>
-                                    <a href="javascript: void(0)" id="finalCommit">决赛结果提交</a>
+                                    <a href="javascript: void(0)" id="thirdCommit">决赛结果提交</a>
 
                                 </li>
                             </ul>
@@ -360,6 +360,64 @@
             <br>
         </div>
         <div class="row">
+            <div class="col-sm-12 rankTable">
+                <!--<div class="panel panel-default">-->
+                <div class="col-md-12 group-info">
+
+                    <!-- tab页开始 -->
+                    <!--<ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#preliminaryScoreInfo" aria-controls="profile"
+                                                                  role="tab" data-toggle="tab">初赛成绩</a></li>
+                        <li role="presentation"><a href="#finalScoreInfo" aria-controls="profile" role="tab"
+                                                   data-toggle="tab">决赛成绩</a></li>
+                    </ul>-->
+
+                    <div class="col-md-4">
+                        <div>
+                            <table id="firstScoreInfoTable">
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div>
+                            <table id="secondScoreInfoTable">
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div>
+                            <table id="thirdScoreInfoTable">
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Tab panes -->
+                    <!--<div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="preliminaryScoreInfo">
+                            <div class="col-md-12" style="padding: 0">
+                                <div>
+                                    <table id="preliminaryScoreInfoTable">
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="finalScoreInfo">
+                            <div class="col-md-12" style="padding: 0">
+                                <div>
+                                    <table id="finalScoreInfoTable">
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                    <!-- tab页结束 -->
+
+                </div>
+
+            </div>
+
             <div class="col-sm-12 rankTable">
                 <!--<div class="panel panel-default">-->
                 <div class="col-md-12 group-info" style="padding: 10px 10px;">
@@ -394,187 +452,6 @@
                     <!-- tab页结束 -->
 
                 </div>
-                <!--<div class="tabbable" id="tabs-777725">&lt;!&ndash; Only required for left/right tabs &ndash;&gt;
-                    <ul class="nav nav-tabs">
-                        <li class="active" style="cursor: pointer;"><a contenteditable="false" data-toggle="tab"
-                                                                       href="#panel-709646">测试结果排行榜</a></li>
-                        <li><a contenteditable="false" data-toggle="tab" href="#panel-875540">最终结果排行榜</a></li>
-                        <li><a contenteditable="false" data-toggle="tab" href="#panel-875566">在线结果排行榜</a></li>
-                    </ul>
-
-                    <div class="tab-content">
-                        <div class="tab-pane active" contenteditable="true" id="panel-709646">
-                            <table class="table table-bordered" contenteditable="true">
-                                <thead>
-                                <tr class="rankTable">
-                                    <th style="width: 135px;">Rank</th>
-                                    <th>Model</th>
-                                    <th>ROUGE-L</th>
-                                    <th>BLEU-4</th>
-                                    <th>Submit Time</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td style="text-align: center;">
-                                        <img class="finalRank" src="images/first.png">
-                                    </td>
-                                    <td>NI-Reader-3(ensemble)</td>
-                                    <td>63.62</td>
-                                    <td>59.51</td>
-                                    <td>2018/5/17</td>
-                                </tr>
-                                <tr class="success">
-                                    <td>
-                                        <img class="finalRank" src="images/second.png">
-                                    </td>
-                                    <td>Z-Reader(ensemble)</td>
-                                    <td>61.23</td>
-                                    <td>56.24</td>
-                                    <td>2018/5/26</td>
-                                </tr>
-                                <tr class="error">
-                                    <td>
-                                        <img class="finalRank" src="images/third.png">
-                                    </td>
-                                    <td>BIDAF_S_RETURN</td>
-                                    <td>58.39</td>
-                                    <td>52.62</td>
-                                    <td>2018/5/26</td>
-                                </tr>
-                                <tr class="warning">
-                                    <td>4</td>
-                                    <td>s-Reader</td>
-                                    <td>58.15</td>
-                                    <td>52.1</td>
-                                    <td>2018/5/27</td>
-                                </tr>
-                                <tr class="info">
-                                    <td>5</td>
-                                    <td>terminator_t800(single)</td>
-                                    <td>58.13</td>
-                                    <td>50.33</td>
-                                    <td>2018/5/27</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="tab-pane" contenteditable="true" id="panel-875540">
-                            <table class="table table-bordered" contenteditable="true">
-                                <thead>
-                                <tr class="rankTable">
-                                    <th style="width: 135px;">Rank</th>
-                                    <th>Model</th>
-                                    <th>ROUGE-L</th>
-                                    <th>BLEU-4</th>
-                                    <th>Submit Time</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td style="text-align: center;">
-                                        <img class="finalRank" src="images/first.png">
-                                    </td>
-                                    <td>NI-Reader-3(ensemble)</td>
-                                    <td>63.62</td>
-                                    <td>59.51</td>
-                                    <td>2018/5/17</td>
-                                </tr>
-                                <tr class="success">
-                                    <td>
-                                        <img class="finalRank" src="images/second.png">
-                                    </td>
-                                    <td>Z-Reader(ensemble)</td>
-                                    <td>61.23</td>
-                                    <td>56.24</td>
-                                    <td>2018/5/26</td>
-                                </tr>
-                                <tr class="error">
-                                    <td>
-                                        <img class="finalRank" src="images/third.png">
-                                    </td>
-                                    <td>BIDAF_S_RETURN</td>
-                                    <td>58.39</td>
-                                    <td>52.62</td>
-                                    <td>2018/5/26</td>
-                                </tr>
-                                <tr class="warning">
-                                    <td>4</td>
-                                    <td>s-Reader</td>
-                                    <td>58.15</td>
-                                    <td>52.1</td>
-                                    <td>2018/5/27</td>
-                                </tr>
-                                <tr class="info">
-                                    <td>5</td>
-                                    <td>terminator_t800(single)</td>
-                                    <td>58.13</td>
-                                    <td>50.33</td>
-                                    <td>2018/5/27</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="tab-pane" contenteditable="true" id="panel-875566">
-                            <table class="table table-bordered" contenteditable="false">
-                                <thead>
-                                <tr class="rankTable">
-                                    <th style="width: 135px;">Rank</th>
-                                    <th>Model</th>
-                                    <th>ROUGE-L</th>
-                                    <th>BLEU-4</th>
-                                    <th>Submit Time</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td style="text-align: center;">
-                                        <img class="finalRank" src="images/first.png">
-                                    </td>
-                                    <td>NI-Reader-3(ensemble)</td>
-                                    <td>63.62</td>
-                                    <td>59.51</td>
-                                    <td>2018/5/17</td>
-                                </tr>
-                                <tr class="success">
-                                    <td>
-                                        <img class="finalRank" src="images/second.png">
-                                    </td>
-                                    <td>Z-Reader(ensemble)</td>
-                                    <td>61.23</td>
-                                    <td>56.24</td>
-                                    <td>2018/5/26</td>
-                                </tr>
-                                <tr class="error">
-                                    <td>
-                                        <img class="finalRank" src="images/third.png">
-                                    </td>
-                                    <td>BIDAF_S_RETURN</td>
-                                    <td>58.39</td>
-                                    <td>52.62</td>
-                                    <td>2018/5/26</td>
-                                </tr>
-                                <tr class="warning">
-                                    <td>4</td>
-                                    <td>s-Reader</td>
-                                    <td>58.15</td>
-                                    <td>52.1</td>
-                                    <td>2018/5/27</td>
-                                </tr>
-                                <tr class="info">
-                                    <td>5</td>
-                                    <td>terminator_t800(single)</td>
-                                    <td>58.13</td>
-                                    <td>50.33</td>
-                                    <td>2018/5/27</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>-->
 
             </div>
         </div>
@@ -615,8 +492,8 @@
     <!-- .footer end -->
 </footer>
 <!-- JavaScript -->
-<script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="plugins/modernizr.js"></script>
 <script type="text/javascript" src="plugins/isotope/isotope.pkgd.min.js"></script>
 <script type="text/javascript" src="plugins/jquery.backstretch.min.js"></script>
@@ -628,9 +505,9 @@
 <script src="js/globalIP.js"></script>
 <script src="bootstrap-table/bootstrap-table.min.js"></script>
 <script src="bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.19.4/moment.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.19.4/moment-with-locales.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.19.4/locale/zh-cn.js"></script>
+<script src="moment/moment.js"></script>
+<script src="moment/moment-with-locales.js"></script>
+<script src="moment/zh-cn.js"></script>
 <script>
     let nowTime;
     let myTeamId = $.cookie("myTeamId");
@@ -640,6 +517,14 @@
     let token = username + ':' + password;
 
     window.onload = function () {
+        //一开始禁用所有下载提交按钮
+        /*unclickBtn("affairBtn");
+        unclickBtn("defenseBtn");
+        unclickBtn("nonSecretBtn");
+
+        unclickBtn("firstCommitBtn");
+        unclickBtn("secondCommitBtn");
+        unclickBtn("thirdCommitBtn");*/
 
         //查询用户状态
         $.ajax({
@@ -666,7 +551,6 @@
         // 初始化内容
         let loginName = document.getElementById("loginName");
         let loginOut = document.getElementById("loginOut");
-        let registAd = document.getElementById("registAd");
         let downloadMess = document.getElementById("downloadMess");
         let commitMess = document.getElementById("commitMess");
 
@@ -678,17 +562,15 @@
             loginOut.innerHTML = "";
             if (myRole === "admin") {
                 loginName.innerHTML += "<a href='pages/audit.html'>管理员</a>";
-                ajax(myRole);
+                getState(myRole);
 
-                if (myUsername === "admin") {
-                    registAd.innerHTML += "<a href='pages/registAdmin.html'>注册</a>";
-                }
             } else if (myRole === "accept") {
-                loginName.innerHTML += "<a href='pages/member.html'>" + myUsername + "</a>";
-                ajax(myRole);
+                loginName.innerHTML += "<a href=\"javascript: void(0)\">" + myUsername + "</a>";
+                getState(myRole);
             } else if (myRole === "user" || myRole === "denied") {
-                loginName.innerHTML += "<a href='pages/applyResult.html'>" + myUsername + "</a>";
-                ajax(myRole);
+                loginName.innerHTML += "<a href=\"javascript: void(0)\">" + myUsername + "</a>";
+                getState(myRole);
+
             }
 
             loginOut.innerHTML += "<a href='#'><sapn onclick='delCookie()' class='exit'>退出</sapn></a>";
@@ -709,16 +591,179 @@
         getFinalScore();*/
     }
 
+    //是否开放按钮
+    function getState(role) {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: IpAll() + "finals/state",
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+                //alert(data.commitStartTime1);
+
+                if(data.commitStartTime1 !== null){
+                    alert("A");
+                    undisabled("affairBtn");
+                    unclickBtn("defenseBtn");
+                    unclickBtn("nonSecretBtn");
+                    downloadA("affairNews");
+
+                    if (role === "admin") {
+                        unclickBtn("firstCommitBtn");
+                        unclickBtn("secondCommitBtn");
+                        unclickBtn("thirdCommitBtn");
+                    } else {
+                        undisabled("firstCommitBtn");
+                        commitA("firstCommit");
+                        unclickBtn("secondCommitBtn");
+                        unclickBtn("thirdCommitBtn");
+                    }
+                }else if(data.commitStartTime2 !== null){
+                    alert("B");
+                    undisabled("affairBtn");
+                    undisabled("defenseBtn");
+                    unclickBtn("nonSecretBtn");
+
+                    downloadA("affairNews");
+                    downloadA("defenseNews");
+
+                    if (role === "admin") {
+                        unclickBtn("firstCommitBtn");
+                        unclickBtn("secondCommitBtn");
+                        unclickBtn("thirdCommitBtn");
+                    } else {
+                        undisabled("firstCommitBtn");
+                        undisabled("secondCommitBtn");
+                        commitA("firstCommit");
+                        commitA("secondCommit");
+                        unclickBtn("thirdCommitBtn");
+                    }
+                }else  if(data.commitStartTime3 !== null){
+                    alert("C");
+                    undisabled("affairBtn");
+                    undisabled("defenseBtn");
+                    undisabled("nonSecretBtn");
+
+                    downloadA("affairNews");
+                    downloadA("defenseNews");
+                    downloadA("NonSecret");
+
+                    if (role === "admin") {
+                        unclickBtn("firstCommitBtn");
+                        unclickBtn("secondCommitBtn");
+                        unclickBtn("thirdCommitBtn");
+                    } else {
+                        undisabled("firstCommitBtn");
+                        undisabled("secondCommitBtn");
+                        undisabled("thirdCommitBtn");
+                        commitA("firstCommit");
+                        commitA("secondCommit");
+                        commitA("thirdCommit");
+                    }
+                }else {
+                    unclickBtn("affairBtn");
+                    unclickBtn("defenseBtn");
+                    unclickBtn("nonSecretBtn");
+
+                    unclickBtn("firstCommitBtn");
+                    unclickBtn("secondCommitBtn");
+                    unclickBtn("thirdCommitBtn");
+                }
+            },
+            error: function (error) {
+            }
+        });
+    }
+
     //访问静态json数据
     function getPreliminaryScoreScore2() {
         $.ajax({
             type: "GET",
             dataType: "json",
-            url: "files/preScore.json",
+            url: "files/topTen.json",
             success: function (result) {
                 let data = result.data;
-                $("#preliminaryScoreInfoTable").bootstrapTable('destroy');
-                $('#preliminaryScoreInfoTable').bootstrapTable({
+                $("#firstScoreInfoTable").bootstrapTable('destroy');
+                $('#firstScoreInfoTable').bootstrapTable({
+                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination: true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30, 40],        //可供选择的每页的行数（*）
+                    search: false,
+                    striped: true,
+                    rowStyle: rowStyle,
+                    columns: [
+                        {
+                            filed: '',
+                            title: '序号',
+                            align: "center",
+                            width: 40,
+                            formatter: linenumber
+                        },
+                        {
+                            field: 'teamName',
+                            title: '队伍名称'
+                        }, {
+                            field: 'rougelScoreP',
+                            title: 'ROUGE-L',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'bleu4ScoreP',
+                            title: 'BLEU-4',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'commitDateP',
+                            title: '提交日期'/*,
+                        sortable: true*/
+                        }
+                    ],
+                    data: data
+                });
+
+                $("#secondScoreInfoTable").bootstrapTable('destroy');
+                $('#secondScoreInfoTable').bootstrapTable({
+                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination: true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30, 40],        //可供选择的每页的行数（*）
+                    search: false,
+                    striped: true,
+                    rowStyle: rowStyle,
+                    columns: [
+                        {
+                            filed: '',
+                            title: '序号',
+                            align: "center",
+                            width: 40,
+                            formatter: linenumber
+                        },
+                        {
+                            field: 'teamName',
+                            title: '队伍名称'
+                        }, {
+                            field: 'rougelScoreP',
+                            title: 'ROUGE-L',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'bleu4ScoreP',
+                            title: 'BLEU-4',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'commitDateP',
+                            title: '提交日期'/*,
+                        sortable: true*/
+                        }
+                    ],
+                    data: data
+                });
+
+                $("#thirdScoreInfoTable").bootstrapTable('destroy');
+                $('#thirdScoreInfoTable').bootstrapTable({
                     sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
                     pagination: true, // 是否显示分页（*）
                     pageNumber: 1,    //如果设置了分页，首页页码
@@ -788,44 +833,44 @@
                 let primaryEndTime = moment(new Date(2018, 8, 24)).format();
                 let FinalTime = moment(new Date(2018, 9, 27)).format();
                 if (moment(nowTime).isBefore(trainTime) || role === "null" || role === "user" || role === "denied") {         //8月1日前、未审核、被拒绝
-                    unclickBtn("trainBtn");
-                    unclickBtn("primaryBtn");
-                    unclickBtn("finalBtn");
+                    unclickBtn("affairBtn");
+                    unclickBtn("defenseBtn");
+                    unclickBtn("nonSecretBtn");
 
-                    unclickBtn("trainCommitBtn");
-                    unclickBtn("primaryCommitBtn");
-                    unclickBtn("finalCommitBtn");
+                    unclickBtn("firstCommitBtn");
+                    unclickBtn("secondCommitBtn");
+                    unclickBtn("thirdCommitBtn");
                 } else {
                     if (moment(nowTime).isAfter(FinalTime)) {        //10月27日后
-                        undisabled("trainBtn");
-                        undisabled("primaryBtn");
-                        undisabled("finalBtn");
+                        undisabled("affairBtn");
+                        undisabled("defenseBtn");
+                        undisabled("nonSecretBtn");
 
-                        downloadA("trainA");
-                        downloadA("primaryA");
-                        downloadA("finalA");
+                        downloadA("affairNews");
+                        downloadA("defenseNews");
+                        downloadA("NonSecret");
 
                         if (role === "admin") {
-                            unclickBtn("trainCommitBtn");
-                            unclickBtn("primaryCommitBtn");
-                            unclickBtn("finalCommitBtn");
+                            unclickBtn("firstCommitBtn");
+                            unclickBtn("secondCommitBtn");
+                            unclickBtn("thirdCommitBtn");
                         } else {
-                            undisabled("trainCommitBtn");
-                            undisabled("primaryCommitBtn");
-                            undisabled("finalCommitBtn");
-                            commitA("trainCommit");
-                            commitA("primaryCommit");
-                            commitA("finalCommit");
+                            undisabled("firstCommitBtn");
+                            undisabled("secondCommitBtn");
+                            undisabled("thirdCommitBtn");
+                            commitA("firstCommit");
+                            commitA("secondCommit");
+                            commitA("thirdCommit");
                         }
                     }
 
                     else if (moment(nowTime).isAfter(primaryEndTime)) {        //9月24号提交按钮取消可点击
-                        undisabled("trainBtn");
-                        undisabled("primaryBtn");
-                        unclickBtn("finalBtn");
+                        undisabled("affairBtn");
+                        undisabled("defenseBtn");
+                        unclickBtn("nonSecretBtn");
 
-                        downloadA("trainA");
-                        downloadA("primaryA");
+                        downloadA("affairNews");
+                        downloadA("defenseNews");
                         let topTenArr = [];
                         $.ajax({
                             type: "GET",
@@ -839,60 +884,60 @@
 
 
                                 if (role === "admin") {
-                                    unclickBtn("trainCommitBtn");
-                                    unclickBtn("primaryCommitBtn");
-                                    unclickBtn("finalCommitBtn");
+                                    unclickBtn("firstCommitBtn");
+                                    unclickBtn("secondCommitBtn");
+                                    unclickBtn("thirdCommitBtn");
                                 } else if(!ifInArr(topTenArr, myTeamId)){    //非前十名取消可点击
-                                    undisabled("trainCommitBtn");
-                                    unclickBtn("primaryCommitBtn");
-                                    commitA("trainCommit");
-                                    unclickBtn("finalCommitBtn");
+                                    undisabled("firstCommitBtn");
+                                    unclickBtn("secondCommitBtn");
+                                    commitA("firstCommit");
+                                    unclickBtn("thirdCommitBtn");
                                 }else {                                     //前十名可提交
-                                    undisabled("trainCommitBtn");
-                                    undisabled("primaryCommitBtn");
-                                    commitA("trainCommit");
-                                    commitA("primaryCommit");
-                                    unclickBtn("finalCommitBtn");
+                                    undisabled("firstCommitBtn");
+                                    undisabled("secondCommitBtn");
+                                    commitA("firstCommit");
+                                    commitA("secondCommit");
+                                    unclickBtn("thirdCommitBtn");
                                 }
                             }
                         });
 
                     }
                     else if (moment(nowTime).isAfter(primaryTime)) {        //9月19日后
-                        undisabled("trainBtn");
-                        undisabled("primaryBtn");
-                        unclickBtn("finalBtn");
+                        undisabled("affairBtn");
+                        undisabled("defenseBtn");
+                        unclickBtn("nonSecretBtn");
 
-                        downloadA("trainA");
-                        downloadA("primaryA");
+                        downloadA("affairNews");
+                        downloadA("defenseNews");
 
                         if (role === "admin") {
-                            unclickBtn("trainCommitBtn");
-                            unclickBtn("primaryCommitBtn");
-                            unclickBtn("finalCommitBtn");
+                            unclickBtn("firstCommitBtn");
+                            unclickBtn("secondCommitBtn");
+                            unclickBtn("thirdCommitBtn");
                         } else {
-                            undisabled("trainCommitBtn");
-                            undisabled("primaryCommitBtn");
-                            commitA("trainCommit");
-                            commitA("primaryCommit");
-                            unclickBtn("finalCommitBtn");
+                            undisabled("firstCommitBtn");
+                            undisabled("secondCommitBtn");
+                            commitA("firstCommit");
+                            commitA("secondCommit");
+                            unclickBtn("thirdCommitBtn");
                         }
                     }
                     else if (moment(nowTime).isAfter(trainTime)) {        //8月1日后、管理员、已审核用户
-                        undisabled("trainBtn");
-                        unclickBtn("primaryBtn");
-                        unclickBtn("finalBtn");
-                        downloadA("trainA");
+                        undisabled("affairBtn");
+                        unclickBtn("defenseBtn");
+                        unclickBtn("nonSecretBtn");
+                        downloadA("affairNews");
 
                         if (role === "admin") {
-                            unclickBtn("trainCommitBtn");
-                            unclickBtn("primaryCommitBtn");
-                            unclickBtn("finalCommitBtn");
+                            unclickBtn("firstCommitBtn");
+                            unclickBtn("secondCommitBtn");
+                            unclickBtn("thirdCommitBtn");
                         } else {
-                            undisabled("trainCommitBtn");
-                            commitA("trainCommit");
-                            unclickBtn("primaryCommitBtn");
-                            unclickBtn("finalCommitBtn");
+                            undisabled("firstCommitBtn");
+                            commitA("firstCommit");
+                            unclickBtn("secondCommitBtn");
+                            unclickBtn("thirdCommitBtn");
                         }
                     }
                 }
@@ -939,13 +984,13 @@
     }
 
     function downloadA(id) {                     //可下载时，下载的a标签
-        if (id === "trainA") {
+        if (id === "affairNews") {
             document.getElementById(id).href = "files/训练数据集.zip";
             document.getElementById(id).download = "训练数据集.zip";
-        } else if (id === "primaryA") {
+        } else if (id === "defenseNews") {
             document.getElementById(id).href = "files/初赛测试集.zip";
             document.getElementById(id).download = "初赛测试集.zip";
-        } else if (id === "finalA") {
+        } else if (id === "NonSecret") {
         }
 
     }
@@ -956,14 +1001,16 @@
     }*/
 
     function commitA(id) {
-        if (id === "trainCommit") {
+        if (id === "firstCommit") {
             document.getElementById(id).href = "pages/resultCommit.html?id=0";
-        } else if (id === "primaryCommit") {
+        } else if (id === "secondCommit") {
             document.getElementById(id).href = "pages/resultCommit.html?id=1";
-        } else if (id === "finalCommit") {
+        } else if (id === "thirdCommit") {
             document.getElementById(id).href = "pages/resultCommit.html?id=2";
         }
     }
+
+
 
     //初赛成绩
     function getPreliminaryScoreScore() {
@@ -1019,59 +1066,6 @@
         });
     }
 
-    //决赛成绩
-    /*function getFinalScore() {
-        $.ajax({
-            type: "GET",
-            dataType: "json",
-            data: {type: 2},
-            url: IpAll() + "users/ranking",
-            success: function (result) {
-                let data = result.data;
-                $("#finalScoreInfoTable").bootstrapTable('destroy');
-                $('#finalScoreInfoTable').bootstrapTable({
-                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
-                    pagination: true, // 是否显示分页（*）
-                    pageNumber: 1,    //如果设置了分页，首页页码
-                    pageSize: 30,                       //每页的记录行数（*）
-                    pageList: [30, 40],        //可供选择的每页的行数（*）
-                    search: false,
-                    striped: true,
-                    rowStyle: rowStyle,
-                    columns: [
-                        {
-                            filed: '',
-                            title: '序号',
-                            align: "center",
-                            width: 40,
-                            formatter: linenumber
-                        },
-                        {
-                            field: 'teamName',
-                            title: '队伍名称'
-                        }, {
-                            field: 'rougelScoreF',
-                            title: 'ROUGE-L',
-                            formatter: precentFormatter
-                        }, {
-                            field: 'bleu4ScoreF',
-                            title: 'BLEU-4',
-                            formatter: precentFormatter
-                        }, {
-                            field: 'commitDateF',
-                            title: '提交日期'/!*,
-                        sortable: true*!/
-                        }
-                    ],
-                    data: data
-                });
-
-            },
-            error: function (error) {
-            }
-        });
-    }*/
-
     function precentFormatter(value) {
         return value.toFixed(2) + "%";
     }
@@ -1096,68 +1090,6 @@
         return {classes: ''};
     }
 
-    //训练集
-    function trainCount() {
-        $.ajax({
-            type: "POST",
-            dataType: "json",
-            url: IpAll() + "downloadlogs",
-            data: {"type": 0},
-
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-            },
-            timeout: 5000,
-            success: function (result) {
-            },
-            error: function (error) {
-                let notifyMessage = error.responseJSON.message
-                alert(notifyMessage)
-            }
-        });
-    }
-
-    //初赛测试集
-    function preCount() {
-        $.ajax({
-            type: "POST",
-            dataType: "json",
-            url: IpAll() + "downloadlogs",
-            data: {"type": 1},
-
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-            },
-            timeout: 5000,
-            success: function (result) {
-            },
-            error: function (error) {
-                let notifyMessage = error.responseJSON.message
-                alert(notifyMessage)
-            }
-        });
-    }
-
-    //决赛测试集
-    function finalCount() {
-        $.ajax({
-            type: "POST",
-            dataType: "json",
-            url: IpAll() + "downloadlogs",
-            data: {"type": 2},
-
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-            },
-            timeout: 5000,
-            success: function (result) {
-            },
-            error: function (error) {
-                let notifyMessage = error.responseJSON.message
-                alert(notifyMessage)
-            }
-        });
-    }
 </script>
 </body>
 </html>

@@ -7,9 +7,9 @@ let password0 = $.cookie("myWPa");
 let password = $.base64.decode(password0);
 let token = username + ':' + password;
 
-/*runAnimation();*/
-counter.classList.add('hide');
-finalMessage.classList.add('show');
+runAnimation();
+/*counter.classList.add('hide');
+finalMessage.classList.add('show');*/
 
 function resetDOM() {
     counter.classList.remove('hide');
@@ -37,34 +37,33 @@ function runAnimation() {
 
                 //alert("hhhhh");
 
-                //倒计时结束后调用开始接口，并开放下载提交按钮
-                $.ajax({
-                    type: "PATCH",
-                    dataType: "json",
-                    url: IpAll() + "finals/start-final",
-                    data: {type: 1},
-                    beforeSend: function (xhr) {
-                        xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
-                    },
-                    success: function (result) {
-                        alert("开始啦啊啊啊啊啊");
-                    },
-                    error : function() {
-                        alert("请求错误！");
-                    }
-                });
-
-                return;
             }
 
         });
     });
 
-
-
 }
 
-function undisabled(id) {                   //下载按钮变为可点击
+function start() {
+    //倒计时结束后调用开始接口，并开放下载提交按钮
+    $.ajax({
+        type: "PATCH",
+        dataType: "json",
+        url: IpAll() + "finals/start-final",
+        data: {type: 1},
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+        },
+        success: function (result) {
+            alert("开始啦啊啊啊啊啊");
+        },
+        error : function() {
+            alert("请求错误！");
+        }
+    });
+}
+
+/*function undisabled(id) {                   //下载按钮变为可点击
     document.getElementById(id).disabled = false;
 }
 
@@ -84,10 +83,10 @@ function downloadA(id) {                     //可下载时，下载的a标签
 
 }
 
-/*function uncommit(id){                      //不可提交时链接的样式
+/!*function uncommit(id){                      //不可提交时链接的样式
     document.getElementById(id).style.color = "lightgrey";
     document.getElementById(id).style.cursor = "none";
-}*/
+}*!/
 
 function commitA(id) {
     if (id === "trainCommit") {
@@ -97,9 +96,10 @@ function commitA(id) {
     } else if (id === "finalCommit") {
         document.getElementById(id).href = "pages/resultCommit.html?id=2";
     }
-}
+}*/
 
 replay.addEventListener('click', () => {
     resetDOM();
     runAnimation();
+    start();
 });
