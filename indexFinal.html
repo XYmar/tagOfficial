@@ -69,6 +69,7 @@
                                         <li id="loginName"></li>
                                         <li id="registAd"></li>
                                         <li id="importAnswer"></li>
+                                        <li id="compareAnswer"></li>
                                         <li id="loginOut"></li>
                                     </ul>
                                 </div>
@@ -533,6 +534,7 @@
         let loginName = document.getElementById("loginName");
         let loginOut = document.getElementById("loginOut");
         let importAnswer = document.getElementById("importAnswer");
+        let compareAnswer = document.getElementById("compareAnswer");
         let downloadMess = document.getElementById("downloadMess");
         let commitMess = document.getElementById("commitMess");
 
@@ -545,6 +547,7 @@
             if (myRole === "admin") {
                 loginName.innerHTML += "<a href='pages/audit.html'>管理员</a>";
                 importAnswer.innerHTML += "<a href='pages/importAnswer.html'>导入答案</a>";
+                compareAnswer.innerHTML += "<a href='pages/resultCompareFinal.html'>结果对比</a>";
                 getState(myRole);
 
             } else if (myRole === "accept") {
@@ -1001,12 +1004,14 @@
         let downloadMess = document.getElementById("downloadMess");
         let commitMess = document.getElementById("commitMess");
         let importAnswer = document.getElementById("importAnswer");
+        let compareAnswer = document.getElementById("compareAnswer");
 
         loginName.innerHTML = "";
         loginName.innerHTML += "<a href='pages/login.html'>登录/注册</a>";
         loginOut.innerHTML = "";
         registAd.innerHTML = "";
         importAnswer.innerHTML = "";
+        compareAnswer.innerHTML = "";
         ajax("null");
         downloadMess.innerHTML = "请先登录";
         commitMess.innerHTML = "请先登录";
