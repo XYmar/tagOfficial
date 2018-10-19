@@ -65,7 +65,7 @@ button {
 }
 
 .nums {
-    color: #3498db;
+    color: #e0420d;
     position: relative;
     font-size: 180px;
     overflow: hidden;
@@ -124,7 +124,7 @@ button {
 
 h4 {
     font-size: 40px;
-    color: #8d8d9d;
+    color: #efd279;
     margin: 5px;
     text-transform: uppercase;
 }
