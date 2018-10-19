@@ -225,18 +225,25 @@
     let password = $.base64.decode(password0);
     let token = username + ':' + password;
     let id = getUrlParam('id');
+    let id2 = Number(id) + 2;
 
     window.onload = function () {
         //根据不同阶段显示不同标题
-        if(id === "0"){
+        if(id === "1"){
             document.getElementById("commitTitle").innerHTML = "军事新闻提交"
-        }else if(id === "1"){
-            document.getElementById("commitTitle").innerHTML = "防务快讯提交"
+
+            getHisScore1();
         }else if(id === "2"){
+            document.getElementById("commitTitle").innerHTML = "防务快讯提交"
+
+            getHisScore2();
+        }else if(id === "3"){
             document.getElementById("commitTitle").innerHTML = "非密情报提交"
+
+            getHisScore3();
         }
         resetAll();
-        getPreliminaryScoreScore2();
+
 
         //添加文件
         let file1 = document.getElementById("file1Cont");
@@ -289,24 +296,24 @@
             success: function (result) {
                 let data = result.data;
 
-                if(id === "0"){
-                    document.getElementById('bleu').innerHTML = data.bleu4ScoreT.toFixed(2) + "%";
-                    document.getElementById('rouge').innerHTML = data.rougelScoreT.toFixed(2) + "%";
+                if(id === "1"){
+                    document.getElementById('bleu').innerHTML = data.bleu4ScoreF1.toFixed(2) + "%";
+                    document.getElementById('rouge').innerHTML = data.rougelScoreF1.toFixed(2) + "%";
                     document.getElementById("warning").innerHTML = "注意：只可以提交JSON文件，今日还可提交 " + data.commitTimesF1 + " 次"
                     if(data.commitTimesF1 === 0){
                         document.getElementById("ifSub").disabled = true;
                     }
-                }else if(id === "1"){
-                    document.getElementById('bleu').innerHTML = data.bleu4ScoreP.toFixed(2) + "%";
-                    document.getElementById('rouge').innerHTML = data.rougelScoreP.toFixed(2) + "%";
+                }else if(id === "2"){
+                    document.getElementById('bleu').innerHTML = data.bleu4ScoreF2.toFixed(2) + "%";
+                    document.getElementById('rouge').innerHTML = data.rougelScoreF2.toFixed(2) + "%";
                     document.getElementById("warning").innerHTML = "注意：只可以提交JSON文件，今日还可提交 " + data.commitTimesF2 + " 次"
 
                     if(data.commitTimesF2 === 0){
                         document.getElementById("ifSub").disabled = true;
                     }
-                }else if(id === "2"){
-                    document.getElementById('bleu').innerHTML = data.bleu4ScoreF.toFixed(2) + "%";
-                    document.getElementById('rouge').innerHTML = data.rougelScoreF.toFixed(2) + "%";
+                }else if(id === "3"){
+                    document.getElementById('bleu').innerHTML = data.bleu4ScoreF3.toFixed(2) + "%";
+                    document.getElementById('rouge').innerHTML = data.rougelScoreF3.toFixed(2) + "%";
                     document.getElementById("warning").innerHTML = "注意：只可以提交JSON文件，今日还可提交 " + data.commitTimesF3 + " 次"
                     if(data.commitTimesF3 === 0){
                         document.getElementById("ifSub").disabled = true;
@@ -316,6 +323,223 @@
 
             },
             error: function (error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+
+    function subFiles() {
+        let file1 = document.getElementById("file1Cont").files[0];  //获取文件
+        //console.log(file1);
+        if(typeof (file1) !== "undefined"){
+            let formData = new FormData();
+            formData.append("ref", file1);
+            formData.append("type", id);
+            layer.msg('正在提交...', {
+                icon: 16,
+                shade: 0.01,
+                time: false //取消自动关闭
+            });
+            $.ajax({
+                url: IpAll() + "finals/" + myTeamId + "/commit-file",
+                data: formData,
+                type: "POST",
+                async: true,
+                dataType: "json",
+                cache: false,
+                processData: false,
+                contentType: false,
+                enctype: 'multipart/form-data',
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+                },
+                timeout : 120000,
+                success: function (result) {
+                    layer.alert('提交成功', {
+                        closeBtn: 0,    // 是否显示关闭按钮
+                        anim: 0,//动画类型
+                        btn: ['确定'],//按钮
+                        icon: 6,    // icon
+                        yes:function(){
+                            layer.closeAll();
+                            resetAll();
+                            if(id === "1"){
+                                getHisScore1();
+                            }else if(id === "2"){
+                                getHisScore2();
+                            }else if(id === "3"){
+                                getHisScore3();
+                            }
+
+                        }});
+                },
+                error : function(error) {
+                    layer.closeAll();
+                    if(error.responseJSON && error.responseJSON.message){
+                        let notifyMessage = error.responseJSON.message
+                        layer.alert(notifyMessage, {
+                            closeBtn: 0,    // 是否显示关闭按钮
+                            anim: 0,//动画类型
+                            btn: ['确定'],//按钮
+                            icon: 5,    // icon
+                            yes:function(){
+                                layer.closeAll();
+                            }});
+                    }else{
+                        layer.alert('请求超时', {
+                            closeBtn: 0,    // 是否显示关闭按钮
+                            anim: 0,//动画类型
+                            btn: ['确定'],//按钮
+                            icon: 5,    // icon
+                            yes:function(){
+                                layer.closeAll();
+                            }});
+                    }
+                }
+            });
+        }else {
+            alert("请先选择文件");
+        }
+
+    }
+
+    //历史成绩  第一轮
+    function getHisScore1(){
+        let myTeamId = $.cookie("myTeamId");
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: { type: 3 },
+            url: IpAll() + "users/" + myTeamId + "/scorelogsbytype" ,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let str = "";
+                let data = result.data;
+                console.log(data[0].rougelScoreF1)
+                $("#trainingScoreInfoTable").bootstrapTable('destroy');
+                $('#trainingScoreInfoTable').bootstrapTable({
+                    sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination : true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 10,                       //每页的记录行数（*）
+                    pageList: [10,20,30],        //可供选择的每页的行数（*）
+                    search:true,
+                    columns: [{
+                        field: 'rouge_Score',
+                        title: 'ROUGE-L',
+                        formatter: precentFormatter
+                    }, {
+                        field: 'bleu_4_Score',
+                        title: 'BLEU-4',
+                        formatter: precentFormatter
+                    }, {
+                        field: 'createTime',
+                        title: '提交日期',
+                        sortable: true
+                    }
+                    ],
+                    data: data
+                });
+
+            },
+            error : function(error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+
+    //历史成绩  第二轮
+    function getHisScore2(){
+        let myTeamId = $.cookie("myTeamId");
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: { type: 4 },
+            url: IpAll() + "users/" + myTeamId + "/scorelogsbytype" ,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let str = "";
+                let data = result.data;
+                $("#trainingScoreInfoTable").bootstrapTable('destroy');
+                $('#trainingScoreInfoTable').bootstrapTable({
+                    sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination : true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 10,                       //每页的记录行数（*）
+                    pageList: [10,20,30],        //可供选择的每页的行数（*）
+                    search:true,
+                    columns: [{
+                        field: 'rouge_Score',
+                        title: 'ROUGE-L',
+                        formatter: precentFormatter
+                    }, {
+                        field: 'bleu_4_Score',
+                        title: 'BLEU-4',
+                        formatter: precentFormatter
+                    }, {
+                        field: 'createTime',
+                        title: '提交日期',
+                        sortable: true
+                    }
+                    ],
+                    data: data
+                });
+
+            },
+            error : function(error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+
+    //历史成绩  第三轮
+    function getHisScore3(){
+        let myTeamId = $.cookie("myTeamId");
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: { type: 5 },
+            url: IpAll() + "users/" + myTeamId + "/scorelogsbytype" ,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let str = "";
+                let data = result.data;
+                $("#trainingScoreInfoTable").bootstrapTable('destroy');
+                $('#trainingScoreInfoTable').bootstrapTable({
+                    sidePagination : "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination : true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 10,                       //每页的记录行数（*）
+                    pageList: [10,20,30],        //可供选择的每页的行数（*）
+                    search:true,
+                    columns: [{
+                        field: 'rouge_Score',
+                        title: 'ROUGE-L',
+                        formatter: precentFormatter
+                    }, {
+                        field: 'bleu_4_Score',
+                        title: 'BLEU-4',
+                        formatter: precentFormatter
+                    }, {
+                        field: 'createTime',
+                        title: '提交日期',
+                        sortable: true
+                    }
+                    ],
+                    data: data
+                });
+
+            },
+            error : function(error) {
                 let notifyMessage = error.responseJSON.message
                 alert(notifyMessage)
             }
