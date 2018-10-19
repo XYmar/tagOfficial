@@ -247,7 +247,7 @@
                 contentType: false,
                 enctype: 'multipart/form-data',
                 beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:tszx11hcM@4'));
+                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
                 },
                 timeout : 120000,
                 success: function (result) {

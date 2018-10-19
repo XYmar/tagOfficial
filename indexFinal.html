@@ -68,6 +68,7 @@
                                         <li><a href="#contact">联系我们</a></li>
                                         <li id="loginName"></li>
                                         <li id="registAd"></li>
+                                        <li id="importAnswer"></li>
                                         <li id="loginOut"></li>
                                     </ul>
                                 </div>
@@ -531,6 +532,7 @@
         // 初始化内容
         let loginName = document.getElementById("loginName");
         let loginOut = document.getElementById("loginOut");
+        let importAnswer = document.getElementById("importAnswer");
         let downloadMess = document.getElementById("downloadMess");
         let commitMess = document.getElementById("commitMess");
 
@@ -542,6 +544,7 @@
             loginOut.innerHTML = "";
             if (myRole === "admin") {
                 loginName.innerHTML += "<a href='pages/audit.html'>管理员</a>";
+                importAnswer.innerHTML += "<a href='pages/importAnswer.html'>导入答案</a>";
                 getState(myRole);
 
             } else if (myRole === "accept") {
