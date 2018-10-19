@@ -81,8 +81,7 @@
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="text-center" style="font-size: 40px;color:#ffc400">
-                        结果提交
+                    <h2 class="text-center" id="commitTitle" style="font-size: 40px;color:#ffc400">
                     </h2>
                 </div>
             </div>
@@ -225,16 +224,17 @@
     let password0 = $.cookie("myWPa");
     let password = $.base64.decode(password0);
     let token = username + ':' + password;
+    let id = getUrlParam('id');
 
     window.onload = function () {
         //根据不同阶段显示不同标题
-        /*if(id === "0"){
-            document.getElementById("commitTitle").innerHTML = "训练结果提交"
+        if(id === "0"){
+            document.getElementById("commitTitle").innerHTML = "军事新闻提交"
         }else if(id === "1"){
-            document.getElementById("commitTitle").innerHTML = "初赛结果提交"
+            document.getElementById("commitTitle").innerHTML = "防务快讯提交"
         }else if(id === "2"){
-            document.getElementById("commitTitle").innerHTML = "决赛结果提交"
-        }*/
+            document.getElementById("commitTitle").innerHTML = "非密情报提交"
+        }
         resetAll();
         getPreliminaryScoreScore2();
 
@@ -292,23 +292,23 @@
                 if(id === "0"){
                     document.getElementById('bleu').innerHTML = data.bleu4ScoreT.toFixed(2) + "%";
                     document.getElementById('rouge').innerHTML = data.rougelScoreT.toFixed(2) + "%";
-                    document.getElementById("warning").innerHTML = "注意：只可以提交JSON文件，今日还可提交 " + data.commitTimesT + " 次"
-                    if(data.commitTimesT === 0){
+                    document.getElementById("warning").innerHTML = "注意：只可以提交JSON文件，今日还可提交 " + data.commitTimesF1 + " 次"
+                    if(data.commitTimesF1 === 0){
                         document.getElementById("ifSub").disabled = true;
                     }
                 }else if(id === "1"){
                     document.getElementById('bleu').innerHTML = data.bleu4ScoreP.toFixed(2) + "%";
                     document.getElementById('rouge').innerHTML = data.rougelScoreP.toFixed(2) + "%";
-                    document.getElementById("warning").innerHTML = "注意：只可以提交JSON文件，今日还可提交 " + data.commitTimesP + " 次"
+                    document.getElementById("warning").innerHTML = "注意：只可以提交JSON文件，今日还可提交 " + data.commitTimesF2 + " 次"
 
-                    if(data.commitTimesP === 0){
+                    if(data.commitTimesF2 === 0){
                         document.getElementById("ifSub").disabled = true;
                     }
                 }else if(id === "2"){
                     document.getElementById('bleu').innerHTML = data.bleu4ScoreF.toFixed(2) + "%";
                     document.getElementById('rouge').innerHTML = data.rougelScoreF.toFixed(2) + "%";
-                    document.getElementById("warning").innerHTML = "注意：只可以提交JSON文件，今日还可提交 " + data.commitTimesF + " 次"
-                    if(data.commitTimesF === 0){
+                    document.getElementById("warning").innerHTML = "注意：只可以提交JSON文件，今日还可提交 " + data.commitTimesF3 + " 次"
+                    if(data.commitTimesF3 === 0){
                         document.getElementById("ifSub").disabled = true;
                     }
                 }
@@ -471,6 +471,13 @@
             return {classes: classes[0]};
         }
         return {classes: ''};
+    }
+
+    //获取URL参数
+    function getUrlParam(name) {
+        let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); // 构造一个含有目标参数的正则表达式对象
+        let r = window.location.search.substr(1).match(reg);  // 匹配目标参数
+        if (r != null) return unescape(r[2]); return null; // 返回参数值
     }
 </script>
 </body>

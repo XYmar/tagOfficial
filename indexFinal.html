@@ -1000,11 +1000,13 @@
 
         let downloadMess = document.getElementById("downloadMess");
         let commitMess = document.getElementById("commitMess");
+        let importAnswer = document.getElementById("importAnswer");
 
         loginName.innerHTML = "";
         loginName.innerHTML += "<a href='pages/login.html'>登录/注册</a>";
         loginOut.innerHTML = "";
         registAd.innerHTML = "";
+        importAnswer.innerHTML = "";
         ajax("null");
         downloadMess.innerHTML = "请先登录";
         commitMess.innerHTML = "请先登录";
@@ -1026,12 +1028,14 @@
 
     function downloadA(id) {                     //可下载时，下载的a标签
         if (id === "affairNews") {
-            document.getElementById(id).href = "files/训练数据集.zip";
-            document.getElementById(id).download = "训练数据集.zip";
+            document.getElementById(id).href = "files/军事新闻.zip";
+            document.getElementById(id).download = "军事新闻.zip";
         } else if (id === "defenseNews") {
-            document.getElementById(id).href = "files/初赛测试集.zip";
-            document.getElementById(id).download = "初赛测试集.zip";
+            document.getElementById(id).href = "files/防务快讯.zip";
+            document.getElementById(id).download = "防务快讯.zip";
         } else if (id === "NonSecret") {
+            document.getElementById(id).href = "files/非密情报.zip";
+            document.getElementById(id).download = "非密情报.zip";
         }
 
     }
@@ -1043,69 +1047,14 @@
 
     function commitA(id) {
         if (id === "firstCommit") {
-            document.getElementById(id).href = "pages/resultCommit.html?id=0";
+            document.getElementById(id).href = "pages/resultCommitFinal2.html?id=0";
         } else if (id === "secondCommit") {
-            document.getElementById(id).href = "pages/resultCommit.html?id=1";
+            document.getElementById(id).href = "pages/resultCommitFinal2.html?id=1";
         } else if (id === "thirdCommit") {
-            document.getElementById(id).href = "pages/resultCommit.html?id=2";
+            document.getElementById(id).href = "pages/resultCommitFinal2.html?id=2";
         }
     }
 
-
-
-    //初赛成绩
-    function getPreliminaryScoreScore() {
-        $.ajax({
-            type: "GET",
-            dataType: "json",
-            data: {type: 1},
-            url: IpAll() + "users/ranking",
-            success: function (result) {
-                let data = result.data;
-                document.getElementById("tmpData").innerHTML = data;
-                $("#preliminaryScoreInfoTable").bootstrapTable('destroy');
-                $('#preliminaryScoreInfoTable').bootstrapTable({
-                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
-                    pagination: true, // 是否显示分页（*）
-                    pageNumber: 1,    //如果设置了分页，首页页码
-                    pageSize: 30,                       //每页的记录行数（*）
-                    pageList: [30, 40],        //可供选择的每页的行数（*）
-                    search: false,
-                    striped: true,
-                    rowStyle: rowStyle,
-                    columns: [
-                        {
-                            filed: '',
-                            title: '序号',
-                            align: "center",
-                            width: 40,
-                            formatter: linenumber
-                        },
-                        {
-                            field: 'teamName',
-                            title: '队伍名称'
-                        }, {
-                            field: 'rougelScoreP',
-                            title: 'ROUGE-L',
-                            formatter: precentFormatter
-                        }, {
-                            field: 'bleu4ScoreP',
-                            title: 'BLEU-4',
-                            formatter: precentFormatter
-                        }, {
-                            field: 'commitDateP',
-                            title: '提交日期'/*,
-                        sortable: true*/
-                        }
-                    ],
-                    data: data
-                });
-
-            },
-            error: function (error) {
-            }
-        });
-    }
 
     function precentFormatter(value) {
         return value.toFixed(2) + "%";
