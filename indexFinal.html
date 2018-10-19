@@ -18,6 +18,12 @@
     <link href="css/style.min.css" rel="stylesheet">
 
 </head>
+<style>
+    .modal-dialog{
+        width: 60% !important;
+        top: 25% !important;
+    }
+</style>
 <body class="no-trans">
 <div class="scrollToTop"><i class="icon-up-open-big"></i></div>
 <!-- header -->
@@ -377,21 +383,21 @@
                                                    data-toggle="tab">决赛成绩</a></li>
                     </ul>-->
 
-                    <div class="col-md-4">
+                    <div class="col-md-4" id="firstScoreDiv">
                         <div>
                             <table id="firstScoreInfoTable">
                             </table>
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-4" id="secondScoreDiv">
                         <div>
                             <table id="secondScoreInfoTable">
                             </table>
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-4" id="thirdScoreDiv">
                         <div>
                             <table id="thirdScoreInfoTable">
                             </table>
@@ -452,6 +458,27 @@
     </div>
 </section>-->
 <!-- 底部 -->
+<button id="dialogBtn1" data-toggle="modal" data-target="#myModalAdd1"></button>
+<button id="dialogBtn2" data-toggle="modal" data-target="#myModalAdd2"></button>
+<button id="dialogBtn3" data-toggle="modal" data-target="#myModalAdd3"></button>
+<div class="modal" id="myModalAdd1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+<div class="modal" id="myModalAdd2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+<div class="modal" id="myModalAdd3" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
 <footer id="footer">
     <!-- .footer start -->
     <div class="footer section" style="padding: 30px 0;">
@@ -1096,6 +1123,95 @@
         }
         return {classes: ''};
     }
+    /* $('#firstScoreDiv').click(function(){
+        $('#firstScoreDiv').addClass('tableNow')
+        $('#secondScoreDiv').removeClass('tableNow')
+        $('#thirdScoreDiv').removeClass('tableNow')
+        $("#firstScoreDiv").animate({
+            left:'0',
+            opacity:'1',
+            height:'100%',
+            width:'100%'
+        });
+        $("#secondScoreDiv").animate({
+            left:'0',
+            opacity:'1',
+            height:'100%',
+            width:'50%'
+        });
+        $("#thirdScoreDiv").animate({
+            left:'0',
+            opacity:'1',
+            height:'100%',
+            width:'50%'
+        });
+    });
+    $('#secondScoreDiv').click(function(){
+        $('#secondScoreDiv').addClass('tableNow')
+        $('#firstScoreDiv').removeClass('tableNow')
+        $('#thirdScoreDiv').removeClass('tableNow')
+        // $("#secondScoreDiv").css({position: 'absolute'})
+        $("#secondScoreDiv").animate({
+            left:'0',
+            opacity:'1',
+            height:'100%',
+            width:'100%'
+        });
+        $("#firstScoreDiv").animate({
+            left:'0',
+            opacity:'1',
+            height:'100%',
+            width:'50%'
+        });
+        $("#thirdScoreDiv").animate({
+            left:'0',
+            opacity:'1',
+            height:'100%',
+            width:'50%'
+        });
+    });
+    $('#thirdScoreDiv').click(function(){
+        $('#thirdScoreDiv').addClass('tableNow')
+        $('#secondScoreDiv').removeClass('tableNow')
+        $('#thirdScoreDiv').removeClass('tableNow')
+        // $("#secondScoreDiv").css({position: 'absolute'})
+        $("#thirdScoreDiv").animate({
+            left:'0',
+            opacity:'1',
+            height:'100%',
+            width:'100%'
+        });
+        $("#firstScoreDiv").animate({
+            left:'0',
+            opacity:'1',
+            height:'100%',
+            width:'50%'
+        });
+        $("#secondScoreDiv").animate({
+            left:'0',
+            opacity:'1',
+            height:'100%',
+            width:'50%'
+        });
+    });*/
+    var $m_btn1 = $('#dialogBtn1');
+    var $m_btn2 = $('#dialogBtn2');
+    var $m_btn3 = $('#dialogBtn3');
+    /*var $modal1 = $('#myModalAdd1');
+    var $modal2 = $('#myModalAdd2');
+    var $modal3 = $('#myModalAdd3');*/
+    $('#firstScoreDiv').on('click', function(){
+        $('#myModalAdd1 .modal-content').html($('#firstScoreDiv').html())
+        $m_btn1.click()
+    });
+    $('#secondScoreDiv').on('click', function(){
+        $('#myModalAdd2 .modal-content').html($('#secondScoreDiv').html())
+        $m_btn2.click()
+    });
+    $('#thirdScoreDiv').on('click', function(){
+        $('#myModalAdd3 .modal-content').html($('#thirdScoreDiv').html())
+        $m_btn3.click()
+    });
 
 </script>
 </body>
