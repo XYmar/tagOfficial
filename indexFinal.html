@@ -23,6 +23,18 @@
         width: 60% !important;
         top: 25% !important;
     }
+    .addMask {
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.3);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+    }
+    .modal .addMask{
+        display: none;
+    }
 </style>
 <body class="no-trans">
 <div class="scrollToTop"><i class="icon-up-open-big"></i></div>
@@ -384,6 +396,7 @@
                     </ul>-->
 
                     <div class="col-md-4" id="firstScoreDiv">
+                        <div class="addMask"></div>
                         <div>
                             <table id="firstScoreInfoTable">
                             </table>
@@ -391,6 +404,7 @@
                     </div>
 
                     <div class="col-md-4" id="secondScoreDiv">
+                        <div class="addMask"></div>
                         <div>
                             <table id="secondScoreInfoTable">
                             </table>
@@ -398,6 +412,7 @@
                     </div>
 
                     <div class="col-md-4" id="thirdScoreDiv">
+                        <div class="addMask"></div>
                         <div>
                             <table id="thirdScoreInfoTable">
                             </table>
@@ -431,8 +446,9 @@
 
             <div class="col-sm-12 rankTable">
                 <!--<div class="panel panel-default">-->
-                <div class="col-md-12 group-info" style="padding: 10px 10px;">
-                    <div class="col-md-12" style="padding: 0">
+                <div class="col-md-12 group-info" style="padding: 10px 10px;" id="endScoreDiv">
+                    <div class="col-md-12" style="padding: 0;background: #fff;">
+                        <div class="addMask"></div>
                         <div>
                             <table id="endTable">
                             </table>
@@ -458,9 +474,10 @@
     </div>
 </section>-->
 <!-- 底部 -->
-<button id="dialogBtn1" data-toggle="modal" data-target="#myModalAdd1"></button>
-<button id="dialogBtn2" data-toggle="modal" data-target="#myModalAdd2"></button>
-<button id="dialogBtn3" data-toggle="modal" data-target="#myModalAdd3"></button>
+<button id="dialogBtn1" data-toggle="modal" data-target="#myModalAdd1" style="display: none"></button>
+<button id="dialogBtn2" data-toggle="modal" data-target="#myModalAdd2" style="display: none"></button>
+<button id="dialogBtn3" data-toggle="modal" data-target="#myModalAdd3" style="display: none"></button>
+<button id="dialogBtn4" data-toggle="modal" data-target="#myModalAdd4" style="display: none"></button>
 <div class="modal" id="myModalAdd1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -474,6 +491,12 @@
     </div>
 </div>
 <div class="modal" id="myModalAdd3" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+<div class="modal" id="myModalAdd4" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
         </div>
@@ -1197,6 +1220,7 @@
     var $m_btn1 = $('#dialogBtn1');
     var $m_btn2 = $('#dialogBtn2');
     var $m_btn3 = $('#dialogBtn3');
+    var $m_btn4 = $('#dialogBtn4');
     /*var $modal1 = $('#myModalAdd1');
     var $modal2 = $('#myModalAdd2');
     var $modal3 = $('#myModalAdd3');*/
@@ -1211,6 +1235,10 @@
     $('#thirdScoreDiv').on('click', function(){
         $('#myModalAdd3 .modal-content').html($('#thirdScoreDiv').html())
         $m_btn3.click()
+    });
+    $('#endScoreDiv').on('click', function(){
+        $('#myModalAdd4 .modal-content').html($('#endScoreDiv ').html())
+        $m_btn4.click()
     });
 
 </script>
