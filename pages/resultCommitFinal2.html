@@ -11,6 +11,7 @@
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="apply.css" rel="stylesheet">
+    <link rel="stylesheet" href="../bootstrap-table/bootstrap-table.min.css">
     <!--<link rel="stylesheet" type="text/css" href="../css/style.min.css">-->
     <link rel="stylesheet" href="../css/header2.css" type="text/css" />
     <link rel="stylesheet" href="../css/fileUpload.css">
@@ -208,8 +209,176 @@
     <!-- JavaScript -->
     <script src="../js/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
-</div>
 
+    <script src="../js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../js/jquery.base64.js"></script>
+    <script src="../js/globalIP.js"></script>
+
+    <script src="../bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+</div>
+<script>
+    let myTeamId = $.cookie("myTeamId");
+    let username = $.cookie("myUsername");
+    let password0 = $.cookie("myWPa");
+    let password = $.base64.decode(password0);
+    let token = username + ':' + password;
+
+    window.onload = function () {
+        getPreliminaryScoreScore2();
+    }
+
+    //访问静态json数据
+    function getPreliminaryScoreScore2() {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "../files/topTen.json",
+            success: function (result) {
+                let data = result.data;
+                $("#trainingScoreInfoTable").bootstrapTable('destroy');
+                $('#trainingScoreInfoTable').bootstrapTable({
+                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination: true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30, 40],        //可供选择的每页的行数（*）
+                    search: false,
+                    striped: true,
+                    columns: [
+                        {
+                            filed: '',
+                            title: '序号',
+                            align: "center",
+                            width: 40,
+                            formatter: linenumber
+                        },
+                        {
+                            field: 'teamName',
+                            title: '队伍名称'
+                        }, {
+                            field: 'rougelScoreP',
+                            title: 'ROUGE-L',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'bleu4ScoreP',
+                            title: 'BLEU-4',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'commitDateP',
+                            title: '提交日期'/*,
+                        sortable: true*/
+                        }
+                    ],
+                    data: data
+                });
+
+                $("#secondScoreInfoTable").bootstrapTable('destroy');
+                $('#secondScoreInfoTable').bootstrapTable({
+                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination: true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30, 40],        //可供选择的每页的行数（*）
+                    search: false,
+                    striped: true,
+                    rowStyle: rowStyle,
+                    columns: [
+                        {
+                            filed: '',
+                            title: '序号',
+                            align: "center",
+                            width: 40,
+                            formatter: linenumber
+                        },
+                        {
+                            field: 'teamName',
+                            title: '队伍名称'
+                        }, {
+                            field: 'rougelScoreP',
+                            title: 'ROUGE-L',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'bleu4ScoreP',
+                            title: 'BLEU-4',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'commitDateP',
+                            title: '提交日期'/*,
+                        sortable: true*/
+                        }
+                    ],
+                    data: data
+                });
+
+                $("#thirdScoreInfoTable").bootstrapTable('destroy');
+                $('#thirdScoreInfoTable').bootstrapTable({
+                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination: true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30, 40],        //可供选择的每页的行数（*）
+                    search: false,
+                    striped: true,
+                    rowStyle: rowStyle,
+                    columns: [
+                        {
+                            filed: '',
+                            title: '序号',
+                            align: "center",
+                            width: 40,
+                            formatter: linenumber
+                        },
+                        {
+                            field: 'teamName',
+                            title: '队伍名称'
+                        }, {
+                            field: 'rougelScoreP',
+                            title: 'ROUGE-L',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'bleu4ScoreP',
+                            title: 'BLEU-4',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'commitDateP',
+                            title: '提交日期'/*,
+                        sortable: true*/
+                        }
+                    ],
+                    data: data
+                });
+
+            },
+            error: function (error) {
+            }
+        });
+    }
+
+    function precentFormatter(value) {
+        return value.toFixed(2) + "%";
+    }
+
+    function linenumber(value, row, index) {
+        let number = index + 1;
+        if (number === 1) {
+            number = "<img style='width: 30px;height:30px;'  src='../images/first.png' />"
+        } else if (number === 2) {
+            number = "<img style='width: 30px;height:30px;'  src='../images/second.png' />"
+        } else if (number === 3) {
+            number = "<img style='width: 30px;height:30px;'  src='../images/third.png' />"
+        }
+        return number;
+    }
+
+    function rowStyle(row, index) {
+        let classes = ['success', 'info'];
+        if (index < 10) {//前十行
+            return {classes: classes[0]};
+        }
+        return {classes: ''};
+    }
+</script>
 </body>
 
 </html>
