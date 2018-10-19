@@ -84,10 +84,8 @@
                 <div class="col-md-6" style="height:100%;padding: 20px;" >
                     <div>
                         <form class="form-search form-inline">
-                            <input type="search" class="form-control" placeholder="输入文章id" style="width: 300px"/>
-                            <button style="background: #ffc400;color:#000;"
-                                    class="btn downloadBtn"
-                                    type="button">搜索
+                            <input type="search" class="form-control" placeholder="输入文章id" id="articleId" style="width: 300px"/>
+                            <button style="background: #ffc400;color:#000;" class="btn downloadBtn" type="button" onclick="searchArticle()">搜索
                             </button>
                             <!--<input class="input-medium search-query" type="text" /> <button type="submit" class="btn">查找</button>-->
                         </form>
@@ -100,12 +98,8 @@
                         </div>
                         <br>
                         <div id="articleCont">
-                            <p>
-                                文章内容....是一个分布式的版本控制系统，最初由<strong>Linus Torvalds</strong>编写，用作Linux内核代码的管理。在推出后，Git在其它项目中也取得了很大成功，尤其是在Ruby社区中。
-                            </p>
-                            <p>
-                                文章内容....是一个分布式的版本控制系统，最初由<strong>Linus Torvalds</strong>编写，用作Linux内核代码的管理。在推出后，Git在其它项目中也取得了很大成功，尤其是在Ruby社区中。
-                                在推出后，Git在其它项目中也取得了很大成功，尤其是在Ruby社区中。在推出后，Git在其它项目中也取得了很大成功，尤其是在Ruby社区中。在推出后，Git在其它项目中也取得了很大成功，尤其是在Ruby社区中。
+                            <p id="articleContent">
+                                ...
                             </p>
                         </div>
 
@@ -223,9 +217,51 @@
 
 <div style="text-align:center;clear:both;">
     <!-- JavaScript -->
-    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
-    <script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="../js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="../js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../js/jquery.base64.js"></script>
+    <script src="../js/globalIP.js"></script>
+
+    <script src="../layer/layer.js"></script>
+
 </div>
+<script>
+    let myTeamId = $.cookie("myTeamId");
+    let username = $.cookie("myUsername");
+    let password0 = $.cookie("myWPa");
+    let password = $.base64.decode(password0);
+    let token = username + ':' + password;
+
+    window.onload = function () {
+    }
+
+    function searchArticle() {
+        let articleId = $("#articleId").val();
+
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: IpAll() + "finals/documents/" + articleId ,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let str = "";
+                let data = result.data;
+                console.log(data)
+
+                document.getElementById("articleContent").innerHTML = data.content;
+
+            },
+            error : function(error) {
+                let notifyMessage = error.responseJSON.message
+                alert(notifyMessage)
+            }
+        });
+    }
+</script>
 
 </body>
 
