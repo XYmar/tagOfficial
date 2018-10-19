@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>结果提交</title>
+
+    <!--<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.8.1/build/reset/reset-min.css"/>-->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="apply.css" rel="stylesheet">
+    <!--<link rel="stylesheet" type="text/css" href="../css/style.min.css">-->
+    <link rel="stylesheet" href="../css/header2.css" type="text/css" />
+    <link rel="stylesheet" href="../css/fileUpload.css">
+    <link rel="stylesheet" href="../bootstrap-table/bootstrap-table.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/applyInfo.css">
+
+    <link rel="stylesheet" type="text/css" href="../css/buttons.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/resultFinal.css"/>
+    <!--<link href="apply.css" rel="stylesheet" type="text/css" />-->
+
+    <style type="text/css">
+
+        /*html {
+            background-color: #ddd;
+            font: 62.5%/1 "Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+        }*/
+        body {
+            padding: 20px 60px;
+        }
+        .bgimg{
+            position: fixed;
+            left:0px;
+            top:0px;
+            margin:auto;
+            width:100%;
+            height:100%;
+            z-index:-1000;
+        }
+        .cover{
+            position: fixed;
+            left:0px;
+            top:0px;
+            z-index: -900;
+            opacity: 0.8;
+            height: 100%;
+            width: 100%;
+            background: black;
+        }
+        #wrapper { text-align: center; }
+
+
+        /*It appears that the Pictos Font resets the line-height of the icon.. so if you are using them, delete the line below. */
+        .icon:before { line-height: .7em; }
+
+    </style>
+
+
+</head>
+
+<body>
+<img src="../images/blackgold1.jpg" alt="" width='100%' height='100%' class="bgimg">
+<header class="header fixed clearfix navbar navbar-fixed-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="header-left">
+                    <div class="logo smooth-scroll">
+                        <a href="../indexFinal.html"><img id="logo" src="http://pb2edde5m.bkt.clouddn.com/logo2.png" alt="Worthy"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container-fluid" style="height: 90%;">
+    <div class="row main-content">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="text-center" style="font-size: 40px;color:#ffc400">
+                        结果提交
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 childToTop">
+                    <div class="col-md-1" style="padding: 0">
+                    </div>
+                    <!-- tab页 -->
+                    <div class="col-md-10">
+                        <!-- 成绩信息 -->
+                        <div class="row-fluid col-md-12 memChildToTop">
+                            <div class="col-md-2" style="padding: 0">
+                                <h4 class="title">
+                                    成绩信息
+                                </h4>
+                            </div>
+                            <div class="col-md-10 group-info">
+                                <div class="col-md-6">
+                                    <form class="form-horizontal col-md-12">
+                                        <div class="form-group col-md-12">
+                                            <label class="col-md-4 col-xs-3 memLabel">ROUGE-L： </label>
+                                            <div class="controls col-md-8 col-xs-9 memInput">
+                                                <div id="rouge">
+                                                    xx
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-6">
+                                    <form class="form-horizontal col-md-12">
+                                        <div class="form-group col-md-12">
+                                            <label class="col-md-4 col-xs-3 memLabel">BLEU-4： </label>
+                                            <div class="controls col-md-8 col-xs-9 memInput">
+                                                <div id="bleu">
+                                                    xx
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- 结果提交 -->
+                        <div class="row-fluid col-md-12 col-sm-12" style="border-bottom: 0;">
+                            <div class="col-md-2 col-sm-12 col-xs-12 titleInfo" style="padding: 0">
+                                <h4 class="title">
+                                    结果提交
+                                </h4>
+                            </div>
+                            <div class="col-md-10 group-info">
+                                <div class="identifyContainer">
+
+                                    <div class="col-md-10">
+                                        <h4 class="sign" id="warning">
+                                        </h4>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <form class="form-horizontal" enctype="multipart/form-data">
+                                            <div style="padding: 0" id="Lpicture">
+                                                <h3><span class="required-flag">*</span>文件：</h3>
+                                                <div class="fileArea" id="file1" style="padding-top:5px;">
+                                                </div>
+                                                <div class="col-md-2 idPic">
+                                                            <span class="btn btn-info btn-small fileinput-button" style="padding: 4px 10px;font-size: 12px;">
+                                                                <i class="glyphicon glyphicon-plus"></i>
+                                                                <span>上传附件</span>
+                                                                <input class="chooseFile disableAll" type="file" name="diploma" id="file1Cont" accept="application/json"/>
+                                                            </span>
+                                                </div>
+                                                <div class="col-md-5 modifyPasBtnCon">
+                                                    <div class="col-md-12">
+                                                        <button type="button" class="btn  btn-success" id="ifSub" style="width: 70px;height: 27px;font-size: 12px;padding: 4px 0;" onclick="subFiles()">提交</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- 历史信息 -->
+                        <div class="row-fluid col-md-12" style="overflow: hidden;">
+                            <div class="col-md-2" style="padding: 0">
+                                <h4 class="title">
+                                    历史成绩
+                                </h4>
+                            </div>
+
+                            <!-- 成绩表格 -->
+                            <div class="col-md-10 group-info" style="padding: 10px 10px;">
+                                <div>
+                                    <table id="trainingScoreInfoTable">
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- tab页结束 -->
+
+
+                    <br/>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
+
+</div>
+
+<!--<div id="wrapper">
+
+
+</div>-->
+
+<div style="text-align:center;clear:both;">
+    <!-- JavaScript -->
+    <script src="../js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+</div>
+
+</body>
+
+</html>
+
