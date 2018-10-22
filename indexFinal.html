@@ -20,13 +20,13 @@
 </head>
 <style>
     .modal-dialog{
-        width: 60% !important;
+        width: 80% !important;
         top: 25% !important;
     }
     .addMask {
         width: 100%;
         height: 100%;
-        background: rgba(0,0,0,0.3);
+        background: rgba(0,0,0,0);
         position: absolute;
         top: 0;
         left: 0;
@@ -85,6 +85,7 @@
                                         <!--<li><a href="#news">新闻中心</a></li>-->
                                         <li><a href="#contact">联系我们</a></li>
                                         <li id="loginName"></li>
+                                        <li id="roundControl"></li>
                                         <li id="registAd"></li>
                                         <li id="importAnswer"></li>
                                         <li id="compareAnswer"></li>
@@ -396,6 +397,7 @@
                     </ul>-->
 
                     <div class="col-md-4" id="firstScoreDiv">
+                        <div id="getting-started1" style="position: absolute;top: -60px;font-size: 30px;font-weight: bold;"></div>
                         <div class="addMask"></div>
                         <div>
                             <table id="firstScoreInfoTable">
@@ -404,6 +406,7 @@
                     </div>
 
                     <div class="col-md-4" id="secondScoreDiv">
+                        <div id="getting-started2" style="position: absolute;top: -60px;font-size: 30px;font-weight: bold;"></div>
                         <div class="addMask"></div>
                         <div>
                             <table id="secondScoreInfoTable">
@@ -412,6 +415,7 @@
                     </div>
 
                     <div class="col-md-4" id="thirdScoreDiv">
+                        <div id="getting-started3" style="position: absolute;top: -60px;font-size: 30px;font-weight: bold;"></div>
                         <div class="addMask"></div>
                         <div>
                             <table id="thirdScoreInfoTable">
@@ -478,25 +482,25 @@
 <button id="dialogBtn2" data-toggle="modal" data-target="#myModalAdd2" style="display: none"></button>
 <button id="dialogBtn3" data-toggle="modal" data-target="#myModalAdd3" style="display: none"></button>
 <button id="dialogBtn4" data-toggle="modal" data-target="#myModalAdd4" style="display: none"></button>
-<div class="modal" id="myModalAdd1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal bs-example-modal-lg" id="myModalAdd1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
         </div>
     </div>
 </div>
-<div class="modal" id="myModalAdd2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal bs-example-modal-lg" id="myModalAdd2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
         </div>
     </div>
 </div>
-<div class="modal" id="myModalAdd3" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal bs-example-modal-lg" id="myModalAdd3" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
         </div>
     </div>
 </div>
-<div class="modal" id="myModalAdd4" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal bs-example-modal-lg" id="myModalAdd4" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
         </div>
@@ -540,6 +544,7 @@
 <script src="moment/moment.js"></script>
 <script src="moment/moment-with-locales.js"></script>
 <script src="moment/zh-cn.js"></script>
+<script type="text/javascript" src="js/jquery.countdown.js"></script>
 <script>
     let nowTime;
     let myTeamId = $.cookie("myTeamId");
@@ -547,6 +552,13 @@
     let password0 = $.cookie("myWPa");
     let password = $.base64.decode(password0);
     let token = username + ':' + password;
+    let rankRoundOne
+    let rankRoundTwo
+    let rankRoundThree
+    let rankEnd
+    let commitTime1
+    let commitTime2
+    let commitTime3
 
     window.onload = function () {
         //一开始禁用所有下载提交按钮
@@ -582,6 +594,7 @@
 
         // 初始化内容
         let loginName = document.getElementById("loginName");
+        let roundControl = document.getElementById("roundControl");
         let loginOut = document.getElementById("loginOut");
         let importAnswer = document.getElementById("importAnswer");
         let compareAnswer = document.getElementById("compareAnswer");
@@ -596,6 +609,7 @@
             loginOut.innerHTML = "";
             if (myRole === "admin") {
                 loginName.innerHTML += "<a href='pages/audit.html'>管理员</a>";
+                roundControl.innerHTML += "<a href='pages/auditFinal.html'>倒计时</a>";
                 importAnswer.innerHTML += "<a href='pages/importAnswer.html'>导入答案</a>";
                 compareAnswer.innerHTML += "<a href='pages/resultCompareFinal.html'>结果对比</a>";
                 getState(myRole);
@@ -615,19 +629,23 @@
             commitMess.innerHTML = "按不同时间开放相应的提交功能";
         } else {
             loginName.innerHTML = "";
+            roundControl.innerHTML = "";
             loginName.innerHTML += "<a href='pages/login.html'>登录/注册</a>";
             loginOut.innerHTML = "";
             ajax('null');
             downloadMess.innerHTML = "请先登录";
             commitMess.innerHTML = "请先登录";
         }
-
-        getPreliminaryScoreScore2();
+        setOriginScore();
+        setInterval(getPreliminaryScoreScoreRound1,5000)
+        setInterval(getPreliminaryScoreScoreRound2,5000)
+        setInterval(getPreliminaryScoreScoreRound3,5000)
+        setInterval(getPreliminaryScoreRoundend,5000)
         /*getPreliminaryScoreScore();
         getFinalScore();*/
     }
 
-    //是否开放按钮
+    // 是否开放按钮
     function getState(role) {
         $.ajax({
             type: "GET",
@@ -641,7 +659,6 @@
                 //alert(data.commitStartTime1);
 
                 if(data.commitStartTime1 !== null){
-                    alert("A");
                     undisabled("affairBtn");
                     unclickBtn("defenseBtn");
                     unclickBtn("nonSecretBtn");
@@ -657,8 +674,8 @@
                         unclickBtn("secondCommitBtn");
                         unclickBtn("thirdCommitBtn");
                     }
-                }else if(data.commitStartTime2 !== null){
-                    alert("B");
+                }
+                if(data.commitStartTime2 !== null){
                     undisabled("affairBtn");
                     undisabled("defenseBtn");
                     unclickBtn("nonSecretBtn");
@@ -677,8 +694,9 @@
                         commitA("secondCommit");
                         unclickBtn("thirdCommitBtn");
                     }
-                }else  if(data.commitStartTime3 !== null){
-                    alert("C");
+                }
+                if(data.commitStartTime3 !== null){
+                    alert('third')
                     undisabled("affairBtn");
                     undisabled("defenseBtn");
                     undisabled("nonSecretBtn");
@@ -699,7 +717,8 @@
                         commitA("secondCommit");
                         commitA("thirdCommit");
                     }
-                }else {
+                }
+                /*else {
                     unclickBtn("affairBtn");
                     unclickBtn("defenseBtn");
                     unclickBtn("nonSecretBtn");
@@ -707,25 +726,26 @@
                     unclickBtn("firstCommitBtn");
                     unclickBtn("secondCommitBtn");
                     unclickBtn("thirdCommitBtn");
-                }
+                }*/
             },
             error: function (error) {
             }
         });
     }
 
-    //访问静态json数据
-    function getPreliminaryScoreScore2() {
+    // 初始化排行榜
+    function setOriginScore() {
         $.ajax({
             type: "GET",
             dataType: "json",
-            url: "files/topTen.json",
+            url: "files/topTen1.json",
             success: function (result) {
                 let data = result.data;
+                rankRoundOne = result.data;
                 $("#firstScoreInfoTable").bootstrapTable('destroy');
                 $('#firstScoreInfoTable').bootstrapTable({
                     sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
-                    pagination: true, // 是否显示分页（*）
+                    pagination: false, // 是否显示分页（*）
                     pageNumber: 1,    //如果设置了分页，首页页码
                     pageSize: 30,                       //每页的记录行数（*）
                     pageList: [30, 40],        //可供选择的每页的行数（*）
@@ -759,7 +779,13 @@
                             field: 'commitDateP',
                             title: '名次升降',
                             align: "center",
-                            formatter: rankOrder
+                            formatter: rankOrder1
+                        }, {
+                            field: 'commitTimesF1',
+                            title: '提交次数',
+                            align: "center",
+                            width: 100,
+                            formatter: commitTimesFormatter1
                         }
                     ],
                     data: data
@@ -768,7 +794,7 @@
                 $("#secondScoreInfoTable").bootstrapTable('destroy');
                 $('#secondScoreInfoTable').bootstrapTable({
                     sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
-                    pagination: true, // 是否显示分页（*）
+                    pagination: false, // 是否显示分页（*）
                     pageNumber: 1,    //如果设置了分页，首页页码
                     pageSize: 30,                       //每页的记录行数（*）
                     pageList: [30, 40],        //可供选择的每页的行数（*）
@@ -802,7 +828,13 @@
                             field: 'commitDateP',
                             title: '名次升降',
                             align: "center",
-                            formatter: rankOrder
+                            formatter: rankOrder1
+                        }, {
+                            field: 'commitTimesF1',
+                            title: '提交次数',
+                            align: "center",
+                            width: 100,
+                            formatter: commitTimesFormatter1
                         }
                     ],
                     data: data
@@ -811,7 +843,7 @@
                 $("#thirdScoreInfoTable").bootstrapTable('destroy');
                 $('#thirdScoreInfoTable').bootstrapTable({
                     sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
-                    pagination: true, // 是否显示分页（*）
+                    pagination: false, // 是否显示分页（*）
                     pageNumber: 1,    //如果设置了分页，首页页码
                     pageSize: 30,                       //每页的记录行数（*）
                     pageList: [30, 40],        //可供选择的每页的行数（*）
@@ -845,7 +877,13 @@
                             field: 'commitDateP',
                             title: '名次升降',
                             align: "center",
-                            formatter: rankOrder
+                            formatter: rankOrder1
+                        }, {
+                            field: 'commitTimesF1',
+                            title: '提交次数',
+                            align: "center",
+                            width: 100,
+                            formatter: commitTimesFormatter1
                         }
                     ],
                     data: data
@@ -854,7 +892,7 @@
                 $("#endTable").bootstrapTable('destroy');
                 $('#endTable').bootstrapTable({
                     sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
-                    pagination: true, // 是否显示分页（*）
+                    pagination: false, // 是否显示分页（*）
                     pageNumber: 1,    //如果设置了分页，首页页码
                     pageSize: 30,                       //每页的记录行数（*）
                     pageList: [30, 40],        //可供选择的每页的行数（*）
@@ -888,7 +926,7 @@
                             field: 'commitDateP',
                             title: '名次升降',
                             align: "center",
-                            formatter: rankOrder
+                            formatter: rankOrder1
                         }
                     ],
                     data: data
@@ -900,6 +938,506 @@
         });
     }
 
+    // 获取第一轮数据
+    function getPreliminaryScoreScoreRound1() {
+        if(!commitTime1) {
+            if($.cookie('commitStartTime1')) {
+                commitTime1 = parseInt($.cookie('commitStartTime1'))
+                let countTime = moment(commitTime1).format('YYYY-MM-DD HH:mm:ss');
+                $("#getting-started1")
+                    .countdown(countTime, function(event) {
+                        $(this).text(
+                            event.strftime('%H:%M:%S')
+                        );
+                    });
+            }
+        }
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            // url: "files/topTen.json",
+            url: IpAll() + 'finals/ranking',
+            data: {type: 1},
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+                if(rankRoundOne) {
+                    for (let i = 0; i < rankRoundOne.length; i++) {
+                        for (let j = 0; j < data.length; j++) {
+                            if(rankRoundOne[i].id === data[j].id) {
+                                data[j].rank = j - i
+                            }
+                        }
+                    }
+                }
+                rankRoundOne = result.data
+                $("#firstScoreInfoTable").bootstrapTable('destroy');
+                $('#firstScoreInfoTable').bootstrapTable({
+                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination: false, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30, 40],        //可供选择的每页的行数（*）
+                    search: false,
+                    striped: true,
+                    rowStyle: rowStyle,
+                    columns: [
+                        {
+                            filed: '',
+                            title: '序号',
+                            align: "center",
+                            width: 40,
+                            formatter: linenumber
+                        },
+                        {
+                            field: 'teamName',
+                            title: '队伍名称'
+                        }, {
+                            field: 'rougelScoreP',
+                            title: 'ROUGE-L',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'bleu4ScoreP',
+                            title: 'BLEU-4',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'commitDateP',
+                            title: '提交日期'/*,
+                        sortable: true*/
+                        }, {
+                            field: 'commitDateP',
+                            title: '名次升降',
+                            align: "center",
+                            formatter: rankOrder1
+                        },{
+                            field: 'commitTimesF1',
+                            title: '提交次数',
+                            align: "center",
+                            width: 100,
+                            formatter: commitTimesFormatter1
+                        }
+                    ],
+                    data: data
+                });
+
+                /*$("#secondScoreInfoTable").bootstrapTable('destroy');
+                $('#secondScoreInfoTable').bootstrapTable({
+                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination: false, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30, 40],        //可供选择的每页的行数（*）
+                    search: false,
+                    striped: true,
+                    rowStyle: rowStyle,
+                    columns: [
+                        {
+                            filed: '',
+                            title: '序号',
+                            align: "center",
+                            width: 40,
+                            formatter: linenumber
+                        },
+                        {
+                            field: 'teamName',
+                            title: '队伍名称'
+                        }, {
+                            field: 'rougelScoreP',
+                            title: 'ROUGE-L',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'bleu4ScoreP',
+                            title: 'BLEU-4',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'commitDateP',
+                            title: '提交日期'/!*,
+                        sortable: true*!/
+                        }, {
+                            field: 'commitDateP',
+                            title: '名次升降',
+                            align: "center",
+                            formatter: rankOrder
+                        }, {
+                            field: 'commitTimesF1',
+                            title: '提交次数',
+                            align: "center",
+                            width: 100,
+                            formatter: commitTimesFormatter
+                        }
+                    ],
+                    data: data
+                });
+
+                $("#thirdScoreInfoTable").bootstrapTable('destroy');
+                $('#thirdScoreInfoTable').bootstrapTable({
+                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination: false, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30, 40],        //可供选择的每页的行数（*）
+                    search: false,
+                    striped: true,
+                    rowStyle: rowStyle,
+                    columns: [
+                        {
+                            filed: '',
+                            title: '序号',
+                            align: "center",
+                            width: 40,
+                            formatter: linenumber
+                        },
+                        {
+                            field: 'teamName',
+                            title: '队伍名称'
+                        }, {
+                            field: 'rougelScoreP',
+                            title: 'ROUGE-L',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'bleu4ScoreP',
+                            title: 'BLEU-4',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'commitDateP',
+                            title: '提交日期'/!*,
+                        sortable: true*!/
+                        }, {
+                            field: 'commitDateP',
+                            title: '名次升降',
+                            align: "center",
+                            formatter: rankOrder
+                        }, {
+                            field: 'commitTimesF1',
+                            title: '提交次数',
+                            align: "center",
+                            width: 100,
+                            formatter: commitTimesFormatter
+                        }
+                    ],
+                    data: data
+                });
+
+                $("#endTable").bootstrapTable('destroy');
+                $('#endTable').bootstrapTable({
+                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination: false, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30, 40],        //可供选择的每页的行数（*）
+                    search: false,
+                    striped: true,
+                    rowStyle: rowStyle,
+                    columns: [
+                        {
+                            filed: '',
+                            title: '序号',
+                            align: "center",
+                            width: 40,
+                            formatter: linenumber
+                        },
+                        {
+                            field: 'teamName',
+                            title: '队伍名称'
+                        }, {
+                            field: 'rougelScoreP',
+                            title: 'ROUGE-L',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'bleu4ScoreP',
+                            title: 'BLEU-4',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'commitDateP',
+                            title: '提交日期'/!*,
+                        sortable: true*!/
+                        }, {
+                            field: 'commitDateP',
+                            title: '名次升降',
+                            align: "center",
+                            formatter: rankOrder
+                        }
+                    ],
+                    data: data
+                });*/
+
+            },
+            error: function (error) {
+            }
+        });
+    }
+
+    // 获取第二轮数据
+    function getPreliminaryScoreScoreRound2() {
+        if(!commitTime2) {
+            if($.cookie('commitStartTime2')) {
+                commitTime2 = parseInt($.cookie('commitStartTime2'))
+                let countTime = moment(commitTime2).format('YYYY-MM-DD HH:mm:ss');
+                $("#getting-started2")
+                    .countdown(countTime, function(event) {
+                        $(this).text(
+                            event.strftime('%H:%M:%S')
+                        );
+                    });
+            }
+        }
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            // url: "files/topTen.json",
+            url: IpAll() + 'finals/ranking',
+            data: {type: 2},
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+                if(rankRoundTwo) {
+                    for (let i = 0; i < rankRoundTwo.length; i++) {
+                        for (let j = 0; j < data.length; j++) {
+                            if(rankRoundTwo[i].id === data[j].id) {
+                                data[j].rank = j - i
+                            }
+                        }
+                    }
+                }
+                rankRoundTwo = result.data
+
+                $("#secondScoreInfoTable").bootstrapTable('destroy');
+                $('#secondScoreInfoTable').bootstrapTable({
+                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination: false, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30, 40],        //可供选择的每页的行数（*）
+                    search: false,
+                    striped: true,
+                    rowStyle: rowStyle,
+                    columns: [
+                        {
+                            filed: '',
+                            title: '序号',
+                            align: "center",
+                            width: 40,
+                            formatter: linenumber
+                        },
+                        {
+                            field: 'teamName',
+                            title: '队伍名称'
+                        }, {
+                            field: 'rougelScoreP',
+                            title: 'ROUGE-L',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'bleu4ScoreP',
+                            title: 'BLEU-4',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'commitDateP',
+                            title: '提交日期'/*,
+                        sortable: true*/
+                        }, {
+                            field: 'commitDateP',
+                            title: '名次升降',
+                            align: "center",
+                            formatter: rankOrder2
+                        }, {
+                            field: 'commitTimesF2',
+                            title: '提交次数',
+                            align: "center",
+                            width: 100,
+                            formatter: commitTimesFormatter2
+                        }
+                    ],
+                    data: data
+                });
+            },
+            error: function (error) {
+            }
+        });
+    }
+
+    // 获取第三轮数据
+    function getPreliminaryScoreScoreRound3() {
+        if(!commitTime3) {
+            if($.cookie('commitStartTime3')) {
+                commitTime3 = parseInt($.cookie('commitStartTime2'))
+                let countTime = moment(commitTime3).format('YYYY-MM-DD HH:mm:ss');
+                $("#getting-started3")
+                    .countdown(countTime, function(event) {
+                        $(this).text(
+                            event.strftime('%H:%M:%S')
+                        );
+                    });
+            }
+        }
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            // url: "files/topTen.json",
+            url: IpAll() + 'finals/ranking',
+            data: {type: 3},
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+                if(rankRoundThree) {
+                    for (let i = 0; i < rankRoundThree.length; i++) {
+                        for (let j = 0; j < data.length; j++) {
+                            if(rankRoundThree[i].id === data[j].id) {
+                                data[j].rank = j - i
+                            }
+                        }
+                    }
+                }
+                rankRoundThree = result.data
+
+                $("#thirdScoreInfoTable").bootstrapTable('destroy');
+                $('#thirdScoreInfoTable').bootstrapTable({
+                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination: false, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30, 40],        //可供选择的每页的行数（*）
+                    search: false,
+                    striped: true,
+                    rowStyle: rowStyle,
+                    columns: [
+                        {
+                            filed: '',
+                            title: '序号',
+                            align: "center",
+                            width: 40,
+                            formatter: linenumber
+                        },
+                        {
+                            field: 'teamName',
+                            title: '队伍名称'
+                        }, {
+                            field: 'rougelScoreP',
+                            title: 'ROUGE-L',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'bleu4ScoreP',
+                            title: 'BLEU-4',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'commitDateP',
+                            title: '提交日期'/*,
+                        sortable: true*/
+                        }, {
+                            field: 'commitDateP',
+                            title: '名次升降',
+                            align: "center",
+                            formatter: rankOrder3
+                        }, {
+                            field: 'commitTimesF3',
+                            title: '提交次数',
+                            align: "center",
+                            width: 100,
+                            formatter: commitTimesFormatter3
+                        }
+                    ],
+                    data: data
+                });
+            },
+            error: function (error) {
+            }
+        });
+    }
+
+    // 获取总榜数据
+    function getPreliminaryScoreRoundend() {
+        /*if(!commitTime3) {
+            if($.cookie('commitStartTime3')) {
+                commitTime3 = parseInt($.cookie('commitStartTime2'))
+                let countTime = moment(commitTime3).format('YYYY-MM-DD HH:mm:ss');
+                $("#getting-started3")
+                    .countdown(countTime, function(event) {
+                        $(this).text(
+                            event.strftime('%H:%M:%S')
+                        );
+                    });
+            }
+        }*/
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            // url: "files/topTen.json",
+            url: IpAll() + 'finals/ranking',
+            data: {type: 0},
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+                if(rankEnd) {
+                    for (let i = 0; i < rankEnd.length; i++) {
+                        for (let j = 0; j < data.length; j++) {
+                            if(rankEnd[i].id === data[j].id) {
+                                data[j].rank = j - i
+                            }
+                        }
+                    }
+                }
+                rankEnd = result.data
+
+                $("#endTable").bootstrapTable('destroy');
+                $('#endTable').bootstrapTable({
+                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination: false, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30, 40],        //可供选择的每页的行数（*）
+                    search: false,
+                    striped: true,
+                    rowStyle: rowStyle,
+                    columns: [
+                        {
+                            filed: '',
+                            title: '序号',
+                            align: "center",
+                            width: 40,
+                            formatter: linenumber
+                        },
+                        {
+                            field: 'teamName',
+                            title: '队伍名称'
+                        }, {
+                            field: 'rougelScoreP',
+                            title: 'ROUGE-L',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'bleu4ScoreP',
+                            title: 'BLEU-4',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'commitDateP',
+                            title: '提交日期'/*,
+                        sortable: true*/
+                        }, {
+                            field: 'commitDateP',
+                            title: '名次升降',
+                            align: "center",
+                            formatter: rankOrder3
+                        }/*, {
+                            field: 'commitTimesF3',
+                            title: '提交次数',
+                            align: "center",
+                            width: 100,
+                            formatter: commitTimesFormatter3
+                        }*/
+                    ],
+                    data: data
+                });
+            },
+            error: function (error) {
+            }
+        });
+    }
     function ifInArr(arr,id) {
         let flag = false;
         for(let i=0;i<arr.length;i++){
@@ -911,7 +1449,7 @@
         return flag;
     }
 
-    //获取服务器时间
+    // 获取服务器时间
     function ajax(role) {
         $.ajax({
             //几个参数需要注意一下
@@ -1075,6 +1613,7 @@
 
     function undisabled(id) {                   //下载按钮变为可点击
         document.getElementById(id).disabled = false;
+        document.getElementById(id).style.background = "#428bca";
     }
 
     function unclickBtn(id) {                   //不可下载时按钮的样式   不可提交时按钮
@@ -1127,16 +1666,139 @@
         return number;
     }
 
-    function rankOrder(value, row, index) {
-        let number = index + 1;
-        if (number === 1) {
-            number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/升.png' /></div>" + "<div style='display: inline;'>1</div>"
+    function rankOrder1(value, row, index) {
+        let number = index + 1
+        /*if (number === 1) {
+            number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/up.png' /></div>" + "<div style='display: inline;'>1</div>"
         } else if (number === 2) {
             number = "--"
         } else if (number === 3) {
-            number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/降.png' /></div>" + "<div style='display: inline;'>2</div>"
+            number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/down.png' /></div>" + "<div style='display: inline;'>2</div>"
         }
-        return number;
+        return number;*/
+        if(row.rank) {
+            if(row.rank < 0) {
+                number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/up.png' /></div>" + "<div style='display: inline;'>"+ (-row.rank) + "</div>"
+            } else if(row.rank > 0) {
+                number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/down.png' /></div>" + "<div style='display: inline;'>" + row.rank + "</div>"
+            } else if(row.rank == 0) {
+                number = '--'
+            }
+        } else {
+            number = '--'
+        }
+        return number
+    }
+
+    function rankOrder2(value, row, index) {
+        let number = index + 1
+        /*if (number === 1) {
+            number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/up.png' /></div>" + "<div style='display: inline;'>1</div>"
+        } else if (number === 2) {
+            number = "--"
+        } else if (number === 3) {
+            number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/down.png' /></div>" + "<div style='display: inline;'>2</div>"
+        }
+        return number;*/
+        if(row.rank) {
+            if(row.rank < 0) {
+                number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/up.png' /></div>" + "<div style='display: inline;'>"+ (-row.rank) + "</div>"
+            } else if(row.rank > 0) {
+                number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/down.png' /></div>" + "<div style='display: inline;'>" + row.rank + "</div>"
+            } else if(row.rank == 0) {
+                number = '--'
+            }
+        } else {
+            number = '--'
+        }
+        return number
+    }
+
+    function rankOrder3(value, row, index) {
+        let number = index + 1
+        /*if (number === 1) {
+            number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/up.png' /></div>" + "<div style='display: inline;'>1</div>"
+        } else if (number === 2) {
+            number = "--"
+        } else if (number === 3) {
+            number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/down.png' /></div>" + "<div style='display: inline;'>2</div>"
+        }
+        return number;*/
+        if(row.rank) {
+            if(row.rank < 0) {
+                number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/up.png' /></div>" + "<div style='display: inline;'>"+ (-row.rank) + "</div>"
+            } else if(row.rank > 0) {
+                number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/down.png' /></div>" + "<div style='display: inline;'>" + row.rank + "</div>"
+            } else if(row.rank == 0) {
+                number = '--'
+            }
+        } else {
+            number = '--'
+        }
+        return number
+    }
+
+    function commitTimesFormatter1(value, row, index) {
+        let lights
+        if(row.commitTimesF1) {
+            // 第一轮剩余3次
+            if(row.commitTimesF1 === 3) {
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+            }
+            // 第一轮剩余2次
+            if(row.commitTimesF1 === 2) {
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+            }
+            // 第一轮剩余1次
+            if(row.commitTimesF1 === 1) {
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+            }
+        } else if(row.commitTimesF1 === 0) { // 剩余0次
+            lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /></div>" + "<div style='display: inline;'></div>"
+        }
+        return lights
+    }
+
+    function commitTimesFormatter2(value, row, index) {
+        let lights
+        if(row.commitTimesF2) {
+            // 第一轮剩余3次
+            if(row.commitTimesF2 === 3) {
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+            }
+            // 第一轮剩余2次
+            if(row.commitTimesF2 === 2) {
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+            }
+            // 第一轮剩余1次
+            if(row.commitTimesF2=== 1) {
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+            }
+        } else if(row.commitTimesF2 === 0) { // 剩余0次
+            lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /></div>" + "<div style='display: inline;'></div>"
+        }
+        return lights
+    }
+
+    function commitTimesFormatter3(value, row, index) {
+        let lights
+        if(row.commitTimesF3) {
+            // 第一轮剩余3次
+            if(row.commitTimesF3 === 3) {
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+            }
+            // 第一轮剩余2次
+            if(row.commitTimesF3 === 2) {
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+            }
+            // 第一轮剩余1次
+            if(row.commitTimesF3 === 1) {
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+            }
+        } else if(row.commitTimesF3 === 0) { // 剩余0次
+            lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /></div>" + "<div style='display: inline;'></div>"
+        }
+        return lights
     }
 
     function rowStyle(row, index) {

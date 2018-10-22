@@ -1,7 +1,9 @@
 const nums = document.querySelectorAll('.nums span');
 const counter = document.querySelector('.counter');
 const finalMessage = document.querySelector('.final');
-const replay = document.getElementById('replay');
+const round1 = document.getElementById('round1');
+const round2 = document.getElementById('round2');
+const round3 = document.getElementById('round3');
 let username = $.cookie("myUsername");
 let password0 = $.cookie("myWPa");
 let password = $.base64.decode(password0);
@@ -44,7 +46,7 @@ function runAnimation() {
 
 }
 
-function start() {
+function start1() {
     //倒计时结束后调用开始接口，并开放下载提交按钮
     $.ajax({
         type: "PATCH",
@@ -55,7 +57,54 @@ function start() {
             xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
         },
         success: function (result) {
-            alert("开始啦啊啊啊啊啊");
+            console.log(result.data.commitStartTime1)
+            let dateStamp = new Date(result.data.commitStartTime1).valueOf() + 20*60*1000
+            console.log(dateStamp)
+            $.cookie("commitStartTime1", dateStamp, {path: '/'});
+        },
+        error : function() {
+            alert("请求错误！");
+        }
+    });
+}
+
+function start2() {
+    //倒计时结束后调用开始接口，并开放下载提交按钮
+    $.ajax({
+        type: "PATCH",
+        dataType: "json",
+        url: IpAll() + "finals/start-final",
+        data: {type: 2},
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+        },
+        success: function (result) {
+            console.log(result.data.commitStartTime2)
+            let dateStamp = new Date(result.data.commitStartTime2).valueOf() + 20*60*1000
+            console.log(dateStamp)
+            $.cookie("commitStartTime2", dateStamp, {path: '/'});
+        },
+        error : function() {
+            alert("请求错误！");
+        }
+    });
+}
+
+function start3() {
+    //倒计时结束后调用开始接口，并开放下载提交按钮
+    $.ajax({
+        type: "PATCH",
+        dataType: "json",
+        url: IpAll() + "finals/start-final",
+        data: {type: 3},
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+        },
+        success: function (result) {
+            console.log(result.data.commitStartTime3)
+            let dateStamp = new Date(result.data.commitStartTime3).valueOf() + 20*60*1000
+            console.log(dateStamp)
+            $.cookie("commitStartTime3", dateStamp, {path: '/'});
         },
         error : function() {
             alert("请求错误！");
@@ -98,8 +147,19 @@ function commitA(id) {
     }
 }*/
 
-replay.addEventListener('click', () => {
+round1.addEventListener('click', () => {
     resetDOM();
     runAnimation();
-    start();
+    start1();
+});
+
+round2.addEventListener('click', () => {
+    resetDOM();
+    runAnimation();
+    start2();
+});
+round3.addEventListener('click', () => {
+    resetDOM();
+    runAnimation();
+    start3();
 });
