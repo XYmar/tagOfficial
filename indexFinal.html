@@ -1773,15 +1773,6 @@
     let rankRoundThree = [].concat(JSON.parse(JSON.stringify(finalTeams)));
     let rankEnd = [].concat(JSON.parse(JSON.stringify(finalTeams)));
     window.onload = function () {
-        //一开始禁用所有下载提交按钮
-        /*unclickBtn("affairBtn");
-        unclickBtn("defenseBtn");
-        unclickBtn("nonSecretBtn");
-
-        unclickBtn("firstCommitBtn");
-        unclickBtn("secondCommitBtn");
-        unclickBtn("thirdCommitBtn");*/
-
         //查询用户状态
         $.ajax({
             //几个参数需要注意一下
@@ -1820,7 +1811,7 @@
             loginName.innerHTML = "";
             loginOut.innerHTML = "";
             if (myRole === "admin") {
-                loginName.innerHTML += "<a href='pages/audit.html'>管理员</a>";
+                loginName.innerHTML += "<a href=\"javascript: void(0)\">管理员</a>";
                 roundControl.innerHTML += "<a href='pages/auditFinal.html'>倒计时</a>";
                 importAnswer.innerHTML += "<a href='pages/importAnswer.html'>导入答案</a>";
                 compareAnswer.innerHTML += "<a href='pages/resultCompareFinal.html'>结果对比</a>";
