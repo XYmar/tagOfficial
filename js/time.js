@@ -11,6 +11,8 @@ let password = $.base64.decode(password0);
 let token = username + ':' + password;
 
 runAnimation();
+/*runAnimation2();
+runAnimation3();*/
 /*counter.classList.add('hide');
 finalMessage.classList.add('show');*/
 
@@ -24,7 +26,6 @@ function resetDOM() {
 
     nums[0].classList.add('in');
 }
-
 function runAnimation() {
     nums.forEach((num, idx) => {
         const penultimate = nums.length - 1;
@@ -40,7 +41,84 @@ function runAnimation() {
 
                 //alert("hhhhh");
                 modalAction.classList.add('show');
-                window.location.href='../indexFinal.html#skip';
+
+            }
+
+        });
+    });
+
+}
+
+function runAnimation1() {
+    nums.forEach((num, idx) => {
+        const penultimate = nums.length - 1;
+        num.addEventListener('animationend', (e) => {
+            if(e.animationName === 'goIn' && idx !== penultimate){
+                num.classList.remove('in');
+                num.classList.add('out');
+            } else if (e.animationName === 'goOut' && num.nextElementSibling){
+                num.nextElementSibling.classList.add('in');
+            } else {
+                counter.classList.add('hide');
+                //finalMessage.classList.add('show');
+
+                //alert("hhhhh");
+                modalAction.classList.add('show');
+
+                start1();
+                //window.location.href='../indexFinal.html#skip';
+
+            }
+
+        });
+    });
+
+}
+
+function runAnimation2() {
+    nums.forEach((num, idx) => {
+        const penultimate = nums.length - 1;
+        num.addEventListener('animationend', (e) => {
+            if(e.animationName === 'goIn' && idx !== penultimate){
+                num.classList.remove('in');
+                num.classList.add('out');
+            } else if (e.animationName === 'goOut' && num.nextElementSibling){
+                num.nextElementSibling.classList.add('in');
+            } else {
+                counter.classList.add('hide');
+                //finalMessage.classList.add('show');
+
+                //alert("hhhhh");
+                modalAction.classList.add('show');
+
+                start2();
+                //window.location.href='../indexFinal.html#skip';
+
+            }
+
+        });
+    });
+
+}
+
+function runAnimation3() {
+    nums.forEach((num, idx) => {
+        const penultimate = nums.length - 1;
+        num.addEventListener('animationend', (e) => {
+            if(e.animationName === 'goIn' && idx !== penultimate){
+                num.classList.remove('in');
+                num.classList.add('out');
+            } else if (e.animationName === 'goOut' && num.nextElementSibling){
+                num.nextElementSibling.classList.add('in');
+            } else {
+                counter.classList.add('hide');
+                //finalMessage.classList.add('show');
+
+                //alert("hhhhh");
+                modalAction.classList.add('show');
+
+                start3();
+                //window.location.href='../indexFinal.html#skip';
 
             }
 
@@ -64,6 +142,8 @@ function start1() {
             let dateStamp = new Date(result.data.commitStartTime1).valueOf() + 20*60*1000
             console.log(dateStamp)
             $.cookie("commitStartTime1", dateStamp, {path: '/'});
+
+            window.location.href='../indexFinal.html#skip';
         },
         error : function() {
             alert("请求错误！");
@@ -86,6 +166,8 @@ function start2() {
             let dateStamp = new Date(result.data.commitStartTime2).valueOf() + 20*60*1000
             console.log(dateStamp)
             $.cookie("commitStartTime2", dateStamp, {path: '/'});
+
+            window.location.href='../indexFinal.html#skip';
         },
         error : function() {
             alert("请求错误！");
@@ -108,6 +190,8 @@ function start3() {
             let dateStamp = new Date(result.data.commitStartTime3).valueOf() + 20*60*1000
             console.log(dateStamp)
             $.cookie("commitStartTime3", dateStamp, {path: '/'});
+
+            window.location.href='../indexFinal.html#skip';
         },
         error : function() {
             alert("请求错误！");
@@ -152,17 +236,17 @@ function commitA(id) {
 
 round1.addEventListener('click', () => {
     resetDOM();
-    runAnimation();
+    runAnimation1();
     //start1();
 });
 
 round2.addEventListener('click', () => {
     resetDOM();
-    runAnimation();
-    start2();
+    runAnimation2();
+    //start2();
 });
 round3.addEventListener('click', () => {
     resetDOM();
-    runAnimation();
-    start3();
+    runAnimation3();
+    //start3();
 });
