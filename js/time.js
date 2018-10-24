@@ -1,6 +1,7 @@
 const nums = document.querySelectorAll('.nums span');
 const counter = document.querySelector('.counter');
 const finalMessage = document.querySelector('.final');
+const modalAction = document.querySelector('.modalAction');
 const round1 = document.getElementById('round1');
 const round2 = document.getElementById('round2');
 const round3 = document.getElementById('round3');
@@ -35,9 +36,11 @@ function runAnimation() {
                 num.nextElementSibling.classList.add('in');
             } else {
                 counter.classList.add('hide');
-                finalMessage.classList.add('show');
+                //finalMessage.classList.add('show');
 
                 //alert("hhhhh");
+                modalAction.classList.add('show');
+                window.location.href='../indexFinal.html#skip';
 
             }
 
@@ -150,7 +153,7 @@ function commitA(id) {
 round1.addEventListener('click', () => {
     resetDOM();
     runAnimation();
-    start1();
+    //start1();
 });
 
 round2.addEventListener('click', () => {
