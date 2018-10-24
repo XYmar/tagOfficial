@@ -20,8 +20,20 @@
 </head>
 <style>
     .modal-dialog{
-        width: 60% !important;
+        width: 80% !important;
         top: 25% !important;
+    }
+    .addMask {
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+    }
+    .modal .addMask{
+        display: none;
     }
 </style>
 <body class="no-trans">
@@ -73,6 +85,7 @@
                                         <!--<li><a href="#news">新闻中心</a></li>-->
                                         <li><a href="#contact">联系我们</a></li>
                                         <li id="loginName"></li>
+                                        <li id="roundControl"></li>
                                         <li id="registAd"></li>
                                         <li id="importAnswer"></li>
                                         <li id="compareAnswer"></li>
@@ -112,7 +125,8 @@
                         <br>
                         “军事智能•机器阅读”挑战赛来了，你准备好了吗？
                     </h3>-->
-                    <h1 style="font-size: 60px">“莱斯杯”全国第一届“军事智能·机器阅读”挑战赛</h1>
+                    <h1 style="font-size: 60px;margin-bottom: 10px;">“莱斯杯”全国第一届</h1>
+                    <h1 style="font-size: 60px;margin-top: 0;">“军事智能·机器阅读”挑战赛</h1>
                     <h1 class="yinyongTitle">—军委装备发展部中国电科联合基金资助</h1>
                     <h1 style="font-size: 120px">决赛</h1>
                 </div>
@@ -270,7 +284,7 @@
                                         <div class="col-md-6 col-xs-6">
                                             <a href="javascript: void(0)" id="firstCommit">
                                                 <button class="btn downloadBtn" id="firstCommitBtn" disabled="disabled"
-                                                        type="button">第一轮提交
+                                                        type="button">军事新闻
                                                 </button>
                                             </a>
                                         </div>
@@ -289,7 +303,7 @@
                                         <div class="col-md-6 col-xs-6">
                                             <a href="javascript: void(0)" id="secondCommit">
                                                 <button class="btn downloadBtn" id="secondCommitBtn"
-                                                        disabled="disabled" type="button">第二轮提交
+                                                        disabled="disabled" type="button">防务快讯
                                                 </button>
                                             </a>
                                         </div>
@@ -308,7 +322,7 @@
                                         <div class="col-md-6 col-xs-6">
                                             <a href="javascript: void(0)" id="thirdCommit">
                                                 <button class="btn downloadBtn" id="thirdCommitBtn" disabled="disabled"
-                                                        type="button">第三轮提交
+                                                        type="button">非密情报
                                                 </button>
                                             </a>
                                         </div>
@@ -383,21 +397,27 @@
                                                    data-toggle="tab">决赛成绩</a></li>
                     </ul>-->
 
+                    <div id="getting-started1" style="position: absolute;top: -44px;left: 20px;font-size: 30px;font-weight: bold;"></div>
                     <div class="col-md-4" id="firstScoreDiv">
+                        <div class="addMask"></div>
                         <div>
                             <table id="firstScoreInfoTable">
                             </table>
                         </div>
                     </div>
 
+                    <div id="getting-started2" style="position: absolute;top: -44px;left:35%;font-size: 30px;font-weight: bold;"></div>
                     <div class="col-md-4" id="secondScoreDiv">
+                        <div class="addMask"></div>
                         <div>
                             <table id="secondScoreInfoTable">
                             </table>
                         </div>
                     </div>
 
+                    <div id="getting-started3" style="position: absolute;top: -44px;left:68%;font-size: 30px;font-weight: bold;"></div>
                     <div class="col-md-4" id="thirdScoreDiv">
+                        <div class="addMask"></div>
                         <div>
                             <table id="thirdScoreInfoTable">
                             </table>
@@ -431,8 +451,9 @@
 
             <div class="col-sm-12 rankTable">
                 <!--<div class="panel panel-default">-->
-                <div class="col-md-12 group-info" style="padding: 10px 10px;">
-                    <div class="col-md-12" style="padding: 0">
+                <div class="col-md-12 group-info" style="padding: 10px 10px;" id="endScoreDiv">
+                    <div class="col-md-12" style="padding: 0;background: #fff;">
+                        <div class="addMask"></div>
                         <div>
                             <table id="endTable">
                             </table>
@@ -458,22 +479,29 @@
     </div>
 </section>-->
 <!-- 底部 -->
-<button id="dialogBtn1" data-toggle="modal" data-target="#myModalAdd1"></button>
-<button id="dialogBtn2" data-toggle="modal" data-target="#myModalAdd2"></button>
-<button id="dialogBtn3" data-toggle="modal" data-target="#myModalAdd3"></button>
-<div class="modal" id="myModalAdd1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<button id="dialogBtn1" data-toggle="modal" data-target="#myModalAdd1" style="display: none"></button>
+<button id="dialogBtn2" data-toggle="modal" data-target="#myModalAdd2" style="display: none"></button>
+<button id="dialogBtn3" data-toggle="modal" data-target="#myModalAdd3" style="display: none"></button>
+<button id="dialogBtn4" data-toggle="modal" data-target="#myModalAdd4" style="display: none"></button>
+<div class="modal bs-example-modal-lg" id="myModalAdd1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
         </div>
     </div>
 </div>
-<div class="modal" id="myModalAdd2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal bs-example-modal-lg" id="myModalAdd2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
         </div>
     </div>
 </div>
-<div class="modal" id="myModalAdd3" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal bs-example-modal-lg" id="myModalAdd3" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+<div class="modal bs-example-modal-lg" id="myModalAdd4" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
         </div>
@@ -517,6 +545,7 @@
 <script src="moment/moment.js"></script>
 <script src="moment/moment-with-locales.js"></script>
 <script src="moment/zh-cn.js"></script>
+<script type="text/javascript" src="js/jquery.countdown.js"></script>
 <script>
     let nowTime;
     let myTeamId = $.cookie("myTeamId");
@@ -524,7 +553,619 @@
     let password0 = $.cookie("myWPa");
     let password = $.base64.decode(password0);
     let token = username + ':' + password;
-
+    let commitTime1
+    let commitTime2
+    let commitTime3
+    let timer1
+    let timer2
+    let timer3
+    let timerEnd
+    let finalTeams = [
+        {
+            "id": "fc51250b-88d6-45d1-ae64-81a7dd7dcef1",
+            "createTime": "2018-07-22 19:32:42",
+            "message": null,
+            "username": "404338476",
+            "password": "$2a$10$ueRgp23BSbv17fvnfoiK5u.zJQt/weLicPUeIMmvq8qbF46EpHQNK",
+            "email": "404338476@qq.com",
+            "telephoneNumber": "13217417403",
+            "name": "张啸宇",
+            "age": 28,
+            "sex": 0,
+            "teamName": "xy",
+            "organization": "国防科大",
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": "/root/user-badge/d6e0aed2-c212-4b0e-8f85-af68eb62d25a.jpg",
+            "bleu4ScoreT": 82.54,
+            "rougelScoreT": 91.95,
+            "commitDateT": "2018-09-18 05:03:34",
+            "commitTimesT": 4,
+            "bleu4ScoreP": 80.78,
+            "rougelScoreP": 91.22,
+            "commitDateP": "2018-10-21 20:32:18",
+            "commitTimesP": 5,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 1,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "01903c69-60f7-4830-ab9c-c92d2d22f051",
+            "createTime": "2018-07-31 20:50:38",
+            "message": null,
+            "username": "monsterhunter",
+            "password": "$2a$10$MoO9LO/ZUmytKpiw.oHDQeZz75vmnaULKUJvJAC3uUZDaSjiFHHVK",
+            "email": "sfzhou567@163.com",
+            "telephoneNumber": "15201950598",
+            "name": "周树帆",
+            "age": 24,
+            "sex": 0,
+            "teamName": "HR999",
+            "organization": "上海交通大学",
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": "/root/user-badge/56f9f68e-a257-4948-8a2c-2e2d1b19db5d.jpg",
+            "bleu4ScoreT": 100.0,
+            "rougelScoreT": 100.0,
+            "commitDateT": "2018-09-18 06:55:40",
+            "commitTimesT": 4,
+            "bleu4ScoreP": 78.17,
+            "rougelScoreP": 88.56,
+            "commitDateP": "2018-10-21 20:31:53",
+            "commitTimesP": 5,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 1,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "66ace24f-bea3-4d51-8635-d5c35edb5401",
+            "createTime": "2018-07-29 11:51:01",
+            "message": null,
+            "username": "461629348",
+            "password": "$2a$10$zHPAEmr1RifGqpctVI9DpuiEz5yY.7fDpZ2K94TY.n8shMVxYQnuG",
+            "email": "461629348@qq.com",
+            "telephoneNumber": "18701914274",
+            "name": "徐建",
+            "age": 32,
+            "sex": 0,
+            "teamName": "敬畏之心",
+            "organization": "北京云知声科技",
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": "/root/user-badge/c1e7363e-cc72-439a-8c64-755b4dc82160.jpg",
+            "bleu4ScoreT": 60.33,
+            "rougelScoreT": 83.47,
+            "commitDateT": "2018-09-13 19:14:20",
+            "commitTimesT": 4,
+            "bleu4ScoreP": 81.55,
+            "rougelScoreP": 91.54,
+            "commitDateP": "2018-10-23 10:11:32",
+            "commitTimesP": 1,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 1,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "1f406719-7e3a-4b3c-bf89-2dc4b302d73f",
+            "createTime": "2018-07-24 17:26:28",
+            "message": null,
+            "username": "ssdf93",
+            "password": "$2a$10$9q33145BETuU1/vVu5BFpOfddNJBDTfXsVSeGfUgVObT45B2UZfcq",
+            "email": "zhangsheng@nudt.edu.cn",
+            "telephoneNumber": "13278891668",
+            "name": "张胜",
+            "age": 25,
+            "sex": 0,
+            "teamName": "FuRongWang",
+            "organization": "国防科技大学",
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": "/root/user-badge/5d236c6e-a3d4-483d-a0a1-575c686aa401.jpg",
+            "bleu4ScoreT": 100.0,
+            "rougelScoreT": 100.0,
+            "commitDateT": "2018-09-15 15:22:39",
+            "commitTimesT": 4,
+            "bleu4ScoreP": 74.53,
+            "rougelScoreP": 87.3,
+            "commitDateP": "2018-10-21 13:24:56",
+            "commitTimesP": 5,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 1,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "a81ff72d-b869-4a08-8ca1-eb033d9d039e",
+            "createTime": "2018-07-02 17:34:15",
+            "message": null,
+            "username": "aiATdatalink",
+            "password": "$2a$10$PH2pA2Izfllt6/9d7rMXM.XciCC5iIpxOcmuiAB5B72MTQw6CT.BC",
+            "email": "93545322@qq.com",
+            "telephoneNumber": "15172495786",
+            "name": "何俊",
+            "age": 35,
+            "sex": 0,
+            "teamName": "首首麒麟",
+            "organization": "国防科技大学信息通信学院",
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": "/root/user-badge/7bb00948-be1e-495c-9253-feebcc41ccde.jpg",
+            "bleu4ScoreT": 78.84,
+            "rougelScoreT": 90.27,
+            "commitDateT": "2018-09-17 09:57:38",
+            "commitTimesT": 4,
+            "bleu4ScoreP": 83.82,
+            "rougelScoreP": 92.06,
+            "commitDateP": "2018-10-23 09:15:53",
+            "commitTimesP": 2,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 1,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "ad9eaa11-94bd-4a05-bf68-6195b6cc751a",
+            "createTime": "2018-07-31 15:01:51",
+            "message": null,
+            "username": "ndsc01",
+            "password": "$2a$10$A7rwF97pM5Tp7Q0QZ4FdTutQXZAKXZvy28gcGB01qiOf/ISWq2KF6",
+            "email": "277433109@qq.com",
+            "telephoneNumber": "18337176095",
+            "name": "黄瑞阳",
+            "age": 33,
+            "sex": 0,
+            "teamName": "ndsc01",
+            "organization": "NDSC",
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": "/root/user-badge/de8c4cd5-fdf3-4ca3-9de3-a0e4b571b330.jpg",
+            "bleu4ScoreT": 0.0,
+            "rougelScoreT": 0.0,
+            "commitDateT": null,
+            "commitTimesT": 4,
+            "bleu4ScoreP": 74.28,
+            "rougelScoreP": 88.16,
+            "commitDateP": "2018-10-23 09:21:39",
+            "commitTimesP": 4,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 1,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "1a05929f-a279-4db3-9b58-4dbb9ec30196",
+            "createTime": "2018-07-05 08:34:01",
+            "message": null,
+            "username": "hazel2666",
+            "password": "$2a$10$p5S5/KwiF7hHPL/0WXKppOI05HoI4lFnkhohvA5AMXhmoy6p5docm",
+            "email": "linzheng@iie.ac.cn",
+            "telephoneNumber": "13718850926",
+            "name": "林政",
+            "age": 33,
+            "sex": 1,
+            "teamName": "向阳而生",
+            "organization": "中国科学院信息工程研究所",
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": "/root/user-badge/4ce9f973-2971-497b-aa5b-33b0be4848f2.jpeg",
+            "bleu4ScoreT": 80.52,
+            "rougelScoreT": 89.8,
+            "commitDateT": "2018-10-19 00:07:21",
+            "commitTimesT": 4,
+            "bleu4ScoreP": 76.56,
+            "rougelScoreP": 88.47,
+            "commitDateP": "2018-10-23 11:10:10",
+            "commitTimesP": 4,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 1,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "8f2a3698-ca2d-4976-ae9f-d276c87aebcb",
+            "createTime": "2018-07-10 17:38:57",
+            "message": null,
+            "username": "BUPTCIST",
+            "password": "$2a$10$4BmczQNoiWC2k3jAmOepsOKg1Vi4ct4lqxGPsehkHQjkx5pKSm/Pe",
+            "email": "bestbzw@bupt.edu.cn",
+            "telephoneNumber": "13269523807",
+            "name": "王小捷",
+            "age": 49,
+            "sex": 0,
+            "teamName": "BUPTCIST",
+            "organization": "北京邮电大学",
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": "/root/user-badge/98de7849-2ea1-450d-ba26-e734c34cccc2.jpg",
+            "bleu4ScoreT": 100.0,
+            "rougelScoreT": 100.0,
+            "commitDateT": "2018-10-19 19:40:06",
+            "commitTimesT": 4,
+            "bleu4ScoreP": 74.17,
+            "rougelScoreP": 86.71,
+            "commitDateP": "2018-09-27 11:18:48",
+            "commitTimesP": 5,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 1,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "b97e14f3-541b-4391-970c-f259d7efdb0d",
+            "createTime": "2018-07-16 10:15:33",
+            "message": null,
+            "username": "cstsunfu",
+            "password": "$2a$10$xqKjT5uKpZ2J184SFEVz5OTK8GUNnyPnds4aDub83dVty4WPUGxk2",
+            "email": "cstsunfu@gmail.com",
+            "telephoneNumber": "18616234910",
+            "name": "孙付",
+            "age": 24,
+            "sex": 0,
+            "teamName": "对照组",
+            "organization": "复旦大学",
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": "/root/user-badge/b795331b-ec40-4e1f-9da3-f7ebb3bcb114.jpg",
+            "bleu4ScoreT": 69.42,
+            "rougelScoreT": 88.42,
+            "commitDateT": "2018-08-23 16:15:35",
+            "commitTimesT": 4,
+            "bleu4ScoreP": 73.05,
+            "rougelScoreP": 86.47,
+            "commitDateP": "2018-10-12 14:35:29",
+            "commitTimesP": 5,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 1,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "590044ef-ec78-4587-84bb-25398b2c36e3",
+            "createTime": "2018-07-14 14:18:26",
+            "message": null,
+            "username": "junqing",
+            "password": "$2a$10$GB8vZdeL/z4oAW2jBftWee5nhGhVknIRzi4vLuBT1EGC8zZGSzRR6",
+            "email": "dc.swind@gmail.com",
+            "telephoneNumber": "15850570389",
+            "name": "徐栋",
+            "age": 24,
+            "sex": 0,
+            "teamName": "军情十八处",
+            "organization": "南京大学",
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": "/root/user-badge/4a35901c-88bc-49fc-b8f9-0408d46300ff.jpg",
+            "bleu4ScoreT": 74.73,
+            "rougelScoreT": 86.06,
+            "commitDateT": "2018-09-11 10:59:45",
+            "commitTimesT": 4,
+            "bleu4ScoreP": 71.31,
+            "rougelScoreP": 86.35,
+            "commitDateP": "2018-10-16 12:02:46",
+            "commitTimesP": 5,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 1,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        }
+    ]
+    let rankRoundOne = finalTeams.slice()
+    let rankRoundTwo = finalTeams.slice()
+    let rankRoundThree = finalTeams.slice()
+    let rankEnd = finalTeams.slice()
     window.onload = function () {
         //一开始禁用所有下载提交按钮
         /*unclickBtn("affairBtn");
@@ -559,6 +1200,7 @@
 
         // 初始化内容
         let loginName = document.getElementById("loginName");
+        let roundControl = document.getElementById("roundControl");
         let loginOut = document.getElementById("loginOut");
         let importAnswer = document.getElementById("importAnswer");
         let compareAnswer = document.getElementById("compareAnswer");
@@ -573,6 +1215,7 @@
             loginOut.innerHTML = "";
             if (myRole === "admin") {
                 loginName.innerHTML += "<a href='pages/audit.html'>管理员</a>";
+                roundControl.innerHTML += "<a href='pages/auditFinal.html'>倒计时</a>";
                 importAnswer.innerHTML += "<a href='pages/importAnswer.html'>导入答案</a>";
                 compareAnswer.innerHTML += "<a href='pages/resultCompareFinal.html'>结果对比</a>";
                 getState(myRole);
@@ -592,19 +1235,23 @@
             commitMess.innerHTML = "按不同时间开放相应的提交功能";
         } else {
             loginName.innerHTML = "";
+            roundControl.innerHTML = "";
             loginName.innerHTML += "<a href='pages/login.html'>登录/注册</a>";
             loginOut.innerHTML = "";
             ajax('null');
             downloadMess.innerHTML = "请先登录";
             commitMess.innerHTML = "请先登录";
         }
-
-        getPreliminaryScoreScore2();
+        setOriginScore();
+        timer1 = setInterval(getPreliminaryScoreScoreRound1,5000)
+        timer2 = setInterval(getPreliminaryScoreScoreRound2,5000)
+        timer3 = setInterval(getPreliminaryScoreScoreRound3,5000)
+        timerEnd = setInterval(getPreliminaryScoreRoundend,5000)
         /*getPreliminaryScoreScore();
         getFinalScore();*/
     }
 
-    //是否开放按钮
+    // 是否开放按钮
     function getState(role) {
         $.ajax({
             type: "GET",
@@ -618,7 +1265,6 @@
                 //alert(data.commitStartTime1);
 
                 if(data.commitStartTime1 !== null){
-                    alert("A");
                     undisabled("affairBtn");
                     unclickBtn("defenseBtn");
                     unclickBtn("nonSecretBtn");
@@ -634,8 +1280,8 @@
                         unclickBtn("secondCommitBtn");
                         unclickBtn("thirdCommitBtn");
                     }
-                }else if(data.commitStartTime2 !== null){
-                    alert("B");
+                }
+                if(data.commitStartTime2 !== null){
                     undisabled("affairBtn");
                     undisabled("defenseBtn");
                     unclickBtn("nonSecretBtn");
@@ -654,8 +1300,9 @@
                         commitA("secondCommit");
                         unclickBtn("thirdCommitBtn");
                     }
-                }else  if(data.commitStartTime3 !== null){
-                    alert("C");
+                }
+                if(data.commitStartTime3 !== null){
+                    alert('third')
                     undisabled("affairBtn");
                     undisabled("defenseBtn");
                     undisabled("nonSecretBtn");
@@ -676,7 +1323,8 @@
                         commitA("secondCommit");
                         commitA("thirdCommit");
                     }
-                }else {
+                }
+                /*else {
                     unclickBtn("affairBtn");
                     unclickBtn("defenseBtn");
                     unclickBtn("nonSecretBtn");
@@ -684,25 +1332,33 @@
                     unclickBtn("firstCommitBtn");
                     unclickBtn("secondCommitBtn");
                     unclickBtn("thirdCommitBtn");
-                }
+                }*/
             },
             error: function (error) {
             }
         });
     }
 
-    //访问静态json数据
-    function getPreliminaryScoreScore2() {
+    /*// 初始化排行榜
+    function setOriginScore() {
         $.ajax({
+            /!*type: "GET",
+            dataType: "json",
+            url: "files/topTen1.json",*!/
             type: "GET",
             dataType: "json",
-            url: "files/topTen.json",
+            url: IpAll() + 'finals/ranking',
+            data: {type: 1},
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
             success: function (result) {
                 let data = result.data;
+                rankRoundOne = result.data;
                 $("#firstScoreInfoTable").bootstrapTable('destroy');
                 $('#firstScoreInfoTable').bootstrapTable({
                     sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
-                    pagination: true, // 是否显示分页（*）
+                    pagination: false, // 是否显示分页（*）
                     pageNumber: 1,    //如果设置了分页，首页页码
                     pageSize: 30,                       //每页的记录行数（*）
                     pageList: [30, 40],        //可供选择的每页的行数（*）
@@ -721,22 +1377,28 @@
                             field: 'teamName',
                             title: '队伍名称'
                         }, {
-                            field: 'rougelScoreP',
+                            field: 'rougelScoreF1',
                             title: 'ROUGE-L',
                             formatter: precentFormatter
                         }, {
-                            field: 'bleu4ScoreP',
+                            field: 'bleu4ScoreF1',
                             title: 'BLEU-4',
                             formatter: precentFormatter
                         }, {
-                            field: 'commitDateP',
-                            title: '提交日期'/*,
-                        sortable: true*/
+                            field: 'commitDateF1',
+                            title: '提交日期'/!*,
+                        sortable: true*!/
                         }, {
                             field: 'commitDateP',
                             title: '名次升降',
                             align: "center",
-                            formatter: rankOrder
+                            formatter: rankOrder1
+                        }, {
+                            field: 'commitTimesF1',
+                            title: '提交次数',
+                            align: "center",
+                            width: 100,
+                            formatter: commitTimesFormatter1
                         }
                     ],
                     data: data
@@ -745,7 +1407,7 @@
                 $("#secondScoreInfoTable").bootstrapTable('destroy');
                 $('#secondScoreInfoTable').bootstrapTable({
                     sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
-                    pagination: true, // 是否显示分页（*）
+                    pagination: false, // 是否显示分页（*）
                     pageNumber: 1,    //如果设置了分页，首页页码
                     pageSize: 30,                       //每页的记录行数（*）
                     pageList: [30, 40],        //可供选择的每页的行数（*）
@@ -764,22 +1426,28 @@
                             field: 'teamName',
                             title: '队伍名称'
                         }, {
-                            field: 'rougelScoreP',
+                            field: 'rougelScoreF2',
                             title: 'ROUGE-L',
                             formatter: precentFormatter
                         }, {
-                            field: 'bleu4ScoreP',
+                            field: 'bleu4ScoreF2',
                             title: 'BLEU-4',
                             formatter: precentFormatter
                         }, {
-                            field: 'commitDateP',
-                            title: '提交日期'/*,
-                        sortable: true*/
+                            field: 'commitDateF2',
+                            title: '提交日期'/!*,
+                        sortable: true*!/
                         }, {
                             field: 'commitDateP',
                             title: '名次升降',
                             align: "center",
-                            formatter: rankOrder
+                            formatter: rankOrder1
+                        }, {
+                            field: 'commitTimesF2',
+                            title: '提交次数',
+                            align: "center",
+                            width: 100,
+                            formatter: commitTimesFormatter1
                         }
                     ],
                     data: data
@@ -788,7 +1456,7 @@
                 $("#thirdScoreInfoTable").bootstrapTable('destroy');
                 $('#thirdScoreInfoTable').bootstrapTable({
                     sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
-                    pagination: true, // 是否显示分页（*）
+                    pagination: false, // 是否显示分页（*）
                     pageNumber: 1,    //如果设置了分页，首页页码
                     pageSize: 30,                       //每页的记录行数（*）
                     pageList: [30, 40],        //可供选择的每页的行数（*）
@@ -807,22 +1475,28 @@
                             field: 'teamName',
                             title: '队伍名称'
                         }, {
-                            field: 'rougelScoreP',
+                            field: 'rougelScoreF3',
                             title: 'ROUGE-L',
                             formatter: precentFormatter
                         }, {
-                            field: 'bleu4ScoreP',
+                            field: 'bleu4ScoreF3',
                             title: 'BLEU-4',
                             formatter: precentFormatter
                         }, {
-                            field: 'commitDateP',
-                            title: '提交日期'/*,
-                        sortable: true*/
+                            field: 'commitDateF3',
+                            title: '提交日期'/!*,
+                        sortable: true*!/
                         }, {
                             field: 'commitDateP',
                             title: '名次升降',
                             align: "center",
-                            formatter: rankOrder
+                            formatter: rankOrder1
+                        }, {
+                            field: 'commitTimesF3',
+                            title: '提交次数',
+                            align: "center",
+                            width: 100,
+                            formatter: commitTimesFormatter1
                         }
                     ],
                     data: data
@@ -831,7 +1505,7 @@
                 $("#endTable").bootstrapTable('destroy');
                 $('#endTable').bootstrapTable({
                     sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
-                    pagination: true, // 是否显示分页（*）
+                    pagination: false, // 是否显示分页（*）
                     pageNumber: 1,    //如果设置了分页，首页页码
                     pageSize: 30,                       //每页的记录行数（*）
                     pageList: [30, 40],        //可供选择的每页的行数（*）
@@ -850,22 +1524,17 @@
                             field: 'teamName',
                             title: '队伍名称'
                         }, {
-                            field: 'rougelScoreP',
+                            field: 'rougelScoreF',
                             title: 'ROUGE-L',
                             formatter: precentFormatter
                         }, {
-                            field: 'bleu4ScoreP',
+                            field: 'bleu4ScoreF',
                             title: 'BLEU-4',
                             formatter: precentFormatter
                         }, {
-                            field: 'commitDateP',
-                            title: '提交日期'/*,
-                        sortable: true*/
-                        }, {
-                            field: 'commitDateP',
-                            title: '名次升降',
-                            align: "center",
-                            formatter: rankOrder
+                            field: 'commitDateF',
+                            title: '提交日期'/!*,
+                        sortable: true*!/
                         }
                     ],
                     data: data
@@ -875,8 +1544,807 @@
             error: function (error) {
             }
         });
+    }*/
+
+    // 静态数据初始化
+    function setOriginScore() {
+        let data = finalTeams.slice();
+        /*rankRoundOne = finalTeams.slice();
+        rankRoundTwo = finalTeams.slice();
+        rankRoundThree = finalTeams.slice();
+        rankRoundEnd = finalTeams.slice();*/
+        $("#firstScoreInfoTable").bootstrapTable('destroy');
+        $('#firstScoreInfoTable').bootstrapTable({
+            sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+            pagination: false, // 是否显示分页（*）
+            pageNumber: 1,    //如果设置了分页，首页页码
+            pageSize: 30,                       //每页的记录行数（*）
+            pageList: [30, 40],        //可供选择的每页的行数（*）
+            search: false,
+            striped: true,
+            rowStyle: rowStyle,
+            columns: [
+                {
+                    filed: '',
+                    title: '序号',
+                    align: "center",
+                    width: 40,
+                    formatter: linenumber
+                },
+                {
+                    field: 'teamName',
+                    title: '队伍名称'
+                }, {
+                    field: 'rougelScoreF1',
+                    title: 'ROUGE-L',
+                    formatter: precentFormatter
+                }, {
+                    field: 'bleu4ScoreF1',
+                    title: 'BLEU-4',
+                    formatter: precentFormatter
+                }, {
+                    field: 'commitDateF1',
+                    title: '提交日期'/*,
+                        sortable: true*/
+                }, {
+                    field: 'commitDateP',
+                    title: '名次升降',
+                    align: "center",
+                    formatter: rankOrder1
+                }, {
+                    field: 'commitTimesF1',
+                    title: '提交次数',
+                    align: "center",
+                    width: 100,
+                    formatter: commitTimesFormatter1
+                }
+            ],
+            data: data
+        });
+
+        $("#secondScoreInfoTable").bootstrapTable('destroy');
+        $('#secondScoreInfoTable').bootstrapTable({
+            sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+            pagination: false, // 是否显示分页（*）
+            pageNumber: 1,    //如果设置了分页，首页页码
+            pageSize: 30,                       //每页的记录行数（*）
+            pageList: [30, 40],        //可供选择的每页的行数（*）
+            search: false,
+            striped: true,
+            rowStyle: rowStyle,
+            columns: [
+                {
+                    filed: '',
+                    title: '序号',
+                    align: "center",
+                    width: 40,
+                    formatter: linenumber
+                },
+                {
+                    field: 'teamName',
+                    title: '队伍名称'
+                }, {
+                    field: 'rougelScoreF2',
+                    title: 'ROUGE-L',
+                    formatter: precentFormatter
+                }, {
+                    field: 'bleu4ScoreF2',
+                    title: 'BLEU-4',
+                    formatter: precentFormatter
+                }, {
+                    field: 'commitDateF2',
+                    title: '提交日期'/*,
+                        sortable: true*/
+                }, {
+                    field: 'commitDateP',
+                    title: '名次升降',
+                    align: "center",
+                    formatter: rankOrder1
+                }, {
+                    field: 'commitTimesF2',
+                    title: '提交次数',
+                    align: "center",
+                    width: 100,
+                    formatter: commitTimesFormatter1
+                }
+            ],
+            data: data
+        });
+
+        $("#thirdScoreInfoTable").bootstrapTable('destroy');
+        $('#thirdScoreInfoTable').bootstrapTable({
+            sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+            pagination: false, // 是否显示分页（*）
+            pageNumber: 1,    //如果设置了分页，首页页码
+            pageSize: 30,                       //每页的记录行数（*）
+            pageList: [30, 40],        //可供选择的每页的行数（*）
+            search: false,
+            striped: true,
+            rowStyle: rowStyle,
+            columns: [
+                {
+                    filed: '',
+                    title: '序号',
+                    align: "center",
+                    width: 40,
+                    formatter: linenumber
+                },
+                {
+                    field: 'teamName',
+                    title: '队伍名称'
+                }, {
+                    field: 'rougelScoreF3',
+                    title: 'ROUGE-L',
+                    formatter: precentFormatter
+                }, {
+                    field: 'bleu4ScoreF3',
+                    title: 'BLEU-4',
+                    formatter: precentFormatter
+                }, {
+                    field: 'commitDateF3',
+                    title: '提交日期'/*,
+                        sortable: true*/
+                }, {
+                    field: 'commitDateP',
+                    title: '名次升降',
+                    align: "center",
+                    formatter: rankOrder1
+                }, {
+                    field: 'commitTimesF3',
+                    title: '提交次数',
+                    align: "center",
+                    width: 100,
+                    formatter: commitTimesFormatter1
+                }
+            ],
+            data: data
+        });
+
+        $("#endTable").bootstrapTable('destroy');
+        $('#endTable').bootstrapTable({
+            sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+            pagination: false, // 是否显示分页（*）
+            pageNumber: 1,    //如果设置了分页，首页页码
+            pageSize: 30,                       //每页的记录行数（*）
+            pageList: [30, 40],        //可供选择的每页的行数（*）
+            search: false,
+            striped: true,
+            rowStyle: rowStyle,
+            columns: [
+                {
+                    filed: '',
+                    title: '序号',
+                    align: "center",
+                    width: 40,
+                    formatter: linenumber
+                },
+                {
+                    field: 'teamName',
+                    title: '队伍名称'
+                }, {
+                    field: 'rougelScoreF',
+                    title: 'ROUGE-L',
+                    formatter: precentFormatter
+                }, {
+                    field: 'bleu4ScoreF',
+                    title: 'BLEU-4',
+                    formatter: precentFormatter
+                }, {
+                    field: 'commitDateF',
+                    title: '提交日期'/*,
+                        sortable: true*/
+                }
+            ],
+            data: data
+        });
     }
 
+    function orderUser(type) {
+        /*let orderUser1 = new FormData()
+        let type = 1
+        orderUser1.append('type', type)*/
+        console.log('kaishi')
+        $.ajax({
+            type: "patch",
+            data: ({type: type}),
+            contentType: 'application/x-www-form-urlencoded',
+            // url: "files/topTen.json",
+            url: IpAll() + 'finals/order-user',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                console.log('第一轮排名结束！')
+                let timerName = 'timer' + type
+                clearInterval(timerName)
+            },
+            error: function (error) {
+            }
+        });
+    }
+
+    // 获取第一轮数据
+    function getPreliminaryScoreScoreRound1() {
+        if(!commitTime1) {
+            if($.cookie('commitStartTime1')) {
+                commitTime1 = parseInt($.cookie('commitStartTime1'))
+                let countTime = moment(commitTime1).format('YYYY-MM-DD HH:mm:ss');
+                $("#getting-started1")
+                    .countdown(countTime, function(event) {
+                        $(this).text(
+                            event.strftime('%H:%M:%S')
+                        );
+                    }).on('finish.countdown', function() {
+                    // render something
+                    orderUser(1)
+                });
+            }
+        }
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            // url: "files/topTen.json",
+            url: IpAll() + 'finals/ranking',
+            data: {type: 1},
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+                /*if(rankRoundOne) {
+                    for (let i = 0; i < rankRoundOne.length; i++) {
+                        for (let j = 0; j < data.length; j++) {
+                            if(rankRoundOne[i].id === data[j].id) {
+                                data[j].rank = j - i
+                            }
+                        }
+                    }
+                }*/
+                if(rankRoundOne) {
+                    for (let i = 0; i < rankRoundOne.length; i++) {
+                        if(rankRoundOne[i].saveRank == undefined) {
+                            rankRoundOne[i].saveRank = 0
+                        }
+                        for (let j = 0; j < data.length; j++) {
+                            if(rankRoundOne[i].id === data[j].id) {
+                                if(j-i !== 0) {
+                                    data[j].rank = j - i
+                                    rankRoundOne[i].saveRank = j - i
+                                } else {
+                                    data[j].rank = rankRoundOne[i].saveRank
+                                }
+
+                            }
+                        }
+                    }
+                    let tempArr = []
+                    for (let k = 0; k < data.length; k++) {
+                        for (let l = 0; l < rankRoundOne.length; l++) {
+                            if(data[k].id === rankRoundOne[l].id) {
+                                tempArr.push(rankRoundOne[l])
+                                // tempArr.push(data[k])
+                            }
+                        }
+                    }
+                    rankRoundOne = tempArr
+                }
+                // rankRoundOne = result.data
+                $("#firstScoreInfoTable").bootstrapTable('destroy');
+                $('#firstScoreInfoTable').bootstrapTable({
+                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination: false, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30, 40],        //可供选择的每页的行数（*）
+                    search: false,
+                    striped: true,
+                    rowStyle: rowStyle,
+                    columns: [
+                        {
+                            filed: '',
+                            title: '序号',
+                            align: "center",
+                            width: 40,
+                            formatter: linenumber
+                        },
+                        {
+                            field: 'teamName',
+                            title: '队伍名称'
+                        }, {
+                            field: 'rougelScoreF1',
+                            title: 'ROUGE-L',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'bleu4ScoreF1',
+                            title: 'BLEU-4',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'commitDateF1',
+                            title: '提交日期'/*,
+                        sortable: true*/
+                        }, {
+                            field: 'commitDateP',
+                            title: '名次升降',
+                            align: "center",
+                            formatter: rankOrder1
+                        },{
+                            field: 'commitTimesF1',
+                            title: '提交次数',
+                            align: "center",
+                            width: 100,
+                            formatter: commitTimesFormatter1
+                        }
+                    ],
+                    data: data
+                });
+
+                /*$("#secondScoreInfoTable").bootstrapTable('destroy');
+                $('#secondScoreInfoTable').bootstrapTable({
+                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination: false, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30, 40],        //可供选择的每页的行数（*）
+                    search: false,
+                    striped: true,
+                    rowStyle: rowStyle,
+                    columns: [
+                        {
+                            filed: '',
+                            title: '序号',
+                            align: "center",
+                            width: 40,
+                            formatter: linenumber
+                        },
+                        {
+                            field: 'teamName',
+                            title: '队伍名称'
+                        }, {
+                            field: 'rougelScoreP',
+                            title: 'ROUGE-L',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'bleu4ScoreP',
+                            title: 'BLEU-4',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'commitDateP',
+                            title: '提交日期'/!*,
+                        sortable: true*!/
+                        }, {
+                            field: 'commitDateP',
+                            title: '名次升降',
+                            align: "center",
+                            formatter: rankOrder
+                        }, {
+                            field: 'commitTimesF1',
+                            title: '提交次数',
+                            align: "center",
+                            width: 100,
+                            formatter: commitTimesFormatter
+                        }
+                    ],
+                    data: data
+                });
+
+                $("#thirdScoreInfoTable").bootstrapTable('destroy');
+                $('#thirdScoreInfoTable').bootstrapTable({
+                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination: false, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30, 40],        //可供选择的每页的行数（*）
+                    search: false,
+                    striped: true,
+                    rowStyle: rowStyle,
+                    columns: [
+                        {
+                            filed: '',
+                            title: '序号',
+                            align: "center",
+                            width: 40,
+                            formatter: linenumber
+                        },
+                        {
+                            field: 'teamName',
+                            title: '队伍名称'
+                        }, {
+                            field: 'rougelScoreP',
+                            title: 'ROUGE-L',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'bleu4ScoreP',
+                            title: 'BLEU-4',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'commitDateP',
+                            title: '提交日期'/!*,
+                        sortable: true*!/
+                        }, {
+                            field: 'commitDateP',
+                            title: '名次升降',
+                            align: "center",
+                            formatter: rankOrder
+                        }, {
+                            field: 'commitTimesF1',
+                            title: '提交次数',
+                            align: "center",
+                            width: 100,
+                            formatter: commitTimesFormatter
+                        }
+                    ],
+                    data: data
+                });
+
+                $("#endTable").bootstrapTable('destroy');
+                $('#endTable').bootstrapTable({
+                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination: false, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30, 40],        //可供选择的每页的行数（*）
+                    search: false,
+                    striped: true,
+                    rowStyle: rowStyle,
+                    columns: [
+                        {
+                            filed: '',
+                            title: '序号',
+                            align: "center",
+                            width: 40,
+                            formatter: linenumber
+                        },
+                        {
+                            field: 'teamName',
+                            title: '队伍名称'
+                        }, {
+                            field: 'rougelScoreP',
+                            title: 'ROUGE-L',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'bleu4ScoreP',
+                            title: 'BLEU-4',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'commitDateP',
+                            title: '提交日期'/!*,
+                        sortable: true*!/
+                        }, {
+                            field: 'commitDateP',
+                            title: '名次升降',
+                            align: "center",
+                            formatter: rankOrder
+                        }
+                    ],
+                    data: data
+                });*/
+
+            },
+            error: function (error) {
+            }
+        });
+    }
+
+    // 获取第二轮数据
+    function getPreliminaryScoreScoreRound2() {
+        if(!commitTime2) {
+            if($.cookie('commitStartTime2')) {
+                commitTime2 = parseInt($.cookie('commitStartTime2'))
+                let countTime = moment(commitTime2).format('YYYY-MM-DD HH:mm:ss');
+                $("#getting-started2")
+                    .countdown(countTime, function(event) {
+                        $(this).text(
+                            event.strftime('%H:%M:%S')
+                        );
+                    }).on('finish.countdown', function() {
+                    // render something
+                    orderUser(2)
+                });;
+            }
+        }
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            // url: "files/topTen.json",
+            url: IpAll() + 'finals/ranking',
+            data: {type: 2},
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+                /*if(rankRoundTwo) {
+                    for (let i = 0; i < rankRoundTwo.length; i++) {
+                        for (let j = 0; j < data.length; j++) {
+                            if(rankRoundTwo[i].id === data[j].id) {
+                                data[j].rank = j - i
+                            }
+                        }
+                    }
+                }*/
+                if(rankRoundTwo) {
+                    for (let i = 0; i < rankRoundTwo.length; i++) {
+                        if(rankRoundTwo[i].saveRank == undefined) {
+                            rankRoundTwo[i].saveRank = 0
+                        }
+                        for (let j = 0; j < data.length; j++) {
+                            if(rankRoundTwo[i].id === data[j].id) {
+                                if(j-i !== 0) {
+                                    data[j].rank = j - i
+                                    rankRoundTwo[i].saveRank = j - i
+                                } else {
+                                    data[j].rank = rankRoundTwo[i].saveRank
+                                }
+
+                            }
+                        }
+                    }
+                    let tempArr = []
+                    for (let k = 0; k < data.length; k++) {
+                        for (let l = 0; l < rankRoundTwo.length; l++) {
+                            if(data[k].id === rankRoundTwo[l].id) {
+                                tempArr.push(rankRoundTwo[l])
+                                // tempArr.push(data[k])
+                            }
+                        }
+                    }
+                    rankRoundTwo = tempArr
+                }
+                // rankRoundTwo = result.data
+
+                $("#secondScoreInfoTable").bootstrapTable('destroy');
+                $('#secondScoreInfoTable').bootstrapTable({
+                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination: false, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30, 40],        //可供选择的每页的行数（*）
+                    search: false,
+                    striped: true,
+                    rowStyle: rowStyle,
+                    columns: [
+                        {
+                            filed: '',
+                            title: '序号',
+                            align: "center",
+                            width: 40,
+                            formatter: linenumber
+                        },
+                        {
+                            field: 'teamName',
+                            title: '队伍名称'
+                        }, {
+                            field: 'rougelScoreF2',
+                            title: 'ROUGE-L',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'bleu4ScoreF2',
+                            title: 'BLEU-4',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'commitDateF2',
+                            title: '提交日期'/*,
+                        sortable: true*/
+                        }, {
+                            field: 'commitDateP',
+                            title: '名次升降',
+                            align: "center",
+                            formatter: rankOrder2
+                        }, {
+                            field: 'commitTimesF2',
+                            title: '提交次数',
+                            align: "center",
+                            width: 100,
+                            formatter: commitTimesFormatter2
+                        }
+                    ],
+                    data: data
+                });
+            },
+            error: function (error) {
+            }
+        });
+    }
+
+    // 获取第三轮数据
+    function getPreliminaryScoreScoreRound3() {
+        if(!commitTime3) {
+            if($.cookie('commitStartTime3')) {
+                commitTime3 = parseInt($.cookie('commitStartTime2'))
+                let countTime = moment(commitTime3).format('YYYY-MM-DD HH:mm:ss');
+                $("#getting-started3")
+                    .countdown(countTime, function(event) {
+                        $(this).text(
+                            event.strftime('%H:%M:%S')
+                        );
+                    }).on('finish.countdown', function() {
+                    // render something
+                    orderUser(3)
+                });
+            }
+        }
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            // url: "files/topTen.json",
+            url: IpAll() + 'finals/ranking',
+            data: {type: 3},
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+                /*if(rankRoundThree) {
+                    for (let i = 0; i < rankRoundThree.length; i++) {
+                        for (let j = 0; j < data.length; j++) {
+                            if(rankRoundThree[i].id === data[j].id) {
+                                data[j].rank = j - i
+                            }
+                        }
+                    }
+                }*/
+                if(rankRoundThree) {
+                    for (let i = 0; i < rankRoundThree.length; i++) {
+                        if(rankRoundThree[i].saveRank == undefined) {
+                            rankRoundThree[i].saveRank = 0
+                        }
+                        for (let j = 0; j < data.length; j++) {
+                            if(rankRoundThree[i].id === data[j].id) {
+                                if(j-i !== 0) {
+                                    data[j].rank = j - i
+                                    rankRoundThree[i].saveRank = j - i
+                                } else {
+                                    data[j].rank = rankRoundThree[i].saveRank
+                                }
+
+                            }
+                        }
+                    }
+                    let tempArr = []
+                    for (let k = 0; k < data.length; k++) {
+                        for (let l = 0; l < rankRoundThree.length; l++) {
+                            if(data[k].id === rankRoundThree[l].id) {
+                                tempArr.push(rankRoundThree[l])
+                                // tempArr.push(data[k])
+                            }
+                        }
+                    }
+                    rankRoundThree = tempArr
+                }
+                // rankRoundThree = result.data
+
+                $("#thirdScoreInfoTable").bootstrapTable('destroy');
+                $('#thirdScoreInfoTable').bootstrapTable({
+                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination: false, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30, 40],        //可供选择的每页的行数（*）
+                    search: false,
+                    striped: true,
+                    rowStyle: rowStyle,
+                    columns: [
+                        {
+                            filed: '',
+                            title: '序号',
+                            align: "center",
+                            width: 40,
+                            formatter: linenumber
+                        },
+                        {
+                            field: 'teamName',
+                            title: '队伍名称'
+                        }, {
+                            field: 'rougelScoreF3',
+                            title: 'ROUGE-L',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'bleu4ScoreF3',
+                            title: 'BLEU-4',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'commitDateF3',
+                            title: '提交日期'/*,
+                        sortable: true*/
+                        }, {
+                            field: 'commitDateP',
+                            title: '名次升降',
+                            align: "center",
+                            formatter: rankOrder3
+                        }, {
+                            field: 'commitTimesF3',
+                            title: '提交次数',
+                            align: "center",
+                            width: 100,
+                            formatter: commitTimesFormatter3
+                        }
+                    ],
+                    data: data
+                });
+            },
+            error: function (error) {
+            }
+        });
+    }
+
+    // 获取总榜数据
+    function getPreliminaryScoreRoundend() {
+        /*if(!commitTime3) {
+            if($.cookie('commitStartTime3')) {
+                commitTime3 = parseInt($.cookie('commitStartTime2'))
+                let countTime = moment(commitTime3).format('YYYY-MM-DD HH:mm:ss');
+                $("#getting-started3")
+                    .countdown(countTime, function(event) {
+                        $(this).text(
+                            event.strftime('%H:%M:%S')
+                        );
+                    });
+            }
+        }*/
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            // url: "files/topTen.json",
+            url: IpAll() + 'finals/ranking',
+            data: {type: 0},
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                let data = result.data;
+                if(rankEnd) {
+                    for (let i = 0; i < rankEnd.length; i++) {
+                        for (let j = 0; j < data.length; j++) {
+                            if(rankEnd[i].id === data[j].id) {
+                                data[j].rank = j - i
+                            }
+                        }
+                    }
+                }
+                rankEnd = result.data
+
+                $("#endTable").bootstrapTable('destroy');
+                $('#endTable').bootstrapTable({
+                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination: false, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30, 40],        //可供选择的每页的行数（*）
+                    search: false,
+                    striped: true,
+                    rowStyle: rowStyle,
+                    columns: [
+                        {
+                            filed: '',
+                            title: '序号',
+                            align: "center",
+                            width: 40,
+                            formatter: linenumber
+                        },
+                        {
+                            field: 'teamName',
+                            title: '队伍名称'
+                        }, {
+                            field: 'rougelScoreF',
+                            title: 'ROUGE-L',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'bleu4ScoreF',
+                            title: 'BLEU-4',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'commitDateF',
+                            title: '提交日期'/*,
+                        sortable: true*/
+                        }
+                    ],
+                    data: data
+                });
+            },
+            error: function (error) {
+            }
+        });
+    }
     function ifInArr(arr,id) {
         let flag = false;
         for(let i=0;i<arr.length;i++){
@@ -888,7 +2356,7 @@
         return flag;
     }
 
-    //获取服务器时间
+    // 获取服务器时间
     function ajax(role) {
         $.ajax({
             //几个参数需要注意一下
@@ -1052,6 +2520,7 @@
 
     function undisabled(id) {                   //下载按钮变为可点击
         document.getElementById(id).disabled = false;
+        document.getElementById(id).style.background = "#428bca";
     }
 
     function unclickBtn(id) {                   //不可下载时按钮的样式   不可提交时按钮
@@ -1104,16 +2573,139 @@
         return number;
     }
 
-    function rankOrder(value, row, index) {
-        let number = index + 1;
-        if (number === 1) {
-            number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/升.png' /></div>" + "<div style='display: inline;'>1</div>"
+    function rankOrder1(value, row, index) {
+        let number = index + 1
+        /*if (number === 1) {
+            number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/up.png' /></div>" + "<div style='display: inline;'>1</div>"
         } else if (number === 2) {
             number = "--"
         } else if (number === 3) {
-            number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/降.png' /></div>" + "<div style='display: inline;'>2</div>"
+            number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/down.png' /></div>" + "<div style='display: inline;'>2</div>"
         }
-        return number;
+        return number;*/
+        if(row.rank) {
+            if(row.rank < 0) {
+                number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/up.png' /></div>" + "<div style='display: inline;'>"+ (-row.rank) + "</div>"
+            } else if(row.rank > 0) {
+                number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/down.png' /></div>" + "<div style='display: inline;'>" + row.rank + "</div>"
+            } else if(row.rank == 0) {
+                number = '--'
+            }
+        } else {
+            number = '--'
+        }
+        return number
+    }
+
+    function rankOrder2(value, row, index) {
+        let number = index + 1
+        /*if (number === 1) {
+            number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/up.png' /></div>" + "<div style='display: inline;'>1</div>"
+        } else if (number === 2) {
+            number = "--"
+        } else if (number === 3) {
+            number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/down.png' /></div>" + "<div style='display: inline;'>2</div>"
+        }
+        return number;*/
+        if(row.rank) {
+            if(row.rank < 0) {
+                number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/up.png' /></div>" + "<div style='display: inline;'>"+ (-row.rank) + "</div>"
+            } else if(row.rank > 0) {
+                number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/down.png' /></div>" + "<div style='display: inline;'>" + row.rank + "</div>"
+            } else if(row.rank == 0) {
+                number = '--'
+            }
+        } else {
+            number = '--'
+        }
+        return number
+    }
+
+    function rankOrder3(value, row, index) {
+        let number = index + 1
+        /*if (number === 1) {
+            number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/up.png' /></div>" + "<div style='display: inline;'>1</div>"
+        } else if (number === 2) {
+            number = "--"
+        } else if (number === 3) {
+            number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/down.png' /></div>" + "<div style='display: inline;'>2</div>"
+        }
+        return number;*/
+        if(row.rank) {
+            if(row.rank < 0) {
+                number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/up.png' /></div>" + "<div style='display: inline;'>"+ (-row.rank) + "</div>"
+            } else if(row.rank > 0) {
+                number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='images/down.png' /></div>" + "<div style='display: inline;'>" + row.rank + "</div>"
+            } else if(row.rank == 0) {
+                number = '--'
+            }
+        } else {
+            number = '--'
+        }
+        return number
+    }
+
+    function commitTimesFormatter1(value, row, index) {
+        let lights
+        if(row.commitTimesF1) {
+            // 第一轮剩余3次
+            if(row.commitTimesF1 === 3) {
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+            }
+            // 第一轮剩余2次
+            if(row.commitTimesF1 === 2) {
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+            }
+            // 第一轮剩余1次
+            if(row.commitTimesF1 === 1) {
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+            }
+        } else if(row.commitTimesF1 === 0) { // 剩余0次
+            lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /></div>" + "<div style='display: inline;'></div>"
+        }
+        return lights
+    }
+
+    function commitTimesFormatter2(value, row, index) {
+        let lights
+        if(row.commitTimesF2) {
+            // 第一轮剩余3次
+            if(row.commitTimesF2 === 3) {
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+            }
+            // 第一轮剩余2次
+            if(row.commitTimesF2 === 2) {
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+            }
+            // 第一轮剩余1次
+            if(row.commitTimesF2=== 1) {
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+            }
+        } else if(row.commitTimesF2 === 0) { // 剩余0次
+            lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /></div>" + "<div style='display: inline;'></div>"
+        }
+        return lights
+    }
+
+    function commitTimesFormatter3(value, row, index) {
+        let lights
+        if(row.commitTimesF3) {
+            // 第一轮剩余3次
+            if(row.commitTimesF3 === 3) {
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+            }
+            // 第一轮剩余2次
+            if(row.commitTimesF3 === 2) {
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+            }
+            // 第一轮剩余1次
+            if(row.commitTimesF3 === 1) {
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+            }
+        } else if(row.commitTimesF3 === 0) { // 剩余0次
+            lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /></div>" + "<div style='display: inline;'></div>"
+        }
+        return lights
     }
 
     function rowStyle(row, index) {
@@ -1197,6 +2789,7 @@
     var $m_btn1 = $('#dialogBtn1');
     var $m_btn2 = $('#dialogBtn2');
     var $m_btn3 = $('#dialogBtn3');
+    var $m_btn4 = $('#dialogBtn4');
     /*var $modal1 = $('#myModalAdd1');
     var $modal2 = $('#myModalAdd2');
     var $modal3 = $('#myModalAdd3');*/
@@ -1211,6 +2804,10 @@
     $('#thirdScoreDiv').on('click', function(){
         $('#myModalAdd3 .modal-content').html($('#thirdScoreDiv').html())
         $m_btn3.click()
+    });
+    $('#endScoreDiv').on('click', function(){
+        $('#myModalAdd4 .modal-content').html($('#endScoreDiv ').html())
+        $m_btn4.click()
     });
 
 </script>
