@@ -388,15 +388,16 @@
 <section id="ranking" class="price-table secPadding">
 
     <div class="container text-center" style="width: 100%">
+        <div class="phb_bg">
         <div class="heading">
-            <h1 class="text-center title0" id="">在线评估结果排行榜</h1>
+            <!--<h1 class="text-center title0" id="">在线评估结果排行榜</h1>-->
             <div class="separator"></div>
             <br>
         </div>
         <div class="row">
             <div class="col-sm-12 rankTable">
                 <!--<div class="panel panel-default">-->
-                <div class="col-md-12 group-info">
+                <div class="col-md-12 group-info group-first">
 
                     <!-- tab页开始 -->
                     <!--<ul class="nav nav-tabs" role="tablist">
@@ -407,12 +408,12 @@
                     </ul>-->
 
                     <div id="getting-started1" style="position: absolute;top: -44px;left: 20px;font-size: 30px;font-weight: bold;"></div>
-                    <div class="col-md-4" id="firstScoreDiv">
-                        <div class="addMask"></div>
-                        <div>
-                            <table id="firstScoreInfoTable">
-                            </table>
-                        </div>
+                    <div class="col-md-4 firstbg" id="firstScoreDiv ">
+                            <div class="addMask "></div>
+                            <div>
+                                <table id="firstScoreInfoTable">
+                                </table>
+                            </div>
                     </div>
 
                     <div id="getting-started2" style="position: absolute;top: -44px;left:35%;font-size: 30px;font-weight: bold;"></div>
@@ -473,6 +474,7 @@
 
             </div>
         </div>
+    </div>
     </div>
 </section>
 <!--<section id="ranking" class="price-table secPadding">
@@ -2374,7 +2376,7 @@
                 }
             ]
         },
-        {
+        /*{
             "id": "79779259-0b62-4839-80d2-e30da4e13497",
             "createTime": "2018-10-23 16:41:49",
             "message": null,
@@ -2973,7 +2975,7 @@
                     "authority": "ROLE_accept"
                 }
             ]
-        }
+        }*/
     ]
 
     /*let rankRoundOne = finalTeams.slice()
@@ -3420,21 +3422,17 @@
                     title: '队伍名称'
                 }, {
                     field: 'rougelScoreF1',
-                    title: 'ROUGE-L',
+                    title: '主要测试指标\n' +
+                        '（ROUGE-L）',
                     formatter: precentFormatter
                 }, {
                     field: 'bleu4ScoreF1',
-                    title: 'BLEU-4',
+                    title: '次要测试指标\n' +
+                        '（BLEU-4）',
                     formatter: precentFormatter
-                },{
-                    field: 'commitTimesF1',
-                    title: '提交次数',
-                    align: "center",
-                    width: 100,
-                    formatter: commitTimesFormatter1
                 }, {
                     field: 'commitDateF1',
-                    title: '最新一次提交时间',
+                    title: '最佳成绩提交时间',
                     formatter: commitTimeFormatter
                     /*,sortable: true*/
                 }, {
@@ -3442,6 +3440,12 @@
                     title: '名次升降',
                     align: "center",
                     formatter: rankOrder1
+                },{
+                    field: 'commitTimesF1',
+                    title: '提交次数',
+                    align: "center",
+                    width: 100,
+                    formatter: commitTimesFormatter1
                 },
             ],
             data: dataOrigin
@@ -3492,7 +3496,7 @@
                     title: '名次升降',
                     align: "center",
                     formatter: rankOrder1
-                },
+                }
             ],
             data: dataOrigin
         });
@@ -4263,11 +4267,11 @@
     function linenumber(value, row, index) {
         let number = index + 1;
         if (number === 1) {
-            number = "<img style='width: 30px;height:30px;'  src='images/first.png' />"
+            number = "<img style='width: 33px;height:17px;'  src='images/first.png' />"
         } else if (number === 2) {
-            number = "<img style='width: 30px;height:30px;'  src='images/second.png' />"
+            number = "<img style='width: 33px;height:17px;'  src='images/second.png' />"
         } else if (number === 3) {
-            number = "<img style='width: 30px;height:30px;'  src='images/third.png' />"
+            number = "<img style='width: 33px;height:17px;'  src='images/third.png' />"
         }
         return number;
     }
@@ -4349,18 +4353,18 @@
         if(row.commitTimesF1) {
             // 第一轮剩余3次
             if(row.commitTimesF1 === 3) {
-                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
             }
             // 第一轮剩余2次
             if(row.commitTimesF1 === 2) {
-                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
             }
             // 第一轮剩余1次
             if(row.commitTimesF1 === 1) {
-                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
             }
         } else if(row.commitTimesF1 === 0) { // 剩余0次
-            lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /></div>" + "<div style='display: inline;'></div>"
+            lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /></div>" + "<div style='display: inline;'></div>"
         }
         return lights
     }
@@ -4370,18 +4374,18 @@
         if(row.commitTimesF2) {
             // 第一轮剩余3次
             if(row.commitTimesF2 === 3) {
-                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
             }
             // 第一轮剩余2次
             if(row.commitTimesF2 === 2) {
-                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
             }
             // 第一轮剩余1次
             if(row.commitTimesF2=== 1) {
-                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
             }
         } else if(row.commitTimesF2 === 0) { // 剩余0次
-            lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /></div>" + "<div style='display: inline;'></div>"
+            lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /></div>" + "<div style='display: inline;'></div>"
         }
         return lights
     }
@@ -4391,18 +4395,18 @@
         if(row.commitTimesF3) {
             // 第一轮剩余3次
             if(row.commitTimesF3 === 3) {
-                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
             }
             // 第一轮剩余2次
             if(row.commitTimesF3 === 2) {
-                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
             }
             // 第一轮剩余1次
             if(row.commitTimesF3 === 1) {
-                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
             }
         } else if(row.commitTimesF3 === 0) { // 剩余0次
-            lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /></div>" + "<div style='display: inline;'></div>"
+            lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /></div>" + "<div style='display: inline;'></div>"
         }
         return lights
     }

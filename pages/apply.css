@@ -29,11 +29,14 @@ img{ border:none;}
     margin-bottom: 10px;
 }
 .group-info{
-    background-color: #fff;
+   /* background-color: #fff;
     border:1px solid lightgrey;
-    border-radius: 10px;
-    padding: 20px 0 10px 0;
+    border-radius: 10px;*/
+    padding: 0 20px 0 20px;
     margin-bottom: 40px;
+}
+.group-first{
+    margin-top: 88px;
 }
 .table{
     margin-bottom: 0;
