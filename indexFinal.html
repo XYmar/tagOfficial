@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="css/animations.min.css" rel="stylesheet">
     <link rel="stylesheet" href="bootstrap-table/bootstrap-table.min.css">
@@ -1798,7 +1798,7 @@
             "bleu4ScoreF1": 0.0,
             "rougelScoreF1": 0.0,
             "f1Index": 0,
-            "commitDateF1": null,
+            "commitDateF1": '2018-07-31 20:50:38',
             "commitTimesF1": 3,
             "bleu4ScoreF2": 0.0,
             "rougelScoreF2": 0.0,
@@ -2218,8 +2218,8 @@
             "bleu4ScoreF1": 100.0,
             "rougelScoreF1": 100.0,
             "f1Index": 0,
-            "commitDateF1": "2018-10-24 14:14:08",
-            "commitTimesF1": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
             "bleu4ScoreF2": 0.0,
             "rougelScoreF2": 0.0,
             "f2Index": 0,
@@ -3038,7 +3038,7 @@
             roundControl.innerHTML = "";
             loginName.innerHTML += "<a href='pages/login.html'>登录/注册</a>";
             loginOut.innerHTML = "";
-            ajax('null');
+            // ajax('null');
             downloadMess.innerHTML = "请先登录";
             commitMess.innerHTML = "请先登录";
         }
@@ -3384,22 +3384,23 @@
                     field: 'bleu4ScoreF1',
                     title: 'BLEU-4',
                     formatter: precentFormatter
-                }, {
-                    field: 'commitDateF1',
-                    title: '提交日期'/*,
-                        sortable: true*/
-                }, {
-                    field: 'commitDateP',
-                    title: '名次升降',
-                    align: "center",
-                    formatter: rankOrder1
-                }, {
+                },{
                     field: 'commitTimesF1',
                     title: '提交次数',
                     align: "center",
                     width: 100,
                     formatter: commitTimesFormatter1
-                }
+                }, {
+                    field: 'commitDateF1',
+                    title: '最新一次提交时间',
+                    formatter: commitTimeFormatter
+                    /*,sortable: true*/
+                }, {
+                    field: 'commitDateP',
+                    title: '名次升降',
+                    align: "center",
+                    formatter: rankOrder1
+                },
             ],
             data: dataOrigin
         });
@@ -3434,21 +3435,22 @@
                     title: 'BLEU-4',
                     formatter: precentFormatter
                 }, {
+                    field: 'commitTimesF2',
+                    title: '提交次数',
+                    align: "center",
+                    width: 100,
+                    formatter: commitTimesFormatter1
+                }, {
                     field: 'commitDateF2',
-                    title: '提交日期'/*,
+                    title: '最新一次提交时间',
+                    formatter: commitTimeFormatter/*,
                         sortable: true*/
                 }, {
                     field: 'commitDateP',
                     title: '名次升降',
                     align: "center",
                     formatter: rankOrder1
-                }, {
-                    field: 'commitTimesF2',
-                    title: '提交次数',
-                    align: "center",
-                    width: 100,
-                    formatter: commitTimesFormatter1
-                }
+                },
             ],
             data: dataOrigin
         });
@@ -3483,20 +3485,21 @@
                     title: 'BLEU-4',
                     formatter: precentFormatter
                 }, {
+                    field: 'commitTimesF3',
+                    title: '提交次数',
+                    align: "center",
+                    width: 100,
+                    formatter: commitTimesFormatter1
+                }, {
                     field: 'commitDateF3',
-                    title: '提交日期'/*,
+                    title: '最新一次提交时间',
+                    formatter: commitTimeFormatter/*,
                         sortable: true*/
                 }, {
                     field: 'commitDateP',
                     title: '名次升降',
                     align: "center",
                     formatter: rankOrder1
-                }, {
-                    field: 'commitTimesF3',
-                    title: '提交次数',
-                    align: "center",
-                    width: 100,
-                    formatter: commitTimesFormatter1
                 }
             ],
             data: dataOrigin
@@ -3531,10 +3534,6 @@
                     field: 'bleu4ScoreF',
                     title: 'BLEU-4',
                     formatter: precentFormatter
-                }, {
-                    field: 'commitDateF',
-                    title: '提交日期'/*,
-                        sortable: true*/
                 }
             ],
             data: dataOrigin
@@ -3667,20 +3666,21 @@
                             title: 'BLEU-4',
                             formatter: precentFormatter
                         }, {
+                            field: 'commitTimesF1',
+                            title: '提交次数',
+                            align: "center",
+                            width: 100,
+                            formatter: commitTimesFormatter1
+                        }, {
                             field: 'commitDateF1',
-                            title: '提交日期'/*,
+                            title: '最新一次提交时间',
+                            formatter: commitTimeFormatter/*,
                         sortable: true*/
                         }, {
                             field: 'commitDateP',
                             title: '名次升降',
                             align: "center",
                             formatter: rankOrder1
-                        },{
-                            field: 'commitTimesF1',
-                            title: '提交次数',
-                            align: "center",
-                            width: 100,
-                            formatter: commitTimesFormatter1
                         }
                     ],
                     data: data
@@ -3928,20 +3928,21 @@
                             title: 'BLEU-4',
                             formatter: precentFormatter
                         }, {
+                            field: 'commitTimesF2',
+                            title: '提交次数',
+                            align: "center",
+                            width: 100,
+                            formatter: commitTimesFormatter2
+                        }, {
                             field: 'commitDateF2',
-                            title: '提交日期'/*,
+                            title: '最新一次提交时间',
+                            formatter: commitTimeFormatter/*,
                         sortable: true*/
                         }, {
                             field: 'commitDateP',
                             title: '名次升降',
                             align: "center",
                             formatter: rankOrder2
-                        }, {
-                            field: 'commitTimesF2',
-                            title: '提交次数',
-                            align: "center",
-                            width: 100,
-                            formatter: commitTimesFormatter2
                         }
                     ],
                     data: data
@@ -4046,20 +4047,21 @@
                             title: 'BLEU-4',
                             formatter: precentFormatter
                         }, {
+                            field: 'commitTimesF3',
+                            title: '提交次数',
+                            align: "center",
+                            width: 100,
+                            formatter: commitTimesFormatter3
+                        }, {
                             field: 'commitDateF3',
-                            title: '提交日期'/*,
+                            title: '最新一次提交时间',
+                            formatter: commitTimeFormatter/*,
                         sortable: true*/
                         }, {
                             field: 'commitDateP',
                             title: '名次升降',
                             align: "center",
                             formatter: rankOrder3
-                        }, {
-                            field: 'commitTimesF3',
-                            title: '提交次数',
-                            align: "center",
-                            width: 100,
-                            formatter: commitTimesFormatter3
                         }
                     ],
                     data: data
@@ -4141,11 +4143,11 @@
                             field: 'bleu4ScoreF',
                             title: 'BLEU-4',
                             formatter: precentFormatter
-                        }, {
+                        }/*, {
                             field: 'commitDateF',
-                            title: '提交日期'/*,
-                        sortable: true*/
-                        }
+                            title: '提交时间'/!*,
+                        sortable: true*!/
+                        }*/
                     ],
                     data: data
                 });
@@ -4225,6 +4227,14 @@
 
     function precentFormatter(value) {
         return value.toFixed(2) + "%";
+    }
+
+    function commitTimeFormatter(value) {
+        if(value) {
+            return value.substring(11)
+        } else {
+            return '--'
+        }
     }
 
     function linenumber(value, row, index) {
