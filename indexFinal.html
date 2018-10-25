@@ -21,7 +21,12 @@
 <style>
     .modal-dialog{
         width: 80% !important;
-        top: 25% !important;
+        top: 10% !important;
+        margin: 0 auto;
+        text-align: center;
+    }
+    div.th-inner {
+        text-align: center;
     }
     .addMask {
         width: 100%;
@@ -3613,7 +3618,7 @@
                             rankRoundOne[i].saveRank = 0
                         }
                         for (let j = 0; j < data.length; j++) {
-                            if(rankRoundOne[i].id === data[j].id) {
+                            if(rankRoundOne[i].username === data[j].username) {
                                 if(j-i !== 0) {
                                     data[j].rank = j - i
                                     rankRoundOne[i].saveRank = j - i
@@ -3627,7 +3632,7 @@
                     let tempArr1 = []
                     for (let k = 0; k < data.length; k++) {
                         for (let l = 0; l < rankRoundOne.length; l++) {
-                            if(data[k].id === rankRoundOne[l].id) {
+                            if(data[k].username === rankRoundOne[l].username) {
                                 tempArr1.push(rankRoundOne[l])
                                 // tempArr.push(data[k])
                             }
@@ -3874,7 +3879,7 @@
                             rankRoundTwo[i].saveRank = 0
                         }
                         for (let j = 0; j < data.length; j++) {
-                            if(rankRoundTwo[i].id === data[j].id) {
+                            if(rankRoundTwo[i].username === data[j].username) {
                                 if(j-i !== 0) {
                                     data[j].rank = j - i
                                     rankRoundTwo[i].saveRank = j - i
@@ -3888,7 +3893,7 @@
                     let tempArr = []
                     for (let k = 0; k < data.length; k++) {
                         for (let l = 0; l < rankRoundTwo.length; l++) {
-                            if(data[k].id === rankRoundTwo[l].id) {
+                            if(data[k].username === rankRoundTwo[l].username) {
                                 tempArr.push(rankRoundTwo[l])
                                 // tempArr.push(data[k])
                             }
@@ -3993,7 +3998,7 @@
                             rankRoundThree[i].saveRank = 0
                         }
                         for (let j = 0; j < data.length; j++) {
-                            if(rankRoundThree[i].id === data[j].id) {
+                            if(rankRoundThree[i].username === data[j].username) {
                                 if(j-i !== 0) {
                                     data[j].rank = j - i
                                     rankRoundThree[i].saveRank = j - i
@@ -4007,7 +4012,7 @@
                     let tempArr = []
                     for (let k = 0; k < data.length; k++) {
                         for (let l = 0; l < rankRoundThree.length; l++) {
-                            if(data[k].id === rankRoundThree[l].id) {
+                            if(data[k].username === rankRoundThree[l].username) {
                                 tempArr.push(rankRoundThree[l])
                                 // tempArr.push(data[k])
                             }
