@@ -1408,6 +1408,22 @@ margin: 2px 5px 0;}
     padding-bottom: 10px;
 }
 
+.secondbg{
+	background: url("../images/fwkx.png");
+	background-repeat: no-repeat;
+	height: auto;
+	background-size: cover;
+	padding-bottom: 10px;
+}
+
+.thridbg{
+	background: url("../images/fmqb.png");
+	background-repeat: no-repeat;
+	height: auto;
+	background-size: cover;
+	padding-bottom: 10px;
+}
+
 .bootstrap-table{
     margin-top: 50px;
 }
