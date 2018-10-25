@@ -563,6 +563,7 @@
     let password0 = $.cookie("myWPa");
     let password = $.base64.decode(password0);
     let token = username + ':' + password;
+    let commitTime
     let commitTime1
     let commitTime2
     let commitTime3
@@ -2985,25 +2986,15 @@
     let rankRoundThree = [].concat(JSON.parse(JSON.stringify(finalTeams)));
     let rankEnd = [].concat(JSON.parse(JSON.stringify(finalTeams)));
     window.onload = function () {
-
-
-        var clock;
-
-        clock = $('.your-clock').FlipClock({
-            clockFace: 'MinuteCounter',
-            countdown: true,
-            autoStart: false,
-            callbacks: {
-                stop: function() {
-                    $('.message').html('The clock has stopped!')
-                }
+        if(!commitTime) {
+            if($.cookie('commitStartTime')) {
+                commitTime = parseInt($.cookie('commitStartTime'))
+                let countTime = moment(commitTime).format('YYYY-MM-DD HH:mm:ss');
+                let nowTimeTmp = moment().format('X')*1000;                    //当前时间时间戳
+                let timeTemp = (parseInt(commitTime) - parseInt(nowTimeTmp))/1000;    //时间差
+                startCount(timeTemp);
             }
-        });
-
-        clock.setTime(1200);
-        clock.setCountdown(true);
-        clock.start();
-
+        }
 
         //查询用户状态
         $.ajax({
@@ -3170,6 +3161,26 @@
             error: function (error) {
             }
         });
+    }
+
+    //开始计时
+    function startCount(time){
+        var clock;
+
+        clock = $('.your-clock').FlipClock({
+            clockFace: 'MinuteCounter',
+            countdown: true,
+            autoStart: false,
+            callbacks: {
+                stop: function() {
+                    $('.message').html('The clock has stopped!')
+                }
+            }
+        });
+
+        clock.setTime(time);
+        clock.setCountdown(true);
+        clock.start();
     }
 
     /*// 初始化排行榜
@@ -3597,11 +3608,16 @@
 
     // 获取第一轮数据
     function getPreliminaryScoreScoreRound1() {
-        if(!commitTime1) {
+        /*if(!commitTime1) {
             if($.cookie('commitStartTime1')) {
                 commitTime1 = parseInt($.cookie('commitStartTime1'))
                 let countTime = moment(commitTime1).format('YYYY-MM-DD HH:mm:ss');
-                $("#getting-started1")
+                let nowTimeTmp = moment().format('X')*1000;                    //当前时间时间戳
+                let timeTemp = (parseInt(commitTime1) - parseInt(nowTimeTmp))/1000;    //时间差
+                startCount(timeTemp);
+
+                orderUser(1)
+                /!*$("#getting-started1")
                     .countdown(countTime, function(event) {
                         $(this).text(
                             event.strftime('%H:%M:%S')
@@ -3609,9 +3625,9 @@
                     }).on('finish.countdown', function() {
                     // render something
                     orderUser(1)
-                });
+                });*!/
             }
-        }
+        }*/
         $.ajax({
             type: "GET",
             dataType: "json",
@@ -3866,21 +3882,15 @@
 
     // 获取第二轮数据
     function getPreliminaryScoreScoreRound2() {
-        if(!commitTime2) {
+        /*if(!commitTime2) {
             if($.cookie('commitStartTime2')) {
                 commitTime2 = parseInt($.cookie('commitStartTime2'))
-                let countTime = moment(commitTime2).format('YYYY-MM-DD HH:mm:ss');
-                $("#getting-started2")
-                    .countdown(countTime, function(event) {
-                        $(this).text(
-                            event.strftime('%H:%M:%S')
-                        );
-                    }).on('finish.countdown', function() {
-                    // render something
-                    orderUser(2)
-                });;
+                let nowTimeTmp = moment().format('X')*1000;                    //当前时间时间戳
+                let timeTemp = (parseInt(commitTime2) - parseInt(nowTimeTmp))/1000;    //时间差
+                startCount(timeTemp);
+                orderUser(2)
             }
-        }
+        }*/
         $.ajax({
             type: "GET",
             dataType: "json",
@@ -3986,21 +3996,16 @@
 
     // 获取第三轮数据
     function getPreliminaryScoreScoreRound3() {
-        if(!commitTime3) {
+        /*if(!commitTime3) {
             if($.cookie('commitStartTime3')) {
                 commitTime3 = parseInt($.cookie('commitStartTime3'))
-                let countTime = moment(commitTime3).format('YYYY-MM-DD HH:mm:ss');
-                $("#getting-started3")
-                    .countdown(countTime, function(event) {
-                        $(this).text(
-                            event.strftime('%H:%M:%S')
-                        );
-                    }).on('finish.countdown', function() {
-                    // render something
-                    orderUser(3)
-                });
+                let nowTimeTmp = moment().format('X')*1000;                    //当前时间时间戳
+                let timeTemp = (parseInt(commitTime3) - parseInt(nowTimeTmp))/1000;    //时间差
+
+                startCount(timeTemp);
+                orderUser(3)
             }
-        }
+        }*/
         $.ajax({
             type: "GET",
             dataType: "json",
@@ -4105,18 +4110,6 @@
 
     // 获取总榜数据
     function getPreliminaryScoreRoundend() {
-        /*if(!commitTime3) {
-            if($.cookie('commitStartTime3')) {
-                commitTime3 = parseInt($.cookie('commitStartTime2'))
-                let countTime = moment(commitTime3).format('YYYY-MM-DD HH:mm:ss');
-                $("#getting-started3")
-                    .countdown(countTime, function(event) {
-                        $(this).text(
-                            event.strftime('%H:%M:%S')
-                        );
-                    });
-            }
-        }*/
         $.ajax({
             type: "GET",
             dataType: "json",
