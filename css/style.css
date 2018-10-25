@@ -1332,7 +1332,7 @@ margin: 2px 5px 0;}
 	left: 50%;
 	top: 50%;
 	font-size: 26px;
-	line-height: 1x;
+	line-height: 1px;
 	color: #2F2F2F;
 	margin-top: -8px;
 	margin-left: -8px;
@@ -1378,4 +1378,16 @@ margin: 2px 5px 0;}
 	.gameArrangeInner {
 		height: 255px;
 	}
+}
+
+/*banner*/
+.backstretch{
+	height: 100% !important;
+	width: 100% !important;
+}
+
+.backstretch img{
+	width: 100% !important;
+	height: 100% !important;
+	left: 0px !important;
 }
