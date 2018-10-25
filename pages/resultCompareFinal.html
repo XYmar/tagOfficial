@@ -94,7 +94,7 @@
                     <!--<div style="border: 1px solid lightgrey;min-height: 400px;padding: 5px 5px;">-->
                     <div style="border: 1px solid lightgrey;padding: 10px 20px;height: 90%;overflow-y: auto;">
                         <div id="articleTitle">
-                            <h3 class="text-center">文章标题</h3>
+                            <h3 class="text-center" id="articleTitleContent">文章标题</h3>
                         </div>
                         <br>
                         <div id="articleCont">
@@ -258,6 +258,7 @@
                 console.log(data)
                 $('#articleCont .notice').html('')
                 document.getElementById("articleContent").innerHTML = data.content;
+                document.getElementById("articleTitleContent").innerHTML = data.title;
                 $('#accordion').html('')
                 for(let i = 0; i < marks.length; i++) {
                     let markHref = '"#' + marks[i].id + '"'
