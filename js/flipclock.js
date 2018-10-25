@@ -2187,8 +2187,8 @@ var FlipClock;
 				});
 			}
 			
-			$(this.createDivider('Seconds')).insertBefore(this.lists[this.lists.length - 2].$el);
-			$(this.createDivider('Minutes')).insertBefore(this.lists[this.lists.length - 4].$el);
+			$(this.createDivider('')).insertBefore(this.lists[this.lists.length - 2].$el);
+			$(this.createDivider('')).insertBefore(this.lists[this.lists.length - 4].$el);
 			
 			if(!excludeHours) {
 				$(this.createDivider('Hours', true)).insertBefore(this.lists[0].$el);
@@ -2466,7 +2466,7 @@ var FlipClock;
 		'days'    : 'Days',
 		'hours'   : 'Hours',
 		'minutes' : 'Minutes',
-		'seconds' : 'Seconds'	
+		'seconds' : 'Seconds'
 
 	};
 	
