@@ -1404,7 +1404,8 @@ margin: 2px 5px 0;}
     background: url("../images/jsxw.png");
     background-repeat: no-repeat;
     height: auto;
-    background-size: contain;
+    background-size: cover;
+    padding-bottom: 10px;
 }
 
 .bootstrap-table{
@@ -1421,6 +1422,7 @@ margin: 2px 5px 0;}
     font-family: 微软雅黑;
     color: #abc7ff;
     text-shadow: 5px 7px 6px #000;
+    border-left: none;
 }
 
 .table-striped > tbody > tr>td{
@@ -1445,3 +1447,11 @@ margin: 2px 5px 0;}
  .table-striped > tbody > tr:nth-child(even) {
 	 background-color:#081536 !important;
  }
+
+.table-striped > tbody > tr:hover {
+    background-color: #1c366c !important;
+}
+
+.fixed-table-body {
+    overflow-x: hidden !important;
+}
