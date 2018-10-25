@@ -228,6 +228,14 @@
     let id2 = Number(id) + 2;
 
     window.onload = function () {
+        //禁用Enter
+        $(window).keydown( function(e) {
+            const key = window.event?e.keyCode:e.which;
+            if(key.toString() == "13"){
+                return false;
+            }
+        });
+
         //根据不同阶段显示不同标题
         if(id === "1"){
             document.getElementById("commitTitle").innerHTML = "军事新闻提交"
