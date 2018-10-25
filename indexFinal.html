@@ -10,12 +10,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="css/animations.min.css" rel="stylesheet">
     <link rel="stylesheet" href="bootstrap-table/bootstrap-table.min.css">
     <link href="pages/apply.css" rel="stylesheet" type="text/css"/>
-    <link href="css/style.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
 </head>
 <style>
@@ -75,7 +75,7 @@
                                 </div>
 
                                 <!-- Collect the nav links, forms, and other content for toggling -->
-                                <div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
+                                <div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1" style="border: 0;display: contents;">
                                     <ul class="nav navbar-nav navbar-right">
                                         <li class="active"><a href="#banner">主页</a></li>
                                         <!--<li><a href="#production">比赛介绍</a></li>-->
@@ -4173,7 +4173,6 @@
         registAd.innerHTML = "";
         importAnswer.innerHTML = "";
         compareAnswer.innerHTML = "";
-        ajax("null");
         downloadMess.innerHTML = "请先登录";
         commitMess.innerHTML = "请先登录";
         //登录后才可下载

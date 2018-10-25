@@ -792,8 +792,8 @@ background: #fff;border: 1px solid #fff;}
   MEDIA QUERIES
 */
 
-/* Small devices (tablets, 768px and up) */
-@media (min-width: 768px) { 
+/* Small devices (tablets, 1400px and up) */
+@media (min-width: 1400px) { 
     #quote-carousel 
     {
       margin-bottom: 0;
@@ -805,8 +805,8 @@ background: #fff;border: 1px solid #fff;}
 	}
 }
 
-/* Small devices (tablets, up to 768px) */
-@media (max-width: 768px) { 
+/* Small devices (tablets, up to 1400px) */
+@media (max-width: 1400px) { 
     
     /* Make the indicators larger for easier clicking with fingers/thumb on mobile */
 	/*.navbar-nav {
@@ -834,7 +834,7 @@ background: #fff;border: 1px solid #fff;}
 	}
 }
 
-@media (min-width:768px) {
+@media (min-width:1400px) {
 	.main-navigation .navbar-default .navbar-nav > li > a {
 		padding-top: 30px;
 		padding-bottom: 30px;
@@ -845,7 +845,10 @@ background: #fff;border: 1px solid #fff;}
 		transition: all 0.3s ease-in-out;
 	}
 }
- @media (min-width:768px) and (max-width:991px) {
+.fixed-header-on .header {
+	display: none;
+}
+ @media (min-width:1400px) and (max-width:991px) {
 	.main-navigation .container-fluid {
 		padding-left: 0;
 		padding-right: 0;
@@ -899,7 +902,7 @@ background: #fff;border: 1px solid #fff;}
         display: none;
     }
 }*/
-/*@media (max-width: 767px) {
+/*@media (max-width: 1399px) {
 
 }*/
 @media (max-width:815px) {
@@ -973,7 +976,7 @@ background: #fff;border: 1px solid #fff;}
 	margin-top: 0;
 	margin-bottom: 0;
 }
-@media (min-width:768px) {
+@media (min-width:1400px) {
 	.fixed-header-on .navbar-default .navbar-nav > li > a {
 		padding-top: 20px;
 		padding-bottom: 20px;
@@ -1012,7 +1015,7 @@ background: #fff;border: 1px solid #fff;}
 	-o-transition: all 0.3s ease-in-out;
 	-ms-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
-	padding: 10px 0;
+	/*padding: 10px 0;*/
 }
 .brand a {
 	color: #FFC400;
@@ -1033,7 +1036,7 @@ background: #fff;border: 1px solid #fff;}
 	}
 	.navbar-nav {
 		float: right !important;
-		min-width: 760px;
+		min-width: 300px;
 	}
 
 	.brand {
@@ -1157,9 +1160,10 @@ margin: 2px 5px 0;}
 .isotope-item .btn-default:hover {
 	color: #ffffff;
 }
- @media (max-width:768px) {
+ @media (max-width:1400px) {
 .navbar-nav {
-    background: #060606;
+    /*background: #060606;*/
+	background-color: rgba(0, 0, 0, 0.52);
 }
 	 #position{
 		 height:0;
@@ -1370,7 +1374,7 @@ margin: 2px 5px 0;}
 	}
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1400px) {
 	.gameArrangeInner {
 		height: 255px;
 	}
