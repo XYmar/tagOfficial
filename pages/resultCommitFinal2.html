@@ -370,6 +370,9 @@
                         btn: ['确定'],//按钮
                         icon: 6,    // icon
                         yes:function(){
+                            // 成功后清除文件列表
+                            let fileContainer = document.getElementsByClassName('newAddFile')[0]
+                            fileContainer.click()
                             layer.closeAll();
                             resetAll();
                             if(id === "1"){
@@ -380,7 +383,10 @@
                                 getHisScore3();
                             }
 
-                        }});
+                        }
+                    });
+
+
                 },
                 error : function(error) {
                     layer.closeAll();
@@ -393,6 +399,7 @@
                             icon: 5,    // icon
                             yes:function(){
                                 layer.closeAll();
+
                             }});
                     }else{
                         layer.alert('请求超时', {
@@ -402,8 +409,12 @@
                             icon: 5,    // icon
                             yes:function(){
                                 layer.closeAll();
+
                             }});
                     }
+
+                    let fileCont = document.getElementById("file1Cont");
+                    fileCont.value = '';
                 }
             });
         }else {

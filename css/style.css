@@ -150,7 +150,7 @@ blockquote {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: rgba(0, 0, 0, 0.52);
+	background-color: rgba(0, 0, 0, 0);
 	content: "";
 }
 .banner-caption {
@@ -719,7 +719,7 @@ background: #fff;border: 1px solid #fff;}
 }
 
 /* carousel */
-#quote-carousel 
+#quote-carousel
 {
   padding: 0 10px 30px 10px;
   margin-top: 30px;
@@ -735,17 +735,17 @@ background: #fff;border: 1px solid #fff;}
   margin-top: 30px;
 }
 /* Previous button  */
-#quote-carousel .carousel-control.left 
+#quote-carousel .carousel-control.left
 {
   left: -12px;
 }
 /* Next button  */
-#quote-carousel .carousel-control.right 
+#quote-carousel .carousel-control.right
 {
   right: -12px !important;
 }
 /* Changes the position of the indicators */
-#quote-carousel .carousel-indicators 
+#quote-carousel .carousel-indicators
 {
   right: 50%;
   top: auto;
@@ -753,11 +753,11 @@ background: #fff;border: 1px solid #fff;}
   margin-right: -19px;
 }
 /* Changes the color of the indicators */
-#quote-carousel .carousel-indicators li 
+#quote-carousel .carousel-indicators li
 {
   background: #FFFFFF;
 }
-#quote-carousel .carousel-indicators .active 
+#quote-carousel .carousel-indicators .active
 {
   background: #333333;
   border: 1px solid #333;
@@ -793,8 +793,8 @@ background: #fff;border: 1px solid #fff;}
 */
 
 /* Small devices (tablets, 3000px and up) */
-@media (min-width: 3000px) { 
-    #quote-carousel 
+@media (min-width: 3000px) {
+    #quote-carousel
     {
       margin-bottom: 0;
       padding: 0 40px 30px 40px;
@@ -806,8 +806,8 @@ background: #fff;border: 1px solid #fff;}
 }
 
 /* Small devices (tablets, up to 3000px) */
-@media (max-width: 3000px) { 
-    
+@media (max-width: 3000px) {
+
     /* Make the indicators larger for easier clicking with fingers/thumb on mobile */
 	/*.navbar-nav {
 		margin: 7.5px -15px;
@@ -815,7 +815,7 @@ background: #fff;border: 1px solid #fff;}
 	}*/
 
     #quote-carousel .carousel-indicators {
-        bottom: -20px !important;  
+        bottom: -20px !important;
     }
     #quote-carousel .carousel-indicators li {
         display: inline-block;
@@ -1332,7 +1332,7 @@ margin: 2px 5px 0;}
 	left: 50%;
 	top: 50%;
 	font-size: 26px;
-	line-height: 1x;
+	line-height: 1px;
 	color: #2F2F2F;
 	margin-top: -8px;
 	margin-left: -8px;
@@ -1378,4 +1378,16 @@ margin: 2px 5px 0;}
 	.gameArrangeInner {
 		height: 255px;
 	}
+}
+
+/*banner*/
+.backstretch{
+	height: 100% !important;
+	width: 100% !important;
+}
+
+.backstretch img{
+	width: 100% !important;
+	height: 100% !important;
+	left: 0px !important;
 }
