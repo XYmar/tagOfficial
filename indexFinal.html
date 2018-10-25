@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="bootstrap-table/bootstrap-table.min.css">
     <link href="pages/apply.css" rel="stylesheet" type="text/css"/>
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/flipclock.css" rel="stylesheet">
 
 </head>
 <style>
@@ -183,7 +184,7 @@
     </div>
 </section>-->
 <!-- 下载数据 -->
-<section class="section secPadding">
+<section class="section secPadding" id="downloadData">
     <div class="container">
         <h1 class="text-center title0" id="download">下载</h1>
         <div class="separator"></div>
@@ -264,7 +265,7 @@
     </div>
 </section>
 <!-- 结果提交 -->
-<section class="section secPadding">
+<section class="section secPadding" id="commitData">
     <div class="container">
         <h1 class="text-center title0" id="commit">结果提交</h1>
         <div class="separator"></div>
@@ -382,8 +383,10 @@
     </div>
 </section>-->
 <!-- 排行榜 -->
+<div class="your-clock"></div>
 <a href="javascript:void(0);" name="skip"></a>
 <section id="ranking" class="price-table secPadding">
+
     <div class="container text-center" style="width: 100%">
         <div class="heading">
             <h1 class="text-center title0" id="">在线评估结果排行榜</h1>
@@ -552,6 +555,7 @@
 <script src="moment/moment-with-locales.js"></script>
 <script src="moment/zh-cn.js"></script>
 <script type="text/javascript" src="js/jquery.countdown.js"></script>
+<script type="text/javascript" src="js/flipclock.js"></script>
 <script>
     let nowTime;
     let myTeamId = $.cookie("myTeamId");
@@ -2981,6 +2985,25 @@
     let rankRoundThree = [].concat(JSON.parse(JSON.stringify(finalTeams)));
     let rankEnd = [].concat(JSON.parse(JSON.stringify(finalTeams)));
     window.onload = function () {
+
+
+        var clock;
+
+        clock = $('.your-clock').FlipClock({
+            clockFace: 'MinuteCounter',
+            autoStart: false,
+            callbacks: {
+                stop: function() {
+                    $('.message').html('The clock has stopped!')
+                }
+            }
+        });
+
+        clock.setTime(1200);
+        clock.setCountdown(true);
+        clock.start();
+
+
         //查询用户状态
         $.ajax({
             //几个参数需要注意一下
@@ -3025,6 +3048,8 @@
                 compareAnswer.innerHTML += "<a href='pages/resultCompareFinal.html'>结果对比</a>";
                 getState(myRole);
 
+                document.getElementById("downloadData").style.display = "none";
+                document.getElementById("commitData").style.display = "none";
             } else if (myRole === "accept") {
                 loginName.innerHTML += "<a href=\"javascript: void(0)\">" + myUsername + "</a>";
                 getState(myRole);
