@@ -383,7 +383,10 @@
                                 getHisScore3();
                             }
 
-                        }});
+                        }
+                    });
+
+
                 },
                 error : function(error) {
                     layer.closeAll();
@@ -396,6 +399,7 @@
                             icon: 5,    // icon
                             yes:function(){
                                 layer.closeAll();
+
                             }});
                     }else{
                         layer.alert('请求超时', {
@@ -405,8 +409,12 @@
                             icon: 5,    // icon
                             yes:function(){
                                 layer.closeAll();
+
                             }});
                     }
+
+                    let fileCont = document.getElementById("file1Cont");
+                    fileCont.value = '';
                 }
             });
         }else {
