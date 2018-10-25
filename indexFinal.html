@@ -409,8 +409,7 @@
 
                     <div id="getting-started1" style="position: absolute;top: -44px;left: 20px;font-size: 30px;font-weight: bold;"></div>
                     <div class="col-md-4 firstbg" id="firstScoreDiv ">
-                            <div class="addMask "></div>
-                            <div>
+                            <div id="flag1">
                                 <table id="firstScoreInfoTable">
                                 </table>
                             </div>
@@ -4496,8 +4495,9 @@
     /*var $modal1 = $('#myModalAdd1');
     var $modal2 = $('#myModalAdd2');
     var $modal3 = $('#myModalAdd3');*/
-    $('#firstScoreDiv').on('click', function(){
-        $('#myModalAdd1 .modal-content').html($('#firstScoreDiv').html())
+    $('#firstScoreInfoTable').on('click', function(){
+        // $('#myModalAdd1 .modal-content').html($('#firstScoreDiv').html())
+        $('#myModalAdd1 .modal-content').html($('#flag1').html())
         $m_btn1.click()
     });
     $('#secondScoreDiv').on('click', function(){
