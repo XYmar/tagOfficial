@@ -183,7 +183,7 @@
     </div>
 </section>-->
 <!-- 下载数据 -->
-<section class="section secPadding">
+<section class="section secPadding" id="downloadData">
     <div class="container">
         <h1 class="text-center title0" id="download">下载</h1>
         <div class="separator"></div>
@@ -264,7 +264,7 @@
     </div>
 </section>
 <!-- 结果提交 -->
-<section class="section secPadding">
+<section class="section secPadding" id="commitData">
     <div class="container">
         <h1 class="text-center title0" id="commit">结果提交</h1>
         <div class="separator"></div>
@@ -3025,6 +3025,8 @@
                 compareAnswer.innerHTML += "<a href='pages/resultCompareFinal.html'>结果对比</a>";
                 getState(myRole);
 
+                document.getElementById("downloadData").style.display = "none";
+                document.getElementById("commitData").style.display = "none";
             } else if (myRole === "accept") {
                 loginName.innerHTML += "<a href=\"javascript: void(0)\">" + myUsername + "</a>";
                 getState(myRole);
