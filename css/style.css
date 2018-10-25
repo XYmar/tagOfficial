@@ -792,8 +792,8 @@ background: #fff;border: 1px solid #fff;}
   MEDIA QUERIES
 */
 
-/* Small devices (tablets, 1400px and up) */
-@media (min-width: 1400px) { 
+/* Small devices (tablets, 3000px and up) */
+@media (min-width: 3000px) { 
     #quote-carousel 
     {
       margin-bottom: 0;
@@ -805,8 +805,8 @@ background: #fff;border: 1px solid #fff;}
 	}
 }
 
-/* Small devices (tablets, up to 1400px) */
-@media (max-width: 1400px) { 
+/* Small devices (tablets, up to 3000px) */
+@media (max-width: 3000px) { 
     
     /* Make the indicators larger for easier clicking with fingers/thumb on mobile */
 	/*.navbar-nav {
@@ -834,7 +834,7 @@ background: #fff;border: 1px solid #fff;}
 	}
 }
 
-@media (min-width:1400px) {
+@media (min-width:3000px) {
 	.main-navigation .navbar-default .navbar-nav > li > a {
 		padding-top: 30px;
 		padding-bottom: 30px;
@@ -848,7 +848,7 @@ background: #fff;border: 1px solid #fff;}
 .fixed-header-on .header {
 	display: none;
 }
- @media (min-width:1400px) and (max-width:991px) {
+ @media (min-width:3000px) and (max-width:991px) {
 	.main-navigation .container-fluid {
 		padding-left: 0;
 		padding-right: 0;
@@ -902,7 +902,7 @@ background: #fff;border: 1px solid #fff;}
         display: none;
     }
 }*/
-/*@media (max-width: 1399px) {
+/*@media (max-width: 2999px) {
 
 }*/
 @media (max-width:815px) {
@@ -976,7 +976,7 @@ background: #fff;border: 1px solid #fff;}
 	margin-top: 0;
 	margin-bottom: 0;
 }
-@media (min-width:1400px) {
+@media (min-width:3000px) {
 	.fixed-header-on .navbar-default .navbar-nav > li > a {
 		padding-top: 20px;
 		padding-bottom: 20px;
@@ -1160,7 +1160,7 @@ margin: 2px 5px 0;}
 .isotope-item .btn-default:hover {
 	color: #ffffff;
 }
- @media (max-width:1400px) {
+ @media (max-width:3000px) {
 .navbar-nav {
     /*background: #060606;*/
 	background-color: rgba(0, 0, 0, 0.52);
@@ -1374,7 +1374,7 @@ margin: 2px 5px 0;}
 	}
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 3000px) {
 	.gameArrangeInner {
 		height: 255px;
 	}
