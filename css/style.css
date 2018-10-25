@@ -1391,3 +1391,67 @@ margin: 2px 5px 0;}
 	height: 100% !important;
 	left: 0px !important;
 }
+
+.phb_bg{
+    background: url("../images/pg_bg.png");
+    background-repeat: no-repeat;
+    width: 100%;
+    height: auto;
+    background-size: contain;
+}
+
+.firstbg{
+    background: url("../images/jsxw.png");
+    background-repeat: no-repeat;
+    height: auto;
+    background-size: cover;
+    padding-bottom: 10px;
+}
+
+.bootstrap-table{
+    margin-top: 50px;
+}
+
+.fixed-table-container{
+    border: 1px solid #0674cb !important;
+     border-radius: 0px !important;
+     -webkit-border-radius: 0px !important;
+}
+.table > thead:first-child > tr:first-child > th{
+    font-size: 16px;
+    font-family: 微软雅黑;
+    color: #abc7ff;
+    text-shadow: 5px 7px 6px #000;
+    border-left: none;
+}
+
+.table-striped > tbody > tr>td{
+	font-size: 18px;
+	font-family: '微软雅黑';
+	color: #abc7ff;
+	text-shadow: 5px 7px 6px #000;
+}
+
+.table > tbody > tr.success > td{
+	background-color: rgba(0, 0, 0, 0) !important;
+}
+
+#firstScoreInfoTable > thead{
+	background: #081d4b;
+}
+
+.table-striped > tbody > tr:nth-child(odd) {
+	background-color: rgba(0, 0, 0, 0) !important;
+}
+
+ .table-striped > tbody > tr:nth-child(even) {
+	 background-color:#081536 !important;
+ }
+
+.table-striped > tbody > tr:hover {
+    background-color: #1c366c !important;
+}
+
+.fixed-table-body {
+    overflow-x: hidden !important;
+}

@@ -388,15 +388,16 @@
 <section id="ranking" class="price-table secPadding">
 
     <div class="container text-center" style="width: 100%">
+        <div class="phb_bg">
         <div class="heading">
-            <h1 class="text-center title0" id="">在线评估结果排行榜</h1>
+            <!--<h1 class="text-center title0" id="">在线评估结果排行榜</h1>-->
             <div class="separator"></div>
             <br>
         </div>
         <div class="row">
             <div class="col-sm-12 rankTable">
                 <!--<div class="panel panel-default">-->
-                <div class="col-md-12 group-info">
+                <div class="col-md-12 group-info group-first">
 
                     <!-- tab页开始 -->
                     <!--<ul class="nav nav-tabs" role="tablist">
@@ -407,12 +408,11 @@
                     </ul>-->
 
                     <div id="getting-started1" style="position: absolute;top: -44px;left: 20px;font-size: 30px;font-weight: bold;"></div>
-                    <div class="col-md-4" id="firstScoreDiv">
-                        <div class="addMask"></div>
-                        <div>
-                            <table id="firstScoreInfoTable">
-                            </table>
-                        </div>
+                    <div class="col-md-4 firstbg" id="firstScoreDiv ">
+                            <div id="flag1">
+                                <table id="firstScoreInfoTable">
+                                </table>
+                            </div>
                     </div>
 
                     <div id="getting-started2" style="position: absolute;top: -44px;left:35%;font-size: 30px;font-weight: bold;"></div>
@@ -473,6 +473,7 @@
 
             </div>
         </div>
+    </div>
     </div>
 </section>
 <!--<section id="ranking" class="price-table secPadding">
@@ -563,6 +564,7 @@
     let password0 = $.cookie("myWPa");
     let password = $.base64.decode(password0);
     let token = username + ':' + password;
+    let commitTime
     let commitTime1
     let commitTime2
     let commitTime3
@@ -2373,7 +2375,7 @@
                 }
             ]
         },
-        {
+        /*{
             "id": "79779259-0b62-4839-80d2-e30da4e13497",
             "createTime": "2018-10-23 16:41:49",
             "message": null,
@@ -2972,7 +2974,7 @@
                     "authority": "ROLE_accept"
                 }
             ]
-        }
+        }*/
     ]
 
     /*let rankRoundOne = finalTeams.slice()
@@ -2985,25 +2987,15 @@
     let rankRoundThree = [].concat(JSON.parse(JSON.stringify(finalTeams)));
     let rankEnd = [].concat(JSON.parse(JSON.stringify(finalTeams)));
     window.onload = function () {
-
-
-        var clock;
-
-        clock = $('.your-clock').FlipClock({
-            clockFace: 'MinuteCounter',
-            countdown: true,
-            autoStart: false,
-            callbacks: {
-                stop: function() {
-                    $('.message').html('The clock has stopped!')
-                }
+        if(!commitTime) {
+            if($.cookie('commitStartTime')) {
+                commitTime = parseInt($.cookie('commitStartTime'))
+                let countTime = moment(commitTime).format('YYYY-MM-DD HH:mm:ss');
+                let nowTimeTmp = moment().format('X')*1000;                    //当前时间时间戳
+                let timeTemp = (parseInt(commitTime) - parseInt(nowTimeTmp))/1000;    //时间差
+                startCount(timeTemp);
             }
-        });
-
-        clock.setTime(1200);
-        clock.setCountdown(true);
-        clock.start();
-
+        }
 
         //查询用户状态
         $.ajax({
@@ -3170,6 +3162,26 @@
             error: function (error) {
             }
         });
+    }
+
+    //开始计时
+    function startCount(time){
+        var clock;
+
+        clock = $('.your-clock').FlipClock({
+            clockFace: 'MinuteCounter',
+            countdown: true,
+            autoStart: false,
+            callbacks: {
+                stop: function() {
+                    $('.message').html('The clock has stopped!')
+                }
+            }
+        });
+
+        clock.setTime(time);
+        clock.setCountdown(true);
+        clock.start();
     }
 
     /*// 初始化排行榜
@@ -3409,21 +3421,17 @@
                     title: '队伍名称'
                 }, {
                     field: 'rougelScoreF1',
-                    title: 'ROUGE-L',
+                    title: '主要测试指标\n' +
+                        '（ROUGE-L）',
                     formatter: precentFormatter
                 }, {
                     field: 'bleu4ScoreF1',
-                    title: 'BLEU-4',
+                    title: '次要测试指标\n' +
+                        '（BLEU-4）',
                     formatter: precentFormatter
-                },{
-                    field: 'commitTimesF1',
-                    title: '提交次数',
-                    align: "center",
-                    width: 100,
-                    formatter: commitTimesFormatter1
                 }, {
                     field: 'commitDateF1',
-                    title: '最新一次提交时间',
+                    title: '最佳成绩提交时间',
                     formatter: commitTimeFormatter
                     /*,sortable: true*/
                 }, {
@@ -3431,6 +3439,12 @@
                     title: '名次升降',
                     align: "center",
                     formatter: rankOrder1
+                },{
+                    field: 'commitTimesF1',
+                    title: '提交次数',
+                    align: "center",
+                    width: 100,
+                    formatter: commitTimesFormatter1
                 },
             ],
             data: dataOrigin
@@ -3481,7 +3495,7 @@
                     title: '名次升降',
                     align: "center",
                     formatter: rankOrder1
-                },
+                }
             ],
             data: dataOrigin
         });
@@ -3597,11 +3611,16 @@
 
     // 获取第一轮数据
     function getPreliminaryScoreScoreRound1() {
-        if(!commitTime1) {
+        /*if(!commitTime1) {
             if($.cookie('commitStartTime1')) {
                 commitTime1 = parseInt($.cookie('commitStartTime1'))
                 let countTime = moment(commitTime1).format('YYYY-MM-DD HH:mm:ss');
-                $("#getting-started1")
+                let nowTimeTmp = moment().format('X')*1000;                    //当前时间时间戳
+                let timeTemp = (parseInt(commitTime1) - parseInt(nowTimeTmp))/1000;    //时间差
+                startCount(timeTemp);
+
+                orderUser(1)
+                /!*$("#getting-started1")
                     .countdown(countTime, function(event) {
                         $(this).text(
                             event.strftime('%H:%M:%S')
@@ -3609,9 +3628,9 @@
                     }).on('finish.countdown', function() {
                     // render something
                     orderUser(1)
-                });
+                });*!/
             }
-        }
+        }*/
         $.ajax({
             type: "GET",
             dataType: "json",
@@ -3866,21 +3885,15 @@
 
     // 获取第二轮数据
     function getPreliminaryScoreScoreRound2() {
-        if(!commitTime2) {
+        /*if(!commitTime2) {
             if($.cookie('commitStartTime2')) {
                 commitTime2 = parseInt($.cookie('commitStartTime2'))
-                let countTime = moment(commitTime2).format('YYYY-MM-DD HH:mm:ss');
-                $("#getting-started2")
-                    .countdown(countTime, function(event) {
-                        $(this).text(
-                            event.strftime('%H:%M:%S')
-                        );
-                    }).on('finish.countdown', function() {
-                    // render something
-                    orderUser(2)
-                });;
+                let nowTimeTmp = moment().format('X')*1000;                    //当前时间时间戳
+                let timeTemp = (parseInt(commitTime2) - parseInt(nowTimeTmp))/1000;    //时间差
+                startCount(timeTemp);
+                orderUser(2)
             }
-        }
+        }*/
         $.ajax({
             type: "GET",
             dataType: "json",
@@ -3986,21 +3999,16 @@
 
     // 获取第三轮数据
     function getPreliminaryScoreScoreRound3() {
-        if(!commitTime3) {
+        /*if(!commitTime3) {
             if($.cookie('commitStartTime3')) {
                 commitTime3 = parseInt($.cookie('commitStartTime3'))
-                let countTime = moment(commitTime3).format('YYYY-MM-DD HH:mm:ss');
-                $("#getting-started3")
-                    .countdown(countTime, function(event) {
-                        $(this).text(
-                            event.strftime('%H:%M:%S')
-                        );
-                    }).on('finish.countdown', function() {
-                    // render something
-                    orderUser(3)
-                });
+                let nowTimeTmp = moment().format('X')*1000;                    //当前时间时间戳
+                let timeTemp = (parseInt(commitTime3) - parseInt(nowTimeTmp))/1000;    //时间差
+
+                startCount(timeTemp);
+                orderUser(3)
             }
-        }
+        }*/
         $.ajax({
             type: "GET",
             dataType: "json",
@@ -4105,18 +4113,6 @@
 
     // 获取总榜数据
     function getPreliminaryScoreRoundend() {
-        /*if(!commitTime3) {
-            if($.cookie('commitStartTime3')) {
-                commitTime3 = parseInt($.cookie('commitStartTime2'))
-                let countTime = moment(commitTime3).format('YYYY-MM-DD HH:mm:ss');
-                $("#getting-started3")
-                    .countdown(countTime, function(event) {
-                        $(this).text(
-                            event.strftime('%H:%M:%S')
-                        );
-                    });
-            }
-        }*/
         $.ajax({
             type: "GET",
             dataType: "json",
@@ -4270,11 +4266,11 @@
     function linenumber(value, row, index) {
         let number = index + 1;
         if (number === 1) {
-            number = "<img style='width: 30px;height:30px;'  src='images/first.png' />"
+            number = "<img style='width: 33px;height:17px;'  src='images/first.png' />"
         } else if (number === 2) {
-            number = "<img style='width: 30px;height:30px;'  src='images/second.png' />"
+            number = "<img style='width: 33px;height:17px;'  src='images/second.png' />"
         } else if (number === 3) {
-            number = "<img style='width: 30px;height:30px;'  src='images/third.png' />"
+            number = "<img style='width: 33px;height:17px;'  src='images/third.png' />"
         }
         return number;
     }
@@ -4356,18 +4352,18 @@
         if(row.commitTimesF1) {
             // 第一轮剩余3次
             if(row.commitTimesF1 === 3) {
-                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
             }
             // 第一轮剩余2次
             if(row.commitTimesF1 === 2) {
-                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
             }
             // 第一轮剩余1次
             if(row.commitTimesF1 === 1) {
-                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
             }
         } else if(row.commitTimesF1 === 0) { // 剩余0次
-            lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /></div>" + "<div style='display: inline;'></div>"
+            lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /></div>" + "<div style='display: inline;'></div>"
         }
         return lights
     }
@@ -4377,18 +4373,18 @@
         if(row.commitTimesF2) {
             // 第一轮剩余3次
             if(row.commitTimesF2 === 3) {
-                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
             }
             // 第一轮剩余2次
             if(row.commitTimesF2 === 2) {
-                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
             }
             // 第一轮剩余1次
             if(row.commitTimesF2=== 1) {
-                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
             }
         } else if(row.commitTimesF2 === 0) { // 剩余0次
-            lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /></div>" + "<div style='display: inline;'></div>"
+            lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /></div>" + "<div style='display: inline;'></div>"
         }
         return lights
     }
@@ -4398,18 +4394,18 @@
         if(row.commitTimesF3) {
             // 第一轮剩余3次
             if(row.commitTimesF3 === 3) {
-                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
             }
             // 第一轮剩余2次
             if(row.commitTimesF3 === 2) {
-                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
             }
             // 第一轮剩余1次
             if(row.commitTimesF3 === 1) {
-                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
             }
         } else if(row.commitTimesF3 === 0) { // 剩余0次
-            lights = "<div style='width: 100px;display: inline-block;'><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 28px;height:20px;display: inline'  src='images/lightOn.png' /></div>" + "<div style='display: inline;'></div>"
+            lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='images/lightOn.png' /></div>" + "<div style='display: inline;'></div>"
         }
         return lights
     }
@@ -4499,8 +4495,9 @@
     /*var $modal1 = $('#myModalAdd1');
     var $modal2 = $('#myModalAdd2');
     var $modal3 = $('#myModalAdd3');*/
-    $('#firstScoreDiv').on('click', function(){
-        $('#myModalAdd1 .modal-content').html($('#firstScoreDiv').html())
+    $('#firstScoreInfoTable').on('click', function(){
+        // $('#myModalAdd1 .modal-content').html($('#firstScoreDiv').html())
+        $('#myModalAdd1 .modal-content').html($('#flag1').html())
         $m_btn1.click()
     });
     $('#secondScoreDiv').on('click', function(){
