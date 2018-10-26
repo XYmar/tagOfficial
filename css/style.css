@@ -462,23 +462,26 @@ text-align:center;
 	-o-border-radius: 0;
 	border-radius: 0;
 	width: 100%;
-	background: #fff;
+	/*background: #fff;*/
 }
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
-	border: 1px solid #f0f0f0;
+	/*border: 1px solid #f0f0f0;*/
 	border-top: none;
-	background-color: #fafafa
+	background-color: transparent;
 }
 .panel-heading a {
 	font-weight: 400;
 	padding: 12px 35px 12px 15px;
 	display: inline-block;
 	width: 100%;
-	background-color: #FFC400;
+	background-color: transparent;
 	color: #000000;
 	position: relative;
 	text-decoration: none;
-	border: #ECECEC 1px solid;
+	/*border: #ECECEC 1px solid;*/
+}
+.panel-default>.panel-heading {
+	background-color: transparent !important;
 }
 .panel-heading a.collapsed {
 	color: #333333;
@@ -500,12 +503,15 @@ text-align:center;
 }
 .panel-heading a:hover {
 	text-decoration: none;
-	background-color: #FFC400;
+	/*background-color: none;*/
 	color: #2F2F2F;
 }
 .panel-title a i {
 	padding-right: 10px;
 	font-size: 20px;
+}
+.panel {
+	background-color: transparent !important;
 }
 
 .awardNum {
@@ -1561,4 +1567,8 @@ margin: 2px 5px 0;}
 
 .table > thead:first-child > tr:first-child > th {
     border-bottom-color:#0674cb;
+}
+
+.table-striped > tbody > tr > td div img {
+	margin-right: 8px;
 }

@@ -10,7 +10,7 @@
     <!--<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.8.1/build/reset/reset-min.css"/>-->
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../css/style.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/buttons.css"/>
     <link rel="stylesheet" type="text/css" href="../css/resultFinal.css"/>
     <!--<link href="apply.css" rel="stylesheet" type="text/css" />-->
@@ -55,7 +55,7 @@
 </head>
 
 <body>
-<img src="../images/blackgold1.jpg" alt="" width='100%' height='100%' class="bgimg">
+<img src="../images/比赛对比背景.png" alt="" width='100%' height='100%' class="bgimg">
 <header class="header fixed clearfix navbar navbar-fixed-top">
     <div class="container">
         <div class="row">
@@ -74,32 +74,33 @@
         <div class="col-md-12" style="height: 100%">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="text-center" style="font-size: 40px;color:#ffc400">
-                        结果对比
-                    </h2>
+                    <img src="../images/resultCompareTitle.png" alt="" style="margin: 0 auto;">
+                    <!--<h2 class="text-center" style="font-size: 40px;color:#ffc400">
+                        对比结果
+                    </h2>-->
                 </div>
             </div>
 
-            <div class="row containerRow" style="height: 100%;padding: 20px;background: #fff;overflow-y: auto">
+            <div class="row containerRow" style="height: 100%;padding: 20px;background-image: url(../images/leftBg.png);overflow-y: auto">
                 <div class="col-md-6" style="height:100%;padding: 20px;" >
-                    <div>
+                    <div style="position: relative;">
                         <form class="form-search form-inline">
-                            <input type="search" class="form-control" placeholder="输入文章id" id="articleId" style="width: 300px"/>
-                            <button style="background: #ffc400;color:#000;" class="btn downloadBtn" type="button" onclick="searchArticle()">搜索
-                            </button>
+                            <input type="search" class="form-control" placeholder="输入文章id" id="articleId" style="width: 100%;color: #8db0f4;font-size: 24px;background-image: url(../images/inputBg.png);"/>
                             <!--<input class="input-medium search-query" type="text" /> <button type="submit" class="btn">查找</button>-->
                         </form>
+                        <button style="background: #ffc400;color:white;background-image: url(../images/searchBg.png);position: absolute;right: 1px;top: 1px;font-size: 13px;" class="btn downloadBtn" type="button" onclick="searchArticle()">搜索
+                        </button>
                     </div>
                     <br>
                     <!--<div style="border: 1px solid lightgrey;min-height: 400px;padding: 5px 5px;">-->
-                    <div style="border: 1px solid lightgrey;padding: 10px 20px;height: 90%;overflow-y: auto;">
+                    <div style="padding: 10px 20px;height: 90%;background-image: url(../images/leftBg0.png);overflow-y: auto;">
                         <div id="articleTitle">
-                            <h3 class="text-center" id="articleTitleContent">文章标题</h3>
+                            <h3 class="text-center" style="font-size: 30px;color: #8db0f4;" id="articleTitleContent">文章标题</h3>
                         </div>
                         <br>
                         <div id="articleCont">
-                            <p id="articleContent">
-                            <h5 class="notice" style="font-size: 40px">请先搜索文章！</h5>
+                            <p id="articleContent" style="font-size: 26px;color: #c6dfff;">
+                            <h5 class="notice" style="font-size: 26px;color: #c6dfff;">请先搜索文章！</h5>
                             </p>
                         </div>
 
@@ -107,7 +108,7 @@
 
                 </div>
                 <div class="col-md-6" style="height:100%;padding: 20px;margin-top: 55px;">
-                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" style="background-image: url(../images/rightBg1.png)">
                         <!--<div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingOne">
                                 <h4 class="panel-title">
@@ -263,10 +264,10 @@
                 for(let i = 0; i < marks.length; i++) {
                     let markHref = '"#' + marks[i].id + '"'
                     let markId = '"' + marks[i].id + '"'
-                    $('#accordion').html($('#accordion').html() + '<div class="panel panel-default">\n' +
+                    $('#accordion').html($('#accordion').html() + '<div class="panel panel-default" style="background-image: url(../images/rightBg1.png)">\n' +
                         '                            <div class="panel-heading" role="tab" id="headingOne">\n' +
-                        '                                <h4 class="panel-title">\n' +
-                        '                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href=' + markHref + ' aria-expanded="true" aria-controls="collapseOne">\n' +
+                        '                                <h4 class="panel-title" style="background-image: url(../images/questionBg.png)">\n' +
+                        '                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href=' + markHref + ' aria-expanded="true" aria-controls="collapseOne"  style="background-color: transparent;font-size: 26px;color: #8db0f4;">\n' +
                         '                                        问题' + (i+1) + '：' + marks[i].question +
                         '                                    </a>\n' +
                         '                                </h4>\n' +
@@ -274,7 +275,7 @@
                         '                            <div id='+ markId +' class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">\n' +
                         '                                <div class="panel-body">\n' +
                         '                                    <ul class="list-unstyled">\n' +
-                        '                                        <li><i class="fa fa-arrow-circle-right pr-10 colored"></i><strong>  标准答案：</strong>' + marks[i].answer +
+                        '                                        <li style="font-size: 26px;color: white;">标准答案：' + marks[i].answer +
                         '                                        </li>\n' +
                         '                                    </ul>\n' +
                         '                                </div>\n' +
