@@ -1397,7 +1397,7 @@ margin: 2px 5px 0;}
     background-repeat: no-repeat;
     width: 100%;
     height: auto;
-    background-size: contain;
+    background-size: cover;
 }
 
 .firstbg{
@@ -1458,6 +1458,7 @@ margin: 2px 5px 0;}
 
 .table > tbody > tr.success > td{
 	background-color: rgba(0, 0, 0, 0) !important;
+	border: 1px solid #0674cb;
 }
 
 #firstScoreInfoTable > thead{
@@ -1478,4 +1479,80 @@ margin: 2px 5px 0;}
 
 .fixed-table-body {
     overflow-x: hidden !important;
+}
+
+.container {
+	padding: 0px !important;
+}
+
+.jsxw{
+	background: url("../images/jsxw_tk.png");
+	background-repeat: no-repeat;
+	height: auto;
+	background-size: cover;
+}
+
+.jsxw .fixed-table-container{
+	padding-bottom: 0px;
+	margin-left: 15px;
+	margin-right: 15px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.fwkx{
+	background: url("../images/fwkx_tk.png");
+	background-repeat: no-repeat;
+	height: auto;
+	background-size: cover;
+}
+
+.fwkx .fixed-table-container{
+	padding-bottom: 0px;
+	margin-left: 15px;
+	margin-right: 15px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.fmqb{
+	background: url("../images/fmqb_tk.png");
+	background-repeat: no-repeat;
+	height: auto;
+	background-size: cover;
+}
+
+.fmqb .fixed-table-container{
+	padding-bottom: 0px;
+	margin-left: 15px;
+	margin-right: 15px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.zb{
+	background: url("../images/zb.png");
+	background-repeat: no-repeat;
+	height: auto;
+	background-size: cover;
+}
+
+.zb .fixed-table-container{
+	padding-bottom: 0px;
+	margin-left: 15px;
+	margin-right: 15px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.bootstrap-table .table{
+	border-bottom: 1px solid #0674cb !important;
+}
+
+.close{
+	background: url("../images/close.png");
+	width: 14px;
+	height: 14px;
+}
+
+.table > thead:first-child > tr:first-child > th {
+    border-bottom-color:#0674cb;
 }
