@@ -1425,13 +1425,19 @@ margin: 2px 5px 0;}
 }
 
 .endbg{
-	background: url("../images/end.png") !important;
-	background-repeat: no-repeat !important;
-	height: auto !important;
-	background-size: cover !important;
-	padding-bottom: 10px !important;
+	background: url("../images/zb.png") center center;
+	background-repeat: no-repeat;
+	height: auto;
+	background-size: cover;
+	padding-bottom: 10px;
 }
-
+/*.zb .endbg{
+    background: url("../images/zb.png") !important;
+    background-repeat: no-repeat!important;
+    height: auto!important;
+    background-size: cover!important;
+    padding-bottom: 10px!important;
+}*/
 .bootstrap-table{
     margin-top: 50px;
 }
