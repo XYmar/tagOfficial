@@ -41,6 +41,40 @@
     .modal .addMask{
         display: none;
     }
+    #adminNav {
+        background: url("./images/bg-nav.png");
+        padding: 0;
+    }
+    #goIndexHtml {
+        background: url("./images/首页.png") no-repeat center center;
+    }
+    #goRankHtml {
+        background: url("./images/排行榜.png") no-repeat center center;
+    }
+    #compareHtml {
+        background: url("./images/结果对比.png") no-repeat center center;
+    }
+    #countdownHtml {
+        background: url("./images/倒计时.png") no-repeat center center;
+    }
+    .adminNavItem {
+        width: 160px;
+        height: 48px;
+    }
+    .adminNavItem a {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+    }
+    .adminNavItem:hover {
+       /*background: url("./images/hove.png") no-repeat center center !important;*/
+        border: 1px solid rgb(104,89,64) !important;
+
+    }
+    .adminNavItem a:focus {
+        /*background: url("./images/select.png") no-repeat center center !important;*/
+        background-color: rgba(105,74,41,0.3) !important;
+    }
 </style>
 <body class="no-trans">
 <div class="scrollToTop"><i class="icon-up-open-big"></i></div>
@@ -70,8 +104,9 @@
                         <nav class="navbar navbar-default" role="navigation">
                             <div class="container-fluid">
                                 <!-- Toggle get grouped for better mobile display -->
-                                <div class="navbar-header">
+                                <div class="navbar-header" id="headerHide">
                                     <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                            style="position: absolute;right: -280px;border-color: transparent;"
                                             data-target="#navbar-collapse-1">
                                         <span class="sr-only">Toggle navigation</span>
                                         <span class="icon-bar"></span>
@@ -106,6 +141,12 @@
                 </div>
                 <!-- header-right end -->
             </div>
+            <ul id="adminNav" style="list-style: none;position: absolute;top: 40px;right: 80px;">
+                <li id="goIndexHtml" class="adminNavItem" style="float:left;"><a href="#banner"></a></li>
+                <li id="goRankHtml" class="adminNavItem" style="float: left"><a href="#ranking"></a></li>
+                <li id="compareHtml" class="adminNavItem" style="float: left"><a href="pages/resultCompareFinal.html"></a></li>
+                <li id="countdownHtml" class="adminNavItem" style="float: left"><a href="pages/auditFinal1.html"></a></li>
+            </ul>
         </div>
     </div>
 </header>
@@ -387,7 +428,7 @@
 <a href="javascript:void(0);" name="skip"></a>
 <section id="ranking" class="price-table secPadding">
     <div class="your-clock" style="margin-top: 3.5em;"></div>
-    <div class="container text-center" style="width: 100%">
+    <div class="container text-center" style="width: 100%;padding: 0;">
         <div class="phb_bg">
         <div class="heading">
             <!--<h1 class="text-center title0" id="">在线评估结果排行榜</h1>-->
@@ -461,7 +502,7 @@
             <div class="col-sm-12 rankTable">
                 <!--<div class="panel panel-default">-->
                 <div class="col-md-12 group-info" style="padding: 10px 10px;" id="endScoreDiv">
-                    <div class="col-md-12" style="padding: 0;background: #fff;">
+                    <div class="col-md-12 endbg" style="padding: 0;background: #fff;">
                         <div class="addMask"></div>
                         <div>
                             <table id="endTable">
@@ -3027,6 +3068,9 @@
         let compareAnswer = document.getElementById("compareAnswer");
         let downloadMess = document.getElementById("downloadMess");
         let commitMess = document.getElementById("commitMess");
+        let adminNav = document.getElementById("adminNav")
+        let headerHide = document.getElementById("headerHide")
+
 
         let myUsername = $.cookie("myUsername");
         let myRole = $.cookie("myRole");
@@ -3035,6 +3079,8 @@
             loginName.innerHTML = "";
             loginOut.innerHTML = "";
             if (myRole === "admin") {
+                adminNav.style['display'] = 'block'
+                // headerHide.style['display'] = 'none'
                 loginName.innerHTML += "<a href=\"javascript: void(0)\">管理员</a>";
                 roundControl.innerHTML += "<a href='pages/auditFinal.html'>倒计时</a>";
                 importAnswer.innerHTML += "<a href='pages/importAnswer.html'>导入答案</a>";
@@ -3044,9 +3090,13 @@
                 document.getElementById("downloadData").style.display = "none";
                 document.getElementById("commitData").style.display = "none";
             } else if (myRole === "accept") {
+                // headerHide.style['display'] = 'block'
+                adminNav.style['display'] = 'none'
                 loginName.innerHTML += "<a href=\"javascript: void(0)\">" + myUsername + "</a>";
                 getState(myRole);
             } else if (myRole === "user" || myRole === "denied") {
+                // headerHide.style['display'] = 'block'
+                adminNav.style['display'] = 'none'
                 loginName.innerHTML += "<a href=\"javascript: void(0)\">" + myUsername + "</a>";
                 getState(myRole);
 
@@ -3057,6 +3107,8 @@
             downloadMess.innerHTML = "按不同时间开放相应的下载功能";
             commitMess.innerHTML = "按不同时间开放相应的提交功能";
         } else {
+            adminNav.style['display'] = 'none'
+            // headerHide.style['display'] = 'block'
             loginName.innerHTML = "";
             roundControl.innerHTML = "";
             loginName.innerHTML += "<a href='pages/login.html'>登录/注册</a>";

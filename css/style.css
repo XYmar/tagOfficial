@@ -371,7 +371,7 @@ color:#000;
 	padding-bottom: 0;
 }
 .secPadding{
-	padding: 50px 0;
+	/*padding: 50px 0;*/
 	/*padding: 15px 0;*/
 }
 .price-table .panel-heading h3{
@@ -1422,6 +1422,14 @@ margin: 2px 5px 0;}
 	height: auto;
 	background-size: cover;
 	padding-bottom: 10px;
+}
+
+.endbg{
+	background: url("../images/end.png") !important;
+	background-repeat: no-repeat !important;
+	height: auto !important;
+	background-size: cover !important;
+	padding-bottom: 10px !important;
 }
 
 .bootstrap-table{
