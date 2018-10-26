@@ -1394,7 +1394,7 @@ margin: 2px 5px 0;}
 
 .backstretch img{
 	width: 100% !important;
-	height: 100% !important;
+	/*height: 100% !important;*/
 	left: 0px !important;
 }
 
@@ -1431,7 +1431,7 @@ margin: 2px 5px 0;}
 }
 
 .endbg{
-	background: url("../images/zb.png") center center;
+	background: url("../images/zb.png");
 	background-repeat: no-repeat;
 	height: auto;
 	background-size: cover;
@@ -1444,8 +1444,11 @@ margin: 2px 5px 0;}
     background-size: cover!important;
     padding-bottom: 10px!important;
 }*/
-.bootstrap-table{
-    margin-top: 50px;
+.firstbg .bootstrap-table,.secondbg .bootstrap-table,.thridbg .bootstrap-table{
+    margin-top: 7%;
+}
+#myModalAdd1 .bootstrap-table,#myModalAdd2 .bootstrap-table,#myModalAdd3 .bootstrap-table,.endbg .bootstrap-table{
+	margin-top: 3%;
 }
 
 .fixed-table-container{
