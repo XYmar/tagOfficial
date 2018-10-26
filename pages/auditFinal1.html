@@ -56,11 +56,11 @@
         }
         #countGif {
             position: absolute;
-            top: 30%;
+            top: 35%;
             left: 50%;
-            margin-left:-300px ;
-            width: 600px;
-            height: 400px;
+            margin-left:-480px ;
+            width: 1040px;
+            height: 618px;
         }
         .startBtn {
             margin: 0 auto;
@@ -101,10 +101,14 @@
 
 <body>
 <img src="../images/countBg.PNG" alt="" class="bgimg">
-<img alt="" id="countGif" style="display: none;">
+<!--<img alt="" id="countGif" style="display: none;">-->
+<embed alt="" id="countGif" width="1400" height="838" style="display: none;background-color: transparent;" type='application/x-shockwave-flash' wmode='transparent' quality='high'></embed>
+<img src="../images/Countdown.png" width="241" height="240" style="display: none;position: relative;z-index: 1000;margin: 0 auto;top: 190px;" id="countDownLogo">
+<img src="../images/begin.png" width="919" height="335" style="display: none;position: relative;z-index: 1000;margin: 0 auto;top: 400px;" id="startComp">
+<!--<img src="../images/begin.png" alt="" class="begin">-->
 
 <div class="container" id="startBtnContainer">
-    <div id="wrapper" class="row" style="margin-top: 240px">
+    <div id="wrapper" class="row" style="margin-top: 350px">
         <div class="col-md-12">
             <div class="col-md-4">
                 <button id="round1" class="startBtn startBtn1"></button>
@@ -224,45 +228,59 @@
         let round3 = document.getElementById('round3')
         let gifContainer = document.getElementById('countGif')
         let startBtnContainer = document.getElementById('startBtnContainer')
+        let countDownLogo = document.getElementById('countDownLogo')
+        let startComp = document.getElementById('startComp')
         round1.addEventListener('click', () => {
             startBtnContainer.style['display'] = 'none'
-            gifContainer.src = '../images/countDown.GIF'
+            gifContainer.src = '../images/倒计时-1.swf'
             gifContainer.style['display'] = 'block'
+            countDownLogo.style['display'] = 'block'
             clearTimeout(timerCount1)
             clearTimeout(timerCount2)
             clearTimeout(timerCount3)
             timerCount1 = setTimeout(function () {
                 gifContainer.src = ''
                 gifContainer.style['display'] = 'none'
-                startBtnContainer.style['display'] = 'block'
+                // startBtnContainer.style['display'] = 'block'
+                countDownLogo.style['display'] = 'none'
+                $("#startComp").fadeIn("slow");
+                //startComp.style['display'] = 'block'
                 start1()
             }, 10000)
         })
         round2.addEventListener('click', () => {
             startBtnContainer.style['display'] = 'none'
-            gifContainer.src = '../images/countDown.GIF'
+            gifContainer.src = '../images/倒计时-1.swf'
             gifContainer.style['display'] = 'block'
+            countDownLogo.style['display'] = 'block'
             clearTimeout(timerCount1)
             clearTimeout(timerCount2)
             clearTimeout(timerCount3)
             timerCount2 = setTimeout(function () {
                 gifContainer.src = ''
                 gifContainer.style['display'] = 'none'
-                startBtnContainer.style['display'] = 'block'
+                // startBtnContainer.style['display'] = 'block'
+                countDownLogo.style['display'] = 'none'
+                $("#startComp").fadeIn("slow");
+                //startComp.style['display'] = 'block'
                 start2()
             }, 10000)
         })
         round3.addEventListener('click', () => {
             startBtnContainer.style['display'] = 'none'
-            gifContainer.src = '../images/countDown.GIF'
+            gifContainer.src = '../images/倒计时-1.swf'
             gifContainer.style['display'] = 'block'
+            countDownLogo.style['display'] = 'block'
             clearTimeout(timerCount1)
             clearTimeout(timerCount2)
             clearTimeout(timerCount3)
             timerCount3 = setTimeout(function () {
                 gifContainer.src = ''
                 gifContainer.style['display'] = 'none'
-                startBtnContainer.style['display'] = 'block'
+                // startBtnContainer.style['display'] = 'block'
+                countDownLogo.style['display'] = 'none'
+                $("#startComp").fadeIn("slow");
+               // startComp.style['display'] = 'block'
                 start3()
             }, 10000)
         })
