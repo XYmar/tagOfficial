@@ -1474,6 +1474,8 @@ margin: 2px 5px 0;}
 .table > tbody > tr.success > td{
 	background-color: rgba(0, 0, 0, 0) !important;
 	border: 1px solid #0674cb;
+    line-height: 60px;
+    vertical-align: middle;
 }
 
 #firstScoreInfoTable > thead{
@@ -1574,4 +1576,9 @@ margin: 2px 5px 0;}
 
 .table-striped > tbody > tr > td div img {
 	margin-right: 8px;
+}
+
+/**/
+.fixed-table-container thead th .th-inner {
+    line-height: 70px!important;
 }
