@@ -1562,3 +1562,7 @@ margin: 2px 5px 0;}
 .table > thead:first-child > tr:first-child > th {
     border-bottom-color:#0674cb;
 }
+
+.table-striped > tbody > tr > td div img {
+	margin-right: 8px;
+}
