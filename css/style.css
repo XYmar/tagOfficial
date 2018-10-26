@@ -371,7 +371,7 @@ color:#000;
 	padding-bottom: 0;
 }
 .secPadding{
-	padding: 50px 0;
+	/*padding: 50px 0;*/
 	/*padding: 15px 0;*/
 }
 .price-table .panel-heading h3{
@@ -719,7 +719,7 @@ background: #fff;border: 1px solid #fff;}
 }
 
 /* carousel */
-#quote-carousel 
+#quote-carousel
 {
   padding: 0 10px 30px 10px;
   margin-top: 30px;
@@ -735,17 +735,17 @@ background: #fff;border: 1px solid #fff;}
   margin-top: 30px;
 }
 /* Previous button  */
-#quote-carousel .carousel-control.left 
+#quote-carousel .carousel-control.left
 {
   left: -12px;
 }
 /* Next button  */
-#quote-carousel .carousel-control.right 
+#quote-carousel .carousel-control.right
 {
   right: -12px !important;
 }
 /* Changes the position of the indicators */
-#quote-carousel .carousel-indicators 
+#quote-carousel .carousel-indicators
 {
   right: 50%;
   top: auto;
@@ -753,11 +753,11 @@ background: #fff;border: 1px solid #fff;}
   margin-right: -19px;
 }
 /* Changes the color of the indicators */
-#quote-carousel .carousel-indicators li 
+#quote-carousel .carousel-indicators li
 {
   background: #FFFFFF;
 }
-#quote-carousel .carousel-indicators .active 
+#quote-carousel .carousel-indicators .active
 {
   background: #333333;
   border: 1px solid #333;
@@ -793,8 +793,8 @@ background: #fff;border: 1px solid #fff;}
 */
 
 /* Small devices (tablets, 3000px and up) */
-@media (min-width: 3000px) { 
-    #quote-carousel 
+@media (min-width: 3000px) {
+    #quote-carousel
     {
       margin-bottom: 0;
       padding: 0 40px 30px 40px;
@@ -806,8 +806,8 @@ background: #fff;border: 1px solid #fff;}
 }
 
 /* Small devices (tablets, up to 3000px) */
-@media (max-width: 3000px) { 
-    
+@media (max-width: 3000px) {
+
     /* Make the indicators larger for easier clicking with fingers/thumb on mobile */
 	/*.navbar-nav {
 		margin: 7.5px -15px;
@@ -815,7 +815,7 @@ background: #fff;border: 1px solid #fff;}
 	}*/
 
     #quote-carousel .carousel-indicators {
-        bottom: -20px !important;  
+        bottom: -20px !important;
     }
     #quote-carousel .carousel-indicators li {
         display: inline-block;
@@ -1406,6 +1406,30 @@ margin: 2px 5px 0;}
     height: auto;
     background-size: cover;
     padding-bottom: 10px;
+}
+
+.secondbg{
+	background: url("../images/fwkx.png");
+	background-repeat: no-repeat;
+	height: auto;
+	background-size: cover;
+	padding-bottom: 10px;
+}
+
+.thridbg{
+	background: url("../images/fmqb.png");
+	background-repeat: no-repeat;
+	height: auto;
+	background-size: cover;
+	padding-bottom: 10px;
+}
+
+.endbg{
+	background: url("../images/end.png") !important;
+	background-repeat: no-repeat !important;
+	height: auto !important;
+	background-size: cover !important;
+	padding-bottom: 10px !important;
 }
 
 .bootstrap-table{

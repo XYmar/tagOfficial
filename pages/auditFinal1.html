@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>决赛管理员页面</title>
+
+    <!--<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.8.1/build/reset/reset-min.css"/>-->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/header2.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../css/buttons.css"/>
+    <link href="apply.css" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+
+        html {
+            font: 62.5%/1 "Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+        }
+        body {
+            padding: 20px 100px;
+        }
+        .bgimg{
+            position: fixed;
+            left:0px;
+            top:0px;
+            margin:auto;
+            width:100%;
+            height:100%;
+            z-index:0;
+        }
+        #wrapper { text-align: center; }
+
+        a{
+            text-decoration: none !important;
+        }
+        /*It appears that the Pictos Font resets the line-height of the icon.. so if you are using them, delete the line below. */
+        .icon:before { line-height: .7em; }
+
+        .modal-dialog{
+            width: 80% !important;
+            top: 25% !important;
+        }
+        .modal-content {
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            color: #efd279;;
+            font-size: 70px;
+        }
+        #countGif {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            margin-left:-300px ;
+            width: 600px;
+            height: 400px;
+        }
+        .startBtn {
+            margin: 0 auto;
+            display: block;
+            height: 499px;
+            width: 306px;
+            border: none;
+        }
+        .startBtn1 {
+            background: url("../images/red.png");
+        }
+        .startBtn2 {
+            background: url("../images/yellow.png");
+        }
+        .startBtn3 {
+            background: url("../images/blue.png");
+        }
+        .startBtn1:focus, .startBtn1:hover{
+            background: url("../images/red1.png");
+        }
+        .startBtn2:focus, .startBtn2:hover{
+            background: url("../images/yellow1.png");
+        }
+        .startBtn3:focus, .startBtn3:hover {
+            background: url("../images/blue1.png");
+        }
+        /*#wrapper {
+            text-align: center;
+            position: absolute;
+            margin: 0 auto;
+            bottom: 0;
+        }*/
+
+    </style>
+
+
+</head>
+
+<body>
+<img src="../images/countBg.PNG" alt="" class="bgimg">
+<img alt="" id="countGif" style="display: none;">
+
+<div class="container" id="startBtnContainer">
+    <div id="wrapper" class="row" style="margin-top: 240px">
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <button id="round1" class="startBtn startBtn1"></button>
+            </div>
+            <div class="col-md-4">
+                <button id="round2" class="startBtn startBtn2"></button>
+            </div>
+            <div class="col-md-4">
+                <button id="round3" class="startBtn startBtn3"></button>
+            </div>
+        </div>
+
+        <div class="modalAction hide modal bs-example-modal-lg" id="modalAction" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <h2 style="font-size: 70px;">比赛开始</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="text-align:center;clear:both;">
+</div>
+<script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+<script src="../js/cookie.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script type="text/javascript" src="../js/jquery.base64.js"></script>
+<script type="text/javascript" src="../js/globalIP.js"></script>
+
+<!--<script type="text/javascript" src="../js/time.js"></script>-->
+<script>
+    function start1() {
+        //倒计时结束后调用开始接口，并开放下载提交按钮
+        $.ajax({
+            type: "PATCH",
+            dataType: "json",
+            url: IpAll() + "finals/start-final",
+            data: {type: 1},
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                console.log(result.data.commitStartTime1)
+                let dateStamp = new Date(result.data.commitStartTime1).valueOf() + 20*60*1000
+                console.log(dateStamp)
+                $.cookie("commitStartTime", dateStamp, {path: '/'});
+
+                window.location.href='../indexFinal.html#skip';
+            },
+            error : function() {
+                alert("请求错误！");
+            }
+        });
+    }
+    function start2() {
+        //倒计时结束后调用开始接口，并开放下载提交按钮
+        $.ajax({
+            type: "PATCH",
+            dataType: "json",
+            url: IpAll() + "finals/start-final",
+            data: {type: 2},
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                console.log(result.data.commitStartTime2)
+                let dateStamp = new Date(result.data.commitStartTime2).valueOf() + 20*60*1000
+                console.log(dateStamp)
+                $.cookie("commitStartTime", dateStamp, {path: '/'});
+
+                window.location.href='../indexFinal.html#skip';
+            },
+            error : function() {
+                alert("请求错误！");
+            }
+        });
+    }
+    function start3() {
+        //倒计时结束后调用开始接口，并开放下载提交按钮
+        $.ajax({
+            type: "PATCH",
+            dataType: "json",
+            url: IpAll() + "finals/start-final",
+            data: {type: 3},
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                console.log(result.data.commitStartTime3)
+                let dateStamp = new Date(result.data.commitStartTime3).valueOf() + 20*60*1000
+                console.log(dateStamp)
+                $.cookie("commitStartTime", dateStamp, {path: '/'});
+
+                window.location.href='../indexFinal.html#skip';
+            },
+            error : function() {
+                alert("请求错误！");
+            }
+        });
+    }
+    let timerCount1
+    let timerCount2
+    let timerCount3
+    let username = $.cookie("myUsername");
+    let password0 = $.cookie("myWPa");
+    let password = $.base64.decode(password0);
+    let token = username + ':' + password;
+    $('#thirdScoreDiv').on('click', function(){
+        $('#myModalAdd3 .modal-content').html($('#thirdScoreDiv').html())
+        $m_btn3.click()
+    });
+    window.onload = function () {
+        let round1 = document.getElementById('round1')
+        let round2 = document.getElementById('round2')
+        let round3 = document.getElementById('round3')
+        let gifContainer = document.getElementById('countGif')
+        let startBtnContainer = document.getElementById('startBtnContainer')
+        round1.addEventListener('click', () => {
+            startBtnContainer.style['display'] = 'none'
+            gifContainer.src = '../images/countDown.GIF'
+            gifContainer.style['display'] = 'block'
+            clearTimeout(timerCount1)
+            clearTimeout(timerCount2)
+            clearTimeout(timerCount3)
+            timerCount1 = setTimeout(function () {
+                gifContainer.src = ''
+                gifContainer.style['display'] = 'none'
+                startBtnContainer.style['display'] = 'block'
+                start1()
+            }, 10000)
+        })
+        round2.addEventListener('click', () => {
+            startBtnContainer.style['display'] = 'none'
+            gifContainer.src = '../images/countDown.GIF'
+            gifContainer.style['display'] = 'block'
+            clearTimeout(timerCount1)
+            clearTimeout(timerCount2)
+            clearTimeout(timerCount3)
+            timerCount2 = setTimeout(function () {
+                gifContainer.src = ''
+                gifContainer.style['display'] = 'none'
+                startBtnContainer.style['display'] = 'block'
+                start2()
+            }, 10000)
+        })
+        round3.addEventListener('click', () => {
+            startBtnContainer.style['display'] = 'none'
+            gifContainer.src = '../images/countDown.GIF'
+            gifContainer.style['display'] = 'block'
+            clearTimeout(timerCount1)
+            clearTimeout(timerCount2)
+            clearTimeout(timerCount3)
+            timerCount3 = setTimeout(function () {
+                gifContainer.src = ''
+                gifContainer.style['display'] = 'none'
+                startBtnContainer.style['display'] = 'block'
+                start3()
+            }, 10000)
+        })
+    }
+
+</script>
+</body>
+
+</html>
+
