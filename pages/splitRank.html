@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>排行榜分屏页面</title>
+
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/buttons.css"/>
+    <link href="apply.css" rel="stylesheet" type="text/css" />
+    <link href="../css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../bootstrap-table/bootstrap-table.min.css">
+    <style type="text/css">
+
+        html {
+            font: 62.5%/1 "Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+        }
+        body {
+            padding: 20px 100px;
+        }
+        .bgimg{
+            position: fixed;
+            left:0px;
+            top:0px;
+            margin:auto;
+            width:100%;
+            height:100%;
+            z-index:0;
+        }
+        #wrapper { text-align: center; }
+
+        a{
+            text-decoration: none !important;
+        }
+        /*It appears that the Pictos Font resets the line-height of the icon.. so if you are using them, delete the line below. */
+        .icon:before { line-height: .7em; }
+
+        .modal-dialog{
+            width: 80% !important;
+            top: 25% !important;
+        }
+        .modal-content {
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            color: #efd279;;
+            font-size: 70px;
+        }
+        #countGif {
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            margin-left:-480px ;
+            width: 1040px;
+            height: 618px;
+        }
+        .startBtn {
+            margin: 0 auto;
+            display: block;
+            height: 499px;
+            width: 306px;
+            border: none;
+        }
+        .startBtn1 {
+            background: url("../images/red.png");
+        }
+        .startBtn2 {
+            background: url("../images/yellow.png");
+        }
+        .startBtn3 {
+            background: url("../images/report1.jpg");
+        }
+        .startBtn1:focus, .startBtn1:hover{
+            background: url("../images/red1.png");
+        }
+        .startBtn2:focus, .startBtn2:hover{
+            background: url("../images/yellow1.png");
+        }
+        .startBtn3:focus, .startBtn3:hover {
+            background: url("../images/report.jpg");
+        }
+        /*#wrapper {
+            text-align: center;
+            position: absolute;
+            margin: 0 auto;
+            bottom: 0;
+        }*/
+
+    </style>
+    <link href="../css/flipclock.css" rel="stylesheet">
+
+
+</head>
+<style>
+    .split-order1{
+        background: url("../images/split-order1.png");
+        background-repeat: no-repeat;
+        height: auto;
+        background-size: cover;
+        padding-bottom: 10px;
+    }
+    .split-order2{
+        background: url("../images/split-order2.png");
+        height: auto;
+        background-size: cover;
+        padding-bottom: 10px;
+    }
+    .split-order3{
+        background: url("../images/split-order3.png");
+        background-repeat: no-repeat;
+        height: auto;
+        background-size: cover;
+        padding-bottom: 10px;
+    }
+</style>
+<body>
+<img src="../images/split1.png" alt="" class="bgimg">
+<div>
+    <div style="margin-top: 200px">
+        <div class="split-container" style="width: 100%;">
+            <div id="split-order" class="split-order1" style="width: 50%;float: left;height: 700px;position: relative;z-index: 99;">
+                <div class="your-clock" style="margin-top: 3.5em;"></div>
+                <table id="scoreTable">
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="text-align:center;clear:both;">
+</div>
+<script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+<script src="../js/cookie.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script type="text/javascript" src="../js/jquery.base64.js"></script>
+<script type="text/javascript" src="../js/globalIP.js"></script>
+<script src="../bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="../js/flipclock.js"></script>
+<script>
+    let timer1
+    let timer2
+    let timer3
+    let commitTime
+    let username = $.cookie("myUsername");
+    let password0 = $.cookie("myWPa");
+    let password = $.base64.decode(password0);
+    let token = username + ':' + password;
+    let finalTeams = [
+        {
+            "id": "01903c69-60f7-4830-ab9c-c92d2d22f051",
+            "createTime": "2018-07-31 20:50:38",
+            "message": null,
+            "username": "monsterhunter",
+            "password": "$2a$10$MoO9LO/ZUmytKpiw.oHDQeZz75vmnaULKUJvJAC3uUZDaSjiFHHVK",
+            "email": "sfzhou567@163.com",
+            "telephoneNumber": "15201950598",
+            "name": "周树帆",
+            "age": 24,
+            "sex": 0,
+            "teamName": "HR999",
+            "organization": "上海交通大学",
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": "/root/user-badge/56f9f68e-a257-4948-8a2c-2e2d1b19db5d.jpg",
+            "bleu4ScoreT": 100.0,
+            "rougelScoreT": 100.0,
+            "commitDateT": "2018-09-18 06:55:40",
+            "commitTimesT": 4,
+            "bleu4ScoreP": 78.17,
+            "rougelScoreP": 88.56,
+            "commitDateP": "2018-10-21 20:31:53",
+            "commitTimesP": 5,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 3,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": '2018-07-31 20:50:38',
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "rank": 4,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "0c846ece-efd6-4f37-a9a6-d527d784176f",
+            "createTime": "2018-10-23 16:41:49",
+            "message": null,
+            "username": "test7",
+            "password": "$2a$10$MN/kL9kvnkACuPreKaY0PeIV8bWydkFv9jntJV2LH3QAuutfWMo3i",
+            "email": null,
+            "telephoneNumber": null,
+            "name": null,
+            "age": 0,
+            "sex": 0,
+            "teamName": "test7",
+            "organization": null,
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": null,
+            "bleu4ScoreT": 0.0,
+            "rougelScoreT": 0.0,
+            "commitDateT": null,
+            "commitTimesT": 4,
+            "bleu4ScoreP": 0.0,
+            "rougelScoreP": 0.0,
+            "commitDateP": null,
+            "commitTimesP": 5,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 3,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "13435fe9-d767-474f-96e9-a9c8b45f7a28",
+            "createTime": "2018-10-23 16:41:48",
+            "message": null,
+            "username": "test4",
+            "password": "$2a$10$lEnR9xs.XBqOg3Y8q2UWfOnteU9e0nME7Gz1dUfbGq.E77lOa/jnW",
+            "email": null,
+            "telephoneNumber": null,
+            "name": null,
+            "age": 0,
+            "sex": 0,
+            "teamName": "test4",
+            "organization": null,
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": null,
+            "bleu4ScoreT": 0.0,
+            "rougelScoreT": 0.0,
+            "commitDateT": null,
+            "commitTimesT": 4,
+            "bleu4ScoreP": 0.0,
+            "rougelScoreP": 0.0,
+            "commitDateP": null,
+            "commitTimesP": 5,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 3,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "1a05929f-a279-4db3-9b58-4dbb9ec30196",
+            "createTime": "2018-07-05 08:34:01",
+            "message": null,
+            "username": "hazel2666",
+            "password": "$2a$10$p5S5/KwiF7hHPL/0WXKppOI05HoI4lFnkhohvA5AMXhmoy6p5docm",
+            "email": "linzheng@iie.ac.cn",
+            "telephoneNumber": "13718850926",
+            "name": "林政",
+            "age": 33,
+            "sex": 1,
+            "teamName": "向阳而生",
+            "organization": "中国科学院信息工程研究所",
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": "/root/user-badge/4ce9f973-2971-497b-aa5b-33b0be4848f2.jpeg",
+            "bleu4ScoreT": 80.52,
+            "rougelScoreT": 89.8,
+            "commitDateT": "2018-10-19 00:07:21",
+            "commitTimesT": 4,
+            "bleu4ScoreP": 76.56,
+            "rougelScoreP": 88.47,
+            "commitDateP": "2018-10-23 11:10:10",
+            "commitTimesP": 4,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 3,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "1e6f9fde-0e3b-41b6-930b-01529d4d8ef2",
+            "createTime": "2018-10-23 16:41:48",
+            "message": null,
+            "username": "test2",
+            "password": "$2a$10$1YP84mCA9biZiSSk3GvkLe4VRChjH69ssTMPAHA7swzpzD/Gg8BVC",
+            "email": null,
+            "telephoneNumber": null,
+            "name": null,
+            "age": 0,
+            "sex": 0,
+            "teamName": "test2",
+            "organization": null,
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": null,
+            "bleu4ScoreT": 0.0,
+            "rougelScoreT": 0.0,
+            "commitDateT": null,
+            "commitTimesT": 4,
+            "bleu4ScoreP": 0.0,
+            "rougelScoreP": 0.0,
+            "commitDateP": null,
+            "commitTimesP": 5,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 3,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "1f406719-7e3a-4b3c-bf89-2dc4b302d73f",
+            "createTime": "2018-07-24 17:26:28",
+            "message": null,
+            "username": "ssdf93",
+            "password": "$2a$10$9q33145BETuU1/vVu5BFpOfddNJBDTfXsVSeGfUgVObT45B2UZfcq",
+            "email": "zhangsheng@nudt.edu.cn",
+            "telephoneNumber": "13278891668",
+            "name": "张胜",
+            "age": 25,
+            "sex": 0,
+            "teamName": "FuRongWang",
+            "organization": "国防科技大学",
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": "/root/user-badge/5d236c6e-a3d4-483d-a0a1-575c686aa401.jpg",
+            "bleu4ScoreT": 100.0,
+            "rougelScoreT": 100.0,
+            "commitDateT": "2018-09-15 15:22:39",
+            "commitTimesT": 4,
+            "bleu4ScoreP": 74.53,
+            "rougelScoreP": 87.3,
+            "commitDateP": "2018-10-21 13:24:56",
+            "commitTimesP": 5,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 3,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "38c6101c-0378-413f-935c-2865d35a34dc",
+            "createTime": "2018-10-23 16:41:48",
+            "message": null,
+            "username": "test3",
+            "password": "$2a$10$timQGlP38k1MgbSQCCEQH.RoK.KFHbGTQgbD1nH62gPuMbnU5Lpbi",
+            "email": null,
+            "telephoneNumber": null,
+            "name": null,
+            "age": 0,
+            "sex": 0,
+            "teamName": "test3",
+            "organization": null,
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": null,
+            "bleu4ScoreT": 0.0,
+            "rougelScoreT": 0.0,
+            "commitDateT": null,
+            "commitTimesT": 4,
+            "bleu4ScoreP": 0.0,
+            "rougelScoreP": 0.0,
+            "commitDateP": null,
+            "commitTimesP": 5,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 3,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "556bf4a7-b8b2-4794-9699-a76609ae30e6",
+            "createTime": "2018-10-23 16:41:48",
+            "message": null,
+            "username": "test1",
+            "password": "$2a$10$5E/B0VsepINjHoZuTjvmQuBk.B0ju3QsPUELgaswu7lEVS1fC98DO",
+            "email": null,
+            "telephoneNumber": null,
+            "name": null,
+            "age": 0,
+            "sex": 0,
+            "teamName": "test1",
+            "organization": null,
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": null,
+            "bleu4ScoreT": 0.0,
+            "rougelScoreT": 0.0,
+            "commitDateT": null,
+            "commitTimesT": 4,
+            "bleu4ScoreP": 0.0,
+            "rougelScoreP": 0.0,
+            "commitDateP": null,
+            "commitTimesP": 5,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 3,
+            "bleu4ScoreF1": 100.0,
+            "rougelScoreF1": 100.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "590044ef-ec78-4587-84bb-25398b2c36e3",
+            "createTime": "2018-07-14 14:18:26",
+            "message": null,
+            "username": "junqing",
+            "password": "$2a$10$GB8vZdeL/z4oAW2jBftWee5nhGhVknIRzi4vLuBT1EGC8zZGSzRR6",
+            "email": "dc.swind@gmail.com",
+            "telephoneNumber": "15850570389",
+            "name": "徐栋",
+            "age": 24,
+            "sex": 0,
+            "teamName": "军情十八处",
+            "organization": "南京大学",
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": "/root/user-badge/4a35901c-88bc-49fc-b8f9-0408d46300ff.jpg",
+            "bleu4ScoreT": 74.73,
+            "rougelScoreT": 86.06,
+            "commitDateT": "2018-09-11 10:59:45",
+            "commitTimesT": 4,
+            "bleu4ScoreP": 71.31,
+            "rougelScoreP": 86.35,
+            "commitDateP": "2018-10-16 12:02:46",
+            "commitTimesP": 5,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 3,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "66ace24f-bea3-4d51-8635-d5c35edb5401",
+            "createTime": "2018-07-29 11:51:01",
+            "message": null,
+            "username": "461629348",
+            "password": "$2a$10$zHPAEmr1RifGqpctVI9DpuiEz5yY.7fDpZ2K94TY.n8shMVxYQnuG",
+            "email": "461629348@qq.com",
+            "telephoneNumber": "18701914274",
+            "name": "徐建",
+            "age": 32,
+            "sex": 0,
+            "teamName": "敬畏之心",
+            "organization": "北京云知声科技",
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": "/root/user-badge/c1e7363e-cc72-439a-8c64-755b4dc82160.jpg",
+            "bleu4ScoreT": 60.33,
+            "rougelScoreT": 83.47,
+            "commitDateT": "2018-09-13 19:14:20",
+            "commitTimesT": 4,
+            "bleu4ScoreP": 81.55,
+            "rougelScoreP": 91.54,
+            "commitDateP": "2018-10-23 10:11:32",
+            "commitTimesP": 1,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 3,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        /*{
+            "id": "79779259-0b62-4839-80d2-e30da4e13497",
+            "createTime": "2018-10-23 16:41:49",
+            "message": null,
+            "username": "test8",
+            "password": "$2a$10$zUVTpWGITkvSysw3esnfc.idPHqTOpnZqylswz2a/KkmRae71IUia",
+            "email": null,
+            "telephoneNumber": null,
+            "name": null,
+            "age": 0,
+            "sex": 0,
+            "teamName": "test8",
+            "organization": null,
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": null,
+            "bleu4ScoreT": 0.0,
+            "rougelScoreT": 0.0,
+            "commitDateT": null,
+            "commitTimesT": 4,
+            "bleu4ScoreP": 0.0,
+            "rougelScoreP": 0.0,
+            "commitDateP": null,
+            "commitTimesP": 5,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 3,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "8184bd04-9524-4f99-92ce-d8d31688ea71",
+            "createTime": "2018-10-23 16:41:49",
+            "message": null,
+            "username": "test5",
+            "password": "$2a$10$od50dqOksLX4UDgf.6IATeasBV4PyfGnqPxBk9.pjHjzeYS4Hp5LK",
+            "email": null,
+            "telephoneNumber": null,
+            "name": null,
+            "age": 0,
+            "sex": 0,
+            "teamName": "test5",
+            "organization": null,
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": null,
+            "bleu4ScoreT": 0.0,
+            "rougelScoreT": 0.0,
+            "commitDateT": null,
+            "commitTimesT": 4,
+            "bleu4ScoreP": 0.0,
+            "rougelScoreP": 0.0,
+            "commitDateP": null,
+            "commitTimesP": 5,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 3,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "8f2a3698-ca2d-4976-ae9f-d276c87aebcb",
+            "createTime": "2018-07-10 17:38:57",
+            "message": null,
+            "username": "BUPTCIST",
+            "password": "$2a$10$4BmczQNoiWC2k3jAmOepsOKg1Vi4ct4lqxGPsehkHQjkx5pKSm/Pe",
+            "email": "bestbzw@bupt.edu.cn",
+            "telephoneNumber": "13269523807",
+            "name": "王小捷",
+            "age": 49,
+            "sex": 0,
+            "teamName": "BUPTCIST",
+            "organization": "北京邮电大学",
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": "/root/user-badge/98de7849-2ea1-450d-ba26-e734c34cccc2.jpg",
+            "bleu4ScoreT": 100.0,
+            "rougelScoreT": 100.0,
+            "commitDateT": "2018-10-19 19:40:06",
+            "commitTimesT": 4,
+            "bleu4ScoreP": 74.17,
+            "rougelScoreP": 86.71,
+            "commitDateP": "2018-09-27 11:18:48",
+            "commitTimesP": 5,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 3,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "9cac2594-fa08-42ff-9423-3bdb08fcf4ee",
+            "createTime": "2018-10-23 16:41:49",
+            "message": null,
+            "username": "test9",
+            "password": "$2a$10$huCEtCmaBEOp4bDNFrfXL.7IBQCQwEvdyso9Vvx/KZZIJnFdjy41u",
+            "email": null,
+            "telephoneNumber": null,
+            "name": null,
+            "age": 0,
+            "sex": 0,
+            "teamName": "test9",
+            "organization": null,
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": null,
+            "bleu4ScoreT": 0.0,
+            "rougelScoreT": 0.0,
+            "commitDateT": null,
+            "commitTimesT": 4,
+            "bleu4ScoreP": 0.0,
+            "rougelScoreP": 0.0,
+            "commitDateP": null,
+            "commitTimesP": 5,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 3,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "9ce02066-676f-47a0-9b8d-fd5469b1b72b",
+            "createTime": "2018-10-23 16:41:49",
+            "message": null,
+            "username": "test10",
+            "password": "$2a$10$224nh8e3vGY92R3dHbm0QepuNEpjuzbA5tbRSntSKjKu0Ibz3Cndu",
+            "email": null,
+            "telephoneNumber": null,
+            "name": null,
+            "age": 0,
+            "sex": 0,
+            "teamName": "test10",
+            "organization": null,
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": null,
+            "bleu4ScoreT": 0.0,
+            "rougelScoreT": 0.0,
+            "commitDateT": null,
+            "commitTimesT": 4,
+            "bleu4ScoreP": 0.0,
+            "rougelScoreP": 0.0,
+            "commitDateP": null,
+            "commitTimesP": 5,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 3,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "a7e295c8-219b-4a49-848c-d273413f5c8f",
+            "createTime": "2018-10-23 16:41:49",
+            "message": null,
+            "username": "test6",
+            "password": "$2a$10$pZW/8UZ9m6nWUNVhsUShauFVAeheURt/.HkEVcMlMSl.5ofhqca6i",
+            "email": null,
+            "telephoneNumber": null,
+            "name": null,
+            "age": 0,
+            "sex": 0,
+            "teamName": "test6",
+            "organization": null,
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": null,
+            "bleu4ScoreT": 0.0,
+            "rougelScoreT": 0.0,
+            "commitDateT": null,
+            "commitTimesT": 4,
+            "bleu4ScoreP": 0.0,
+            "rougelScoreP": 0.0,
+            "commitDateP": null,
+            "commitTimesP": 5,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 3,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "a81ff72d-b869-4a08-8ca1-eb033d9d039e",
+            "createTime": "2018-07-02 17:34:15",
+            "message": null,
+            "username": "aiATdatalink",
+            "password": "$2a$10$PH2pA2Izfllt6/9d7rMXM.XciCC5iIpxOcmuiAB5B72MTQw6CT.BC",
+            "email": "93545322@qq.com",
+            "telephoneNumber": "15172495786",
+            "name": "何俊",
+            "age": 35,
+            "sex": 0,
+            "teamName": "首首麒麟",
+            "organization": "国防科技大学信息通信学院",
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": "/root/user-badge/7bb00948-be1e-495c-9253-feebcc41ccde.jpg",
+            "bleu4ScoreT": 78.84,
+            "rougelScoreT": 90.27,
+            "commitDateT": "2018-09-17 09:57:38",
+            "commitTimesT": 4,
+            "bleu4ScoreP": 83.82,
+            "rougelScoreP": 92.06,
+            "commitDateP": "2018-10-23 09:15:53",
+            "commitTimesP": 2,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 3,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "ad9eaa11-94bd-4a05-bf68-6195b6cc751a",
+            "createTime": "2018-07-31 15:01:51",
+            "message": null,
+            "username": "ndsc01",
+            "password": "$2a$10$A7rwF97pM5Tp7Q0QZ4FdTutQXZAKXZvy28gcGB01qiOf/ISWq2KF6",
+            "email": "277433109@qq.com",
+            "telephoneNumber": "18337176095",
+            "name": "黄瑞阳",
+            "age": 33,
+            "sex": 0,
+            "teamName": "ndsc01",
+            "organization": "NDSC",
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": "/root/user-badge/de8c4cd5-fdf3-4ca3-9de3-a0e4b571b330.jpg",
+            "bleu4ScoreT": 0.0,
+            "rougelScoreT": 0.0,
+            "commitDateT": null,
+            "commitTimesT": 4,
+            "bleu4ScoreP": 74.28,
+            "rougelScoreP": 88.16,
+            "commitDateP": "2018-10-23 09:21:39",
+            "commitTimesP": 4,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 3,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "b97e14f3-541b-4391-970c-f259d7efdb0d",
+            "createTime": "2018-07-16 10:15:33",
+            "message": null,
+            "username": "cstsunfu",
+            "password": "$2a$10$xqKjT5uKpZ2J184SFEVz5OTK8GUNnyPnds4aDub83dVty4WPUGxk2",
+            "email": "cstsunfu@gmail.com",
+            "telephoneNumber": "18616234910",
+            "name": "孙付",
+            "age": 24,
+            "sex": 0,
+            "teamName": "对照组",
+            "organization": "复旦大学",
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": "/root/user-badge/b795331b-ec40-4e1f-9da3-f7ebb3bcb114.jpg",
+            "bleu4ScoreT": 69.42,
+            "rougelScoreT": 88.42,
+            "commitDateT": "2018-08-23 16:15:35",
+            "commitTimesT": 4,
+            "bleu4ScoreP": 73.05,
+            "rougelScoreP": 86.47,
+            "commitDateP": "2018-10-12 14:35:29",
+            "commitTimesP": 5,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 3,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        },
+        {
+            "id": "fc51250b-88d6-45d1-ae64-81a7dd7dcef1",
+            "createTime": "2018-07-22 19:32:42",
+            "message": null,
+            "username": "404338476",
+            "password": "$2a$10$ueRgp23BSbv17fvnfoiK5u.zJQt/weLicPUeIMmvq8qbF46EpHQNK",
+            "email": "404338476@qq.com",
+            "telephoneNumber": "13217417403",
+            "name": "张啸宇",
+            "age": 28,
+            "sex": 0,
+            "teamName": "xy",
+            "organization": "国防科大",
+            "accountNonExpired": true,
+            "accountNonLocked": true,
+            "credentialsNonExpired": true,
+            "enabled": true,
+            "badgePath": "/root/user-badge/d6e0aed2-c212-4b0e-8f85-af68eb62d25a.jpg",
+            "bleu4ScoreT": 82.54,
+            "rougelScoreT": 91.95,
+            "commitDateT": "2018-09-18 05:03:34",
+            "commitTimesT": 4,
+            "bleu4ScoreP": 80.78,
+            "rougelScoreP": 91.22,
+            "commitDateP": "2018-10-21 20:32:18",
+            "commitTimesP": 5,
+            "bleu4ScoreF": 0.0,
+            "rougelScoreF": 0.0,
+            "avgIndex": 0.0,
+            "commitDateF": null,
+            "commitTimesF": 3,
+            "bleu4ScoreF1": 0.0,
+            "rougelScoreF1": 0.0,
+            "f1Index": 0,
+            "commitDateF1": null,
+            "commitTimesF1": 3,
+            "bleu4ScoreF2": 0.0,
+            "rougelScoreF2": 0.0,
+            "f2Index": 0,
+            "commitDateF2": null,
+            "commitTimesF2": 3,
+            "bleu4ScoreF3": 0.0,
+            "rougelScoreF3": 0.0,
+            "f3Index": 0,
+            "commitDateF3": null,
+            "commitTimesF3": 3,
+            "roleEntities": [
+                {
+                    "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+                    "createTime": "2018-07-01 12:24:23",
+                    "name": "accept",
+                    "description": "accept"
+                }
+            ],
+            "authorities": [
+                {
+                    "authority": "ROLE_accept"
+                }
+            ]
+        }*/
+    ]
+    let rankRoundData = [].concat(JSON.parse(JSON.stringify(finalTeams)));
+
+    function setOriginScore(type) {
+        let dataOrigin = finalTeams.slice();
+        $("#scoreTable").bootstrapTable('destroy');
+        $('#scoreTable').bootstrapTable({
+            sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+            pagination: false, // 是否显示分页（*）
+            pageNumber: 1,    //如果设置了分页，首页页码
+            pageSize: 30,                       //每页的记录行数（*）
+            pageList: [30, 40],        //可供选择的每页的行数（*）
+            search: false,
+            striped: true,
+            rowStyle: rowStyle,
+            columns: [
+                {
+                    filed: '',
+                    title: '序号',
+                    align: "center",
+                    width: 40,
+                    formatter: linenumber
+                },
+                {
+                    field: 'teamName',
+                    title: '队伍名称'
+                }, {
+                    field: 'rougelScoreF' + type,
+                    title: '主要测试指标\n' +
+                        '（ROUGE-L）',
+                    formatter: precentFormatter
+                }, {
+                    field: 'bleu4ScoreF' + type,
+                    title: '次要测试指标\n' +
+                        '（BLEU-4）',
+                    formatter: precentFormatter
+                }, {
+                    field: 'commitDateF' + type,
+                    title: '最新一次提交时间',
+                    formatter: commitTimeFormatter
+                    /*,sortable: true*/
+                }, {
+                    field: 'commitDateP',
+                    title: '名次升降',
+                    align: "center",
+                    formatter: rankOrder
+                },{
+                    field: 'commitTimesF' + type,
+                    title: '提交次数',
+                    align: "center",
+                    width: 100,
+                    formatter: commitTimesFormatter
+                },
+            ],
+            data: dataOrigin
+        });
+    }
+
+    function getData(type) {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            // url: "files/topTen.json",
+            url: IpAll() + 'finals/ranking',
+            data: {type: type},
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Basic ' + btoa(token));
+            },
+            success: function (result) {
+                // let data = result.data;
+                let data
+                if(result.data.length > 0) {
+                    data = result.data;
+                } else {
+                    data = rankRoundData
+                }
+                if(rankRoundThree) {
+                    for (let i = 0; i < rankRoundData.length; i++) {
+                        if(rankRoundData[i].saveRank == undefined) {
+                            rankRoundData[i].saveRank = 0
+                        }
+                        for (let j = 0; j < data.length; j++) {
+                            if(rankRoundData[i].username === data[j].username) {
+                                if(j-i !== 0) {
+                                    data[j].rank = j - i
+                                    rankRoundData[i].saveRank = j - i
+                                } else {
+                                    data[j].rank = rankRoundData[i].saveRank
+                                }
+
+                            }
+                        }
+                    }
+                    let tempArr = []
+                    for (let k = 0; k < data.length; k++) {
+                        for (let l = 0; l < rankRoundData.length; l++) {
+                            if(data[k].username === rankRoundData[l].username) {
+                                tempArr.push(rankRoundData[l])
+                                // tempArr.push(data[k])
+                            }
+                        }
+                    }
+                    rankRoundData = tempArr
+                }
+                // rankRoundThree = result.data
+
+                $("#scoreTable").bootstrapTable('destroy');
+                $('#scoreTable').bootstrapTable({
+                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination: false, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30, 40],        //可供选择的每页的行数（*）
+                    search: false,
+                    striped: true,
+                    rowStyle: rowStyle,
+                    columns: [
+                        {
+                            filed: '',
+                            title: '序号',
+                            align: "center",
+                            width: 40,
+                            formatter: linenumber
+                        },
+                        {
+                            field: 'teamName',
+                            title: '队伍名称'
+                        }, {
+                            field: 'rougelScoreF' + type,
+                            title: 'ROUGE-L',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'bleu4ScoreF' + type,
+                            title: 'BLEU-4',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'commitTimesF' + type,
+                            title: '提交次数',
+                            align: "center",
+                            width: 100,
+                            formatter: commitTimesFormatter
+                        }, {
+                            field: 'commitDateF' + type,
+                            title: '最新一次提交时间',
+                            formatter: commitTimeFormatter,
+                        }, {
+                            field: 'commitDateP',
+                            title: '名次升降',
+                            align: "center",
+                            formatter: rankOrder
+                        }
+                    ],
+                    data: data
+                });
+            },
+            error: function (error) {
+            }
+        });
+    }
+
+    function rowStyle(row, index) {
+        let classes = ['success', 'info'];
+        if (index < 10) {//前十行
+            return {classes: classes[0]};
+        }
+        return {classes: ''};
+    }
+
+    function precentFormatter(value) {
+        return value.toFixed(2) + "%";
+    }
+
+    function commitTimeFormatter(value) {
+        if(value) {
+            return value.substring(11)
+        } else {
+            return '--'
+        }
+    }
+
+    function linenumber(value, row, index) {
+        let number = index + 1;
+        if (number === 1) {
+            number = "<img style='width: 33px;height:17px;'  src='../images/first.png' />"
+        } else if (number === 2) {
+            number = "<img style='width: 33px;height:17px;'  src='../images/second.png' />"
+        } else if (number === 3) {
+            number = "<img style='width: 33px;height:17px;'  src='../images/third.png' />"
+        }
+        return number;
+    }
+
+    function rankOrder(value, row, index) {
+        let number = index + 1
+        if(row.rank) {
+            if(row.rank < 0) {
+                number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='../images/up.png' /></div>" + "<div style='display: inline;'>"+ (-row.rank) + "</div>"
+            } else if(row.rank > 0) {
+                number = "<div style='width: 20px;display: inline-block;margin-right: 4px;'><img style='width: 10px;height:20px;display: inline'  src='../images/down.png' /></div>" + "<div style='display: inline;'>" + row.rank + "</div>"
+            } else if(row.rank == 0) {
+                number = '--'
+            }
+        } else {
+            number = '--'
+        }
+        return number
+    }
+
+    function commitTimesFormatter(value, row, index) {
+        let lights
+        if(row.commitTimesF1) {
+            // 第一轮剩余3次
+            if(row.commitTimesF1 === 3) {
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='../images/lightOff.png' /><img style='width: 20px;height:20px;display: inline'  src='../images/lightOff.png' /><img style='width: 20px;height:20px;display: inline'  src='../images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+            }
+            // 第一轮剩余2次
+            if(row.commitTimesF1 === 2) {
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='../images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='../images/lightOff.png' /><img style='width: 20px;height:20px;display: inline'  src='../images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+            }
+            // 第一轮剩余1次
+            if(row.commitTimesF1 === 1) {
+                lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='../images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='../images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='../images/lightOff.png' /></div>" + "<div style='display: inline;'></div>"
+            }
+        } else if(row.commitTimesF1 === 0) { // 剩余0次
+            lights = "<div style='width: 100px;display: inline-block;'><img style='width: 20px;height:20px;display: inline'  src='../images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='../images/lightOn.png' /><img style='width: 20px;height:20px;display: inline'  src='../images/lightOn.png' /></div>" + "<div style='display: inline;'></div>"
+        }
+        return lights
+    }
+
+    //开始计时
+    function startCount(time){
+        var clock;
+
+        clock = $('.your-clock').FlipClock({
+            clockFace: 'MinuteCounter',
+            countdown: true,
+            autoStart: false,
+            callbacks: {
+                stop: function() {
+                    $('.message').html('The clock has stopped!')
+                }
+            }
+        });
+
+        clock.setTime(time);
+        clock.setCountdown(true);
+        clock.start();
+    }
+
+    window.onload = function () {
+        clearInterval(timer1)
+        clearInterval(timer2)
+        clearInterval(timer3)
+        let rankRound = $.cookie("rankRound");
+        let splitOrder = $('#split-order')
+        // 初始化数据
+
+        if(!commitTime) {
+            if($.cookie('commitStartTime')) {
+                commitTime = parseInt($.cookie('commitStartTime'))
+                let countTime = moment(commitTime).format('YYYY-MM-DD HH:mm:ss');
+                let nowTimeTmp = moment().format('X')*1000;                    //当前时间时间戳
+                let timeTemp = (parseInt(commitTime) - parseInt(nowTimeTmp))/1000;    //时间差
+                startCount(timeTemp);
+            }
+        }
+        if(rankRound == 'one') {
+            splitOrder.addClass('split-order1')
+            setOriginScore(1)
+            timer1 = setInterval(getData(1),5000)
+        } else if (rankRound == 'two') {
+            splitOrder.addClass('split-order2')
+            setOriginScore(2)
+            timer2 = setInterval(getData(2),5000)
+        } else if (rankRound == 'three') {
+            splitOrder.addClass('split-order3')
+            setOriginScore(3)
+            timer3 = setInterval(getData(3),5000)
+        }
+
+    }
+</script>
+</body>
+
+</html>
+
