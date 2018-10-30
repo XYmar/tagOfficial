@@ -3362,20 +3362,18 @@
     $('#secondScoreDiv').on('click', function(){
         /*$('#myModalAdd2 .modal-content').html($('#secondScoreDiv').html())
         $m_btn2.click()*/
-        $.cookie("rankRound", "one", {path: '/'});
+        $.cookie("rankRound", "two", {path: '/'});
         window.location.href = '/pages/splitRank.html'
     });
-    $('#thirdScoreDiv').on('click', function(){
+    $('#thirdScoreDiv').on('three', function(){
         /*$('#myModalAdd3 .modal-content').html($('#thirdScoreDiv').html())
         $m_btn3.click()*/
         $.cookie("rankRound", "two", {path: '/'});
         window.location.href = '/pages/splitRank.html'
     });
     $('#endScoreDiv').on('click', function(){
-        /*$('#myModalAdd4 .modal-content').html($('#endScoreDiv ').html())
-        $m_btn4.click()*/
-        $.cookie("rankRound", "three", {path: '/'});
-        window.location.href = '/pages/splitRank.html'
+        $('#myModalAdd4 .modal-content').html($('#endScoreDiv ').html())
+        $m_btn4.click()
     });
 
 </script>
