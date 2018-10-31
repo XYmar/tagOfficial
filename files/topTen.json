@@ -31,13 +31,7 @@
       "bleu4ScoreF": 0,
       "rougelScoreF": 0,
       "commitDateF": null,
-      "commitTimesF1": 3,
-      "commitTimesF2": 3,
-      "commitTimesF3": 3,
       "commitTimesF": 1,
-      "bleu4ScoreF": 75.1,
-      "rougelScoreF": 88.92,
-      
       "roleEntities": [
         {
           "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
@@ -82,7 +76,6 @@
       "rougelScoreF": 0,
       "commitDateF": null,
       "commitTimesF": 1,
-      "commitTimesF1": 3,
       "roleEntities": [
         {
           "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
@@ -127,7 +120,6 @@
       "rougelScoreF": 0,
       "commitDateF": null,
       "commitTimesF": 1,
-      "commitTimesF1": 1,
       "roleEntities": [
         {
           "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
@@ -172,7 +164,6 @@
       "rougelScoreF": 0,
       "commitDateF": null,
       "commitTimesF": 1,
-      "commitTimesF1": 2,
       "roleEntities": [
         {
           "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
@@ -217,7 +208,6 @@
       "rougelScoreF": 0,
       "commitDateF": null,
       "commitTimesF": 1,
-      "commitTimesF1": 3,
       "roleEntities": [
         {
           "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
@@ -262,7 +252,6 @@
       "rougelScoreF": 0,
       "commitDateF": null,
       "commitTimesF": 1,
-      "commitTimesF1": 0,
       "roleEntities": [
         {
           "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
@@ -307,7 +296,6 @@
       "rougelScoreF": 0,
       "commitDateF": null,
       "commitTimesF": 1,
-      "commitTimesF1": 2,
       "roleEntities": [
         {
           "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
@@ -352,7 +340,6 @@
       "rougelScoreF": 0,
       "commitDateF": null,
       "commitTimesF": 1,
-      "commitTimesF1": 3,
       "roleEntities": [
         {
           "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
@@ -397,7 +384,6 @@
       "rougelScoreF": 0,
       "commitDateF": null,
       "commitTimesF": 1,
-      "commitTimesF1": 0,
       "roleEntities": [
         {
           "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
@@ -442,7 +428,6 @@
       "rougelScoreF": 0,
       "commitDateF": null,
       "commitTimesF": 1,
-      "commitTimesF1": 1,
       "roleEntities": [
         {
           "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
@@ -487,7 +472,6 @@
           "rougelScoreF": 0,
           "commitDateF": null,
           "commitTimesF": 1,
-          "commitTimesF1": 0,
           "roleEntities": [
             {
               "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
