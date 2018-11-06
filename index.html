@@ -2913,6 +2913,7 @@
         }
 
         getPreliminaryScoreScore2();
+        getFinalScoreScore();
         /*getPreliminaryScoreScore();
         getFinalScore();*/
     }
@@ -2948,16 +2949,64 @@
                             title: '队伍名称'
                         }, {
                             field: 'rougelScoreP',
-                            title: 'ROUGE-L',
+                            title: '主要测试指标（ROUGE-L）',
                             formatter: precentFormatter
                         }, {
                             field: 'bleu4ScoreP',
-                            title: 'BLEU-4',
+                            title: '次要测试指标（BLEU-4）',
                             formatter: precentFormatter
                         }, {
                             field: 'commitDateP',
                             title: '提交日期'/*,
                         sortable: true*/
+                        }
+                    ],
+                    data: data
+                });
+
+            },
+            error: function (error) {
+            }
+        });
+    }
+
+    //访问静态json数据 决赛
+    function getFinalScoreScore() {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "files/FinaltopTen.json",
+            success: function (result) {
+                let data = result.data;
+                $("#finalScoreInfoTable").bootstrapTable('destroy');
+                $('#finalScoreInfoTable').bootstrapTable({
+                    sidePagination: "client", // 分页方式：client客户端分页，server服务端分页（*）
+                    pagination: true, // 是否显示分页（*）
+                    pageNumber: 1,    //如果设置了分页，首页页码
+                    pageSize: 30,                       //每页的记录行数（*）
+                    pageList: [30, 40],        //可供选择的每页的行数（*）
+                    search: false,
+                    striped: true,
+                    rowStyle: rowStyle,
+                    columns: [
+                        {
+                            filed: '',
+                            title: '序号',
+                            align: "center",
+                            width: 40,
+                            formatter: linenumber
+                        },
+                        {
+                            field: 'teamName',
+                            title: '队伍名称'
+                        }, {
+                            field: 'rougelScoreF',
+                            title: '主要测试指标（ROUGE-L）',
+                            formatter: precentFormatter
+                        }, {
+                            field: 'bleu4ScoreF',
+                            title: '次要测试指标（BLEU-4）',
+                            formatter: precentFormatter
                         }
                     ],
                     data: data

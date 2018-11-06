@@ -1,0 +1,456 @@
+{
+  "id": "b4c2119c-8ec5-4b8f-8553-43957bd02545",
+  "createTime": "2018-11-06 09:44:53",
+  "data": [
+    {
+      "id": "1a05929f-a279-4db3-9b58-4dbb9ec30196",
+      "createTime": "2018-07-05 08:34:01",
+      "message": null,
+      "username": null,
+      "password": null,
+      "email": null,
+      "telephoneNumber": null,
+      "name": null,
+      "age": 0,
+      "sex": 0,
+      "teamName": "向阳而生",
+      "organization": null,
+      "accountNonExpired": true,
+      "accountNonLocked": true,
+      "credentialsNonExpired": true,
+      "enabled": true,
+      "badgePath": "/root/user-badge/4ce9f973-2971-497b-aa5b-33b0be4848f2.jpeg",
+      "bleu4ScoreT": 80.52,
+      "rougelScoreT": 89.8,
+      "commitDateT": "2018-09-18 03:33:56",
+      "commitTimesT": 4,
+      "bleu4ScoreP": 75.44,
+      "rougelScoreP": 86.49,
+      "commitDateP": "2018-09-23 23:00:50",
+      "commitTimesP": 2,
+      "bleu4ScoreF": 82.80,
+      "rougelScoreF": 91.39,
+      "commitDateF": null,
+      "commitTimesF": 1,
+      "commitTimesF1": 3,
+      "roleEntities": [
+        {
+          "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+          "createTime": "2018-07-01 12:24:23",
+          "name": "accept",
+          "description": "accept"
+        }
+      ],
+      "authorities": [
+        {
+          "authority": "ROLE_accept"
+        }
+      ]
+    },
+    {
+      "id": "fc51250b-88d6-45d1-ae64-81a7dd7dcef1",
+      "createTime": "2018-07-22 19:32:42",
+      "message": null,
+      "username": null,
+      "password": null,
+      "email": null,
+      "telephoneNumber": null,
+      "name": null,
+      "age": 0,
+      "sex": 0,
+      "teamName": "xy",
+      "organization": null,
+      "accountNonExpired": true,
+      "accountNonLocked": true,
+      "credentialsNonExpired": true,
+      "enabled": true,
+      "badgePath": "/root/user-badge/d6e0aed2-c212-4b0e-8f85-af68eb62d25a.jpg",
+      "bleu4ScoreT": 82.54,
+      "rougelScoreT": 91.95,
+      "commitDateT": "2018-09-18 05:03:34",
+      "commitTimesT": 4,
+      "bleu4ScoreP": 75.1,
+      "rougelScoreP": 88.92,
+      "commitDateP": "2018-09-23 21:33:37",
+      "commitTimesP": 2,
+      "bleu4ScoreF": 81.33,
+      "rougelScoreF": 91.05,
+      "commitDateF": null,
+      "commitTimesF": 1,
+      "commitTimesF1": 3,
+      "roleEntities": [
+        {
+          "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+          "createTime": "2018-07-01 12:24:23",
+          "name": "accept",
+          "description": "accept"
+        }
+      ],
+      "authorities": [
+        {
+          "authority": "ROLE_accept"
+        }
+      ]
+    },
+    {
+      "id": "66ace24f-bea3-4d51-8635-d5c35edb5401",
+      "createTime": "2018-07-29 11:51:01",
+      "message": null,
+      "username": null,
+      "password": null,
+      "email": null,
+      "telephoneNumber": null,
+      "name": null,
+      "age": 0,
+      "sex": 0,
+      "teamName": "敬畏之心",
+      "organization": null,
+      "accountNonExpired": true,
+      "accountNonLocked": true,
+      "credentialsNonExpired": true,
+      "enabled": true,
+      "badgePath": "/root/user-badge/c1e7363e-cc72-439a-8c64-755b4dc82160.jpg",
+      "bleu4ScoreT": 60.33,
+      "rougelScoreT": 83.47,
+      "commitDateT": "2018-09-13 19:14:20",
+      "commitTimesT": 4,
+      "bleu4ScoreP": 69.8,
+      "rougelScoreP": 87.26,
+      "commitDateP": "2018-09-23 10:18:39",
+      "commitTimesP": 2,
+      "bleu4ScoreF": 80.25,
+      "rougelScoreF": 90.18,
+      "commitDateF": null,
+      "commitTimesF": 1,
+      "commitTimesF1": 3,
+      "roleEntities": [
+        {
+          "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+          "createTime": "2018-07-01 12:24:23",
+          "name": "accept",
+          "description": "accept"
+        }
+      ],
+      "authorities": [
+        {
+          "authority": "ROLE_accept"
+        }
+      ]
+    },
+    {
+      "id": "b97e14f3-541b-4391-970c-f259d7efdb0d",
+      "createTime": "2018-07-16 10:15:33",
+      "message": null,
+      "username": null,
+      "password": null,
+      "email": null,
+      "telephoneNumber": null,
+      "name": null,
+      "age": 0,
+      "sex": 0,
+      "teamName": "对照组",
+      "organization": null,
+      "accountNonExpired": true,
+      "accountNonLocked": true,
+      "credentialsNonExpired": true,
+      "enabled": true,
+      "badgePath": "/root/user-badge/b795331b-ec40-4e1f-9da3-f7ebb3bcb114.jpg",
+      "bleu4ScoreT": 69.42,
+      "rougelScoreT": 88.42,
+      "commitDateT": "2018-08-23 16:15:35",
+      "commitTimesT": 4,
+      "bleu4ScoreP": 74.2,
+      "rougelScoreP": 86.26,
+      "commitDateP": "2018-09-23 23:52:20",
+      "commitTimesP": 2,
+      "bleu4ScoreF": 83.44,
+      "rougelScoreF": 90.00,
+      "commitDateF": null,
+      "commitTimesF": 1,
+      "commitTimesF1": 3,
+      "roleEntities": [
+        {
+          "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+          "createTime": "2018-07-01 12:24:23",
+          "name": "accept",
+          "description": "accept"
+        }
+      ],
+      "authorities": [
+        {
+          "authority": "ROLE_accept"
+        }
+      ]
+    },
+    {
+      "id": "a81ff72d-b869-4a08-8ca1-eb033d9d039e",
+      "createTime": "2018-07-02 17:34:15",
+      "message": null,
+      "username": null,
+      "password": null,
+      "email": null,
+      "telephoneNumber": null,
+      "name": null,
+      "age": 0,
+      "sex": 0,
+      "teamName": "首首麒麟",
+      "organization": null,
+      "accountNonExpired": true,
+      "accountNonLocked": true,
+      "credentialsNonExpired": true,
+      "enabled": true,
+      "badgePath": "/root/user-badge/7bb00948-be1e-495c-9253-feebcc41ccde.jpg",
+      "bleu4ScoreT": 78.84,
+      "rougelScoreT": 90.27,
+      "commitDateT": "2018-09-17 09:57:38",
+      "commitTimesT": 4,
+      "bleu4ScoreP": 75.74,
+      "rougelScoreP": 87.03,
+      "commitDateP": "2018-09-23 20:50:36",
+      "commitTimesP": 2,
+      "bleu4ScoreF": 81.19,
+      "rougelScoreF": 89.89,
+      "commitDateF": null,
+      "commitTimesF": 1,
+      "commitTimesF1": 3,
+      "roleEntities": [
+        {
+          "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+          "createTime": "2018-07-01 12:24:23",
+          "name": "accept",
+          "description": "accept"
+        }
+      ],
+      "authorities": [
+        {
+          "authority": "ROLE_accept"
+        }
+      ]
+    },
+    {
+      "id": "01903c69-60f7-4830-ab9c-c92d2d22f051",
+      "createTime": "2018-07-31 20:50:38",
+      "message": null,
+      "username": null,
+      "password": null,
+      "email": null,
+      "telephoneNumber": null,
+      "name": null,
+      "age": 0,
+      "sex": 0,
+      "teamName": "HR999",
+      "organization": null,
+      "accountNonExpired": true,
+      "accountNonLocked": true,
+      "credentialsNonExpired": true,
+      "enabled": true,
+      "badgePath": "/root/user-badge/56f9f68e-a257-4948-8a2c-2e2d1b19db5d.jpg",
+      "bleu4ScoreT": 100,
+      "rougelScoreT": 100,
+      "commitDateT": "2018-09-18 06:55:40",
+      "commitTimesT": 4,
+      "bleu4ScoreP": 76.16,
+      "rougelScoreP": 87.94,
+      "commitDateP": "2018-09-23 16:28:39",
+      "commitTimesP": 2,
+      "bleu4ScoreF": 79.36,
+      "rougelScoreF": 89.71,
+      "commitDateF": null,
+      "commitTimesF": 1,
+      "commitTimesF1": 3,
+      "roleEntities": [
+        {
+          "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+          "createTime": "2018-07-01 12:24:23",
+          "name": "accept",
+          "description": "accept"
+        }
+      ],
+      "authorities": [
+        {
+          "authority": "ROLE_accept"
+        }
+      ]
+    },
+    {
+      "id": "590044ef-ec78-4587-84bb-25398b2c36e3",
+      "createTime": "2018-07-14 14:18:26",
+      "message": null,
+      "username": null,
+      "password": null,
+      "email": null,
+      "telephoneNumber": null,
+      "name": null,
+      "age": 0,
+      "sex": 0,
+      "teamName": "军情十八处",
+      "organization": null,
+      "accountNonExpired": true,
+      "accountNonLocked": true,
+      "credentialsNonExpired": true,
+      "enabled": true,
+      "badgePath": "/root/user-badge/4a35901c-88bc-49fc-b8f9-0408d46300ff.jpg",
+      "bleu4ScoreT": 74.73,
+      "rougelScoreT": 86.06,
+      "commitDateT": "2018-09-11 10:59:45",
+      "commitTimesT": 4,
+      "bleu4ScoreP": 71.25,
+      "rougelScoreP": 86.24,
+      "commitDateP": "2018-09-23 23:39:47",
+      "commitTimesP": 2,
+      "bleu4ScoreF": 81.08,
+      "rougelScoreF": 89.50,
+      "commitDateF": null,
+      "commitTimesF": 1,
+      "commitTimesF1": 3,
+      "roleEntities": [
+        {
+          "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+          "createTime": "2018-07-01 12:24:23",
+          "name": "accept",
+          "description": "accept"
+        }
+      ],
+      "authorities": [
+        {
+          "authority": "ROLE_accept"
+        }
+      ]
+    },
+    {
+      "id": "1f406719-7e3a-4b3c-bf89-2dc4b302d73f",
+      "createTime": "2018-07-24 17:26:28",
+      "message": null,
+      "username": null,
+      "password": null,
+      "email": null,
+      "telephoneNumber": null,
+      "name": null,
+      "age": 0,
+      "sex": 0,
+      "teamName": "FuRongWang",
+      "organization": null,
+      "accountNonExpired": true,
+      "accountNonLocked": true,
+      "credentialsNonExpired": true,
+      "enabled": true,
+      "badgePath": "/root/user-badge/5d236c6e-a3d4-483d-a0a1-575c686aa401.jpg",
+      "bleu4ScoreT": 100,
+      "rougelScoreT": 100,
+      "commitDateT": "2018-09-15 15:22:39",
+      "commitTimesT": 4,
+      "bleu4ScoreP": 73.15,
+      "rougelScoreP": 87.24,
+      "commitDateP": "2018-09-23 23:18:18",
+      "commitTimesP": 2,
+      "bleu4ScoreF": 80.68,
+      "rougelScoreF": 89.28,
+      "commitDateF": null,
+      "commitTimesF": 1,
+      "commitTimesF1": 3,
+      "roleEntities": [
+        {
+          "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+          "createTime": "2018-07-01 12:24:23",
+          "name": "accept",
+          "description": "accept"
+        }
+      ],
+      "authorities": [
+        {
+          "authority": "ROLE_accept"
+        }
+      ]
+    },
+    {
+      "id": "ad9eaa11-94bd-4a05-bf68-6195b6cc751a",
+      "createTime": "2018-07-31 15:01:51",
+      "message": null,
+      "username": null,
+      "password": null,
+      "email": null,
+      "telephoneNumber": null,
+      "name": null,
+      "age": 0,
+      "sex": 0,
+      "teamName": "ndsc01",
+      "organization": null,
+      "accountNonExpired": true,
+      "accountNonLocked": true,
+      "credentialsNonExpired": true,
+      "enabled": true,
+      "badgePath": "/root/user-badge/de8c4cd5-fdf3-4ca3-9de3-a0e4b571b330.jpg",
+      "bleu4ScoreT": 0,
+      "rougelScoreT": 0,
+      "commitDateT": null,
+      "commitTimesT": 4,
+      "bleu4ScoreP": 74.22,
+      "rougelScoreP": 86.68,
+      "commitDateP": "2018-09-23 17:07:15",
+      "commitTimesP": 2,
+      "bleu4ScoreF": 76.46,
+      "rougelScoreF": 89.15,
+      "commitDateF": null,
+      "commitTimesF": 1,
+      "commitTimesF1": 3,
+      "roleEntities": [
+        {
+          "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+          "createTime": "2018-07-01 12:24:23",
+          "name": "accept",
+          "description": "accept"
+        }
+      ],
+      "authorities": [
+        {
+          "authority": "ROLE_accept"
+        }
+      ]
+    },
+    {
+      "id": "8f2a3698-ca2d-4976-ae9f-d276c87aebcb",
+      "createTime": "2018-07-10 17:38:57",
+      "message": null,
+      "username": null,
+      "password": null,
+      "email": null,
+      "telephoneNumber": null,
+      "name": null,
+      "age": 0,
+      "sex": 0,
+      "teamName": "BUPTCIST",
+      "organization": null,
+      "accountNonExpired": true,
+      "accountNonLocked": true,
+      "credentialsNonExpired": true,
+      "enabled": true,
+      "badgePath": "/root/user-badge/98de7849-2ea1-450d-ba26-e734c34cccc2.jpg",
+      "bleu4ScoreT": 100,
+      "rougelScoreT": 100,
+      "commitDateT": "2018-09-14 16:53:11",
+      "commitTimesT": 4,
+      "bleu4ScoreP": 73.59,
+      "rougelScoreP": 86.37,
+      "commitDateP": "2018-09-23 23:39:22",
+      "commitTimesP": 2,
+      "bleu4ScoreF": 81.47,
+      "rougelScoreF": 87.80,
+      "commitDateF": null,
+      "commitTimesF": 1,
+      "commitTimesF1": 3,
+      "roleEntities": [
+        {
+          "id": "43e420bf-17fa-40b2-b9aa-e68cb0addbe2",
+          "createTime": "2018-07-01 12:24:23",
+          "name": "accept",
+          "description": "accept"
+        }
+      ],
+      "authorities": [
+        {
+          "authority": "ROLE_accept"
+        }
+      ]
+    }
+  ]
+}
