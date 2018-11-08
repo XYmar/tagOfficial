@@ -590,6 +590,25 @@
                                         </div>
 
                                         <div class="col-md-6 col-xs-6">
+                                            <a href="javascript: void(0)" id="LES">
+                                                <button class="btn downloadBtn" id="LESBtn" disabled="disabled"
+                                                        type="button">Les MMRC
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li>
+                                    <div class="col-md-3">
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="col-md-1 col-xs-2">
+                                            <i class="fa fa-download  pr-10 colored"></i>
+                                        </div>
+
+                                        <div class="col-md-6 col-xs-6">
                                             <a href="files/竞赛细则.pdf" download="竞赛细则.pdf">
                                                 <button class="btn downloadBtn" type="button">竞赛细则</button>
                                             </a>
@@ -3048,6 +3067,7 @@
                     unclickBtn("trainBtn");
                     unclickBtn("primaryBtn");
                     unclickBtn("finalBtn");
+                    unclickBtn("LESBtn");
 
                     unclickBtn("trainCommitBtn");
                     unclickBtn("primaryCommitBtn");
@@ -3057,10 +3077,12 @@
                         undisabled("trainBtn");
                         undisabled("primaryBtn");
                         undisabled("finalBtn");
+                        undisabled("LESBtn");
 
                         downloadA("trainA");
                         downloadA("primaryA");
                         downloadA("finalA");
+                        downloadA("LES")
 
                         if (role === "admin") {
                             unclickBtn("trainCommitBtn");
@@ -3202,7 +3224,10 @@
         } else if (id === "primaryA") {
             document.getElementById(id).href = "files/初赛测试集.zip";
             document.getElementById(id).download = "初赛测试集.zip";
-        } else if (id === "finalA") {
+        } else if (id === "LES") {
+            document.getElementById(id).href = "files/LesMMRC.zip";
+            document.getElementById(id).download = "LES MMRC.zip";
+        }else if (id === "finalA") {
         }
 
     }
