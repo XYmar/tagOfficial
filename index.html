@@ -3084,7 +3084,7 @@
                         downloadA("finalA");
                         downloadA("LES")
 
-                        if (role === "admin") {
+                        /*if (role === "admin") {
                             unclickBtn("trainCommitBtn");
                             unclickBtn("primaryCommitBtn");
                             unclickBtn("finalCommitBtn");
@@ -3095,7 +3095,11 @@
                             commitA("trainCommit");
                             commitA("primaryCommit");
                             commitA("finalCommit");
-                        }
+                        }*/
+
+                        unclickBtn("trainCommitBtn");
+                        unclickBtn("primaryCommitBtn");
+                        unclickBtn("finalCommitBtn");
                     }
 
                     else if (moment(nowTime).isAfter(primaryEndTime)) {        //9月24号提交按钮取消可点击
